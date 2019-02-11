@@ -186,7 +186,7 @@ namespace CabsAdmin.Controllers
                 CabOffice model = db.CabOffices.SingleOrDefault(m => m.Id == id);
 
 
-                CabOffice cab = new CabOffice();
+                CabOfficeVM cab = new CabOfficeVM();
                 cab.Id = model.Id;
                 cab.Status = model.Status;
                 cab.CabofficeOwner = model.CabofficeOwner;

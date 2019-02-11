@@ -1,19 +1,19 @@
 ﻿
-@model thechauffeurteam.Models.API.CabOffice
+@model thechauffeurteam.Models.ViewModel.CabOfficeVM
 @{
     ViewBag.Title = "Cab Office  Profile";
     Layout = "~/Views/Shared/_CabOfficeLayout.cshtml";
 }
 
 <!-- Header -->
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 400px; background-image: url(~/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+<div class="header pb-5 pt-5 pt-5 d-flex align-items-center" style="min-height: 250px; background-image: url(~/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
     <!-- Mask -->
     <span class="mask bg-gradient-default opacity-8"></span>
     <!-- Header container -->
     <div class="container-fluid d-flex align-items-center">
         <div class="row">
-            <div class="col-md-10">
-                <h3 class="text-white">Hello @Html.DisplayTextFor(x=>x.CabOfficeName)</h3>
+            <div class="col-md-12">
+                <h3 class="text-white">Hello @Html.DisplayTextFor(x=>x.CabOfficeName) !</h3>
                 
                
                 @*<a href="#!" class="btn btn-info">Edit profile</a>*@
@@ -29,7 +29,7 @@
                 <div class="card-header bg-white border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <h3 class="mb-0">My account</h3>
+                            <h3 class="mb-0">My Cab Office Account Detail</h3>
                         </div>
                         <div class="col-4 text-right">
                             <a href="~/CabOffice/driverprofile/@Model.Id" class="btn btn-sm btn-info">View</a>
@@ -41,303 +41,432 @@
                 <div class="card-body">
 
 
-                    @using (Html.BeginForm()) //"UpdateDriver","Driver"
-                    {
-
-                        @Html.AntiForgeryToken()
+                
 
                         <!-- Nav tabs -->
-                        <ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
-                            <li class="nav-item">
-                                <a class="nav-link active nd" data-toggle="tab" href="#driver">Cab Office</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nv" data-toggle="tab" href="#vehicle">Vehicle</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nl" data-toggle="tab" href="#login">Login Detail</a>
-                            </li>
-                        </ul>
+                    <ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
+                        <li class="nav-item">
+                            <a class="nav-link active nd" data-toggle="tab" href="#caboffice">Cab Office</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nv" data-toggle="tab" href="#vehicle">Fleet </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link niInv" data-toggle="tab" href="#invoice">Invoice </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link nRefence" data-toggle="tab" href="#reference">Business Reference </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nl" data-toggle="tab" href="#login">Login </a>
+                        </li>
+                    </ul>
 
 
                         <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div id="driver" class="container tab-pane active">
+                    <div class="tab-content">
+                        <div id="caboffice" class="container tab-pane active">
 
-                                <div style="background-color:white;border-top:2px solid #59D1D3;padding-top:15px;border-radius:5px;padding-bottom:10px;width:100%;">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <h5>PERSONAL DETAIL</h5><br />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="control-label col-sm-12" for="name"><b>Cab Office Name</b></label>
-                                                        <div class="col-sm-12">
-                                                            @Html.EditorFor(model => model.CabOfficeName, new { htmlAttributes = new { @class = "form-control", placeholder = "Driver Name", @readonly = "readonly" } })
-                                                            @Html.ValidationMessageFor(model => model.CabOfficeName, "", new { @class = "text-danger" })
+                            <div style="background-color:white;border-top:2px solid #59D1D3;padding-top:15px;border-radius:5px;padding-bottom:10px;width:100%;">
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="control-label col-sm-12" for="address"><b>Cabb Office Address</b></label>
-                                                        <div class="col-sm-12">
-                                                            @Html.EditorFor(model => model.CabOfficeAddress, new { htmlAttributes = new { @class = "form-control", placeholder = "Driver Address", @readonly = "readonly" } })
-                                                            @Html.ValidationMessageFor(model => model.CabOfficeAddress, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center text-blue p-md-2">Cab Office Detail</h3>
+                                        <table class="table table-hover table-primary table-sm table-bordered">
 
-                                                @*<div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label class="control-label col-sm-12" for="Gender"><b>Gender</b></label>
-                                                        <div class="col-sm-12">
+                                            <tbody>
 
-                                                            <select class="form-control" disabled name="gender">
-                                                                @if (Model.Gender.Equals("Male"))
-                                                                {
-                                                                    <option value="1" selected>Male</option>
-                                                                    <option value="2">Female</option>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <option value="1">Male</option>
-                                                                    <option value="2" selected>Female</option>
-                                                                }
+                                                <tr>
+                                                    <th>Principal Contact for Correspondence/Owner :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.CabofficeOwner)</td>
+                                                </tr>
 
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>*@
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label class="control-label col-sm-12" for="dateOfBirth"><b>Date Business Commenced </b></label>
-                                                        <div class="col-sm-12">
-                                                            <input type="text" id="dob" disabled value="@Model.CabOfficeBusinessStartDate.ToString().Substring(0,10)" class="form-control" />
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            @*<label class="control-label col-sm-12" for="nationality"><b>Nationality</b></label>
-                                                            <div class="col-sm-12">
 
-                                                                @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                                                                @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
-                                                            </div>*@
-                                                        </div>
-                                                    </div> </div>
-                                                
-                                            </div>
-                                        </div>
+                                                <tr>
+                                                    <th>Cab Office Name :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.CabOfficeName)</td>
+                                                </tr>
 
-                                        
 
-                                        <div class="form-group col-md-6">
-                                            <label class="control-label col-sm-12" for="city"><b>Dispatch system Name</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.EditorFor(model => model.DispachSystemName, new { htmlAttributes = new { @class = "form-control", placeholder = "City", @readonly = "readonly" } })
-                                                @Html.ValidationMessageFor(model => model.DispachSystemName, "", new { @class = "text-danger" })
 
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label class="control-label col-sm-12" for="postCode"><b>Post Code</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.EditorFor(model => model.CabOfficePostCode, new { htmlAttributes = new { @class = "form-control", placeholder = "Post Code", @readonly = "readonly" } })
-                                                @Html.ValidationMessageFor(model => model.CabOfficePostCode, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
+                                                <tr>
+                                                    <th>Cab Office Dispatch System Name :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.DispachSystemName)</td>
 
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label col-sm-12" for=" email"><b>Email</b></label>
-                                                <div class="col-sm-12">
-                                                    @Html.EditorFor(model => model.CabOfficeEmail, new { htmlAttributes = new { @class = "form-control", placeholder = "Driver Email", @readonly = "readonly" } })
-                                                    @Html.ValidationMessageFor(model => model.CabOfficeEmail, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label col-sm-12" for="phNo"><b>Phone</b></label>
-                                                <div class="col-sm-12">
+                                                </tr>
 
-                                                    @Html.EditorFor(model => model.CabOfficePhoneNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Phone", @readonly = "readonly" } })
-                                                    @Html.ValidationMessageFor(model => model.CabOfficePhoneNo, "", new { @class = "text-danger" })
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label col-sm-12" for="Fax"><b>Fax</b></label>
-                                                <div class="col-sm-12">
-                                                    @*<input type="text" value="@Model.Fax"  readonly/>*@
-                                                    @Html.EditorFor(model => model.CabOfficeFax, new { htmlAttributes = new { @class = "form-control", placeholder = "Fax", @readonly = "readonly" } })
-                                                    @Html.ValidationMessageFor(model => model.CabOfficeFax, "", new { @class = "text-danger" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        
+                                                <tr>
+                                                    <th>Cab Office Phone :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.CabOfficePhoneNo)</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th>Cab Office Fax :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.CabOfficeFax)</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th> Cab office Email :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.CabOfficeEmail)</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Cab Office address :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.CabOfficeAddress)</td>
+                                                </tr>
+
+
+
+                                                <tr>
+                                                    <th>Cab Office Post Code :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.CabOfficePostCode)</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th>Date Business Commenced :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.CabOfficeBusinessStartDate)</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th>License Number :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.CabOfficeLicenseNumber)</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th> Direct Cards Payments from Passengers :</th>
+
+
+
+                                                    @if (Model.AcceptDiractPayment == true)
+                                                    {
+
+                                                        <td>Yes</td>
+                                                    }
+                                                    else
+                                                    {
+
+
+                                                        <td>No</td>
+
+
+                                                    }
+                                                </tr>
+
+
+
+                                                <tr>
+                                                    <th>  Account Jobs with minicabers :</th>
+                                                    @if (Model.AcceptDiractPayment == true)
+                                                    {
+
+                                                        <td>Yes</td>
+                                                    }
+                                                    else
+                                                    {
+
+
+                                                        <td>No</td>
+
+
+                                                    }
+                                                </tr>
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+
 
                                     </div>
-
-
 
                                 </div>
-                        
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
+
+
+                            </div>
+
+                            <!-- Nav tabs -->
+                            @*<ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
+                                <li class="nav-item">
+                                    <a class="nav-link nextbtn" data-toggle="tab" href="#vehicle">Next</a>
+                                </li>
+                            </ul>*@
+                        </div>  <!--//cab office tab pane -->
+
+
+                        <div id="vehicle" class="container tab-pane fade">
+
+                            <div style="background-color:white;border-top:2px solid #59D1D3;padding-top:15px;border-radius:5px;padding-bottom:10px;width:100%;">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center text-blue p-md-2">Vehicle Detail</h3>
+                                        <table class="table table-hover table-primary table-sm table-bordered">
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <th>Number Of Saloon:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.NumberOfSaloon)</td>
+                                                </tr>
+
+
+
+                                                <tr>
+                                                    <th>Number of Estate :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.NumberOfEstate)</td>
+                                                </tr>
+
+
+
+                                                <tr>
+                                                    <th>Number of MPV :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.NumberOfMPV)</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Number of Others :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.NumberOfOtherVehicle)</td>
+                                                </tr>
+
+
+
+
+
+
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            @*<ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
+                                <li class="nav-item">
+                                    <a class="nav-link nextbtn2" data-toggle="tab" href="#invoice">Next</a>
+                                </li>
+                            </ul>*@
+                        </div><!--//vehicls tab pane -->
+
+
+                        <div id="invoice" class="container tab-pane fade">
+
+
+
+                            <div style="background-color:white;border-top:2px solid #59D1D3;padding-top:15px;border-radius:5px;padding-bottom:10px;width:100%;">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center text-blue p-md-2">Invoice Detail</h3>
+                                        <table class="table table-hover table-primary table-sm table-bordered">
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <th>Address:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.InvAddress)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>City:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.InvCity)</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Post Code:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.InvPostCode)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Principal Contact for Correspondence:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.InvPrincipalContact)</td>
+                                                </tr>
+
+
+
+                                                <tr>
+                                                    <th>Phone:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.InvPhone)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Fax:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.InvFax)</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Email:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.InvEmail)</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+
+                                </div>
+
+
+                                @*<ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
                                     <li class="nav-item">
-                                        <a class="nav-link nextbtn" data-toggle="tab" href="#vehicle">Next</a>
+                                        <a class="nav-link nextbtn2" data-toggle="tab" href="#reference">Next</a>
                                     </li>
-                                </ul>
+                                </ul>*@
+
                             </div>
 
-                            @* --------------------- *@
-                            <div id="vehicle" class="container tab-pane fade">
 
-                                <div style="background-color:white;border-top:2px solid #5A84B7;padding-top:15px;border-radius:5px;padding-bottom:50px;width:100%;margin-top:20px">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <h5>VEHICLE DETAIL</h5><br />
-                                        </div>
+
+                        </div> <!--//Invoice tab pane -->
+
+                        <div id="reference" class="container tab-pane fade">
+
+
+
+                            <div style="background-color:white;border-top:2px solid #59D1D3;padding-top:15px;border-radius:5px;padding-bottom:10px;width:100%;">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center text-blue p-md-2">Business Refrence/Trade Detail </h3>
+                                        <table class="table table-hover table-primary table-sm table-bordered">
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <th>Company/Business Name:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.RefBusinessName)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Address :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.RefBusinessAddress)</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th>City:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.RefBusinessCity)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Post Code :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.RefBusinessPostCode)</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Address :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.RefBusinessAddress)</td>
+                                                </tr>
+
+
+
+                                                <tr>
+                                                    <th>Phone:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.RefBusinessPhone)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Fax :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.RefBusinessFax)</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th>Eamil:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.RefBusinessEmail)</td>
+                                                </tr>
+                                                <tr>
+                                            </tbody>
+                                        </table>
+
+
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-9">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label class="control-label col-sm-12" for="carType"><b>Number Of Saloon</b></label>
-                                                        <div class="col-sm-12">
-                                                            @Html.EditorFor(model => model.NumberOfSaloon, new { htmlAttributes = new { @class = "form-control", placeholder = "Car Type", @readonly = "readonly" } })
-                                                            @Html.ValidationMessageFor(model => model.NumberOfSaloon, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group ">
-                                                        <label class="control-label col-sm-12" for="model"><b>Number Of Estate</b></label>
-                                                        <div class="col-sm-12">
-                                                            @Html.EditorFor(model => model.NumberOfEstate, new { htmlAttributes = new { @class = "form-control", placeholder = "Car Model", @readonly = "readonly" } })
-                                                            @Html.ValidationMessageFor(model => model.NumberOfEstate, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group ">
-                                                        <label class="control-label col-sm-12" for="make"><b>Numbe Of Mpv</b></label>
-                                                        <div class="col-sm-12">
-                                                            @Html.EditorFor(model => model.NumberOfMPV, new { htmlAttributes = new { @class = "form-control", placeholder = "Make", @readonly = "readonly" } })
-                                                            @Html.ValidationMessageFor(model => model.NumberOfMPV, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div class="col-md-3">
-                                                    <div class="form-group ">
-                                                        <label class="control-label col-sm-12" for="make"><b>Numbe Of Others</b></label>
-                                                        <div class="col-sm-12">
-                                                            @Html.EditorFor(model => model.NumberOfOtherVehicle, new { htmlAttributes = new { @class = "form-control", placeholder = "Make", @readonly = "readonly" } })
-                                                            @Html.ValidationMessageFor(model => model.NumberOfOtherVehicle, "", new { @class = "text-danger" })
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-
-
-
-
-                                            </div>
-                                        </div>
-                                   
-
-                                    </div>
-                              
-
-                                    <br />
-
-                                </div>
-                                <ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
-                                    <li class="nav-item">
-                                        <a class="nav-link nextbtn2" data-toggle="tab" href="#login">Next</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="login" class="container tab-pane fade">
-
-                                <div style="background-color:white;border-top:2px solid red;padding:15px;border-radius:5px;padding-bottom:50px;width:100%;margin-top:20px">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <h5>LOGINS ACCOUNT DETAIL</h5><br />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="form-group col-md-6">
-                                            <label class="control-label col-sm-12" for="UserFirstName"><b>First Name</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.EditorFor(model => model.UserFirstName, new { htmlAttributes = new { @class = "form-control changefield", placeholder = "First Name", @readonly = "readonly" } })
-                                                @Html.ValidationMessageFor(model => model.UserFirstName, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label class="control-label col-sm-12" for="userlName"><b>Last Name</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.EditorFor(model => model.UserLastName, new { htmlAttributes = new { @class = "form-control changefield", placeholder = "Last Name", @readonly = "readonly" } })
-                                                @Html.ValidationMessageFor(model => model.UserLastName, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label class="control-label col-md-12" for="UserPhNo"><b>Mobile</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.EditorFor(model => model.UserMobile, new { htmlAttributes = new { @class = "form-control changefield", placeholder = "Mobile", @readonly = "readonly" } })
-                                                @Html.ValidationMessageFor(model => model.UserMobile, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label class="control-label col-sm-12" for="UserEmail"><b>Email</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control ", placeholder = "Email", @readonly = "readonly" } })
-                                                @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
-
-                                            </div>
-                                        </div>
-                                        @*<div class="form-group col-md-6">
-                                            <label class="control-label col-sm-12" for="Password"><b>Password</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.TextBoxFor(model => model.Password, new { htmlAttributes = new { @class = "form-control changefield", placeholder = "Password", @readonly = "readonly" } })
-                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                            </div>
-                                        </div>*@
-                                  
-                                        <input type="hidden" id="Id" name="Id" value="@Model.Id" />
-                                    </div>
                                 </div>
 
 
                             </div>
+
+
+                            @*<ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
+                                <li class="nav-item">
+                                    <a class="nav-link nextbtn2" data-toggle="tab" href="#login">Next</a>
+                                </li>
+                            </ul>*@
+                        </div> <!--//Refrence tab pane -->
+
+
+
+                        <div id="login" class="container tab-pane fade">
+
+                            <div style="background-color:white;border-top:2px solid #59D1D3;padding-top:15px;border-radius:5px;padding-bottom:10px;width:100%;">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center text-blue p-md-2">User Login Detail</h3>
+                                        <table class="table table-hover table-primary table-sm table-bordered">
+
+                                            <tbody>
+                                                <tr>
+                                                    <th>Full Name:</th>
+                                                    <td> @Html.DisplayTextFor(m => m.UserFirstName) @Html.DisplayTextFor(m => m.UserLastName)</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Email:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.UserEmail)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Password :</th>
+                                                    <td>@Html.DisplayTextFor(m => m.UserPassword)</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th>Mobile:</th>
+                                                    <td>@Html.DisplayTextFor(m => m.UserMobile)</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            @*<ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
+                                <li class="nav-item">
+                                    <a class="nav-link nextbtn2" data-toggle="tab" href="#caboffice">Next</a>
+                                </li>
+                            </ul>*@
+
+                        </div> <!--//login tab pane -->
+                    </div>
+                            
                         </div>
-                    }
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 
+              </div>  <!--end of car body -->
+            </div> <!--end of bg-scecondary-->
+            </div> 
+            </div><!--end od the row-->
 
     <!-- Footer -->
     <footer class="footer">
@@ -349,8 +478,10 @@
             </div>
         </div>
     </footer>
-</div>
+</div> <!--end of the cotainer-->
 
+
+              
 
 @section scripts{
     <script type="text/javascript">
@@ -400,71 +531,71 @@
     <script type="text/javascript">
 
 
-        $(document).ready(function () {
-            $('.nextbtn').click(function () {
-                $('.nv').addClass('active');
-                $('.nd').removeClass('active');
-                $('.nl').removeClass('active');
+        //$(document).ready(function () {
+        //    $('.nextbtn').click(function () {
+        //        $('.nv').addClass('active');
+        //        $('.nd').removeClass('active');
+        //        $('.nl').removeClass('active');
 
-                $('#driver').hide();
-                $('#login').hide();
-                $('#vehicle').show();
-
-
-            });
+        //        $('#driver').hide();
+        //        $('#login').hide();
+        //        $('#vehicle').show();
 
 
-            $('.nextbtn2').click(function () {
-                $('.nl').addClass('active');
-                $('.nv').removeClass('active');
-                $('.nd').removeClass('active');
-
-                $('#driver').hide();
-                $('#vehicle').hide();
-                $('#login').show();
-
-            });
+        //    });
 
 
+        //    $('.nextbtn2').click(function () {
+        //        $('.nl').addClass('active');
+        //        $('.nv').removeClass('active');
+        //        $('.nd').removeClass('active');
 
-            $('.nd').click(function () {
+        //        $('#driver').hide();
+        //        $('#vehicle').hide();
+        //        $('#login').show();
 
-                $('.nextbtn').removeClass('active');
-                $('#vehicle').hide();
-                $('#login').hide();
-                $('#driver').show();
-
-            });
-
-
-            $('.nv').click(function () {
-
-                $('.nextbtn2').removeClass('active');
-
-                $('#driver').hide();
-                $('#login').hide();
-                $('#vehicle').show();
+        //    });
 
 
 
-            });
+        //    $('.nd').click(function () {
 
-            $('.nv').click(function () {
+        //        $('.nextbtn').removeClass('active');
+        //        $('#vehicle').hide();
+        //        $('#login').hide();
+        //        $('#driver').show();
 
-                $('#login').hide();
-                $('#driver').hide();
-                $('#vehicle').show();
+        //    });
 
-            });
 
-            $('.nl').click(function () {
+        //    $('.nv').click(function () {
 
-                $('#driver').hide();
+        //        $('.nextbtn2').removeClass('active');
 
-                $('#vehicle').hide();
-                $('#login').show();
-            });
+        //        $('#driver').hide();
+        //        $('#login').hide();
+        //        $('#vehicle').show();
 
-        });
+
+
+        //    });
+
+        //    $('.nv').click(function () {
+
+        //        $('#login').hide();
+        //        $('#driver').hide();
+        //        $('#vehicle').show();
+
+        //    });
+
+        //    $('.nl').click(function () {
+
+        //        $('#driver').hide();
+
+        //        $('#vehicle').hide();
+        //        $('#login').show();
+        //    });
+
+        //});
     </script>
 }
