@@ -1,0 +1,26 @@
+﻿@model thechauffeurteam.Models.API.CabOffice
+
+<tr scope="row">
+    @*<td>New</td>*@
+    <td>
+        @Html.DisplayFor(m => m.CabOfficeName)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.CabOfficeEmail)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.CabOfficePhoneNo)
+    </td>
+    <td>
+
+        @Html.DisplayFor(m => m.CabOfficeFax)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.CabOfficePostCode)
+    </td>
+    <td>
+        @Html.ActionLink("Detail", "CabOfficeDetail", "CabOffice", new { id = Model.Id }, new { @class = "btn btn-outline-info btn-sm" })
+
+    </td>
+
+</tr>
