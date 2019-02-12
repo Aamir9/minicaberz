@@ -92,6 +92,132 @@ namespace CabsAdmin.Controllers
             return View(model);
         }
 
+        //cab user edit cab office information
+         public ActionResult Edit_Profile_information(int id)
+        {
+            //if (Session[""] != null)
+            //{
+                CabOffice model = db.CabOffices.SingleOrDefault(m => m.Id == id);
+
+
+                CabOfficeVM cab = new CabOfficeVM();
+                cab.Id = model.Id;
+                cab.Status = model.Status;
+                cab.CabofficeOwner = model.CabofficeOwner;
+                cab.CabOfficeName = model.CabOfficeName;
+                cab.DispachSystemName = model.DispachSystemName;
+                cab.CabOfficePhoneNo = model.CabOfficePhoneNo;
+                cab.CabOfficeFax = model.CabOfficeFax;
+                cab.CabOfficeEmail = model.CabOfficeEmail;
+                cab.CabOfficeAddress = model.CabOfficeAddress;
+                cab.CabOfficeCity = model.CabOfficeCity;
+                cab.CabOfficePostCode = model.CabOfficePostCode;
+                cab.CabOfficeBusinessStartDate = model.CabOfficeBusinessStartDate;
+                cab.CabOfficeLicenseNumber = model.CabOfficeLicenseNumber;
+                cab.CabOfficeBusiessType = model.CabOfficeBusiessType;
+                cab.AcceptDiractPayment = model.AcceptDiractPayment;
+                cab.LikeAccount = model.LikeAccount;
+                cab.NumberOfSaloon = model.NumberOfSaloon;
+                cab.NumberOfEstate = model.NumberOfEstate;
+                cab.NumberOfMPV = model.NumberOfMPV;
+                cab.NumberOfOtherVehicle = model.NumberOfOtherVehicle;
+                cab.InvAddress = model.InvAddress;
+                cab.InvCity = model.InvCity;
+                cab.InvPostCode = model.InvPostCode;
+                cab.InvPrincipalContact = model.InvPrincipalContact;
+                cab.InvPhone = model.InvPhone;
+                cab.InvFax = model.InvFax;
+                cab.InvEmail = model.InvEmail;
+                cab.UserFirstName = model.UserFirstName;
+                cab.UserLastName = model.UserLastName;
+                cab.UserMobile = model.UserMobile;
+                cab.UserEmail = model.UserEmail;
+                cab.UserPassword = model.UserPassword;
+                cab.confirmPassword = model.UserPassword;
+                cab.RefBusinessName = model.RefBusinessName;
+                cab.RefBusinessAddress = model.RefBusinessAddress;
+                cab.RefBusinessCity = model.RefBusinessCity;
+                cab.RefBusinessPostCode = model.RefBusinessPostCode;
+                cab.RefBusinessPhone = model.RefBusinessPhone;
+                cab.RefBusinessFax = model.RefBusinessFax;
+                cab.RefBusinessEmail = model.RefBusinessEmail;
+
+
+                return View(cab);
+            //}
+        //    return RedirectToAction("Login", "Drivers");
+
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Edit_Profile_information(CabOfficeVM model, string businessType)
+        {
+
+            CabOffice cab = new CabOffice();
+            if (ModelState.IsValid)
+            {
+
+
+                cab.CabOfficeBusiessType = businessType;
+                cab.Status = "Approved";
+
+                cab.Id = model.Id;
+
+                cab.CabofficeOwner = model.CabofficeOwner;
+                cab.CabOfficeName = model.CabOfficeName;
+                cab.DispachSystemName = model.DispachSystemName;
+                cab.CabOfficePhoneNo = model.CabOfficePhoneNo;
+                cab.CabOfficeFax = model.CabOfficeFax;
+                cab.CabOfficeEmail = model.CabOfficeEmail;
+                cab.CabOfficeAddress = model.CabOfficeAddress;
+                cab.CabOfficeCity = model.CabOfficeCity;
+                cab.CabOfficePostCode = model.CabOfficePostCode;
+                cab.CabOfficeBusinessStartDate = model.CabOfficeBusinessStartDate;
+                cab.CabOfficeLicenseNumber = model.CabOfficeLicenseNumber;
+                cab.CabOfficeBusiessType = businessType;
+                cab.AcceptDiractPayment = model.AcceptDiractPayment;
+                cab.LikeAccount = model.LikeAccount;
+                cab.NumberOfSaloon = model.NumberOfSaloon;
+                cab.NumberOfEstate = model.NumberOfEstate;
+                cab.NumberOfMPV = model.NumberOfMPV;
+                cab.NumberOfOtherVehicle = model.NumberOfOtherVehicle;
+                cab.InvAddress = model.InvAddress;
+                cab.InvCity = model.InvCity;
+                cab.InvPostCode = model.InvPostCode;
+                cab.InvPrincipalContact = model.InvPrincipalContact;
+                cab.InvPhone = model.InvPhone;
+                cab.InvFax = model.InvFax;
+                cab.InvEmail = model.InvEmail;
+
+
+                cab.UserFirstName = model.UserFirstName;
+                cab.UserLastName = model.UserLastName;
+                cab.UserMobile = model.UserMobile;
+                cab.UserEmail = model.UserEmail;
+                cab.UserPassword = model.UserPassword;
+
+                cab.RefBusinessName = model.RefBusinessName;
+                cab.RefBusinessAddress = model.RefBusinessAddress;
+                cab.RefBusinessCity = model.RefBusinessCity;
+                cab.RefBusinessPostCode = model.RefBusinessPostCode;
+                cab.RefBusinessPhone = model.RefBusinessPhone;
+                cab.RefBusinessFax = model.RefBusinessFax;
+                cab.RefBusinessEmail = model.RefBusinessEmail;
+
+
+                db.Entry(cab).State = EntityState.Modified;
+
+                db.SaveChanges();
+
+                return RedirectToAction("Dashboard", "CabOffice");
+            }
+
+            return View(model);
+        }
+
+
         public JsonResult CheckEmailAvailability(string useremail)
         {
             System.Threading.Thread.Sleep(200);
@@ -181,8 +307,8 @@ namespace CabsAdmin.Controllers
         //cab office login
         public ActionResult CabOfficeProfile(int id)
         {
-            if (Session["cabOfficeuser"] != null)
-            {
+            //if (Session[""] != null)
+            //{
                 CabOffice model = db.CabOffices.SingleOrDefault(m => m.Id == id);
 
 
@@ -229,10 +355,36 @@ namespace CabsAdmin.Controllers
 
 
                 return View(cab);
+           // }
+        //    return RedirectToAction("Login", "Drivers");
+        }
+        //cab office dashborad
+        public ActionResult Dashboard()
+        {
+            if (Session["cabOfficeuser"] != null)
+            {
+                ViewData["txt"] = "Dashboard";
+                ViewBag.txt = "Dashboard";
+                //ViewBag.path = "/admin/index";
+                //var job = db.jobs.ToList();
+                //var jb = job.Where(m => m.status == 0).OrderByDescending(m => m.id).ToList();
+                //ViewBag.allJobSum = job.Count();
+                //ViewBag.NewJobSum = job.Where(M => M.status == 0).Count();
+                //ViewBag.ActiveJobSum = job.Where(M => M.status == 1).Count();
+                //ViewBag.FinishJobSum = job.Where(M => M.status == 2).Count();
+                //ViewBag.CancelJobSum = job.Where(M => M.status == 3).Count();
+
+
+                return View();
             }
-            return RedirectToAction("Login", "Drivers");
+            return RedirectToAction("login");
+
         }
 
+
+
+
+        //admin lyout use below
 
         public ActionResult AllCabOffices()
         {
@@ -254,13 +406,14 @@ namespace CabsAdmin.Controllers
         }
         public ActionResult CabOfficeDetail(int id)
         {
-            return View(db.CabOffices.Where(m => m.Id == id).SingleOrDefault());
-        }
+       return View(db.CabOffices.SingleOrDefault(m => m.Id == id));
+       }
         [HttpPost]
-        public ActionResult CabOfficeDetail(CabOffice model , string status,string businessType)
+        public ActionResult CabOfficeDetail(CabOffice model , string status, string businessType)
         {
             if (ModelState.IsValid)
             {
+               
                 CabOffice cab = new CabOffice();
                 cab.Id = model.Id;
                 cab.Status = status;
@@ -320,9 +473,6 @@ namespace CabsAdmin.Controllers
 
         }
 
-
-
-
         public ActionResult NewCabOffice()
         {
             ViewBag.txt = "New Cab Offices";
@@ -338,8 +488,6 @@ namespace CabsAdmin.Controllers
             return View(db.CabOffices.Where(m => m.Status == "Waiting").OrderByDescending(a => a.Id).ToList());
            
         }
-
-
         public ActionResult ApprovedCabOffice()
         {
             ViewBag.txt = "Approved Cab Offices";
