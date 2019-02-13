@@ -95,9 +95,9 @@ namespace CabsAdmin.Controllers
         //cab user edit cab office information
          public ActionResult Edit_Profile_information(int id)
         {
-            //if (Session[""] != null)
-            //{
-                CabOffice model = db.CabOffices.SingleOrDefault(m => m.Id == id);
+            if (Session["cabOfficeuser"] != null)
+            {
+            CabOffice model = db.CabOffices.SingleOrDefault(m => m.Id == id);
 
 
                 CabOfficeVM cab = new CabOfficeVM();
@@ -144,8 +144,8 @@ namespace CabsAdmin.Controllers
 
 
                 return View(cab);
-            //}
-        //    return RedirectToAction("Login", "Drivers");
+            }
+        return RedirectToAction("Login", "Drivers");
 
         }
 
@@ -307,8 +307,8 @@ namespace CabsAdmin.Controllers
         //cab office login
         public ActionResult CabOfficeProfile(int id)
         {
-            //if (Session[""] != null)
-            //{
+            if (Session["cabOfficeuser"] != null)
+            {
                 CabOffice model = db.CabOffices.SingleOrDefault(m => m.Id == id);
 
 
@@ -355,8 +355,8 @@ namespace CabsAdmin.Controllers
 
 
                 return View(cab);
-           // }
-        //    return RedirectToAction("Login", "Drivers");
+         }
+           return RedirectToAction("Login", "Drivers");
         }
         //cab office dashborad
         public ActionResult Dashboard()
@@ -389,7 +389,10 @@ namespace CabsAdmin.Controllers
         public ActionResult AllCabOffices()
         {
 
-            ViewBag.txt = "All Cab Offices";
+            if (Session["adminLog"] != null)
+            {
+
+                ViewBag.txt = "All Cab Offices";
             //ViewBag.path = "/admin/driver";
 
             var cab = db.CabOffices.OrderByDescending(a => a.Id).ToList();
@@ -398,20 +401,28 @@ namespace CabsAdmin.Controllers
             ViewBag.NewSum = cab.Where(M => M.Status == "Waiting").Count();
             ViewBag.ApprovedSum = cab.Where(M => M.Status == "Approved").Count();
             ViewBag.RejectedSum = cab.Where(M => M.Status == "Rejected").Count();
-
-
-           
-                return View(db.CabOffices.ToList());
+           return View(db.CabOffices.ToList());
             
+             } 
+           return RedirectToAction("login","Admin");
         }
+
         public ActionResult CabOfficeDetail(int id)
         {
-       return View(db.CabOffices.SingleOrDefault(m => m.Id == id));
-       }
+
+            if (Session["adminLog"] != null)
+            {
+                return View(db.CabOffices.SingleOrDefault(m => m.Id == id));
+             }
+            return RedirectToAction("login", "Admin");
+        }
         [HttpPost]
         public ActionResult CabOfficeDetail(CabOffice model , string status, string businessType)
         {
-            if (ModelState.IsValid)
+
+            if (Session["adminLog"] != null)
+            {
+                if (ModelState.IsValid)
             {
                
                 CabOffice cab = new CabOffice();
@@ -470,12 +481,17 @@ namespace CabsAdmin.Controllers
             {
                 return View();
             }
+           }
 
+            return RedirectToAction("login", "Admin");
         }
 
         public ActionResult NewCabOffice()
         {
-            ViewBag.txt = "New Cab Offices";
+
+            if (Session["adminLog"] != null)
+            {
+                ViewBag.txt = "New Cab Offices";
             //ViewBag.path = "/admin/driver";
 
             var cab = db.CabOffices.OrderByDescending(a => a.Id).ToList();
@@ -488,9 +504,15 @@ namespace CabsAdmin.Controllers
             return View(db.CabOffices.Where(m => m.Status == "Waiting").OrderByDescending(a => a.Id).ToList());
            
         }
+
+            return RedirectToAction("login", "Admin");
+        }
         public ActionResult ApprovedCabOffice()
         {
-            ViewBag.txt = "Approved Cab Offices";
+
+            if (Session["adminLog"] != null)
+            {
+                ViewBag.txt = "Approved Cab Offices";
             //ViewBag.path = "/admin/driver";
 
             var cab = db.CabOffices.OrderByDescending(a => a.Id).ToList();
@@ -504,9 +526,15 @@ namespace CabsAdmin.Controllers
 
         }
 
+            return RedirectToAction("login", "Admin");
+        }
+
         public ActionResult RejectedCabOffice()
         {
-            ViewBag.txt = "Rejected Cab Offices";
+
+            if (Session["adminLog"] != null)
+            {
+                ViewBag.txt = "Rejected Cab Offices";
             //ViewBag.path = "/admin/driver";
 
             var cab = db.CabOffices.OrderByDescending(a => a.Id).ToList();
@@ -518,6 +546,8 @@ namespace CabsAdmin.Controllers
 
             return View(db.CabOffices.Where(m => m.Status == "Rejected").OrderByDescending(a => a.Id).ToList());
 
+        }
+            return RedirectToAction("login", "Admin");
         }
 
     }

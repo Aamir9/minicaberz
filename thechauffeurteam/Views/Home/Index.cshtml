@@ -22,16 +22,19 @@
 
 
 
-    <div class="formBody">
+    <div class="formBody" >
 
         <form method="post" id="distanceform" action="/JobBooking/booking">
 
 
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column" >
+           
+        
 
                 <!--flex box of startr-->
 
-                <div class="d-flex flex-row">
+                <div class="d-flex flex-row" >
+
                     <div class="pick">
                         <input type="hidden" id="origin" name="origin" />
                         <input type="hidden" name="jobType" id="jobType" />
@@ -43,12 +46,12 @@
                         <p class="text-danger" id="inputError1"> </p>
                     </div>
 
-                    <div>
+                    @*<div>
                         <div class="" id="via" style="display:none;">
                             <span>  <i class="fas fa-plus-square"></i></span>
                         </div>
 
-                    </div>
+                    </div>*@
 
 
 
@@ -63,11 +66,7 @@
 
 
 
-
-
-                    <div class="">
-
-                        <div class="form-group">
+                        <div class="form-group carTypeMain">
                             <select class="form-control" id="cartype" name="cartype">
 
                                 <option value="">Car Type</option>
@@ -79,28 +78,24 @@
                             <p class="text-danger errormsg"></p>
                         </div>
 
-                    </div>
+                        <div class="bookmain">
+                            <div class="text-center">
+                                <input type="button" class="btn btn-block  getquotebtn" id="GetQuote" style=" background: #ff0000;color:white;" value="Get Quote Now " />
+                            </div>
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-block  getquotebtn" id="BookNow" style="background: #ff0000;color:white; display:none;" value="Book Now " />
+                            </div>
 
-                    <div class="">
-                        <div class="text-center ">
-                            <input type="button" class="btn btn-block  getquotebtn" id="GetQuote" style=" background: #ff0000;color:white;" value="Get Quote Now " />
+                            <div class="text-center">
+
+                                <a href="#showLogin" id="LoginPopShow" style="display:none;text-decoration:none;">
+
+                                    <input type="button" class="btn btn-block  getquotebtn" style=" background: #ff0000;color:white;" value="Book now" />
+                                </a>
+                            </div>
                         </div>
-                        <div class="text-center ">
-                            <input type="submit" class="btn btn-block  getquotebtn" id="BookNow" style="background: #ff0000;color:white; display:none;" value="Book Now " />
-                        </div>
 
-                        <div class="text-center ">
-
-                            <a href="#showLogin" id="LoginPopShow" style="display:none;text-decoration:none;">
-
-                                <input type="button" class="btn btn-block  getquotebtn" style=" background: #ff0000;color:white;" value="Book Now.." />
-                            </a>
-                        </div>
-
-                    </div>
-
-
-
+                   
                 </div>
                 <!--end  form  quote flex box-->
                 <div style="display:none;" id="priceMileMain">
@@ -386,7 +381,7 @@
 
 
         $(function () {
-            $("#from_places, #to_places").on('focus ', function () {
+            $("#from_places, #to_places").on('focus', function () {
 
                 $('.pac-container').css('margin-top', '-50px');
 

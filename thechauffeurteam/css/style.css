@@ -5,7 +5,12 @@
 
 }
 
-#formMain  #from_places .pac-container, #formMain  #to_places .pac-container {
+.pick, .Drop, .carTypeMain, .bookmain{
+
+    width:25%;
+}
+
+#formMain #from_places .pac-container, #formMain #to_places .pac-container {
     position: relative;
     background: red
 }
@@ -17,7 +22,9 @@
     height: 70px;
 }
 
-#formMain   #via {
+
+
+#formMain #via {
     background-color: #1853a1;
     color: #fff;
     margin: 0;
@@ -29,21 +36,21 @@
     }
 
 
-#formMain   .getquotebtn {
-     
+#formMain .getquotebtn {
+    width: 100%;
 }
 #formMain   #cartype {
-    width: 310px;
+    width: 100%;
 }
 
 #formMain #from_places, #formMain #to_places {
-    width: 310px;
+    width: 100%;
     position: relative;
 }
 
 
 formMain .priceMilie {
-    width: 310px;
+    width: 100%;
     font-weight: 800;
     ;
     padding: 15px 0;
@@ -294,11 +301,12 @@ body {
 #formMain {
     
     /*background-color:rgba(555,555,555,0.6);*/
-  
+    width:80%;
     position:absolute;
     z-index:10;
     left:9%;
     top:19%;
+  
     /*width:auto;*/
     
   

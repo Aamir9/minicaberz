@@ -369,6 +369,10 @@
     <Compile Include="Migrations\201902080808401_annotations8.Designer.cs">
       <DependentUpon>201902080808401_annotations8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902130608076_add11.cs" />
+    <Compile Include="Migrations\201902130608076_add11.Designer.cs">
+      <DependentUpon>201902130608076_add11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\API\CabOffice.cs" />
     <Compile Include="Models\PriceTable\DistancePrice.cs" />
@@ -2812,6 +2816,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902080808401_annotations8.resx">
       <DependentUpon>201902080808401_annotations8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902130608076_add11.resx">
+      <DependentUpon>201902130608076_add11.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

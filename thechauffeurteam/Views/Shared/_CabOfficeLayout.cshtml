@@ -34,7 +34,8 @@
             </button>
             <!-- Brand -->
             <a class="navbar-brand pt-0" href="#">
-                <img src="~/images/logo.png" class="navbar-brand-img" alt="~.">
+                @*<img src="~/images/logo.png" class="navbar-brand-img" alt="~.">*@
+                Minicaberz
             </a>
             <!-- User -->
             <ul class="nav align-items-center d-md-none">
@@ -66,7 +67,12 @@
                             <i class="ni ni-single-02"></i>
                             <span>My profile @Session["cabOfficeuser"]</span>
                         </a>
-                      
+
+                        <a href="~/CabOffice/Edit_Profile_information/@Session["cabOfficeuser"]" class="dropdown-item">
+                            <i class="ni ni-single-02"></i>
+                            <span>Edit profile @Session["cabOfficeuser"]</span>
+                        </a>
+
                         <div class="dropdown-divider"></div>
                         <a href="~/CabOffice/logout" class="dropdown-item">
                             <i class="ni ni-user-run"></i>
@@ -82,7 +88,8 @@
                     <div class="row">
                         <div class="col-6 collapse-brand">
                             <a href="~/CabOffice/jobs">
-                                <img src="~/images/logo.png">
+                                @*<img src="~/images/logo.png">*@
+                                Minicaberz
                             </a>
                         </div>
                         <div class="col-6 collapse-close">
@@ -97,7 +104,7 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="~/CabOffice/Dashboard">
+                        <a class="nav-link" href="~/CabOffice/Dashboard">
                             <i class="ni ni-tv-2 text-primary"></i> Dashboard  
                         </a>
                     </li>
@@ -114,13 +121,13 @@
 
                     <li class="nav-item">
                         <a class="nav-link " href="~/CabOffice/CoverageAndtime/@Session["cabOfficeId"]">
-                            <i class="ni ni-single-02 text-yellow"></i> Coverage & Time
+                            <i class="ni ni-time-alarm text-green"></i> Coverage & Time
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link " href="~/CabOffice/invoice/@Session["cabOfficeId"]">
-                            <i class="ni ni-single-02 text-yellow"></i> Invoice
+                            <i class="ni ni-books text-orange"></i> Invoice
                         </a>
                     </li>
 

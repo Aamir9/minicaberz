@@ -131,8 +131,8 @@ namespace thechauffeurteam.Controllers
         [HttpPost]
         public JsonResult JobInfo(int id)
         {
-            //if (Session["adminLog"] != null)
-            //{
+            if (Session["adminLog"] != null)
+            {
             var job = db.jobs.Where(m => m.id == id).SingleOrDefault();
             var passenger = db.Passengers.Where(m => m.Id == job.PassengerId).SingleOrDefault();
             var drv = db.Drivers.Where(m => m.Status == "Approved").ToList();
@@ -150,8 +150,8 @@ namespace thechauffeurteam.Controllers
 
             return Json(new { jb = job, pass = passenger, drivers = drv, dt = "" + date, tm = "" + time });
 
-            //}
-            //return Json("NotLoged");
+           }
+            return Json("NotLoged");
         }
         [HttpPost]
         public JsonResult SaveJob(int Id, string PhoneNo, string PName,
