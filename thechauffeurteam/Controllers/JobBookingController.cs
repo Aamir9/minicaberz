@@ -82,63 +82,86 @@ namespace thechauffeurteam.Controllers
 
 
                 //  sending email to admin 
+                //MailMessage mm = new MailMessage("thechauffeurteam@gmail.com", "malikaamir966@gmail.com");
+                //mm.Subject = "Hi i am testing email";
+                //mm.Body = "email context";
 
-                string Emailbodya = string.Empty;
-                using (StreamReader readera = new StreamReader(Server.MapPath("~/adminlayout.html")))
-                {
-                    Emailbodya = readera.ReadToEnd();
-                }
-                Emailbodya = Emailbodya.Replace("{TimeAndDate}", time + "\t" + date);
-                Emailbodya = Emailbodya.Replace("{from}", origin);
-                Emailbodya = Emailbodya.Replace("{to}", destination);
-                Emailbodya = Emailbodya.Replace("{Miles}", inMiles.ToString());
-                Emailbodya = Emailbodya.Replace("{price}", price.ToString());
-                Emailbodya = Emailbodya.Replace("{phone}", PassemgerN);
-                Emailbodya = Emailbodya.Replace("{name}", PassengerPhoneNumber);
+                //mm.IsBodyHtml = false;
 
-                //Emailbody = Emailbody.Replace("{img}", Convert.ToBase64String(logoImg));
+                //SmtpClient smtp = new SmtpClient();
 
-
-                MailMessage msga = new MailMessage();
-                msga.From = new MailAddress("info@heathrowairportminicablondon.com");
-                msga.To.Add("moreinfo@heathrowairportminicablondon.com");
-                msga.Subject = "New Job Booked ";
-                msga.Body = Emailbodya;
-                msga.IsBodyHtml = true;
-                SmtpClient smtpa = new SmtpClient("smtpout.europe.secureserver.net", 80);
-                smtpa.Credentials = new NetworkCredential("info@heathrowairportminicablondon.com", "Asdfjkl12345");
-                smtpa.EnableSsl = false;
-                smtpa.Send(msga);
-                smtpa.Dispose();
+                //smtp.Host = "smtp.gmail.com";
+                //smtp.Port = 587;
+                //smtp.EnableSsl = true;
+                
+                //NetworkCredential nc = new NetworkCredential("thechauffeurteam@gmail.com", "Asdfjkl12345");
+                //smtp.UseDefaultCredentials = true;
+                //smtp.Credentials = nc;
+                //smtp.Send(mm);
 
 
-                /// Send email to passenger
-
-                string Emailbodyp = string.Empty;
-                using (StreamReader readerp = new StreamReader(Server.MapPath("~/PassengCoformationWithEmail.html")))
-                {
-                    Emailbodyp = readerp.ReadToEnd();
-                }
-                Emailbodyp = Emailbodyp.Replace("{TimeAndDate}", time + "\t" + date);
-                Emailbodyp = Emailbodyp.Replace("{from}", origin);
-                Emailbodyp = Emailbodyp.Replace("{to}", destination);
-                Emailbodyp = Emailbodyp.Replace("{Miles}", inMiles.ToString());
-                Emailbodyp = Emailbodyp.Replace("{price}", price.ToString());
-                Emailbodyp = Emailbodyp.Replace("{phone}", PassengerPhoneNumber);
-                Emailbodyp = Emailbodyp.Replace("{name}", PassemgerN);
 
 
-                MailMessage msgp = new MailMessage();
-                msgp.From = new MailAddress("info@heathrowairportminicablondon.com");
-                msgp.To.Add(passengerEmail);
-                msgp.Subject = "Job confirmation  Message of The Heathrow airport cars";
-                msgp.Body = Emailbodyp;
-                msgp.IsBodyHtml = true;
-                SmtpClient smtpp = new SmtpClient("smtpout.europe.secureserver.net", 80);
-                smtpp.Credentials = new NetworkCredential("info@heathrowairportminicablondon.com", "Asdfjkl12345");
-                smtpp.EnableSsl = false;
-                smtpp.Send(msgp);
-                smtpp.Dispose();
+
+
+
+
+                //string Emailbodya = string.Empty;
+                //using (StreamReader readera = new StreamReader(Server.MapPath("~/adminlayout.html")))
+                //{
+                //    Emailbodya = readera.ReadToEnd();
+                //}
+                //Emailbodya = Emailbodya.Replace("{TimeAndDate}", time + "\t" + date);
+                //Emailbodya = Emailbodya.Replace("{from}", origin);
+                //Emailbodya = Emailbodya.Replace("{to}", destination);
+                //Emailbodya = Emailbodya.Replace("{Miles}", inMiles.ToString());
+                //Emailbodya = Emailbodya.Replace("{price}", price.ToString());
+                //Emailbodya = Emailbodya.Replace("{phone}", PassemgerN);
+                //Emailbodya = Emailbodya.Replace("{name}", PassengerPhoneNumber);
+
+
+
+
+                //MailMessage msga = new MailMessage();
+                //msga.From = new MailAddress("thechauffeurteam@gmail.com");
+                //msga.To.Add("malikaamir966@gmail.com");
+                //msga.Subject = "New Job Booked ";
+                //msga.Body = Emailbodya;
+                //msga.IsBodyHtml = true;
+                //SmtpClient smtpa = new SmtpClient("smtp.gmail.com",587);
+                //smtpa.Credentials = new NetworkCredential("thechauffeurteam@gmail.com", "Asdfjkl12345");
+                //smtpa.EnableSsl = true;
+                //smtpa.Send(msga);
+                //smtpa.Dispose();
+
+
+                /// --------Send email to passenger-----------------
+
+                //string Emailbodyp = string.Empty;
+                //using (StreamReader readerp = new StreamReader(Server.MapPath("~/PassengCoformationWithEmail.html")))
+                //{
+                //    Emailbodyp = readerp.ReadToEnd();
+                //}
+                //Emailbodyp = Emailbodyp.Replace("{TimeAndDate}", time + "\t" + date);
+                //Emailbodyp = Emailbodyp.Replace("{from}", origin);
+                //Emailbodyp = Emailbodyp.Replace("{to}", destination);
+                //Emailbodyp = Emailbodyp.Replace("{Miles}", inMiles.ToString());
+                //Emailbodyp = Emailbodyp.Replace("{price}", price.ToString());
+                //Emailbodyp = Emailbodyp.Replace("{phone}", PassengerPhoneNumber);
+                //Emailbodyp = Emailbodyp.Replace("{name}", PassemgerN);
+
+
+                //MailMessage msgp = new MailMessage();
+                //msgp.From = new MailAddress("info@heathrowairportminicablondon.com");
+                //msgp.To.Add(passengerEmail);
+                //msgp.Subject = "Job confirmation  Message of The Heathrow airport cars";
+                //msgp.Body = Emailbodyp;
+                //msgp.IsBodyHtml = true;
+                //SmtpClient smtpp = new SmtpClient("smtpout.europe.secureserver.net", 80);
+                //smtpp.Credentials = new NetworkCredential("info@heathrowairportminicablondon.com", "Asdfjkl12345");
+                //smtpp.EnableSsl = false;
+                //smtpp.Send(msgp);
+                //smtpp.Dispose();
 
 
 

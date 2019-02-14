@@ -98,29 +98,41 @@
                    
                 </div>
                 <!--end  form  quote flex box-->
-                <div style="display:none;" id="priceMileMain">
+                <div  id="priceMileMain" style="display:none;">
 
                     <div class="d-flex flex-row " id="pdm">
                         <div class="priceMilie">
+                            <div class="PriceMileInnerStyling">
+                                <p class="" id="in_mile" name="in_mile"></p>
+                                <span style="display:none;" id="inmile"></span>
 
-                            <p class="" id="in_mile" name="in_mile"></p>
-                            <span style="display:none;" id="inmile"></span>
+                                <input type="hidden" name="inMiles" id="inMiles" />
+                            </div>
 
-                            <input type="hidden" name="inMiles" id="inMiles" />
+
                         </div>
 
                         <div class="priceMilie">
-
-                            <span class="pricebadge font-weight-600" id="Price">
-                                Fare: &nbsp;&nbsp;  <i class="fas fa-pound-sign"></i> &nbsp;
-                                <span class="" id="Prices"></span>
-                            </span>
-                            <input type="hidden" name="price" id="price" />
-                            <i class="fa fa-spinner fa-spin" style="display:none;"></i>
+                            <div class="PriceMileInnerStyling">
+                                <span class="pricebadge font-weight-600" id="Price">
+                                    Fare: &nbsp;&nbsp;  <i class="fas fa-pound-sign"></i> &nbsp;
+                                    <span  id="Prices"></span>
+                                </span>
+                                <input type="hidden" name="price" id="price" />
+                                <i class="fa fa-spinner fa-spin" style="display:none;"></i>
+                            </div>
                         </div>
 
                         <div class="priceMilie">
-                            <p class="d" id="duration_text">  </p>
+                            <div class="PriceMileInnerStyling">
+                                <p class="d" id="duration_text">  </p>
+                            </div>
+                        </div>
+
+                        <div class="priceMilie">
+                            <div class="PriceMileInnerStyling">
+                                 <i class="far fa-handshake  text-blue" style="font-size:30px;"></i> 
+                            </div>
                         </div>
 
 
@@ -248,7 +260,7 @@
 
 
                     <i class="fas fa-plane" aria-hidden="true" style="color:#b200ff;"></i>
-                    <h4>AirPorts</h4>
+                    <h4>All AirPorts</h4>
 
                 </div>
                 <div class="col-lg-4 col-sm-4 col-4 mt-5 about-grid p-0">
@@ -269,10 +281,10 @@
                 </div>
                 <div class="col-lg-4 col-sm-4 col-4 mt-lg-0 mt-5 about-grid p-0">
                     <i class="fa fa-train" aria-hidden="true"></i>
-                    <h4>Stations</h4>
+                    <h4>All Stations</h4>
                 </div>
                 <div class="col-lg-4 col-sm-4 col-4 mt-lg-0  about-grid p-0 ">
-                    <i class="fas fa-money" style="color:#00ff21"></i>
+                    <i class="fas fa-boxes" aria-hidden="true" style="color:#00ff21;"></i>
                     <h4>Pay your way</h4>
                 </div>
             </div>

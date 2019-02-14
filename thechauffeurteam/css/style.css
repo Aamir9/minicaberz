@@ -5,9 +5,8 @@
 
 }
 
-.pick, .Drop, .carTypeMain, .bookmain{
-
-    width:25%;
+.pick, .Drop, .carTypeMain, .bookmain, .priceMilie {
+    width: 25%;
 }
 
 #formMain #from_places .pac-container, #formMain #to_places .pac-container {
@@ -15,7 +14,7 @@
     background: red
 }
 /* start form area  */
-#formMain #from_places, #formMain #to_places, #formMain #cartype, #formMain #via, #formMain .getquotebtn {
+#formMain #from_places, #formMain #to_places, #formMain #cartype, #formMain #via, #formMain .getquotebtn, .priceMilie {
     border: 8px solid #1853a1;
     border-radius: 0;
     color: #1853a1;
@@ -35,6 +34,13 @@
         margin-top: 5px;
     }
 
+.PriceMileInnerStyling {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    font-size:24px;
+}
+
 
 #formMain .getquotebtn {
     width: 100%;
@@ -49,16 +55,6 @@
 }
 
 
-formMain .priceMilie {
-    width: 100%;
-    font-weight: 800;
-    ;
-    padding: 15px 0;
-    text-align: center;
-    color: #1853a1;
-    background: #fff;
-    border: 8px solid #1853a1;
-}
 /* start form area  */
 /* services font icons */
 .servicesFontIcon i {
