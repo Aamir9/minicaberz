@@ -72,7 +72,11 @@ namespace thechauffeurteam.Controllers
         {
             return View();
         }
-
+        
+        public ActionResult directBooking()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult NewBooking(string origin,string destination,string selectedcar, int? inMiles, string price, int? passengerId, string PassengerName, string PassengerPhone)

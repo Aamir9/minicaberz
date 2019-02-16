@@ -2644,6 +2644,7 @@
     <Content Include="Views\Shared\_CabOfficeLayout.cshtml" />
     <Content Include="Views\CabOffice\Dashboard.cshtml" />
     <Content Include="Views\CabOffice\Edit_Profile_information.cshtml" />
+    <Content Include="Views\Home\directBooking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\vendor\anchor-js\docs\" />
