@@ -384,6 +384,7 @@
     <Compile Include="Models\Vclass.cs" />
     <Compile Include="Models\ViewModel\CabOfficeVM.cs" />
     <Compile Include="Models\ViewModel\DriverRegistrationViewModel.cs" />
+    <Compile Include="Models\ViewModel\jobVM.cs" />
     <Compile Include="Models\ViewModel\PassengerRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

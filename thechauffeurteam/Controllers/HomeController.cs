@@ -6,6 +6,7 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using thechauffeurteam.DAL;
+using thechauffeurteam.Models.ViewModel;
 
 namespace thechauffeurteam.Controllers
 {
@@ -35,8 +36,8 @@ namespace thechauffeurteam.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.pickUpPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
-            ViewBag.dropOffPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
+            //ViewBag.pickUpPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
+            //ViewBag.dropOffPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
 
             return View();
         }
@@ -55,13 +56,7 @@ namespace thechauffeurteam.Controllers
             return View();
         }
 
-        public ActionResult Booking()
-        {
-           
-           
-            return View();
-        }
-
+       
         public ActionResult Services()
         {
             return View();
@@ -78,17 +73,32 @@ namespace thechauffeurteam.Controllers
             return View();
         }
 
-        public ActionResult NewBooking()
+
+        [HttpPost]
+        public ActionResult NewBooking(string origin,string destination,string selectedcar, int? inMiles, string price, int? passengerId, string PassengerName, string PassengerPhone)
         {
 
-            ViewBag.pickUpPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
-            ViewBag.dropOffPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
+
+            jobVM job = new jobVM();
+
+            job.pickUp = origin;
+            job.DropUP = destination;
+            job.CarType = selectedcar;
+            job.Mile = inMiles;
+            job.Price = price;
+
+
+            //ViewBag.pickUpPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
+            //ViewBag.dropOffPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
+
+
+
             //if (Session["user"] == null && Session["Dirveruser"]==null)
             //{
 
             //    return RedirectToAction("Login", "Drivers");
             //}
-            return View();
+            return View(job);
         }
 
 

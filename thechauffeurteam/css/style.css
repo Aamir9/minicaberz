@@ -1,12 +1,17 @@
 
-#pdm {
+
+/*#pdm {
     margin-top:-2%;
     
 
+}*/
+
+.pick, .Drop, .carTypeMain, .bookmain {
+    width: 25%;
 }
 
-.pick, .Drop, .carTypeMain, .bookmain, .priceMilie {
-    width: 25%;
+.priceMilie {
+    width: 33.33%;
 }
 
 #formMain #from_places .pac-container, #formMain #to_places .pac-container {

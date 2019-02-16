@@ -1,4 +1,4 @@
-﻿
+﻿@model thechauffeurteam.Models.ViewModel.jobVM
 @{
 
 
@@ -16,7 +16,7 @@
 
 <style>
 
-    #via_1, #via_2 ,.pick, .Drop {
+    #via_1, #via_2, .pick, .Drop {
         position: relative;
     }
 
@@ -30,9 +30,12 @@
             right: 0px;
         }
 
-    #minus_via_1, #minus_via_2{
+    .pick, .Drop {
+        width: 100%;
+    }
 
-        cursor:pointer !important;
+    #minus_via_1, #minus_via_2 {
+        cursor: pointer !important;
     }
 
     .mapouter {
@@ -48,33 +51,25 @@
         width: 100%;
     }
 
-    #MainDiv{
-
-        position:absolute;
-        top:19%;
-        margin-left:4.5%;
+    #MainDiv {
+        position: absolute;
+        top: 19%;
+        margin-left: 4.5%;
     }
 
-    #MainDiv{
-      
+    #MainDiv {
     }
-
 </style>
 
 <div id="MainDiv">
 
     <div class="row">
-       
+
         <div class="col-md-12 driverReg">
 
             <div class="row justify-content-center">
                 <div class="col-md-10 register-form">
-                    @*<div class="row">
-            <div class="col-md-12" style="text-align :center;background-color:#1853a1;font-family:Arial;padding:20px;border-radius:5px 5px 0 0">
-                <h3 style="color:#fff;">Book Now</h3>
-            </div>
 
-        </div>*@
 
 
                     <div id="refreshForm2" title="Reset ">
@@ -101,8 +96,10 @@
                                         <div class="form-group pick">
                                             <input type="hidden" id="searchTextField" placeholder="enter the informtion">
 
-                                            <i class="fa fa-car" aria-hidden="true"></i>
-                                            <input type="text" id="from_places" placeholder="Pick Up Address" class="form-control" />
+                                            @*<i class="fa fa-car" aria-hidden="true"></i>*@
+                                            @*<input type="text" id="from_places" placeholder="Pick Up Address" class="form-control" />*@
+
+                                            @Html.TextBoxFor(m => m.pickUp, new { @class = "form-control", @placeholder = "Pick Up Address", @id = "from_places" })
 
                                             <input type="hidden" id="origin" name="origin" />
                                             <input type="hidden" name="jobType" id="jobType" />
@@ -115,38 +112,39 @@
                                     <div class="col-md-6">
 
                                         <div class="form-group Drop">
-                                            <i class="fas fa-globe"></i>
-                                            <input type="text" id="to_places" name="dropOff" placeholder="Drop Off Address" class="form-control" />
+                                            @*<i class="fas fa-globe"></i>*@
+                                            @*<input type="text" id="to_places" name="dropOff" placeholder="Drop Off Address" class="form-control" />*@
 
+                                            @Html.TextBoxFor(m => m.DropUP, new { @class = "form-control", @placeholder = "Drop Off Addres", @id = "to_places" })
                                             <input id="destination" name="destination" type="hidden" />
                                             <p class="text-danger" id="inputError2"> </p>
                                         </div>
                                     </div>
 
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                @*<div class="row">
+                                        <div class="col-md-6">
 
-                                        <div class="form-group " id="via_1" style="display:none;">
+                                            <div class="form-group " id="via_1" style="display:none;">
 
-                                            <i class="fa fa-minus" id="minus_via_1" aria-hidden="true"></i>
-                                            <input type="text" id="" placeholder="Add Via" class="form-control" />
+                                                <i class="fa fa-minus" id="minus_via_1" aria-hidden="true"></i>
+                                                <input type="text" id="" placeholder="Add Via" class="form-control" />
+                                            </div>
+
+
+
                                         </div>
 
+                                        <div class="col-md-6">
 
+                                            <div class="form-group " id="via_2" style="display:none;">
 
-                                    </div>
+                                                <i class="fa fa-minus"  id="minus_via_2" aria-hidden="true"></i>
+                                                <input type="text" id="" placeholder="Add Via Again" class="form-control" />
+                                            </div>
 
-                                    <div class="col-md-6">
-
-                                        <div class="form-group " id="via_2" style="display:none;">
-
-                                            <i class="fa fa-minus"  id="minus_via_2" aria-hidden="true"></i>
-                                            <input type="text" id="" placeholder="Add Via Again" class="form-control" />
                                         </div>
-
-                                    </div>
-                                </div>
+                                    </div>*@
 
                                 <div class="row">
                                     <div class="col-md-4">
@@ -207,11 +205,38 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <select class="form-control" id="cartype" name="cartype">
+                                                @if (Model.CarType == "Saloon")
+                                                {
 
-                                                <option value="">Car Type</option>
-                                                <option value="Saloon">Saloon</option>
-                                                <option value="Estate">Estate</option>
-                                                <option value="MPV">MPV</option>
+                                                    <option value="">Car Type</option>
+                                                    <option value="Saloon" selected>Saloon</option>
+                                                    <option value="Estate">Estate</option>
+                                                    <option value="MPV">MPV</option>
+
+                                                }
+                                                else if (Model.CarType == "Estate")
+                                                {
+                                                    <option value="">Car Type</option>
+                                                    <option value="Saloon">Saloon</option>
+                                                    <option value="Estate" selected>Estate</option>
+                                                    <option value="MPV">MPV</option>
+                                                }
+
+                                                else if (Model.CarType == "MPV")
+                                                {
+                                                    <option value="">Car Type</option>
+                                                    <option value="Saloon">Saloon</option>
+                                                    <option value="Estate">Estate</option>
+                                                    <option value="MPV" selected>MPV</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="">Car Type</option>
+                                                    <option value="Saloon">Saloon</option>
+                                                    <option value="Estate">Estate</option>
+                                                    <option value="MPV">MPV</option>
+                                                }
+
                                             </select>
                                             <p class="text-danger errormsg"></p>
                                         </div>
@@ -240,8 +265,12 @@
                                 <div class="row w-100" id="pdm">
                                     <div class="col-md-4 col-sm-12">
                                         <div class="form-group">
-                                            <p class="badge badge-primary py-md-2 pl-md-3 pr-md-5  w-100" id="in_mile" name="in_mile" style="width:100%;"></p>
-                                            <span style="display:none;" id="inmile"></span>
+                                            @*<p class="badge badge-primary py-md-2 pl-md-3 pr-md-5  w-100" id="in_mile" name="in_mile" style="width:100%;"></p>*@
+                                            @*<span style="display:none;" id="inmile"></span*@
+
+
+                                            @Html.TextBoxFor(m => m.Mile, new { @id = "inmile" ,@class="form-control"})
+
 
                                             <input type="hidden" name="inMiles" id="inMiles" />
                                         </div>
@@ -252,7 +281,10 @@
 
                                     <div class="col-md-8 col-sm-12">
                                         <div class="form-group ">
-                                            <p class="badge badge-primary py-md-2 p-1 px-md-4 d" id="duration_text"></p>
+                                            @*<p class="badge badge-primary py-md-2 p-1 px-md-4 d" id="duration_text"></p>*@
+
+                                         
+
                                         </div>
                                     </div>
                                 </div>
@@ -260,15 +292,19 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
 
-                                            <h6 class="py-md-2 pricebadge" id="Price">
-                                                Fare: &nbsp;&nbsp;  <i class="fas fa-pound-sign"></i> &nbsp;<span id="Prices"></span>
-                                            </h6>
+                                            @*<h6 class="py-md-2 pricebadge" id="Price">
+                                                Fare: &nbsp;&nbsp;  <i class="fas fa-pound-sign"></i> &nbsp;
+                                               </h6>*@
+
+
+
+                                            @Html.TextBoxFor(m => m.Price, new { @id = "Prices", @class = "form-control" })
                                             <input type="hidden" name="price" id="price" />
                                             <i class="fa fa-spinner fa-spin" style="display:none;"></i>
                                         </div>
                                     </div>
 
-                                </div> 
+                                </div>
 
 
 
@@ -277,9 +313,9 @@
                                     <input type="text" name="driverMessage" placeholder="Message For Driver, Flight Number etc" class="form-control" />
                                 </div>
 
-                                <div class="col-md-12 text-center ">
-                                    <input type="button" class="btn" id="GetQuote" style=" background: #1853a1;color:white;" value="Get Quote Now " />
-                                </div>
+                                @*<div class="col-md-12 text-center ">
+                                        <input type="button" class="btn" id="GetQuote" style=" background: #1853a1;color:white;" value="Get Quote Now " />
+                                    </div>*@
                                 <div class="form-group  text-center ">
                                     <input type="submit" class="btn btn-primary" id="BookNow" style="background: #1853a1;color:white; display:none;" value="Book Now " />
                                 </div>
@@ -309,10 +345,9 @@
 </div>
 <div class="mapouter">
     <div class="gmap_canvas">
-    
-    <iframe  id="gmap_canvas" src="https://maps.google.com/maps?q=London&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-         
-         </iframe><a href="https://www.crocothemes.net"></a></div>
+
+        <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=London&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.crocothemes.net"></a>
+    </div>
 
 </div>
 
@@ -376,7 +411,11 @@
 
 
         $(function () {
+            $("#from_places, #to_places").on('focus', function () {
 
+                $('.pac-container').css('margin-top', '-50px');
+
+            });
 
             // add input listeners
             google.maps.event.addDomListener(window, 'load', function () {
@@ -578,7 +617,7 @@
             $('#GetQuote').click(function (e) {
 
 
-                if ($('.distance').hasClass("active")) {
+
 
                     $('#jobType').val('Distance');
                     $("#hourError").html('');
@@ -598,9 +637,7 @@
                         $('.errormsg').html('please select the car type');
                         return false;
                     }
-                    else if (way == 'return') {
-                        $('#datepicker2,#timepicker2').prop('required', true)
-                    }
+
 
                     else {
                         $('.errormsg').html('');
@@ -614,7 +651,7 @@
                         $('#GetQuote').hide();
 
                       //  $('#BookNow').show();
-                        $('#DriverMsg').show();
+                        $('#priceMileMain').show();
                         $('#from_places,#to_places,#cartype').attr('disabled', 'disabled');
 
 
@@ -622,158 +659,17 @@
                     }
 
 
-                }// ditance if end
-                else if ($('.hourly').hasClass("active")) {
+                $("#signUpPopShow").click(function () {
 
-                    $('#jobType').val('Hourly');
-                    console.log("getting price by hourly");
+                    $("#showLogin").hide();
+                    $(this).fancybox.close();
+                    $("#showPassengerRegister").show();
+                    $("#showPassengerRegister").fancybox();
 
-                       if ($('#from_places').val() == '') {
-                        $('#inputError1').html('Please enter your pick up address');
-
-                        return false;
-                       }
-                       else if (hour == null) {
-
-                        $("#hourError").html('please select  the hours');
-
-
-                        return false;
-
-                       }
-                        else if (cartype == undefined) {
-                        $('.errormsg').html('please select the car type');
-                        return false;
-                       }
-
-                       else {
-
-                          $('.errormsg,#hourError').html('');
-                          $('#inputError1').html('');
-                          $('#inputError2').html('');
-                          $('#postcodeError,#postcodeError2').html('');
-
-                           $('#GetQuote').hide();
-                          // $('#BookNow').show();
-                           $('#DriverMsg').show();
-                           $('#datepicker,#timepicker').prop('required', true);
-                           $('#hours,#cartype').attr('disabled', 'disabled');
-
-                           $('.fa-spin').show();
-                           $.ajax({
-                            type: "POST",
-                            url: '/Home/getPriceByhHours',
-                            data: { 'value': $('#hours').val(), cartype: $('#cartype').val() },
-                            dataType: 'json',
-                            cache: false,
-                            success: function (data) {
-                                // $('#textAmount').val(data.doubleValue);
-                                console.log(data.totalAmount);
-
-
-                                $('#Price').css('display', 'block');
-
-                                $('#Prices').html(data.totalAmount);
-                                $("#price").val(data.totalAmount);
-                               // $("#price").val(data.totalAmount);
-                                console.log("your data submited successfull ");
-                             },
-                               error: function () {
-
-                                console.log('error occure when you sending ajax request');
-                             },
-
-                             complete: function () {
-                                 $('.fa-spin').hide();
-                             }
-                            });
+                });
 
 
 
-                    }
-
-
-                }// hourly else if end
-                else if ($('.flateRate').hasClass("active")) {
-
-                      $('#jobType').val('FlateRate ');
-                      console.log("getting price by Flate");
-                      $("#hourError").html('');
-
-
-                      if (picUpPostCode == null) {
-
-                        $('#postcodeError').html('please select pick up post code');
-                      }
-                      else if (dropOffPostCode == null) {
-                        $('#postcodeError2').html('please select  drop off post code');
-                       }
-                       else if (cartype == undefined) {
-                        $('.errormsg').html('please select the car type');
-                        return false;
-                      }
-                      else if (way == 'return') {
-                        $('#datepicker2,#timepicker2').prop('required', true)
-                      }
-
-                       else {
-                        $('.errormsg,#hourError').html('');
-                        $('#inputError1').html('');
-                        $('#inputError2').html('');
-                        $('#postcodeError,#postcodeError2').html('');
-                        $('#datepicker,#timepicker').prop('required', true);
-                          $('#PostCodeSelect2,#PostCode2Select2').attr('disabled', 'disabled');
-                          $('#hours,#cartype').attr('disabled', 'disabled');
-                        $('#GetQuote').hide();
-
-                     //   $('#BookNow').show();
-                        $('#DriverMsg').show();
-                        $('.fa-spin').show();
-                        $.ajax({
-                            type: "POST",
-                            url: '/Home/getPriceByFlateRate',
-                            data: { 'postcode1': $('#PostCodeSelect2').val(), 'postcode2': $('#PostCode2Select2').val(), cartype: $('#cartype').val() },
-                            dataType: 'json',
-                            cache: false,
-                            success: function (data) {
-                                // $('#textAmount').val(data.doubleValue);
-                                console.log(data.totalAmount);
-
-                                $('#Price').css('display', 'block');
-                                if (data.totalAmount == 0) {
-                                    $("#Prices").html('?.  Call on 079 7387 3598 for discounted price on this journey');
-                                    err = 1;
-                                    return false;
-                                }
-
-                                else {
-                                    err = 0;
-                                    $('#Prices').html(data.totalAmount);
-                                    $("#price").val(data.totalAmount);
-
-                                }
-
-
-
-
-                                console.log("your data submited successfull ");
-                            },
-                            error: function () {
-
-                                console.log('error occure when you sending ajax request');
-                            },
-
-                            complete: function () {
-                                $('.fa-spin').hide();
-                            }
-                        });
-                    }
-
-                }// flate Rate else if end
-
-                else {
-
-                }// end else condition of fetQuote
 
                 var sessionId = @UserSessionId;
 
@@ -827,14 +723,12 @@
 
                     }
 
+
             });
 
 
         });
     </script>
-
-    @* //for get price and mile using google map*@
-
 
 
 
@@ -882,7 +776,7 @@
             $('#addVia2').hide();
         });
 
-   ;
+        ;
 
     </script>
 
@@ -943,67 +837,6 @@
     <!-- //carousel -->
     <!--slider-->
     @*booking form fields show and hide*@
-    <script type="text/javascript">
-        $(document).ready(function () {
 
 
-            $('#PostCode2Select2 ,#PostCodeSelect2').select2({
-
-
-            });
-
-
-            $("#myBtn").click(function () {
-                $("#myModal").modal();
-            });
-
-            $('.hourly').click(function () {
-                $('#HourMain').show();
-                $('#mainDirection').hide();
-                $('#flateRates').hide();
-                $('.pick').show();
-                $('.Drop').hide();
-                //$('#slectoption').val('oneWay');
-                $('#slectoption').val('oneWay');
-
-                $('#returndiv').hide();
-            });
-            $('.distance').click(function () {
-
-                $('#HourMain').hide();
-                $('#mainDirection').show();
-                $('#flateRates').hide();
-                $('.pick').show();
-                $('.Drop').show();
-            });
-
-            $('.flateRate').click(function () {
-                $('#HourMain').hide();
-                $('#mainDirection').show();
-                $('#flateRates').show();
-                $('.pick').hide();
-                $('.Drop').hide();
-            })
-
-        });
-    </script>
-
-    <script>
-
-        // Add active class to the current button (highlight it)
-        var header = document.getElementById("formHead");
-        var btns = header.getElementsByClassName("dhf");
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-
-                var current = document.getElementsByClassName("active");
-
-                current[0].className = current[0].className.replace(" active", "");
-                this.className += " active";
-                //console.log(current[0]);
-
-            });
-        }
-
-    </script>
 }

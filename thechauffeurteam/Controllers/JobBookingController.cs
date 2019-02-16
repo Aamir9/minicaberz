@@ -14,6 +14,8 @@ namespace thechauffeurteam.Controllers
     public class JobBookingController : Controller
     {
         private MyContext db = new MyContext();
+        
+
 
         [HttpPost]
         public ActionResult booking(string jobType, string origin, string postcode_1, string postcode_2, int? hours, string destination, string slectoption, string date, string time
