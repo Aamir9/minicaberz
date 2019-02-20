@@ -1,0 +1,238 @@
+﻿
+@{
+    ViewBag.Title = "Cab Office  Profile";
+    Layout = "~/Views/Shared/_CabOfficeLayout.cshtml";
+}
+
+<style>
+
+    
+</style>
+
+<!-- Header -->
+<div class="header pb-5 pt-5 pt-5 d-flex align-items-center" style="min-height:  250px; background-image: url(~/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <!-- Mask -->
+    <span class="mask bg-primary opacity-8"></span>
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+            <div class="col-md-12">
+                @*<h3 class="text-white">Hello @Html.DisplayTextFor(x => x.CabOfficeName) !</h3>*@
+                <h3 class="text-white">Nobel Car</h3>
+
+                @*<a href="#!" class="btn btn-info">Edit profile</a>*@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--8">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Coverage and Waiting Time</h3>
+                        </div>
+
+                        <div class="col-4 text-right">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Add</button>
+                        </div>
+
+                        <!--add modal-->
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content text-blue">
+                                    <div class="modal-header bg-blue  text-center">
+                                        <h3 class="modal-title text-white text-uppercase" id="exampleModalLabel">Add Coverage & Waiting Time</h3>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Coverage</label>
+                                            <input type="text" class="form-control" name="coverage" id="coverage" placeholder="Enter the Coverage post code" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Waiting Time</label>
+                                            <input type="text" class="form-control" name="waitingTime" id="waitingTime" placeholder="Enter the waiting Time" />
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>       <!--//add modal-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="justify-content-center align-items-center row " style="justify-content:center">
+        <div class="col-md-12">
+
+            <div class="col-md-12" style="background-color:#E9E9EB;padding-bottom:50px;border-bottom-left-radius:5px;border-bottom-right-radius:5px">
+                <br />
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div >
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <table class="table table-sm  table-hover table-bordered text-center">
+                                    <thead class="text-white font-weight-bold  text-capitalize  bg-primary">
+                                        <tr>
+
+                                            <th scope="col">Coverage</th>
+                                            <th scope="col">Waiting Time</th>
+                                            <th scope="col">Changes</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white">
+                                        <tr>
+
+                                            <td>N20</td>
+                                            <td>35</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm">Edit</button>
+                                                <button class="btn btn-danger btn-sm">Delete</button>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>N20</td>
+                                            <td>35</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm">Edit</button>
+                                                <button class="btn btn-danger btn-sm">Delete</button>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>N20</td>
+                                            <td>35</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm">Edit</button>
+                                                <button class="btn btn-danger btn-sm">Delete</button>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                               
+                            </div>
+                        </div>
+
+                      
+                      
+
+                    </div>
+                  
+              
+               
+   
+        
+                }
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="row align-items-center justify-content-xl-between">
+            <div class="col-xl-6">
+                <div class="copyright text-center text-xl-left text-muted">
+                    &copy; 2018 <a href="https://www.itLogi.solutions" class="font-weight-bold ml-1" target="_blank">ItLogi</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div> <!--end of the cotainer-->
+
+
+
+
+@section scripts{
+    <script type="text/javascript">
+
+        $("#btnEdit").click(function () {
+            $("#btnEdit").addClass("disabled")
+            $("#btnSave").removeAttr("disabled")
+            $(".changefield").removeAttr("readonly");
+
+        });
+        function saveProfile() {
+            if ($("#Password").val().localeCompare($("#ConformPassword").val())) {
+                alert("Password does not match!");
+            }
+            else {
+                $.post("@Url.Action("EditProfile", "Drivers")",
+                    {
+                        fName: $("#UserFirstName").val(),
+                        lName: $("#UserLastName").val(),
+                        phNo: $("#UserPhNo").val(),
+                        password: $("#Password").val(),
+                        confPassword: $("#ConformPassword").val(),
+                        Id: $("#Id").val()
+
+                    },
+                    function (data) {
+                        if (data == 0) {
+                            //alert("Sorry! \n Profile can't update.");
+                        }
+                        else if (data == 1) {
+                            $(".changefield").addClass("disabled");
+                            $("#btnSave").addClass("disabled");
+                            //alert("Profile successfuly updated.");
+
+
+                        }
+
+                    }
+                );
+            }
+        }
+
+
+
+    </script>
+
+    <script type="text/javascript">
+
+
+
+
+
+
+
+    </script>
+}

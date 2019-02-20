@@ -28,6 +28,9 @@ namespace thechauffeurteam.DAL
         public DbSet<job> jobs { get; set; }
         public DbSet<CabOffice> CabOffices { get; set; }
 
+
+        public DbSet<CoverageAndWaiting> CoverageAndWaitings { get; set; }
+
         //public System.Data.Entity.DbSet<thechauffeurteam.Models.ViewModel.CabOfficeVM> CabOfficeVMs { get; set; }
     }
 }

@@ -26,6 +26,7 @@ namespace CabsAdmin.Controllers
            
                
         }
+
         [HttpPost]
         public ActionResult CabOfficeReg(CabOfficeVM model, string businessType)
         {
@@ -91,6 +92,8 @@ namespace CabsAdmin.Controllers
 
             return View(model);
         }
+
+
 
         //cab user edit cab office information
          public ActionResult Edit_Profile_information(int id)
@@ -218,6 +221,11 @@ namespace CabsAdmin.Controllers
         }
 
 
+        public ActionResult Coverage_And_Wating_Time()
+        {
+
+            return View();
+        }
         public JsonResult CheckEmailAvailability(string useremail)
         {
             System.Threading.Thread.Sleep(200);

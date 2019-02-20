@@ -16,6 +16,12 @@ namespace thechauffeurteam.Controllers
         private MyContext db = new MyContext();
 
         // GET: Eclasses
+
+
+        public ActionResult Chat()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View(db.eclasses.ToList());
