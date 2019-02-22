@@ -10,7 +10,7 @@ using thechauffeurteam.Models.ViewModel;
 
 namespace thechauffeurteam.Controllers
 {
-
+    
     public class HomeController : Controller
     {
         private MyContext db = new MyContext();
@@ -35,7 +35,7 @@ namespace thechauffeurteam.Controllers
         }
         public ActionResult Index()
         {
-
+            
             //ViewBag.pickUpPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
             //ViewBag.dropOffPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
 

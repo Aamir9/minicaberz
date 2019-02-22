@@ -15,7 +15,7 @@ namespace thechauffeurteam.Models.API
         
         public string postCode { get; set; }
 
-        public string waiting { get; set; }
+        public int waiting { get; set; }
 
         public int CabOfficeId { get; set; }
 

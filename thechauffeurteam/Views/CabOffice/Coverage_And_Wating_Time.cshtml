@@ -1,13 +1,15 @@
-﻿
+﻿@model IEnumerable<thechauffeurteam.Models.API.CoverageAndWaiting>
 @{
     ViewBag.Title = "Cab Office  Profile";
     Layout = "~/Views/Shared/_CabOfficeLayout.cshtml";
+
+
+    //int cabid = (int)@Session["cabOfficeId"];
+    int cabid = 12;
 }
 
-<style>
 
-    
-</style>
+
 
 <!-- Header -->
 <div class="header pb-5 pt-5 pt-5 d-flex align-items-center" style="min-height:  250px; background-image: url(~/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
@@ -37,7 +39,9 @@
                         </div>
 
                         <div class="col-4 text-right">
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Add</button>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                Add
+                            </button>
                         </div>
 
                         <!--add modal-->
@@ -67,7 +71,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Add</button>
+                                        <button type="button" class="btn btn-primary" id="btnaSave">Add</button>
                                     </div>
                                 </div>
                             </div>
@@ -91,75 +95,57 @@
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-                    <div >
+                    <div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <table class="table table-sm  table-hover table-bordered text-center">
+
+                                <table id="dataTable" class="display">
+                                    @*<table class="table table-sm  table-hover table-bordered text-center display" id="dataTable">*@
                                     <thead class="text-white font-weight-bold  text-capitalize  bg-primary">
                                         <tr>
 
                                             <th scope="col">Coverage</th>
-                                            <th scope="col">Waiting Time</th>
-                                            <th scope="col">Changes</th>
+                                            <th scope="col">Waiting_Time</th>
 
                                         </tr>
+
                                     </thead>
+                                
+
                                     <tbody class="bg-white">
-                                        <tr>
 
-                                            <td>N20</td>
-                                            <td>35</td>
-                                            <td>
-                                                <button class="btn btn-primary btn-sm">Edit</button>
-                                                <button class="btn btn-danger btn-sm">Delete</button>
-
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>N20</td>
-                                            <td>35</td>
-                                            <td>
-                                                <button class="btn btn-primary btn-sm">Edit</button>
-                                                <button class="btn btn-danger btn-sm">Delete</button>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td>N20</td>
-                                            <td>35</td>
-                                            <td>
-                                                <button class="btn btn-primary btn-sm">Edit</button>
-                                                <button class="btn btn-danger btn-sm">Delete</button>
-
-                                            </td>
-                                        </tr>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(modelItem => item.postCode)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.waiting)</td>
+                                                
+                                            </tr>
+                                        }
                                     </tbody>
+
+
+
                                 </table>
 
-                               
+
                             </div>
                         </div>
 
-                      
-                      
+
+
 
                     </div>
-                  
-              
-               
-   
-        
+
+
+
+
+
                 }
             </div>
         </div>
 
     </div>
-
-
-
-
 
 
 
@@ -184,55 +170,59 @@
 @section scripts{
     <script type="text/javascript">
 
-        $("#btnEdit").click(function () {
-            $("#btnEdit").addClass("disabled")
-            $("#btnSave").removeAttr("disabled")
-            $(".changefield").removeAttr("readonly");
+        $(document).ready(function () {
+
+
+
+            $("#dataTable").DataTable(
+                {
+                });
 
         });
-        function saveProfile() {
-            if ($("#Password").val().localeCompare($("#ConformPassword").val())) {
-                alert("Password does not match!");
-            }
-            else {
-                $.post("@Url.Action("EditProfile", "Drivers")",
-                    {
-                        fName: $("#UserFirstName").val(),
-                        lName: $("#UserLastName").val(),
-                        phNo: $("#UserPhNo").val(),
-                        password: $("#Password").val(),
-                        confPassword: $("#ConformPassword").val(),
-                        Id: $("#Id").val()
-
-                    },
-                    function (data) {
-                        if (data == 0) {
-                            //alert("Sorry! \n Profile can't update.");
-                        }
-                        else if (data == 1) {
-                            $(".changefield").addClass("disabled");
-                            $("#btnSave").addClass("disabled");
-                            //alert("Profile successfuly updated.");
-
-
-                        }
-
-                    }
-                );
-            }
-        }
-
-
 
     </script>
+
 
     <script type="text/javascript">
 
+        $(document).ready(function () {
+            
 
+            var cabid =@cabid;
+              //function will be called on button click having id btnsave
+            $("#btnaSave").click(function () {
 
+                $('#exampleModal').modal('toggle');
 
+                //console.log("i am testing...!");
+                //console.log($("#coverage").val());
+                //console.log($("#waitingTime").val());
+                //console.log(cabid);
 
+                $.ajax({
+                        type: "POST", //HTTP POST Method
+                      
+                        url: '@Url.Action("AddCoverageAndTime", "CabOffice")',
+                        dataType: "json",
+                        data: {
+                            coverage: $("#coverage").val(),
+                            Wating: $("#waitingTime").val(),
+                            cabId: cabid
+                        },
+                    success: function () {
 
+                        window.location.reload(true);
+                       },
+                       error: function () {
+
+                            console.log("data is not added something is wrong !")
+                        },
+                        
+               });
+
+            });
+        });
 
     </script>
+
 }

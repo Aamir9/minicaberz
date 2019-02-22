@@ -9,8 +9,14 @@ namespace thechauffeurteam.DAL
     {
         public MyContext() : base("MyContext")
         {
-
+            //Database.SetInitializer<MyContext>(new CreateDatabaseIfNotExists<MyContext>());
         }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<CoverageAndWaiting>()
+        //                .MapToStoredProcedures();
+        //}
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<PCOLicense> PCOLicenses { get; set; }

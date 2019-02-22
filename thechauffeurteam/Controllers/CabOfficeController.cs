@@ -220,12 +220,33 @@ namespace CabsAdmin.Controllers
             return View(model);
         }
 
-
+        // cab area 
         public ActionResult Coverage_And_Wating_Time()
         {
 
-            return View();
+            return View(db.CoverageAndWaitings.ToList());
         }
+
+        public JsonResult AddCoverageAndTime(string coverage, int Wating, int cabId)
+        {
+            
+            CoverageAndWaiting addData = new CoverageAndWaiting();
+            addData.postCode = coverage;
+            addData.waiting = Wating;
+            addData.CabOfficeId = cabId;
+
+            db.CoverageAndWaitings.Add(addData);
+            db.SaveChanges();
+
+            var CW = db.CoverageAndWaitings.ToList();
+
+
+            return Json(new { CWlist = CW }, JsonRequestBehavior.AllowGet);
+            //return Json(1);
+        }
+
+
+
         public JsonResult CheckEmailAvailability(string useremail)
         {
             System.Threading.Thread.Sleep(200);
@@ -240,6 +261,18 @@ namespace CabsAdmin.Controllers
             }
 
         }
+
+        public JsonResult AddGet()
+        {
+
+            
+                var empList = db.CoverageAndWaitings.ToList();
+                return Json(new { data = empList }, JsonRequestBehavior.AllowGet);
+            
+            //return Json(1);
+        }
+      
+
 
         public ActionResult Loged(string cabEmail, string cabPassword)
         {
@@ -558,5 +591,9 @@ namespace CabsAdmin.Controllers
             return RedirectToAction("login", "Admin");
         }
 
-    }
+
+    
+
+
+        }
 }
