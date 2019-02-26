@@ -223,6 +223,8 @@ namespace CabsAdmin.Controllers
         // cab area 
         public ActionResult Coverage_And_Wating_Time()
         {
+            //List<CoverageAndWaiting> CWList = db.CoverageAndWaitings.ToList<CoverageAndWaiting>();
+            //return Json(new { data = CWList }, JsonRequestBehavior.AllowGet);
 
             return View(db.CoverageAndWaitings.ToList());
         }
@@ -246,7 +248,35 @@ namespace CabsAdmin.Controllers
         }
 
 
+        //delete the coverage and rate
+        public JsonResult Delete(int id)
+        {
+            
+                var dl = db.CoverageAndWaitings.Where(x => x.id == id).FirstOrDefault<CoverageAndWaiting>();
+                db.CoverageAndWaitings.Remove(dl);
+                db.SaveChanges();
+              var CW = db.CoverageAndWaitings.ToList();
 
+
+             return Json(new { CWlist = CW }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public JsonResult EditCW(int id, string postcode ,int waitingTime, int cabid)
+        {
+            CoverageAndWaiting cw = new CoverageAndWaiting();
+            cw.id = id;
+            cw.postCode = postcode;
+            cw.waiting = waitingTime;
+            cw.CabOfficeId = cabid;
+
+            db.Entry(cw).State = EntityState.Modified;
+            db.SaveChanges();
+            var CW = db.CoverageAndWaitings.ToList();
+
+
+            return Json(new { CWlist = CW }, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult CheckEmailAvailability(string useremail)
         {
             System.Threading.Thread.Sleep(200);
