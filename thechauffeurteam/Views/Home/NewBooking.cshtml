@@ -202,7 +202,7 @@
 
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <select class="form-control" id="cartype" name="cartype">
                                                 @if (Model.CarType == "Saloon")
@@ -243,18 +243,7 @@
 
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <select class="form-control">
-
-                                                <option value="">Attributes</option>
-                                                <option value="">a</option>
-                                                <option value="">b</option>
-                                                <option value="">c</option>
-                                            </select>
-                                            <p class="text-danger errormsg"></p>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
 
 
@@ -262,16 +251,16 @@
 
 
 
-                                <div class="row w-100" id="pdm">
+                                <div class="row" id="pdm">
                                     <div class="col-md-4 col-sm-12">
                                         <div class="form-group">
-                                            @*<p class="badge badge-primary py-md-2 pl-md-3 pr-md-5  w-100" id="in_mile" name="in_mile" style="width:100%;"></p>*@
-                                            @*<span style="display:none;" id="inmile"></span*@
+                                            <p class="badge badge-primary py-md-2 pl-md-3 pr-md-5  w-100" id="in_mile" name="in_mile">
 
+                                                 @Html.DisplayFor(m => m.Mile, new { @id = "inmile", @class = "form-control" }) miles
 
-                                            @Html.TextBoxFor(m => m.Mile, new { @id = "inmile" ,@class="form-control"})
-
-
+                                            </p>
+                                              @*<span style="display:none;" id="inmile"></span*@
+                                             
                                             <input type="hidden" name="inMiles" id="inMiles" />
                                         </div>
 
@@ -280,34 +269,19 @@
 
 
                                     <div class="col-md-8 col-sm-12">
-                                        <div class="form-group ">
-                                            @*<p class="badge badge-primary py-md-2 p-1 px-md-4 d" id="duration_text"></p>*@
-
-                                         
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col-md-12">
                                         <div class="form-group">
+                                            <p class="badge badge-primary py-md-2 pl-md-3 pr-md-5  w-100" id="in_mile" name="in_mile">
 
-                                            @*<h6 class="py-md-2 pricebadge" id="Price">
                                                 Fare: &nbsp;&nbsp;  <i class="fas fa-pound-sign"></i> &nbsp;
-                                               </h6>*@
 
-
-
-                                            @Html.TextBoxFor(m => m.Price, new { @id = "Prices", @class = "form-control" })
+                                                @Html.DisplayFor(m => m.Price, new { @id = "Prices", @class = "form-control" })
+                                            </p>
                                             <input type="hidden" name="price" id="price" />
                                             <i class="fa fa-spinner fa-spin" style="display:none;"></i>
                                         </div>
                                     </div>
-
                                 </div>
-
-
-
+                                
 
                                 <div class="form-group " id="DriverMsg">
                                     <input type="text" name="driverMessage" placeholder="Message For Driver, Flight Number etc" class="form-control" />
@@ -317,7 +291,7 @@
                                         <input type="button" class="btn" id="GetQuote" style=" background: #1853a1;color:white;" value="Get Quote Now " />
                                     </div>*@
                                 <div class="form-group  text-center ">
-                                    <input type="submit" class="btn btn-primary" id="BookNow" style="background: #1853a1;color:white; display:none;" value="Book Now " />
+                                    <input type="submit" class="btn btn-primary" id="BookNow" style="background: #1853a1;color:white;" value="Book Now " />
                                 </div>
                                 <div class="form-group  text-center ">
 

@@ -79,7 +79,7 @@ namespace thechauffeurteam.Controllers
         }
 
         [HttpPost]
-        public ActionResult NewBooking(string origin,string destination,string selectedcar, int? inMiles, string price, int? passengerId, string PassengerName, string PassengerPhone)
+        public ActionResult NewBooking(string origin,string destination,string selectedcar, int? inMiles,string duration_text, string price, int? passengerId, string PassengerName, string PassengerPhone)
         {
 
 
@@ -90,6 +90,7 @@ namespace thechauffeurteam.Controllers
             job.CarType = selectedcar;
             job.Mile = inMiles;
             job.Price = price;
+            job.textDurantion = duration_text;
 
 
             //ViewBag.pickUpPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
@@ -153,8 +154,22 @@ namespace thechauffeurteam.Controllers
             }
             else
             {
-                int pricerange = db.DistancePrices.Where(p => p.MileTo >= value)
-                                      .Select(p => p.MileTo).Min();
+                int pricerange;
+
+
+                int lastValue = db.DistancePrices.Select(p => p.MileTo).Max();
+
+                if (lastValue > value)
+                {
+                    pricerange = db.DistancePrices.Where(p => p.MileTo >= value)
+                                         .Select(p => p.MileTo).Min();
+                }
+
+                else {
+                    pricerange = lastValue;
+
+                }
+              
 
                 int getRangeId = db.DistancePrices.Where(p => p.MileTo == pricerange)
                     .Select(p => p.Id).SingleOrDefault();
@@ -201,102 +216,5 @@ namespace thechauffeurteam.Controllers
         }
 
 
-        public JsonResult getPriceByhHours(int value, string cartype)
-        {
-            if (!Request.IsAjaxRequest())
-            {
-                return null;
-
-            }
-            else
-            {
-                int pricerange = db.HourlyPrices.Where(p => p.HourTo >= value)
-                                     .Select(p => p.HourTo).Min();
-
-                int getRangeId = db.HourlyPrices.Where(p => p.HourTo == pricerange)
-                    .Select(p => p.Id).SingleOrDefault();
-                string caroptions = cartype;
-                int Hours = 0;
-
-
-                int totalAmount = 0;
-
-                if (caroptions == "Saloon")
-                {
-
-                    Hours = Convert.ToInt32(db.HourlyPrices.Where(p => p.Id == getRangeId).Select(p => p.EclassPerHour).SingleOrDefault());
-                    totalAmount = Hours * value;
-
-                }
-                else if (caroptions == "Estate")
-                {
-
-                    Hours = Convert.ToInt32(db.HourlyPrices.Where(p => p.Id == getRangeId).Select(p => p.SclassPerHour).SingleOrDefault());
-                    totalAmount = Hours * value;
-
-                }
-                else if (caroptions == "MPV")
-                {
-
-                    Hours = Convert.ToInt32(db.HourlyPrices.Where(p => p.Id == getRangeId).Select(p => p.VclassPerHour).SingleOrDefault());
-                    totalAmount = Hours * value;
-
-
-                }
-
-
-
-
-                return new JsonResult { Data = new { totalAmount = totalAmount } };
-            }
-
-
-        }
-
-
-        public JsonResult getPriceByFlateRate(int postcode1,int postcode2, string cartype)
-        {
-            if (!Request.IsAjaxRequest())
-            {
-                return null;
-
-            }
-            else
-            {
-              
-                int picUpPostcodeId = db.FixPrices.Where(p => p.PickUp == postcode1).Select(z => z.Id).SingleOrDefault();
-                int dropOffPostcodeId=db.FixPrices.Where(p => p.DropOff == postcode2).Select(z => z.Id).SingleOrDefault();
-
-                int findPostcodes = db.FixPrices.Where(p => p.Id == picUpPostcodeId && p.Id == dropOffPostcodeId).Select(z => z.Id).SingleOrDefault();
-
-                int totlaAmount=0;
-                string caroptions = cartype;
-                
-                if (findPostcodes >0)
-                {
-                    if (caroptions == "Saloon")
-                    {
-                        totlaAmount = Convert.ToInt32(db.FixPrices.Where(p => p.Id == findPostcodes).Select(s => s.Eclass).SingleOrDefault());
-                    }
-                    else if (caroptions == "Estate")
-                    {
-                        totlaAmount = Convert.ToInt32(db.FixPrices.Where(p => p.Id == findPostcodes).Select(s => s.Sclass).SingleOrDefault());
-
-                    }
-                    else if(caroptions== "MPV")
-                    {
-                        totlaAmount = Convert.ToInt32(db.FixPrices.Where(p => p.Id == findPostcodes).Select(s => s.Vclass).SingleOrDefault());
-
-
-
-                    }
-                }
-               
-                
-                   
-                
-                return new JsonResult { Data=new { totalAmount = totlaAmount } };
-            }
-        }
     }
 }
