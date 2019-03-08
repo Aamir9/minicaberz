@@ -15,11 +15,13 @@ namespace thechauffeurteam.Models.ViewModel
 
         public Passenger passenger { get; set; }
 
+
+        
         public string PassengerName { get; set; }
         public string PassengerPhone { get; set; }
 
 
-
+        public string postcode { get; set; }
         public string DriverId { get; set; }
         public string DriverName { get; set; }
         public string dateAndTime { get; set; }

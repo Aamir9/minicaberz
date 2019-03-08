@@ -408,6 +408,10 @@
     <Compile Include="Migrations\201902210901586_add14.Designer.cs">
       <DependentUpon>201902210901586_add14.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903060928232_postcode.cs" />
+    <Compile Include="Migrations\201903060928232_postcode.Designer.cs">
+      <DependentUpon>201903060928232_postcode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\API\CabOffice.cs" />
     <Compile Include="Models\API\CoverageAndWaiting.cs" />
@@ -2923,6 +2927,7 @@
     <Content Include="Views\Home\directBooking.cshtml" />
     <Content Include="Views\Eclasses\Chat.cshtml" />
     <Content Include="Views\CabOffice\Coverage_And_Wating_Time.cshtml" />
+    <Content Include="Views\JobBooking\Insert.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\vendor\anchor-js\docs\" />
@@ -3102,6 +3107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902210901586_add14.resx">
       <DependentUpon>201902210901586_add14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903060928232_postcode.resx">
+      <DependentUpon>201903060928232_postcode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

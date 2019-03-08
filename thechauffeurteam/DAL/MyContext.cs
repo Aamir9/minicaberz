@@ -9,7 +9,7 @@ namespace thechauffeurteam.DAL
     {
         public MyContext() : base("MyContext")
         {
-            //Database.SetInitializer<MyContext>(new CreateDatabaseIfNotExists<MyContext>());
+            Database.SetInitializer<MyContext>(new CreateDatabaseIfNotExists<MyContext>());
         }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)

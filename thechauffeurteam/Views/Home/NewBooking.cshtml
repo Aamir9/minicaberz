@@ -1,4 +1,4 @@
-﻿@model thechauffeurteam.Models.ViewModel.jobVM
+﻿﻿@model thechauffeurteam.Models.ViewModel.jobVM
 @{
 
 
@@ -88,7 +88,7 @@
 
                         <div class="formBody p-4">
 
-                            <form method="post" id="distanceform" action="/JobBooking/booking">
+                            <form method="post" id="distanceform" action="~/JobBooking/Insert">
 
                                 <div class="row">
                                     <div class="col-md-6">
@@ -101,12 +101,20 @@
 
                                             @Html.TextBoxFor(m => m.pickUp, new { @class = "form-control", @placeholder = "Pick Up Address", @id = "from_places" })
 
-                                            <input type="hidden" id="origin" name="origin" />
+                                            @Html.HiddenFor(m => m.pickUp, new { @id = "origin" })
+                                            @*<input type="hidden" id="origin" name="origin" />*@
+
                                             <input type="hidden" name="jobType" id="jobType" />
-                                            <input type="hidden" name="passengerId" id="passengerId" />
-                                            <input type="hidden" name="selectedcar" id="selectedcar" />
+                                            @Html.HiddenFor(m => m.PassengerId, new { @id = "passengerId" })
+                                            @*<input type="hidden" name="passengerId" id="passengerId" />*@
+
+
+                                            @Html.HiddenFor(m => m.CarType, new { @id = "selectedcar" })
+                                            @*<input type="hidden" name="selectedcar" id="selectedcar" />*@
 
                                             <p class="text-danger" id="inputError1"> </p>
+                                            @*<input type="text" name="postcode" value="" id="postcode" />*@
+                                            @Html.HiddenFor(m => m.postcode, new { @id = "postcode" })
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -116,7 +124,11 @@
                                             @*<input type="text" id="to_places" name="dropOff" placeholder="Drop Off Address" class="form-control" />*@
 
                                             @Html.TextBoxFor(m => m.DropUP, new { @class = "form-control", @placeholder = "Drop Off Addres", @id = "to_places" })
-                                            <input id="destination" name="destination" type="hidden" />
+
+
+                                            @Html.HiddenFor(m => m.DropUP, new { @id = "destination" })
+
+                                            @*<input id="destination" name="destination" type="hidden" />*@
                                             <p class="text-danger" id="inputError2"> </p>
                                         </div>
                                     </div>
@@ -157,6 +169,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
+
+
                                             <input id="datepicker" name="date" type="text" class="form-control" placeholder="Pick-up Date" value="">
                                         </div>
                                     </div>
@@ -202,7 +216,7 @@
 
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <select class="form-control" id="cartype" name="cartype">
                                                 @if (Model.CarType == "Saloon")
@@ -243,18 +257,7 @@
 
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <select class="form-control">
 
-                                                <option value="">Attributes</option>
-                                                <option value="">a</option>
-                                                <option value="">b</option>
-                                                <option value="">c</option>
-                                            </select>
-                                            <p class="text-danger errormsg"></p>
-                                        </div>
-                                    </div>
                                 </div>
 
 
@@ -262,17 +265,19 @@
 
 
 
-                                <div class="row w-100" id="pdm">
+                                <div class="row" id="pdm">
                                     <div class="col-md-4 col-sm-12">
                                         <div class="form-group">
-                                            @*<p class="badge badge-primary py-md-2 pl-md-3 pr-md-5  w-100" id="in_mile" name="in_mile" style="width:100%;"></p>*@
+                                            <p class="badge badge-primary py-md-2 pl-md-3 pr-md-5  w-100" id="in_mile" name="in_mile">
+
+                                                @Html.DisplayFor(m => m.Mile, new { @id = "inmile", @class = "form-control" }) miles
+
+                                            </p>
                                             @*<span style="display:none;" id="inmile"></span*@
 
+                                            @*<input type="hidden" name="inMiles" id="inMiles" />*@
 
-                                            @Html.TextBoxFor(m => m.Mile, new { @id = "inmile" ,@class="form-control"})
-
-
-                                            <input type="hidden" name="inMiles" id="inMiles" />
+                                            @Html.HiddenFor(m => m.Mile, new { @id = "inMiles" })
                                         </div>
 
                                     </div>
@@ -280,49 +285,39 @@
 
 
                                     <div class="col-md-8 col-sm-12">
-                                        <div class="form-group ">
-                                            @*<p class="badge badge-primary py-md-2 p-1 px-md-4 d" id="duration_text"></p>*@
-
-                                         
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col-md-12">
                                         <div class="form-group">
+                                            <p class="badge badge-primary py-md-2 pl-md-3 pr-md-5  w-100" id="in_mile" name="in_mile">
 
-                                            @*<h6 class="py-md-2 pricebadge" id="Price">
                                                 Fare: &nbsp;&nbsp;  <i class="fas fa-pound-sign"></i> &nbsp;
-                                               </h6>*@
 
+                                                @Html.DisplayFor(m => m.Price, new { @id = "Prices", @class = "form-control" })
+                                                <i class="fa fa-spinner fa-spin" style="display:none;"></i>
+                                            </p>
+                                            @*<input type="hidden" name="price" id="price" />*@
 
+                                            @Html.HiddenFor(m => m.Price, new { @id = "priceVal" })
 
-                                            @Html.TextBoxFor(m => m.Price, new { @id = "Prices", @class = "form-control" })
-                                            <input type="hidden" name="price" id="price" />
-                                            <i class="fa fa-spinner fa-spin" style="display:none;"></i>
                                         </div>
                                     </div>
-
                                 </div>
-
-
 
 
                                 <div class="form-group " id="DriverMsg">
-                                    <input type="text" name="driverMessage" placeholder="Message For Driver, Flight Number etc" class="form-control" />
+
+                                    @Html.DisplayFor(m => m.DriverMessage, new { @class = "form-control", @placeholder = "Message For Driver, Flight Number etc" })
+
                                 </div>
 
                                 @*<div class="col-md-12 text-center ">
                                         <input type="button" class="btn" id="GetQuote" style=" background: #1853a1;color:white;" value="Get Quote Now " />
                                     </div>*@
                                 <div class="form-group  text-center ">
-                                    <input type="submit" class="btn btn-primary" id="BookNow" style="background: #1853a1;color:white; display:none;" value="Book Now " />
+                                    <input type="submit" class="btn btn-primary" onclick="InsertJob()" id="BookNow" style="background: #1853a1;color:white;" value="Book Now " />
                                 </div>
-                                <div class="form-group  text-center ">
+                                @*<div class="form-group  text-center ">
 
-                                    <a href="#showLogin" class="btn btn-primary" id="LoginPopShow" style="background: #1853a1;color:white; display:none;"> Book Now</a>
-                                </div>
+                                        <a href="#showLogin" class="btn btn-primary" id="LoginPopShow" style="background: #1853a1;color:white; display:none;"> Book Now</a>
+                                    </div>*@
 
                             </form>
 
@@ -394,16 +389,32 @@
 
 
     <script defer src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&callback=initMap&key=AIzaSyAUeFGwxXtr8M8SD82BbA-6857CVPKUhNo" type="text/javascript"></script>
+
+
     <script>
         function initMap() {
 
             var input = document.getElementById('searchTextField');
 
             autocomplete = new google.maps.places.Autocomplete(input);
+
+
+
+
         }
+
+
+
+
     </script>
 
+
+
+
     <script>
+
+
+
         var distance_in_mile
         var Login;
         var passengerId;
@@ -429,6 +440,10 @@
                     var from_place = from_places.getPlace();
                     var from_address = from_place.formatted_address;
                     $('#origin').val(from_address);
+
+                    $('#postcode').val(from_place.address_components[0].long_name);
+                    console.log(place.address_components);
+
 
                 }
                 function toPlacesfunc() {
@@ -512,7 +527,7 @@
                                 $('#Price').css('display', 'block');
 
                                 $('#Prices').html(data.totalAmount);
-                                $("#price").val(data.totalAmount);
+                                $("#priceVal").val(data.totalAmount);
                                 console.log("your data submited successfull ");
                             },
                             error: function () {
@@ -738,6 +753,7 @@
             $('#formMain2').find("input,select").not("input[type=button],#datepicker,.timepicker,#BookNow,#LoginPopShow").val('');
 
             $('#in_mile,#duration_text,#Prices').html('');
+            $('#priceVal').val('');
             $('#Price').css('display', 'none');
             $('#GetQuote').show();
             $('#BookNow').hide();
@@ -837,6 +853,66 @@
     <!-- //carousel -->
     <!--slider-->
     @*booking form fields show and hide*@
+
+
+    <script type ="text/javascript">
+        $(function () {
+            // Create a proxy to signalr hub on web server. It reference the hub.
+            var notificationFromHub = $.connection.jobBookingHub;
+
+            // Connect to signalr hub
+            $.connection.hub.start().done(function () {
+                //FetchEmployees();
+            });
+
+            // Notify to client with the recent updates
+            notificationFromHub.client.updatedClients = function () {
+                //FetchEmployees();
+            };
+        }); 
+
+        // Insert job Record
+        function InsertJob() {
+
+            var model = {
+               
+                pickUp: $('#origin').val(),
+                dropOff: $('#destination').val(),
+                passengerId: $('#passengerId').val(),
+                cartype: $('#selectedcar').val(),
+                postcode: $('#postcode').val(),
+                date: $('#datepicker').val(),
+                time: $('#timepicker').val(),
+                mile: $('#inmile').val(),
+                price: $('#Prices').val(),
+                driverMsg: $('#driverMsg').val(),
+
+            };
+
+            console.log(pickUp);
+            console.log(dropOff);
+            console.log(passengerId);
+            console.log(cartype);
+            console.log(postcode);
+            console.log(date);
+            console.log(time);
+            console.log(price);
+            console.log(driverMsg);
+
+            $.ajax({
+                url: '/jobBooking/Insert',
+                type: 'POST',
+                data: JSON.stringify(model),
+                contentType: "application/json;charset=utf-8",
+                success: function () {
+                    alert('job added Successfully');
+                },
+                error: function () {
+                    alert('job not Added');
+                }
+            });
+        }
+    </script>
 
 
 }

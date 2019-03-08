@@ -23,13 +23,11 @@ namespace thechauffeurteam.Controllers
             {
                 Session["user"] = DataItem.Id;
                 Session["userName"] = DataItem.UserFirstName;
-                //  Session["UserName"] = DataItem.UserFirstName.ToString() +"\t"+ DataItem.UserLastName.ToString();
-                //  Session["phone"] = DataItem.UserPhNo.ToString();
+
 
                 result = "Success";
             }
-            //return Json(result, JsonRequestBehavior.AllowGet);
-
+         
 
             return new JsonResult { Data = new { result = result, sessionId = Session["user"] } };
         }
@@ -79,8 +77,14 @@ namespace thechauffeurteam.Controllers
         }
 
         [HttpPost]
-        public ActionResult NewBooking(string origin,string destination,string selectedcar, int? inMiles, string price, int? passengerId, string PassengerName, string PassengerPhone)
+        public ActionResult NewBooking(string origin,string destination,string selectedcar,string postcode, int? inMiles, string price, int? passengerId, string PassengerName, string PassengerPhone)
         {
+
+            string str = postcode  + " ";
+            int i = str.IndexOf(' ');
+            string filterPostCode=str.Substring(0,i);
+            
+
 
 
             jobVM job = new jobVM();
@@ -90,18 +94,11 @@ namespace thechauffeurteam.Controllers
             job.CarType = selectedcar;
             job.Mile = inMiles;
             job.Price = price;
-
-
-            //ViewBag.pickUpPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
-            //ViewBag.dropOffPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
-
-
-
-            //if (Session["user"] == null && Session["Dirveruser"]==null)
-            //{
-
-            //    return RedirectToAction("Login", "Drivers");
-            //}
+            job.postcode= filterPostCode;
+            job.PassengerId = passengerId;
+            job.PassengerName = PassengerName;
+            job.PassengerPhone = PassengerPhone;
+            job.CarType = selectedcar;
             return View(job);
         }
 
@@ -153,8 +150,22 @@ namespace thechauffeurteam.Controllers
             }
             else
             {
-                int pricerange = db.DistancePrices.Where(p => p.MileTo >= value)
-                                      .Select(p => p.MileTo).Min();
+                int pricerange;
+
+
+                int lastValue = db.DistancePrices.Select(p => p.MileTo).Max();
+
+                if (lastValue > value)
+                {
+                    pricerange = db.DistancePrices.Where(p => p.MileTo >= value)
+                                         .Select(p => p.MileTo).Min();
+                }
+
+                else
+                {
+                    pricerange = lastValue;
+
+                }
 
                 int getRangeId = db.DistancePrices.Where(p => p.MileTo == pricerange)
                     .Select(p => p.Id).SingleOrDefault();

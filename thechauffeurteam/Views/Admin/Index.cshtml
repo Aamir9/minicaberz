@@ -129,9 +129,9 @@
                                 <th scope="col" class="text-light px-0 text-center">Drop Off</th>
                                 <th scope="col" class="text-light px-0 text-center">Miles</th>
                                 <th scope="col" class="text-light px-0 text-center">Price</th>
-                                <th scope="col" class="text-light px-0 text-center">Phone#</th>
+                                <th scope="col" class="text-light px-0 text-center">Phone</th>
                                 <th scope="col" class="text-light px-0 text-center">Name</th>
-                                <th scope="col" class="text-light px-0 text-center">Driver</th>
+                                <th scope="col" class="text-light px-0 text-center">Cab Office</th>
 
                                 <th class=" px-0"></th>
                             </tr>
@@ -191,20 +191,8 @@
                                     <td scope="col" class="py-1 my-0 px-0 text-center">£&nbsp; @value.Price</td>
                                     <td scope="col" class="py-1 my-0 px-0 text-center">@value.PassengerPhone</td>
                                     <td scope="col" class="py-1 my-0 px-0 text-center">@value.PassengerName</td>
-                                    <td scope="col" class="py-1 my-0 px-0 text-center">@value.DriverId</td>
-                                    <td class="text-right py-1 my-0 px-0" >
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                @{
-                                                    var id = @value.id;
-                                                 }
-                                                <a class="dropdown-item" href="" onclick="jobInfo(@id)" data-toggle="modal" data-target="#jobModal">Info</a>
-                                                <a class="dropdown-item" href="" onclick="DirectAllocateJob(@id)" data-toggle="modal" data-target="#jobModal">Allocate</a>
-                                                <a class="dropdown-item" href="" onclick="setCancelJobId(@id)" data-toggle="modal" data-target="#cancelConfr">Cancel</a>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <td scope="col" class="py-1 my-0 px-0 text-center"></td>
+                                    
                                 </tr>
                             }
                         </thead>
