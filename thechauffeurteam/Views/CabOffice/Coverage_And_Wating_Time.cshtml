@@ -4,8 +4,8 @@
     Layout = "~/Views/Shared/_CabOfficeLayout.cshtml";
 
 
-    //int cabid = (int)@Session["cabOfficeId"];
-    int cabid = 12;
+    int cabid = (int)@Session["cabOfficeId"];
+    
 }
 
 
@@ -135,13 +135,13 @@
                         <div class="form-group">
                             <div class="col-md-12">
 
-                                <table id="dataTable" class="display">
+                                <table id="dataTable" class="display" >
                                     @*<table class="table table-sm  table-hover table-bordered text-center display" id="dataTable">*@
                                     <thead class="text-white font-weight-bold  text-capitalize  bg-primary">
                                         <tr>
 
                                             <th scope="col">Coverage</th>
-                                            <th scope="col">Waiting_Time</th>
+                                            <th scope="col">Waiting Time</th>
                                             <th>Changes</th>
 
                                         </tr>

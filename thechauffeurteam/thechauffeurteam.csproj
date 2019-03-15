@@ -2928,6 +2928,7 @@
     <Content Include="Views\Eclasses\Chat.cshtml" />
     <Content Include="Views\CabOffice\Coverage_And_Wating_Time.cshtml" />
     <Content Include="Views\JobBooking\Insert.cshtml" />
+    <Content Include="Views\Shared\__CabOfficeJobs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\vendor\anchor-js\docs\" />

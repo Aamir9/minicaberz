@@ -1,0 +1,29 @@
+﻿@model thechauffeurteam.Models.job
+
+<tr scope="row">
+    @*<td>New</td>*@
+    <td>
+        @Html.DisplayFor(m => m.dateAndTime)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.pickUp)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.DropUP)
+    </td>
+    <td>
+
+        @Html.DisplayFor(m => m.Mile)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.PassengerPhone)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.PassengerName)
+    </td>
+    <td>
+        @Html.ActionLink("Accept", "CabOfficeDetail", "CabOffice", new { id = Model.id}, new { @class = "btn btn-outline-info btn-sm" })
+
+    </td>
+
+</tr>

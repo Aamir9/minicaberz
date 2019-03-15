@@ -43,9 +43,9 @@ namespace thechauffeurteam.Controllers
                 jb.PassengerId = model.PassengerId;
                 jb.PassengerName = PassengerName;
                 jb.PassengerPhone = PassengerPhoneNumber;
-                
 
-                jb.postcode = model.postcode;
+                string postcode = model.postcode.ToLower();
+                jb.postcode = postcode;
                 jb.dateAndTime= time + "\t" + date;
                 jb.pickUp = model.pickUp;
                 jb.DropUP = model.DropUP;
@@ -57,7 +57,7 @@ namespace thechauffeurteam.Controllers
                 jb.status = 0;
 
                 db.jobs.Add(jb);
-                 db.SaveChanges();
+                db.SaveChanges();
                
             }
 

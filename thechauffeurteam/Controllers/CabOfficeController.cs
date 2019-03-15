@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using thechauffeurteam.DAL;
+using thechauffeurteam.Migrations;
 using thechauffeurteam.Models.API;
 using thechauffeurteam.Models.ViewModel;
 
@@ -21,10 +22,10 @@ namespace CabsAdmin.Controllers
         }
         public ActionResult CabOfficeReg()
         {
-            
-                return View();
-           
-               
+
+            return View();
+
+
         }
 
         [HttpPost]
@@ -35,12 +36,12 @@ namespace CabsAdmin.Controllers
             if (ModelState.IsValid)
             {
 
-                
+
                 cab.CabOfficeBusiessType = businessType;
                 cab.Status = "Waiting";
 
                 cab.Id = model.Id;
-                
+
                 cab.CabofficeOwner = model.CabofficeOwner;
                 cab.CabOfficeName = model.CabOfficeName;
                 cab.DispachSystemName = model.DispachSystemName;
@@ -96,11 +97,11 @@ namespace CabsAdmin.Controllers
 
 
         //cab user edit cab office information
-         public ActionResult Edit_Profile_information(int id)
+        public ActionResult Edit_Profile_information(int id)
         {
             if (Session["cabOfficeuser"] != null)
             {
-            CabOffice model = db.CabOffices.SingleOrDefault(m => m.Id == id);
+                CabOffice model = db.CabOffices.SingleOrDefault(m => m.Id == id);
 
 
                 CabOfficeVM cab = new CabOfficeVM();
@@ -148,7 +149,7 @@ namespace CabsAdmin.Controllers
 
                 return View(cab);
             }
-        return RedirectToAction("Login", "Drivers");
+            return RedirectToAction("Login", "Drivers");
 
         }
 
@@ -157,8 +158,9 @@ namespace CabsAdmin.Controllers
         [HttpPost]
         public ActionResult Edit_Profile_information(CabOfficeVM model, string businessType)
         {
+            if (Session["cabOfficeuser"] != null) { 
 
-            CabOffice cab = new CabOffice();
+              CabOffice cab = new CabOffice();
             if (ModelState.IsValid)
             {
 
@@ -220,20 +222,30 @@ namespace CabsAdmin.Controllers
             return View(model);
         }
 
+            return RedirectToAction("Login", "Drivers");
+        }
+     
+
         // cab area 
         public ActionResult Coverage_And_Wating_Time()
         {
-            //List<CoverageAndWaiting> CWList = db.CoverageAndWaitings.ToList<CoverageAndWaiting>();
-            //return Json(new { data = CWList }, JsonRequestBehavior.AllowGet);
+            if (Session["cabOfficeuser"] != null)
+            {
 
-            return View(db.CoverageAndWaitings.ToList());
+                //List<CoverageAndWaiting> CWList = db.CoverageAndWaitings.ToList<CoverageAndWaiting>();
+                //return Json(new { data = CWList }, JsonRequestBehavior.AllowGet);
+
+                return View(db.CoverageAndWaitings.ToList());
+            }
+
+            return RedirectToAction("Login", "Drivers");
         }
 
         public JsonResult AddCoverageAndTime(string coverage, int Wating, int cabId)
         {
             
             CoverageAndWaiting addData = new CoverageAndWaiting();
-            addData.postCode = coverage;
+            addData.postCode = coverage.ToLower();
             addData.waiting = Wating;
             addData.CabOfficeId = cabId;
 
@@ -331,8 +343,8 @@ namespace CabsAdmin.Controllers
 
                             Session["cabOfficeuser"] = "logedin";
                             Session["cabOfficeId"] = cb.Id;
-                            //ID = cb.Id;
-                            return RedirectToAction("CabOfficeProfile", "CabOffice", new { id = cb.Id });
+                            
+                            return RedirectToAction("Dashboard", "CabOffice", new { id = cb.Id });
                         }
                         if (cb.Status == "Rejected")
                         {
@@ -430,15 +442,34 @@ namespace CabsAdmin.Controllers
            return RedirectToAction("Login", "Drivers");
         }
         //cab office dashborad
-        public ActionResult Dashboard()
+        public ActionResult Dashboard(int  id)
         {
             if (Session["cabOfficeuser"] != null)
             {
-                ViewData["txt"] = "Dashboard";
-                ViewBag.txt = "Dashboard";
+                //ViewData["txt"] = "Dashboard";
+                //ViewBag.txt = "Dashboard";
                 //ViewBag.path = "/admin/index";
                 //var job = db.jobs.ToList();
-                //var jb = job.Where(m => m.status == 0).OrderByDescending(m => m.id).ToList();
+
+
+
+
+                var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
+
+              var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == id).Select(a => a.postCode).ToList();
+
+                var matchJob = jb.Intersect(cabpostMatch);
+
+                ViewBag.matchedjob = matchJob;
+
+                var jbs = db.jobs.Where(m => m.status == 0).ToList();
+
+
+                //  var thisCabjob = jb.Intersect(cabpostMatch);
+
+
+                return View(jbs);
+
                 //ViewBag.allJobSum = job.Count();
                 //ViewBag.NewJobSum = job.Where(M => M.status == 0).Count();
                 //ViewBag.ActiveJobSum = job.Where(M => M.status == 1).Count();
@@ -446,7 +477,7 @@ namespace CabsAdmin.Controllers
                 //ViewBag.CancelJobSum = job.Where(M => M.status == 3).Count();
 
 
-                return View();
+
             }
             return RedirectToAction("login");
 
