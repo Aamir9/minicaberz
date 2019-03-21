@@ -25,11 +25,20 @@ namespace thechauffeurteam.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Insert(jobVM model, string date, string time, string date2, string time2,string mainDirection)
+        public ActionResult Insert(jobVM model, string postcode, string date, string time, string date2, string time2,string mainDirection)
         {
             if (ModelState.IsValid)
             {
-                //Insert into Employee table 
+
+                string value = postcode + " av";
+                int key = value.IndexOf(' ');
+                string fitlerpostcode = value.Substring(0, key);
+
+                ViewBag.postcode = fitlerpostcode;
+
+
+                string filterPostcode = (string)ViewBag.postcode;
+
 
                 string PassengerName = string.Empty; 
                 string PassengerPhoneNumber=string.Empty;
@@ -44,8 +53,8 @@ namespace thechauffeurteam.Controllers
                 jb.PassengerName = PassengerName;
                 jb.PassengerPhone = PassengerPhoneNumber;
 
-                string postcode = model.postcode.ToLower();
-                jb.postcode = postcode;
+              
+                jb.postcode = filterPostcode.ToUpper();
                 jb.dateAndTime= time + "\t" + date;
                 jb.pickUp = model.pickUp;
                 jb.DropUP = model.DropUP;
@@ -62,7 +71,7 @@ namespace thechauffeurteam.Controllers
             }
 
             //Once the record is inserted , then notify all the subscribers (Clients)
-            jobBookingHub.NotifyCurrentJobInformationToAllClients();
+           // jobBookingHub.NotifyCurrentJobInformationToAllClients();
             return View(db.jobs.ToList());
         }
 

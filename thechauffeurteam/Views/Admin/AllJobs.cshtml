@@ -5,108 +5,7 @@
 }
 
 <!-- Header -->
-<div class="header bg-gradient-primary pb-8 pt-4 pt-md-6">
-    <div class="container-fluid">
-        <div class="header-body">
-            <!-- Card stats -->
-            <div class="row">
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/index">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Upcoming</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.NewJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                            <i class="fas fa-percent"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>*@
-                                    <span class="text-nowrap text-">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/ActiveJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Active</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.ActiveJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-pie"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/completedJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Completed </h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.FinishJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                            <i class="fas fa-users"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/CanceledJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Cancelled</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.CancelJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-bar"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+ 
 
 
 
@@ -117,11 +16,11 @@
         <div class="col">
             <div class="card shadow">
                 <div class="card-header border-0">
-                    <h3 class="mb-0">Jobs</h3>
+                    <h3 class="mb-0">All Jobs</h3>
                 </div>
                 <div class="table-responsive" style="min-height:400px;max-height:700px">
-                    <table class="table align-items-center table-flush" style="height:1000px">
-                        <thead class="thead-dark">
+                    <table class="table align-items-center table-flush" >
+                        <thead class="" style="background:#1853a1;">
                             <tr class="text-light">
                                 <th scope="col" class="text-light">Status</th>
                                 <th scope="col" class="text-light px-0 mx-0 text-center">Time</th>
@@ -131,10 +30,14 @@
                                 <th scope="col" class="text-light px-0 text-center">Price</th>
                                 <th scope="col" class="text-light px-0 text-center">Phone#</th>
                                 <th scope="col" class="text-light px-0 text-center">Name</th>
-                                <th scope="col" class="text-light px-0 text-center">Driver</th>
+                                <th scope="col" class="text-light px-0 text-center">CabOffice</th>
 
-                                @*<th></th>*@
                             </tr>
+                            </thead>
+
+                        <tbody>
+
+
 
                             @foreach (var value in Model)
                             {
@@ -191,11 +94,11 @@
                                     <td scope="col" class="py-1 my-0">£&nbsp; @value.Price</td>
                                     <td scope="col" class="py-1 my-0">@value.PassengerPhone</td>
                                     <td scope="col" class="py-1 my-0">@value.PassengerName</td>
-                                    <td scope="col" class="py-1 my-0">@value.DriverId</td>
-                                    
+                                    <td scope="col" class="py-1 my-0">@value.DriverName</td>
+
                                 </tr>
                             }
-                        </thead>
+                        </tbody>
                     </table>
                 </div>
 

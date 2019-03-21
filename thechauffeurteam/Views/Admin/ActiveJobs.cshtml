@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <!-- Header -->
-<div class="header bg-gradient-primary pb-8 pt-4 pt-md-6">
+<div class="header  pb-8 pt-4 pt-md-6"  style="background:#1853a1;">
     <div class="container-fluid">
         <div class="header-body">
             <!-- Card stats -->
@@ -116,97 +116,60 @@
         <div class="col">
             <div class="card shadow">
                 <div class="card-header border-0">
-                    <h3 class="mb-0">Jobs</h3>
+                    <h3 class="mb-0">Active Jobs</h3>
                 </div>
                 <div class="table-responsive" style="min-height:400px;max-height:700px">
-                        <table class="table align-items-center table-flush" style="height:1000px">
-                            <thead class="thead-dark">
-                                <tr class="text-light px-1">
-                                    @*<th scope="col" class="text-light px-1 ml-0 px-0 text-center">Status</th>*@
-                                    <th scope="col" class="text-light px-0 mx-0 text-center">Time</th>
-                                    <th scope="col" class="text-light px-0 text-center">Pick Up</th>
-                                    <th scope="col" class="text-light px-0 text-center">Drop Off</th>
-                                    <th scope="col" class="text-light px-0 text-center">Miles</th>
-                                    <th scope="col" class="text-light px-0 text-center">Price</th>
-                                    <th scope="col" class="text-light px-0 text-center">Phone#</th>
-                                    <th scope="col" class="text-light px-0 text-center">Name</th>
-                                    <th scope="col" class="text-light px-0 text-center">Driver</th>
+                    <table class="table align-items-center table-flush" >
+                        <thead class="" style="background:#1853a1; ">
+                            <tr class="text-light px-1">
+                                @*<th scope="col" class="text-light px-1 ml-0 px-0 text-center">Status</th>*@
+                                <th scope="col" class="text-light px-0 mx-0 text-center">Time</th>
+                                <th scope="col" class="text-light px-0 text-center">Pick Up</th>
+                                <th scope="col" class="text-light px-0 text-center">Drop Off</th>
+                                <th scope="col" class="text-light px-0 text-center">Miles</th>
+                                <th scope="col" class="text-light px-0 text-center">Price</th>
+                                <th scope="col" class="text-light px-0 text-center">Phone#</th>
+                                <th scope="col" class="text-light px-0 text-center">Name</th>
+                                <th scope="col" class="text-light px-0 text-center">Cab Office</th>
 
-                                    <th class=" px-0"></th>
-                                </tr>
+                                <th class=" px-0"></th>
+                            </tr>
+                        </thead>
 
-                                @foreach (var value in Model)
-                                {
+                        <tbody class="">
+
+                            @foreach (var value in Model)
+                            {
 
 
-                                    <tr class=" px-1" style="">
+                                <tr class=" px-1" style="">
 
-                                        @*@switch (value.status)
-                                        {
 
-                                            case 1:
 
-                                                {
-                                                    <td class="py-0 my-0 px-1 mr-0" style="max-width:50px;">
-                                                        <span class="badge badge-dot">
-                                                            <i class="bg-warning"></i><text class="text-warning">Active</text>
-                                                        </span>
-                                                    </td>
-                                                    break;
+                                    <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">@value.dateAndTime</td>
+                                    <td scope="col" class="py-1 my-0 ml-0 px-0 " style="overflow:hidden;max-width:200px">@value.pickUp</td>
+                                    <td scope="col" class="py-1 my-0 pr-0 ml-1" style="overflow:hidden;max-width:200px">@value.DropUP</td>
+                                    <td scope="col" class="py-1 my-0 px-0 text-center">@value.Mile</td>
+                                    <td scope="col" class="py-1 my-0 px-0 text-center">£&nbsp; @value.Price</td>
+                                    <td scope="col" class="py-1 my-0 px-0 text-center">@value.PassengerPhone</td>
+                                    <td scope="col" class="py-1 my-0 px-0 text-center">@value.PassengerName</td>
+                                    <td scope="col" class="py-1 my-0 px-0 text-center">@value.DriverName</td>
+                                    <td class="text-right py-1 my-0 px-0">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                @{
+                                                    var id = @value.id;
                                                 }
-                                            case 2:
-                                                {
-                                                    <td class="py-0 my-0  px-1" style="max-width:50px">
-                                                        <span class="badge badge-dot mr-4">
-                                                            <i class="bg-success"></i> <text class="text-success">Finished</text>
-                                                        </span>
-                                                    </td>
-                                                    break;
-                                                }
-                                            case 3:
-                                                {
-                                                    <td class="py-0 my-0 px-1" style="max-width:50px">
-                                                        <span class="badge badge-dot mr-4">
-                                                            <i class="bg-danger"></i> <text class="text-danger">Canceled</text>
-                                                        </span>
-                                                    </td>
-                                                    break;
-                                                }
-                                            default:
-                                                {
-                                                    <td class="py-1 my-0 px-2" style="max-width:50px">
-                                                        <span class="badge badge-dot mr-4">
-                                                            <i class="bg-info"></i><text class="text-info">New</text>
-                                                        </span>
-                                                    </td>
-                                                    break;
-                                                }
-                                        }*@
-
-                                        <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">@value.dateAndTime</td>
-                                        <td scope="col" class="py-1 my-0 ml-0 px-0 " style="overflow:hidden;max-width:200px">@value.pickUp</td>
-                                        <td scope="col" class="py-1 my-0 pr-0 ml-1" style="overflow:hidden;max-width:200px">@value.DropUP</td>
-                                        <td scope="col" class="py-1 my-0 px-0 text-center">@value.Mile</td>
-                                        <td scope="col" class="py-1 my-0 px-0 text-center">£&nbsp; @value.Price</td>
-                                        <td scope="col" class="py-1 my-0 px-0 text-center">@value.PassengerPhone</td>
-                                        <td scope="col" class="py-1 my-0 px-0 text-center">@value.PassengerName</td>
-                                        <td scope="col" class="py-1 my-0 px-0 text-center">@value.DriverId</td>
-                                        <td class="text-right py-1 my-0 px-0">
-                                            <div class="dropdown">
-                                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                    @{
-                                                        var id = @value.id;
-                                                    }
-                                                    <a class="dropdown-item" href="" onclick="jobInfo(@id)" data-toggle="modal" data-target="#jobModal">Info</a>
-                                                    <a class="dropdown-item" href="" onclick="setfinshJobId(@id)" data-toggle="modal" data-target="#finishConfr">Finish</a>
-                                                </div>
+                                                <a class="dropdown-item" href="" onclick="jobInfo(@id)" data-toggle="modal" data-target="#jobModal">Info</a>
+                                                <a class="dropdown-item" href="" onclick="setfinshJobId(@id)" data-toggle="modal" data-target="#finishConfr">Finish</a>
                                             </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </thead>
-                        </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
 
             </div>

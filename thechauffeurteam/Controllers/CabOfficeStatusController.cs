@@ -1,0 +1,164 @@
+﻿
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using thechauffeurteam.DAL;
+using thechauffeurteam.Models;
+
+namespace thechauffeurteam.Controllers
+{
+    public class CabOfficeStatusController : Controller
+    {
+        MyContext db = new MyContext();
+
+        // i ma consider deriver as a cab office
+        // GET: CabOfficeStatus
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult AcceptedJobs()
+        {
+            if (Session["cabOfficeuser"] != null)
+            {
+                
+               int cId = (int)Session["cabOfficeId"];
+               string cabId = Session["cabOfficeId"].ToString();
+               var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
+               var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == cId).Select(a => a.postCode).ToList();
+               var j = db.jobs.ToList();
+               ViewBag.NewJobSum = jb.Intersect(cabpostMatch).Count();
+              
+               ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
+               ViewBag.FinishJobSum = j.Where(M => M.status == 2 && M.DriverId == cabId).Count();
+               ViewBag.CancelJobSum = j.Where(M => M.status == 3 && M.DriverId == cabId).Count();
+
+
+                return View(db.jobs.Where(m => m.status == 1 && m.DriverId == cabId).ToList());
+            }
+
+            return RedirectToAction("login");
+        }
+
+        public ActionResult ActiveJobs(int id)
+        {
+            if (Session["cabOfficeuser"] != null)
+            {
+                //ViewData["txt"] = "Jobs";
+                //ViewBag.txt = "Jobs";
+
+
+                string cabId =Session["cabOfficeId"].ToString();
+                 
+                int cId= (int)Session["cabOfficeId"];
+
+                var cabName = db.CabOffices.Where(i => i.Id == cId).Select(n => n.CabOfficeName).SingleOrDefault();
+
+                var getjobdetails = db.jobs.Find(id);
+                getjobdetails.status = 1;
+                getjobdetails.DriverId = cabId;
+                getjobdetails.DriverName = cabName;
+                db.Entry(getjobdetails).State = EntityState.Modified;
+                db.SaveChanges();
+                
+
+                // ViewBag.path = "/admin/ActiveJobs";
+                var j = db.jobs.ToList();
+                
+                //ViewBag.allJobSum = j.Count();
+                ViewBag.NewJobSum = j.Where(M => M.status == 0 && M.DriverId == cabId).Count();
+                ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
+                ViewBag.FinishJobSum = j.Where(M => M.status == 2 && M.DriverId == cabId).Count();
+                ViewBag.CancelJobSum = j.Where(M => M.status == 3 && M.DriverId == cabId).Count();
+
+                return View(db.jobs.Where(m => m.status == 1 && m.DriverId==cabId).ToList()); 
+            }
+            return RedirectToAction("login","Home");
+
+
+        }
+
+
+        public ActionResult Completed(int id)
+        {
+            if (Session["cabOfficeuser"] != null)
+            {
+                //ViewData["txt"] = "Jobs";
+                //ViewBag.txt = "Jobs";
+
+
+                string cabId = Session["cabOfficeId"].ToString();
+
+                int cId = (int)Session["cabOfficeId"];
+
+                var cabName = db.CabOffices.Where(i => i.Id == cId).Select(n => n.CabOfficeName).SingleOrDefault();
+
+                var getjobdetails = db.jobs.Find(id);
+                getjobdetails.status = 2;
+                getjobdetails.DriverId = cabId;
+                getjobdetails.DriverName = cabName;
+                db.Entry(getjobdetails).State = EntityState.Modified;
+                db.SaveChanges();
+
+
+                // ViewBag.path = "/admin/ActiveJobs";
+                var j = db.jobs.ToList();
+
+                //ViewBag.allJobSum = j.Count();
+                ViewBag.NewJobSum = j.Where(M => M.status == 0 && M.DriverId == cabId).Count();
+                ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
+                ViewBag.FinishJobSum = j.Where(M => M.status == 2 && M.DriverId == cabId).Count();
+                ViewBag.CancelJobSum = j.Where(M => M.status == 3 && M.DriverId == cabId).Count();
+
+                return View(db.jobs.Where(m => m.status == 2 && m.DriverId == cabId).ToList());
+            }
+            return RedirectToAction("login");
+        }
+
+
+        public ActionResult completedJobs()
+        {
+            if (Session["cabOfficeuser"] != null)
+            {
+
+                int cId = (int)Session["cabOfficeId"];
+                string cabId = Session["cabOfficeId"].ToString();
+                var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
+                var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == cId).Select(a => a.postCode).ToList();
+                var j = db.jobs.ToList();
+                ViewBag.NewJobSum = jb.Intersect(cabpostMatch).Count();
+
+                ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
+                ViewBag.FinishJobSum = j.Where(M => M.status == 2 && M.DriverId == cabId).Count();
+                ViewBag.CancelJobSum = j.Where(M => M.status == 3 && M.DriverId == cabId).Count();
+
+
+                return View(db.jobs.Where(m => m.status == 2 && m.DriverId == cabId).ToList());
+            }
+
+            return RedirectToAction("login");
+        }
+
+
+
+
+
+        public JsonResult JobInfo(int id)
+        {
+            
+            var job = db.jobs.Where(m => m.id == id).SingleOrDefault();
+            var passenger = db.Passengers.Where(m => m.Id == job.PassengerId).SingleOrDefault();
+            var drv = db.CabOffices.Where(m => m.Status == "Approved").ToList();
+
+           
+            var date = job.dateAndTime.Substring(11);
+            var time = job.dateAndTime.Substring(0, 10);
+
+            return Json(new { jb = job, pass = passenger, drivers = drv, dt = "" + date, tm = "" + time });
+
+          
+        }
+    }
+}

@@ -131,39 +131,30 @@ namespace thechauffeurteam.Controllers
         [HttpPost]
         public JsonResult JobInfo(int id)
         {
-            if (Session["adminLog"] != null)
-            {
+            
             var job = db.jobs.Where(m => m.id == id).SingleOrDefault();
             var passenger = db.Passengers.Where(m => m.Id == job.PassengerId).SingleOrDefault();
-            var drv = db.Drivers.Where(m => m.Status == "Approved").ToList();
-            //if (job.dateAndTime.Length == 20)
-            //{
-            //    var dt = job.dateAndTime.Substring(11);
-            //    var tm = job.dateAndTime.Substring(0, 1);
-            //}
-            //else
-            //{
+            var drv = db.CabOffices.Where(m => m.Status == "Approved").ToList();
 
-            //}
+           
             var date = job.dateAndTime.Substring(11);
             var time = job.dateAndTime.Substring(0, 10);
 
             return Json(new { jb = job, pass = passenger, drivers = drv, dt = "" + date, tm = "" + time });
 
-           }
-            return Json("NotLoged");
+          
         }
         [HttpPost]
         public JsonResult SaveJob(int Id, string PhoneNo, string PName,
                                     string Time, string DriverMessage, int Distance, string price)
         {
 
-            var jb = db.jobs.Where(m => m.id == Id).SingleOrDefault();
+            var jb = db.jobs.Find(Id);
             jb.Mile = Distance;
             jb.Price = price;
             jb.dateAndTime = Time;
             jb.DriverMessage = DriverMessage;
-            jb.PassengerName = PhoneNo;
+            jb.PassengerPhone = PhoneNo;
             jb.PassengerName = PName;
 
             db.Entry(jb).State = EntityState.Modified;
@@ -177,11 +168,9 @@ namespace thechauffeurteam.Controllers
         public JsonResult AllocateJob(int Id, int DriverId, string PhoneNo, string PName,
                                     string Time, string DriverMessage, int Distance, string price)
         {
-            //var id = jobDtl[1];
-            //jobDtl.GetLength;
-            var jb = db.jobs.Where(m => m.id == Id).SingleOrDefault();
-            //jb.pickUp = pickUp;
-            //jb.DropUP = dropOff;
+            
+            var jb = db.jobs.Find(Id);
+            
             jb.Mile = Distance;
             jb.Price = price;
             jb.dateAndTime = Time;
@@ -190,88 +179,83 @@ namespace thechauffeurteam.Controllers
 
             var passengerEmail = db.Passengers.Where(a => a.Id == jb.PassengerId).Select(a => a.UserEmail).SingleOrDefault();
 
-            var drv = db.Drivers.Where(m => m.Id == DriverId).SingleOrDefault();
+            var cab = db.CabOffices.Where(m => m.Id == DriverId).SingleOrDefault();
 
             var drvdetails = db.Vehicles.Where(m => m.Id == DriverId).SingleOrDefault();
-
-            //if (drv.DriverId == null)
-            //{
-            //jb.DriverName = drv.DriverName;
-            //}
-            //else
-            //{
-            jb.DriverId = drv.DriverId;
-            //}
+            
+            jb.DriverName = cab.CabOfficeName;
+            jb.DriverId = cab.Id.ToString();
+           
             jb.status = 1;
-            drv.Status = "Busy";
+           
 
             db.Entry(jb).State = EntityState.Modified;
-            db.Entry(drv).State = EntityState.Modified;
+           
 
             int result = db.SaveChanges();
 
             // send email to driver
 
 
-            string Emailbodyd = string.Empty;
-            using (StreamReader readerd = new StreamReader(Server.MapPath("~/DriverEmail.html")))
-            {
-                Emailbodyd = readerd.ReadToEnd();
-            }
-            Emailbodyd = Emailbodyd.Replace("{TimeAndDate}", jb.dateAndTime);
-            Emailbodyd = Emailbodyd.Replace("{from}", jb.pickUp);
-            Emailbodyd = Emailbodyd.Replace("{to}", jb.DropUP);
-            Emailbodyd = Emailbodyd.Replace("{Miles}", jb.Mile.ToString());
-            Emailbodyd = Emailbodyd.Replace("{price}", jb.Price.ToString());
-            Emailbodyd = Emailbodyd.Replace("{phone}", jb.PassengerPhone);
-            Emailbodyd = Emailbodyd.Replace("{name}", jb.PassengerName);
-            Emailbodyd = Emailbodyd.Replace("{Drivername}", drv.DriverName);
+            //string Emailbodyd = string.Empty;
+            //using (StreamReader readerd = new StreamReader(Server.MapPath("~/DriverEmail.html")))
+            //{
+            //    Emailbodyd = readerd.ReadToEnd();
+            //}
+            //Emailbodyd = Emailbodyd.Replace("{TimeAndDate}", jb.dateAndTime);
+            //Emailbodyd = Emailbodyd.Replace("{from}", jb.pickUp);
+            //Emailbodyd = Emailbodyd.Replace("{to}", jb.DropUP);
+            //Emailbodyd = Emailbodyd.Replace("{Miles}", jb.Mile.ToString());
+            //Emailbodyd = Emailbodyd.Replace("{price}", jb.Price.ToString());
+            //Emailbodyd = Emailbodyd.Replace("{phone}", jb.PassengerPhone);
+            //Emailbodyd = Emailbodyd.Replace("{name}", jb.PassengerName);
+            //Emailbodyd = Emailbodyd.Replace("{Drivername}", cab.CabOfficeName);
 
             //Emailbody = Emailbody.Replace("{img}", Convert.ToBase64String(logoImg));
 
 
-            MailMessage msgd = new MailMessage();
-            msgd.From = new MailAddress("info@heathrowairportminicablondon.com");
-            msgd.To.Add(drv.DriverEmail);
-            msgd.Subject = "The New job allocated by The Heathrow airport cars";
-            msgd.Body = Emailbodyd;
-            msgd.IsBodyHtml = true;
-            SmtpClient smtpd = new SmtpClient("smtpout.europe.secureserver.net", 80);
-            smtpd.Credentials = new NetworkCredential("info@heathrowairportminicablondon.com", "Asdfjkl12345");
-            smtpd.EnableSsl = false;
-            smtpd.Send(msgd);
-            smtpd.Dispose();
+            //MailMessage msgd = new MailMessage();
+            //msgd.From = new MailAddress("info@heathrowairportminicablondon.com");
+            //msgd.To.Add(cab.CabOfficeEmail);
+            //msgd.Subject = "The New job allocated by The Heathrow airport cars";
+            //msgd.Body = Emailbodyd;
+            //msgd.IsBodyHtml = true;
+            //SmtpClient smtpd = new SmtpClient("smtpout.europe.secureserver.net", 80);
+            //smtpd.Credentials = new NetworkCredential("info@heathrowairportminicablondon.com", "Asdfjkl12345");
+            //smtpd.EnableSsl = false;
+            //smtpd.Send(msgd);
+            //smtpd.Dispose();
 
 
             // send email to passenger
-            string Emailbodyp = string.Empty;
-            using (StreamReader readerp = new StreamReader(Server.MapPath("~/PassengerAllocatedJob.html")))
-            {
-                Emailbodyp = readerp.ReadToEnd();
-            }
-            Emailbodyp = Emailbodyp.Replace("{cartype}", jb.CarType);
-            Emailbodyp = Emailbodyp.Replace("{make}", drvdetails.Make);
-            Emailbodyp = Emailbodyp.Replace("{color}", drvdetails.Color);
-            Emailbodyp = Emailbodyp.Replace("{Registration}", drvdetails.Registration);
-            Emailbodyp = Emailbodyp.Replace("{Driverphone}", drv.phNo);
-            Emailbodyp = Emailbodyp.Replace("{Drivername}", drv.DriverName);
+            //string Emailbodyp = string.Empty;
+            //using (StreamReader readerp = new StreamReader(Server.MapPath("~/PassengerAllocatedJob.html")))
+            //{
+            //    Emailbodyp = readerp.ReadToEnd();
+            //}
+            //Emailbodyp = Emailbodyp.Replace("{cartype}", jb.CarType);
+            //Emailbodyp = Emailbodyp.Replace("{make}", drvdetails.Make);
+            //Emailbodyp = Emailbodyp.Replace("{color}", drvdetails.Color);
+            //Emailbodyp = Emailbodyp.Replace("{Registration}", drvdetails.Registration);
+            //Emailbodyp = Emailbodyp.Replace("{Driverphone}", cab.CabOfficePhoneNo);
+            //Emailbodyp = Emailbodyp.Replace("{Drivername}", cab.CabOfficeName);
 
-            Emailbodyp = Emailbodyp.Replace("{PassengerName}", jb.PassengerName);
+            //Emailbodyp = Emailbodyp.Replace("{PassengerName}", jb.PassengerName);
 
-            //Emailbody = Emailbody.Replace("{img}", Convert.ToBase64String(logoImg));
+            ////Emailbody = Emailbody.Replace("{img}", Convert.ToBase64String(logoImg));
 
 
-            MailMessage msgp = new MailMessage();
-            msgp.From = new MailAddress("info@heathrowairportminicablondon.com");
-            msgp.To.Add(passengerEmail);
-            msgp.Subject = "Your job allocated to driver of the Heathrow airpirt cars";
-            msgp.Body = Emailbodyp;
-            msgp.IsBodyHtml = true;
-            SmtpClient smtpp = new SmtpClient("smtpout.europe.secureserver.net", 80);
-            smtpp.Credentials = new NetworkCredential("info@thechauffeurteam.co", "Asdfjkl12345");
-            smtpp.EnableSsl = false;
-            smtpp.Send(msgp);
-            smtpp.Dispose();
+            //MailMessage msgp = new MailMessage();
+            //msgp.From = new MailAddress("info@heathrowairportminicablondon.com");
+            //msgp.To.Add(passengerEmail);
+            //msgp.Subject = "Your job allocated to driver of the Heathrow airpirt cars";
+            //msgp.Body = Emailbodyp;
+            //msgp.IsBodyHtml = true;
+            //SmtpClient smtpp = new SmtpClient("smtpout.europe.secureserver.net", 80);
+            //smtpp.Credentials = new NetworkCredential("info@thechauffeurteam.co", "Asdfjkl12345");
+            //smtpp.EnableSsl = false;
+            //smtpp.Send(msgp);
+            //smtpp.Dispose();
 
             return Json(result);
         }

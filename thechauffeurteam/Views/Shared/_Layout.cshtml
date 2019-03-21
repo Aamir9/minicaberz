@@ -12,7 +12,7 @@
     <link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
 
 
-    <link href="~/wow/animate.css" rel="stylesheet" />
+    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -22,8 +22,7 @@
     <link href="~/css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />
     <link rel="stylesheet" href="~/css/jquery-ui.css" />
 
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css" media="all">
-    <link rel="stylesheet" href="~/css/owl.theme.default.min.css" type="text/css" media="all">
+
     <link href="~/Content/select2.min.css" rel="stylesheet" />
 
 
@@ -151,41 +150,41 @@
                             <a class="nav-link" href="#">Help </a>
                         </li>
                         @*<li class="nav-item nml tab">
-                                <a class="nav-link" href="@Url.Action(" Contact","Home")">Contact</a>
-                            </li>*@
+            <a class="nav-link" href="@Url.Action(" Contact","Home")">Contact</a>
+        </li>*@
 
                         @*@if (Session["user"] == null && Session["Dirveruser"] == null)
-                            {
-                                <li class="nav-item dropdown nml">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" >
-                                        Register
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        {
+            <li class="nav-item dropdown nml">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" >
+                    Register
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                        <a class="dropdown-item" href="@Url.Action("Registration", "Passengers")">Register as a Passsenger</a>
-                                        <a class="dropdown-item" href="@Url.Action("CabOfficeReg", "CabOffice")">Register as a Partner</a>
-                                        <a class="dropdown-item" href="@Url.Action("Register", "Drivers")">Register as a Driver </a>
+                    <a class="dropdown-item" href="@Url.Action("Registration", "Passengers")">Register as a Passsenger</a>
+                    <a class="dropdown-item" href="@Url.Action("CabOfficeReg", "CabOffice")">Register as a Partner</a>
+                    <a class="dropdown-item" href="@Url.Action("Register", "Drivers")">Register as a Driver </a>
 
-                                    </div>
+                </div>
 
-                                </li>
-                            }
-                            else if (Session["user"] != null)
-                            {
+            </li>
+        }
+        else if (Session["user"] != null)
+        {
 
 
-                                <li class="nav-item nml tab">
-                                    <a class="nav-link" href="#"> @Session["userName"]</a>
-                                </li>
-                            }
+            <li class="nav-item nml tab">
+                <a class="nav-link" href="#"> @Session["userName"]</a>
+            </li>
+        }
 
-                            else
-                            {
+        else
+        {
 
-                                <li class="nav-item nml tab">
-                                    <a class="nav-link" href="#"> @Session["Dirveruser"]</a>
-                                </li>
-                            }
+            <li class="nav-item nml tab">
+                <a class="nav-link" href="#"> @Session["Dirveruser"]</a>
+            </li>
+        }
 
                         *@
 
@@ -196,19 +195,14 @@
                                 <a class="" style="color:#fff;" href="@Url.Action("Login","Drivers")">Login</a>
                             </li>
                         }
-                        else if (Session["user"] != null)
+                        else
                         {
-                            <li class="nav-item nml tab">
-                                <a class="nav-link" href="@Url.Action("LogOut","Passengers")">Log Out</a>
+                            <li class="nmlRight btn btn-sm tab">
+                                <a class="" style="color:#fff;" href="@Url.Action("LogOut","Passengers")">Log Out</a>
                             </li>
                         }
 
-                        else
-                        {
-                            <li class="nav-item nml tab">
-                                <a class="nav-link" href="@Url.Action("LogOut","Drivers")">Log Out</a>
-                            </li>
-                        }
+                       
                     </ul>
                     @*<div class="ml-auto faH " style="color:#0026ff">
 
@@ -320,19 +314,7 @@
     </div> <!-- //main body div-->
     @*<script src="~/Scripts/alertify.min.js"></script>*@
 
-    <script src="~/wow/wow.min.js"></script>
-    <script>
-        wow = new WOW(
-            {
-                boxClass: 'wow',      // default
-                animateClass: 'animated', // default
-                offset: 0,          // default
-                mobile: true,       // default
-                live: true        // default
-            }
-        )
-        new WOW().init();
-    </script>
+   
 
 
     <script type="application/x-javascript">
@@ -348,8 +330,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 
-    <script src="~/Scripts/jquery.signalR-2.4.0.min.js"></script>
-    <script src="~/signalr/hubs"></script>
+    @*<script src="~/Scripts/jquery.signalR-2.4.0.m in.js"></script>
+    <script src="~/signalr/hubs"></script>*@
 
     <script src="~/Scripts/select2.min.js"></script>
 

@@ -2,116 +2,14 @@
 @{
     ViewBag.Title = "Cab Office DashBord";
     Layout = "~/Views/Shared/_CabOfficeLayout.cshtml";
+
+    
 }
 
-<style>
-    #dataTable td {
-        border-bottom: 1px solid #1853a1;
-    }
-</style>
-<!-- Header -->
-<div class="header  pb-8 pt-4 pt-md-6" style="background:#1853a1;">
-    <div class="container-fluid">
-        <div class="header-body">
-            <!-- Card stats -->
-            <div class="row">
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/index">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">upcoming</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.NewJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                            <i class="fas fa-percent"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>*@
-                                    <span class="text-nowrap text-info">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/ActiveJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Active</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.ActiveJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-pie"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/completedJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Completed</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.FinishJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                            <i class="fas fa-users"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/CanceledJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Cancelled</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.CancelJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-bar"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Header -->
+
+@Html.Partial("~/Views/CabOffice/_header.cshtml")
 
 
 
@@ -122,12 +20,12 @@
         <div class="col-12">
             <div class="card shadow">
                 <div class="card-header border-0">
-                    <h3 class="mb-0">Jobs</h3>
+                    <h3 class="mb-0">Upcomin Jobs</h3>
                 </div>
-                <div class="col-12 table-responsive" style="max-height:500px; overflow:scroll;">
-                    <table class="disabled" id="dataTable" >
-                        <thead class="text-white   text-capitalize " style="background:#1853a1; font-size:14px !important;font-weight:normal;">
-                            <tr class="text-left">
+                <div class="table-responsive" style="min-height:400px;max-height:700px; overflow:scroll;">
+                    <table class="table align-items-center table-flush">
+                        <thead class="" style="background:#1853a1;">
+                            <tr class="text-light px-1">
                                 @*<th scope="col" class="text-light px-1 ml-0 px-0 text-center">Status</th>*@
                                 <th scope="col" class="text-light px-0 mx-0 text-center">Time</th>
                                 <th scope="col" class="text-light px-0 text-center">Pick Up</th>
@@ -144,58 +42,62 @@
                         </thead>
 
                         <tbody class="bg-white" style="font-size:14px;">
-                         @foreach (var matchjobs in ViewBag.matchedjob)
-                         {
-                             string matchjb = (string)matchjobs;
-                            @*<tr>
-                                <td>@matchjobs</td>
-                                
-                            </tr>*@
+                            @foreach (var matchjobs in ViewBag.matchedjob)
+                            {
+                                string matchjb = (string)matchjobs;
+                                @*<tr>
+                                        <td>@matchjobs</td>
+
+                                    </tr>*@
 
 
 
-                             foreach (var item in Model)
-                             {
-                                 if (matchjb == item.postcode) {
-                                       <tr scope="row">
+                                foreach (var item in Model)
+                                {
+                                    if (matchjb == item.postcode)
+                                    {
+                                     
+                                        <tr class=" px-1">
 
-                                            <td>
+                                            <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">
                                                 @Html.DisplayFor(modelItem => item.dateAndTime)
                                             </td>
-                                            <td>
+                                            <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">
                                                 @Html.DisplayFor(modelItem => item.pickUp)
                                             </td>
-                                            <td>
+                                            <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">
                                                 @Html.DisplayFor(modelItem => item.DropUP)
                                             </td>
-                                            <td>
+                                            <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">
 
                                                 @Html.DisplayFor(modelItem => item.Mile)
                                             </td>
-                                            <td>
+                                            <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">
                                                 @Html.DisplayFor(modelItem => item.Price)
                                             </td>
 
-                                            <td>
+                                            <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">
                                                 @Html.DisplayFor(modelItem => item.PassengerPhone)
                                             </td>
 
-                                            <td>
+                                            <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">
                                                 @Html.DisplayFor(modelItem => item.PassengerName)
                                             </td>
-                                            <td>
+                                            <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">
                                                 @*@Html.ActionLink("Detail", "CabOfficeDetail", "CabOffice", new {  }, new { @class = "btn btn-outline-info btn-sm" })*@
 
-                                                <button class="btn btn-sm " style="background:#ff0000; color:#fff;"> Accept</button>
+                                               
+
+                                               <a href="~/CabOfficeStatus/ActiveJobs/@item.id"  class="btn btn-sm" id="cabid" style="background:#ff0000;color:#fff; text-decoration:none;"> Accept</a>
 
                                             </td>
 
                                         </tr>
 
-                                 }
-                             }
+                                                            }
+                                                        }
 
-                         }
+                                                    }
 
                         </tbody>
                     </table>
@@ -207,27 +109,18 @@
 
 
 
-  
+
 
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="row align-items-center justify-content-xl-between">
-            <div class="col-xl-12">
-                <div class="copyright text-center text-xl-left text-muted">
-                    &copy; 2018 itLogi Solutions
-                </div>
-            </div>
-
-        </div>
-    </footer>
+    @Html.Partial("~/Views/Shared/_CabAndAdminFooter.cshtml")
 </div>
 
 
 
 @section scripts{
-<script type="text/javascript">
+    <script type="text/javascript">
 
-      
-</script>
+
+    </script>
 }

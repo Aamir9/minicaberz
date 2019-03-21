@@ -1,25 +1,59 @@
-﻿<!-- Modal -->
+﻿
+
+
+
+
+<style>
+
+    .labl {
+        border-radius: 0px;
+        background: #1853a1;
+        width: 90px;
+        border: 2px solid #1853a1;
+    }
+
+    .txt {
+        border-radius: 0px;
+        color: #1853a1;
+        border: 1px solid #1853a1;
+    }
+
+    .bgred {
+        background-color: rgb(226, 74, 35);
+        color: #fff;
+    }
+    .btn-outline-white {
+        border: 2px solid #fff;
+    }
+  
+</style>
+
+
+<!-- Modal -->
 <div onload="onShowModal()" onshow="onShowModal()" class="modal fade" id="jobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document" style="width:1000px">
         <div class="modal-content">
-            <div class="modal-header  bg-translucent-info">
-                <h5 class="modal-title text-white">Job ID :<text id="jobId"></text> </h5>
+            <div class="modal-header  bgred">
+                <div class="w-100  text-center">
+                    <h3 class="modal-title text-white text-center text-uppercase ">Job Id# <text id="jobId"></text> </h3>
+                </div>
+              
                 <input type="hidden" id="jid" value="" />
                 <div class="col text-right">
                     @*<div class="btn-group" role="group" aria-label="Basic example">
-                        <div class="nav-item dropdown">
-                            <button class=" btn btn-sm btn-outline-white text-right" onclick="allocateJob()">Allocate</button>
-                            <button class=" btn btn-sm btn-outline-white text-right" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                <i class="fa fa-angle-down"></i>
-                            </button>
+                <div class="nav-item dropdown">
+                    <button class=" btn btn-sm btn-outline-white text-right" onclick="allocateJob()">Allocate</button>
+                    <button class=" btn btn-sm btn-outline-white text-right" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <i class="fa fa-angle-down"></i>
+                    </button>
 
-                            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                                <a class="dropdown-item nav-link" onclick="modalJobCancel()" data-toggle="modal" data-target="#cancelConfr">Cancel</a>
-                                @*<a class="dropdown-item nav-link" >Finish</a>
-                                <button class="dropdown-item b" onclick="editJob()">Edit</button>
-                            </div>
-                        </div>
-                    </div>*@
+                    <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <a class="dropdown-item nav-link" onclick="modalJobCancel()" data-toggle="modal" data-target="#cancelConfr">Cancel</a>
+                        @*<a class="dropdown-item nav-link" >Finish</a>
+                        <button class="dropdown-item b" onclick="editJob()">Edit</button>
+                    </div>
+                </div>
+            </div>*@
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -31,61 +65,61 @@
                         <div class="col-12">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text form-control form-control-sm bg-gradient-blue text-white"><b>From</b></div>
+                                    <div class="input-group-text form-control form-control-sm  text-white p-md-2 text-left labl"><b>From</b></div>
                                 </div>
-                                <input type="text" id="pickUpAddress" class="form-control form-control-sm pl-2" readonly />
+                                <input type="text" id="pickUpAddress" class="form-control form-control-sm pl-2 txt" readonly />
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text form-control form-control-sm bg-gradient-blue text-white"><b>&nbsp;&nbsp;To  &nbsp;&nbsp;</b></div>
+                                    <div class="input-group-text form-control form-control-sm text-white p-md-2 text-left labl"><b>To</b></div>
                                 </div>
-                                <input type="text" id="dropOffAddress" class="form-control form-control-sm pl-2" readonly />
+                                <input type="text" id="dropOffAddress" class="form-control form-control-sm pl-2 txt" readonly />
 
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text form-control form-control-sm bg-gradient-blue text-white"><b>&nbsp;&nbsp; Car&nbsp;</b></div>
+                                    <div class="input-group-text form-control form-control-sm p-md-2 text-left labl text-white"><b>Car</b></div>
                                 </div>
-                                <input type="text" readonly class="form-control form-control-sm pl-2" id="carType" />
+                                <input type="text" readonly class="form-control form-control-sm pl-2 txt" id="carType" />
 
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text form-control form-control-sm bg-gradient-blue text-white"><b>Miles</b></div>
+                                    <div class="input-group-text form-control form-control-sm p-md-2 text-left labl text-white"><b>Miles</b></div>
                                 </div>
-                                <input type="text" id="distance" class="form-control form-control-sm pl-2" readonly />
+                                <input type="text" id="distance" class="form-control form-control-sm pl-2 txt" readonly />
 
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text form-control form-control-sm bg-gradient-blue text-white"><b>Time</b></div>
+                                    <div class="input-group-text form-control form-control-sm  text-white p-md-2 text-left labl"><b>Time</b></div>
                                 </div>
-                                <input type="text" id="time" class="timepicker jobEditGroup form-control form-control-sm pl-2" readonly />
+                                <input type="text" id="time" class="timepicker jobEditGroup form-control form-control-sm pl-2 txt" readonly />
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text form-control form-control-sm bg-gradient-blue text-white"><b>Date</b></div>
+                                    <div class="input-group-text form-control form-control-sm text-white p-md-2 text-left labl"><b>Date</b></div>
                                 </div>
-                                <input type="text" id="date" class="jobEditGroup form-control form-control-sm pl-2" readonly />
+                                <input type="text" id="date" class="jobEditGroup form-control form-control-sm pl-2 txt" readonly />
                             </div>
                         </div>
 
                         <div class="col-lg-4">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text form-control form-control-sm bg-gradient-blue text-white"><b>Price</b></div>
+                                    <div class="input-group-text form-control form-control-sm p-md-2 text-left labl text-white"><b>Price</b></div>
                                 </div>
-                                <input type="number" id="price" class="jobEditGroup form-control form-control-sm pl-2" readonly />
+                                <input type="number" id="price" class="jobEditGroup form-control form-control-sm pl-2 txt" readonly />
 
                             </div>
                         </div>
@@ -93,44 +127,44 @@
                         <div class="col-lg-6">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text form-control form-control-sm bg-gradient-blue text-white"><b>Phone</b></div>
+                                    <div class="input-group-text form-control form-control-sm p-md-2 text-left labl text-white"><b>Phone</b></div>
                                 </div>
-                                <input type="text" id="phone" class="jobEditGroup  form-control form-control-sm pl-2" readonly />
+                                <input type="text" id="phone" class="jobEditGroup  form-control form-control-sm pl-2 txt" readonly />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                    <div class=" input-group-text form-control form-control-sm bg-gradient-blue text-white"><b>Name</b></div>
+                                    <div class=" input-group-text form-control form-control-sm  text-white p-md-2 text-left labl"><b>Name</b></div>
                                 </div>
-                                <input type="text" id="name" class="jobEditGroup form-control form-control-sm pl-2" readonly />
+                                <input type="text" id="name" class="jobEditGroup form-control form-control-sm pl-2 txt" readonly />
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                    <div class=" input-group-text form-control form-control-sm bg-gradient-blue text-white"><b>Message</b></div>
+                                    <div class=" input-group-text form-control form-control-sm p-md-2 text-left labl text-white"><b>Message</b></div>
                                 </div>
-                                <input type="text" id="driverMessage" class="jobEditGroup form-control form-control-sm pl-2" readonly />
+                                <input type="text" id="driverMessage" class="jobEditGroup form-control form-control-sm pl-2 txt" readonly />
                             </div>
                         </div>
-                        
+
                         <div class="col-lg-12">
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text form-control form-control-sm bg-gradient-blue text-white"><b>Driver&nbsp;</b></div>
+                                    <div class="input-group-text form-control form-control-sm p-md-2 text-left labl text-white"><b>Driver</b></div>
                                 </div>
-                                <input type="text" id="drvId" class="jobEditGroup  form-control form-control-sm pl-2" readonly />
+                                <input type="text" id="drvId" class="jobEditGroup  form-control form-control-sm pl-2 txt" readonly />
 
                             </div>
                         </div>
                     </div>
-                    
+
                 </form>
                 <!--//Job Form-->
 
             </div>
-           
+
         </div>
     </div>
 </div>
@@ -150,10 +184,10 @@
     <!-- Time -->
     <script type="text/javascript" src="~/js/wickedpicker.js"></script>
     <script type="text/javascript">
-    $('.timepicker').wickedpicker({
-        twentyFour: false,
+        $('.timepicker').wickedpicker({
+            twentyFour: false,
 
-    });
+        });
     </script>
     <!--// Time -->
 

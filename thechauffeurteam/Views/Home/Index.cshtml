@@ -16,6 +16,10 @@
 }
 
 
+<style>
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css" media="all" >
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css" type="text/css" media="all" >
+</style>
 
 <div id="formMain">
 
@@ -43,7 +47,7 @@
                         <input type="hidden" id="searchTextField" placeholder="enter the informtion">
                         <input type="text" name="pickUp" id="from_places" placeholder="Pick Up Address" class="form-control" />
 
-                        <input type="hidden" name="postcode" value="" id="postcode" />
+                        <input type="hidden" name="postcode" id="postcode" />
                         <p class="text-danger" id="inputError1"> </p>
                     </div>
 
@@ -510,39 +514,7 @@
                     }
                 }
             }
-            // print results on submit the form
-
-            //$('#distanceform').submit(function (e) {
-            //   e.preventDefault();
-
-
-
-        //    });
-            // submitted form
-
-
-            var way
-            $('#slectoption').on('change', function () {
-
-                way = $(this);
-
-                if (way.val() == 'return') {
-                    $('#returndiv').show();
-                    $('#datepicker2,#timepicker2').prop('required', true);
-                }
-                else {
-                    $('#returndiv').hide();
-                    $('#datepicker2,#timepicker2').prop('required', false);
-                }
-            });
-
-
-            var hour;
-            $('#hours').on('change', function () {
-
-                hour = $(this);
-
-            });
+         
 
             var cartype;
             $('#cartype').on('change', function () {
@@ -572,27 +544,8 @@
 
             });
 
-            var picUpPostCode;
-            $('#PostCodeSelect2').on('change', function () {
-
-                picUpPostCode = $(this);
-
-                var postcodetext1 = $('#PostCodeSelect2 :selected').text();
-
-                $('#postcode_1').val(postcodetext1);
-            });
-
-            var dropOffPostCode;
-            $('#PostCode2Select2').on('change', function () {
-
-                dropOffPostCode = $(this);
-                var postcodetext2 = $('#PostCode2Select2 :selected').text();
-
-                $('#postcode_2').val(postcodetext2);
-
-            });
-
-
+           
+           
 
             $('#GetQuote').click(function (e) {
 
@@ -600,7 +553,7 @@
 
 
                     $('#jobType').val('Distance');
-                    $("#hourError").html('');
+                    
                     console.log("getting price by distance");
                     if ($('#from_places').val() == '') {
                         $('#inputError1').html('Please enter your pick up address');
@@ -715,36 +668,6 @@
 
 
 
-    <script type="text/javascript">
-
-        $('.dhf,#refreshForm').on('click', function () {
-            $('#formMain').find("input,select").not("input[type=button],#datepicker,.timepicker,#BookNow,#LoginPopShow").val('');
-
-            $('#in_mile,#duration_text,#Prices').html('');
-            $('#Price').css('display', 'none');
-            $('#GetQuote').show();
-            $('#BookNow').hide();
-            $('#DriverMsg').hide();
-            $('#from_places,#to_places,#cartype,#hours,#PostCodeSelect2,#PostCode2Select2').attr('disabled', false);
-            $('#BookNow').hide();
-            $("#LoginPopShow").hide();
-
-            $("#PostCodeSelect2").select2({
-                placeholder: "Select a Pick Up Postcode",
-                allowClear: true
-
-            });
-            $("#PostCode2Select2 ").select2({
-                placeholder: "Select Drop Off Postcode",
-                allowClear: true
-
-            });
-
-
-
-        });
-
-    </script>
 
     <!-- carousel -->
     <script src="~/js/owl.carousel.js"></script>
@@ -778,43 +701,7 @@
         })
     </script>
     <!-- Calendar -->
-    <script src="~/js/jquery-ui.js"></script>
-
-    <!-- Time -->
-    <script type="text/javascript" src="~/js/wickedpicker.js"></script>
-    <script type="text/javascript">
-
-        $('.timepicker,.timepicker2').wickedpicker({
-            twentyFour: false,
-
-        });
-        var timepicker = $('.timepicker').wickedpicker();
-
-        var getCurrentTime = timepicker.wickedpicker('time');
-        $('.timepicker').val(getCurrentTime);
-
-    </script>
-    <!--// Time -->
-    <script>
-        $(function () {
-            $("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker({ dateFormat: 'dd/mm/yy' });
-
-            $("#datepicker").datepicker().datepicker("setDate", new Date());
-
-            $('.ui-datepicker').hide();
-
-        });
-
-    </script>
-
-    <script>
-        $(function () {
-            $("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker();
-
-        });
-    </script>
-    <!-- //Calendar -->
-    <!-- //carousel -->
+   
     <!--slider-->
 
     <script src="~/js/responsiveslides.min.js"></script>
@@ -857,70 +744,9 @@
         });
     </script>
 
-    @*booking form fields show and hide*@
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#mainDirection').hide();
+  
 
-            $('#PostCode2Select2 ,#PostCodeSelect2').select2({
-
-
-            });
-
-
-            $("#myBtn").click(function () {
-                $("#myModal").modal();
-            });
-
-            $('.hourly').click(function () {
-                $('#HourMain').show();
-                $('#mainDirection').hide();
-                $('#flateRates').hide();
-                $('.pick').show();
-                $('.Drop').hide();
-                //$('#slectoption').val('oneWay');
-                $('#slectoption').val('oneWay');
-
-                $('#returndiv').hide();
-            });
-            $('.distance').click(function () {
-
-                $('#HourMain').hide();
-                $('#mainDirection').show();
-                $('#flateRates').hide();
-                $('.pick').show();
-                $('.Drop').show();
-            });
-
-            $('.flateRate').click(function () {
-                $('#HourMain').hide();
-                $('#mainDirection').show();
-                $('#flateRates').show();
-                $('.pick').hide();
-                $('.Drop').hide();
-            })
-
-        });
-    </script>
-
-    <script>
-
-        //// Add active class to the current button (highlight it)
-        //var header = document.getElementById("formHead");
-        //var btns = header.getElementsByClassName("dhf");
-        //for (var i = 0; i < btns.length; i++) {s
-        //    btns[i].addEventListener("click", function () {
-
-        //        var current = document.getElementsByClassName("active");
-
-        //        current[0].className = current[0].className.replace(" active", "");
-        //        this.className += " active";
-        //        //console.log(current[0]);
-
-        //    });
-        //}
-
-    </script>
+  
 
 
 

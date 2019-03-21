@@ -93,6 +93,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
 
+                                      
+
+                                    
+
                                         <div class="form-group pick">
                                             <input type="hidden" id="searchTextField" placeholder="enter the informtion">
 
@@ -113,8 +117,8 @@
                                             @*<input type="hidden" name="selectedcar" id="selectedcar" />*@
 
                                             <p class="text-danger" id="inputError1"> </p>
-                                            @*<input type="text" name="postcode" value="" id="postcode" />*@
-                                            @Html.HiddenFor(m => m.postcode, new { @id = "postcode" })
+                                           
+                                            <input type="hidden" name="postcode" id="postcode" value="@ViewBag.postcode" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -441,7 +445,7 @@
                     var from_address = from_place.formatted_address;
                     $('#origin').val(from_address);
 
-                    $('#postcode').val(from_place.address_components[0].long_name);
+                   $('#postcode').val(from_place.address_components[0].long_name);
                     console.log(place.address_components);
 
 
@@ -855,7 +859,7 @@
     @*booking form fields show and hide*@
 
 
-    <script type ="text/javascript">
+    @*<script type ="text/javascript">
         $(function () {
             // Create a proxy to signalr hub on web server. It reference the hub.
             var notificationFromHub = $.connection.jobBookingHub;
@@ -912,7 +916,7 @@
                 }
             });
         }
-    </script>
+    </script>*@
 
 
 }

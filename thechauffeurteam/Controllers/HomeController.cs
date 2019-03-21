@@ -80,21 +80,27 @@ namespace thechauffeurteam.Controllers
         public ActionResult NewBooking(string origin,string destination,string selectedcar,string postcode, int? inMiles, string price, int? passengerId, string PassengerName, string PassengerPhone)
         {
 
-            string str = postcode  + " ";
-            int i = str.IndexOf(' ');
-            string filterPostCode=str.Substring(0,i);
-            
+            //string str = postcode + " bb";
+            //int i = str.IndexOf(' ');
+            //string filterPostCode=str.Substring(0,i);
+
 
 
 
             jobVM job = new jobVM();
+
+            string value = postcode+ " av";
+            int key = value.IndexOf(' ');
+            string fitlerpostcode = value.Substring(0, key);
+
+            ViewBag.postcode = fitlerpostcode;
 
             job.pickUp = origin;
             job.DropUP = destination;
             job.CarType = selectedcar;
             job.Mile = inMiles;
             job.Price = price;
-            job.postcode= filterPostCode;
+           
             job.PassengerId = passengerId;
             job.PassengerName = PassengerName;
             job.PassengerPhone = PassengerPhone;

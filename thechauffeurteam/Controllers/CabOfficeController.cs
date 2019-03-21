@@ -245,7 +245,7 @@ namespace CabsAdmin.Controllers
         {
             
             CoverageAndWaiting addData = new CoverageAndWaiting();
-            addData.postCode = coverage.ToLower();
+            addData.postCode = coverage.ToUpper();
             addData.waiting = Wating;
             addData.CabOfficeId = cabId;
 
@@ -278,7 +278,7 @@ namespace CabsAdmin.Controllers
         {
             CoverageAndWaiting cw = new CoverageAndWaiting();
             cw.id = id;
-            cw.postCode = postcode;
+            cw.postCode = postcode.ToUpper();
             cw.waiting = waitingTime;
             cw.CabOfficeId = cabid;
 
@@ -338,7 +338,7 @@ namespace CabsAdmin.Controllers
 
                         if (cb.Status == "Approved")
                         {
-                            Session["cabuser"] = p.UserFirstName;
+                           Session["cabuser"] = p.UserFirstName;
                            Session["cabuserLastName"] = p.UserLastName;
 
                             Session["cabOfficeuser"] = "logedin";
@@ -456,27 +456,25 @@ namespace CabsAdmin.Controllers
 
                 var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
 
-              var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == id).Select(a => a.postCode).ToList();
+               var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == id).Select(a => a.postCode).ToList();
 
                 var matchJob = jb.Intersect(cabpostMatch);
+                
 
                 ViewBag.matchedjob = matchJob;
 
-                var jbs = db.jobs.Where(m => m.status == 0).ToList();
 
+                var jbs = db.jobs.Where(m => m.status == 0).OrderByDescending(m=>m.id).ToList();
 
-                //  var thisCabjob = jb.Intersect(cabpostMatch);
+                string cabId = Session["cabOfficeId"].ToString();
 
+                ViewBag.NewJobSum = jb.Intersect(cabpostMatch).Count();
+
+                ViewBag.ActiveJobSum =db.jobs.Where(M => M.status == 1 && M.DriverId == cabId).Count();
+                ViewBag.FinishJobSum = db.jobs.Where(M => M.status == 2  && M.DriverId == cabId).Count();
+                ViewBag.CancelJobSum = db.jobs.Where(M => M.status == 3 && M.DriverId == cabId).Count();
 
                 return View(jbs);
-
-                //ViewBag.allJobSum = job.Count();
-                //ViewBag.NewJobSum = job.Where(M => M.status == 0).Count();
-                //ViewBag.ActiveJobSum = job.Where(M => M.status == 1).Count();
-                //ViewBag.FinishJobSum = job.Where(M => M.status == 2).Count();
-                //ViewBag.CancelJobSum = job.Where(M => M.status == 3).Count();
-
-
 
             }
             return RedirectToAction("login");
@@ -486,7 +484,9 @@ namespace CabsAdmin.Controllers
 
 
 
-        //admin lyout use below
+        ////////////////admin lyout use below//////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////
 
         public ActionResult AllCabOffices()
         {
