@@ -20,7 +20,7 @@
         <div class="col-12">
             <div class="card shadow">
                 <div class="card-header border-0">
-                    <h3 class="mb-0">Upcomin Jobs</h3>
+                    <h3 class="mb-0">New Jobs</h3>
                 </div>
                 <div class="table-responsive" style="min-height:400px;max-height:700px; overflow:scroll;">
                     <table class="table align-items-center table-flush">
@@ -32,7 +32,7 @@
                                 <th scope="col" class="text-light px-0 text-center">Drop Off</th>
                                 <th scope="col" class="text-light px-0 text-center">Miles</th>
                                 <th scope="col" class="text-light px-0 text-center">Price</th>
-                                <th scope="col" class="text-light px-0 text-center">Phone#</th>
+                                <th scope="col" class="text-light px-0 text-center">Phone</th>
                                 <th scope="col" class="text-light px-0 text-center">Name</th>
                                 <th scope="col" class="text-light px-0 text-center">Status</th>
 
@@ -56,7 +56,7 @@
                                 {
                                     if (matchjb == item.postcode)
                                     {
-                                     
+
                                         <tr class=" px-1">
 
                                             <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">
@@ -86,18 +86,18 @@
                                             <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">
                                                 @*@Html.ActionLink("Detail", "CabOfficeDetail", "CabOffice", new {  }, new { @class = "btn btn-outline-info btn-sm" })*@
 
-                                               
 
-                                               <a href="~/CabOfficeStatus/ActiveJobs/@item.id"  class="btn btn-sm" id="cabid" style="background:#ff0000;color:#fff; text-decoration:none;"> Accept</a>
+
+                                                <a href="~/CabOfficeStatus/ActiveJobs/@item.id" class="btn btn-sm" id="cabid" style="background:#ff0000;color:#fff; text-decoration:none;"> Accept</a>
 
                                             </td>
 
                                         </tr>
 
-                                                            }
-                                                        }
+                                    }
+                                }
 
-                                                    }
+                            }
 
                         </tbody>
                     </table>

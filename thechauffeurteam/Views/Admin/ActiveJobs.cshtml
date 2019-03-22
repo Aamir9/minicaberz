@@ -1,112 +1,14 @@
-﻿@model IEnumerable<thechauffeurteam.Models.job>
+﻿ @model IEnumerable<thechauffeurteam.Models.job>
 @{
-    ViewBag.Title = "Admin";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+                /**/
+
+                ViewBag.Title = "Admin";
+                Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <!-- Header -->
-<div class="header  pb-8 pt-4 pt-md-6"  style="background:#1853a1;">
-    <div class="container-fluid">
-        <div class="header-body">
-            <!-- Card stats -->
-            <div class="row">
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/index">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Upcoming </h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.NewJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                            <i class="fas fa-percent"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>*@
-                                    <span class="text-nowrap text-info">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/ActiveJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Active</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.ActiveJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-pie"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/completedJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Completed</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.FinishJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                            <i class="fas fa-users"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/CanceledJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Cancelled</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.CancelJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-bar"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
+@Html.Partial("~/Views/Admin/_header.cshtml")
 
 
 <div class="container-fluid mt--7">
@@ -119,7 +21,7 @@
                     <h3 class="mb-0">Active Jobs</h3>
                 </div>
                 <div class="table-responsive" style="min-height:400px;max-height:700px">
-                    <table class="table align-items-center table-flush" >
+                    <table class="table align-items-center table-flush">
                         <thead class="" style="background:#1853a1; ">
                             <tr class="text-light px-1">
                                 @*<th scope="col" class="text-light px-1 ml-0 px-0 text-center">Status</th>*@
@@ -128,7 +30,7 @@
                                 <th scope="col" class="text-light px-0 text-center">Drop Off</th>
                                 <th scope="col" class="text-light px-0 text-center">Miles</th>
                                 <th scope="col" class="text-light px-0 text-center">Price</th>
-                                <th scope="col" class="text-light px-0 text-center">Phone#</th>
+                                <th scope="col" class="text-light px-0 text-center">Phone</th>
                                 <th scope="col" class="text-light px-0 text-center">Name</th>
                                 <th scope="col" class="text-light px-0 text-center">Cab Office</th>
 
@@ -223,7 +125,7 @@
 @section scripts{
     <script type="text/javascript">
 
-        
+
         function jobInfo(Id) {
             //alert("success" + Id)
 
@@ -246,15 +148,15 @@
                          $("#carType").val(success.jb.CarType);
 
                          var dAndT = "" + success.jb.dateAndTime;
-                     
+
                          $("#time").val(dAndT.substring(0, 10).trim());
                          $("#date").val(dAndT.substring(10).trim());
                          $("#driverMessage").val(success.jb.DriverMessage);
-                         $("#drvId").val(success.jb.DriverId);
+                         $("#drvId").val(success.jb.DriverName);
                        //alert(success.jb.DriverId);
                          $("#name").val(success.jb.PassengerName);
                          $("#phone").val(success.jb.PassengerPhone);
-                     
+
                          console.log(success);
                  },
                  error: function (e, text, string) {
@@ -267,7 +169,7 @@
         };
 
 
-       
+
         function setCancelJobId(JID) {
 
             $("#cancelJobId").val(JID)
@@ -307,7 +209,7 @@
         function editJob() {
             $(".jobEditGroup").removeAttr("readonly");
             $(".saveButton").removeAttr("hidden");
-           
+
         }
 
         function onShowModal() {
@@ -406,9 +308,9 @@
         }
 
         function finishJob() {
-            //alert("okkkk" + jobId);
+           
             var jobId = $("#finishJobId").val();
-
+           // alert("okkkk" + jobId);
             $.ajax({
                 type: "POST",
                  url: '@Url.Action("FinishJob", "Admin")',
@@ -417,15 +319,15 @@
 
                 success: function (message) {
                     if (message == 1) {
-                        //alert("Job is Finished Successfully.");
+                      //  alert("Job is Finished Successfully.");
                     }
                     else {
-                        //alert("Sorry, Job cannot finish");
+                        alert("Sorry, Job cannot finish");
                     }
 
                  },
                 error: function (e, text, string) {
-                    //alert("Sorry, Job cannot finish");
+                    alert("Sorry, Job cannot finish");
                  }
             });
             window.location.reload(true);

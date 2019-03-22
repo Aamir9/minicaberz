@@ -5,108 +5,8 @@
 }
 
 <!-- Header -->
-<div class="header pb-8 pt-4 pt-md-6" style="background:#1853a1;">
-    <div class="container-fluid">
-        <div class="header-body">
-            <!-- Card stats -->
-            <div class="row">
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/index">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Upcoming </h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.NewJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                            <i class="fas fa-percent"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>*@
-                                    <span class="text-nowrap text-info">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/ActiveJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Active</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.ActiveJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-pie"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/completedJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Completed</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.FinishJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                            <i class="fas fa-users"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <a href="~/admin/CanceledJobs">
-                        <div class="card card-stats mb-4 mb-xl-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Cancelled</h5>
-                                        <span class="h2 font-weight-bold mb-0">@ViewBag.CancelJobSum</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-bar"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    @*<span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>*@
-                                    <span class="text-nowrap">See more detail</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@Html.Partial("~/Views/Admin/_header.cshtml")
 
 
 
@@ -120,8 +20,8 @@
                     <h3 class="mb-0">Completed Jobs</h3>
                 </div>
                 <div class="table-responsive" style="min-height:400px;max-height:700px">
-                    <table class="table align-items-center table-flush" >
-                        <thead class="" style="background:#1853a1;" >
+                    <table class="table align-items-center table-flush">
+                        <thead class="" style="background:#1853a1;">
                             <tr class="text-light px-1">
                                 @*<th scope="col" class="text-light px-1 ml-0 px-0 text-center">Status</th>*@
                                 <th scope="col" class="text-light px-0 mx-0 text-center">Time</th>
@@ -129,13 +29,13 @@
                                 <th scope="col" class="text-light px-0 text-center">Drop Off</th>
                                 <th scope="col" class="text-light px-0 text-center">Miles</th>
                                 <th scope="col" class="text-light px-0 text-center">Price</th>
-                                <th scope="col" class="text-light px-0 text-center">Phone#</th>
+                                <th scope="col" class="text-light px-0 text-center">Phone</th>
                                 <th scope="col" class="text-light px-0 text-center">Name</th>
                                 <th scope="col" class="text-light px-0 text-center">Cab Office</th>
 
                                 <th class=" px-0"></th>
                             </tr>
-                            </thead>
+                        </thead>
                         <tbody>
                             @foreach (var value in Model)
                             {
@@ -144,46 +44,46 @@
                                 <tr class=" px-1" style="">
 
                                     @*@switch (value.status)
-                {
+                                        {
 
-                    case 1:
+                                            case 1:
 
-                        {
-                            <td class="py-0 my-0 px-1 mr-0" style="max-width:50px;">
-                                <span class="badge badge-dot">
-                                    <i class="bg-warning"></i><text class="text-warning">Active</text>
-                                </span>
-                            </td>
-                            break;
-                        }
-                    case 2:
-                        {
-                            <td class="py-0 my-0  px-1" style="max-width:50px">
-                                <span class="badge badge-dot mr-4">
-                                    <i class="bg-success"></i> <text class="text-success">Finished</text>
-                                </span>
-                            </td>
-                            break;
-                        }
-                    case 3:
-                        {
-                            <td class="py-0 my-0 px-1" style="max-width:50px">
-                                <span class="badge badge-dot mr-4">
-                                    <i class="bg-danger"></i> <text class="text-danger">Canceled</text>
-                                </span>
-                            </td>
-                            break;
-                        }
-                    default:
-                        {
-                            <td class="py-1 my-0 px-2" style="max-width:50px">
-                                <span class="badge badge-dot mr-4">
-                                    <i class="bg-info"></i><text class="text-info">New</text>
-                                </span>
-                            </td>
-                            break;
-                        }
-                }*@
+                                                {
+                                                    <td class="py-0 my-0 px-1 mr-0" style="max-width:50px;">
+                                                        <span class="badge badge-dot">
+                                                            <i class="bg-warning"></i><text class="text-warning">Active</text>
+                                                        </span>
+                                                    </td>
+                                                    break;
+                                                }
+                                            case 2:
+                                                {
+                                                    <td class="py-0 my-0  px-1" style="max-width:50px">
+                                                        <span class="badge badge-dot mr-4">
+                                                            <i class="bg-success"></i> <text class="text-success">Finished</text>
+                                                        </span>
+                                                    </td>
+                                                    break;
+                                                }
+                                            case 3:
+                                                {
+                                                    <td class="py-0 my-0 px-1" style="max-width:50px">
+                                                        <span class="badge badge-dot mr-4">
+                                                            <i class="bg-danger"></i> <text class="text-danger">Canceled</text>
+                                                        </span>
+                                                    </td>
+                                                    break;
+                                                }
+                                            default:
+                                                {
+                                                    <td class="py-1 my-0 px-2" style="max-width:50px">
+                                                        <span class="badge badge-dot mr-4">
+                                                            <i class="bg-info"></i><text class="text-info">New</text>
+                                                        </span>
+                                                    </td>
+                                                    break;
+                                                }
+                                        }*@
 
                                     <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">@value.dateAndTime</td>
                                     <td scope="col" class="py-1 my-0 ml-0 px-0 " style="overflow:hidden;max-width:200px">@value.pickUp</td>
@@ -278,7 +178,7 @@
                 <div class="text-center">
                     <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
                     <p>
-                       
+
                     </p>
                 </div>
             </div>
@@ -319,15 +219,15 @@
                          $("#carType").val(success.jb.CarType);
 
                          var dAndT = "" + success.jb.dateAndTime;
-                     
+
                          $("#time").val(dAndT.substring(0, 10).trim());
                          $("#date").val(dAndT.substring(10).trim());
                          $("#driverMessage").val(success.jb.DriverMessage);
-                         $("#drvId").val(success.jb.DriverId);
+                     $("#drvId").val(success.jb.DriverName);
                        //alert(success.jb.DriverId);
                          $("#name").val(success.jb.PassengerName);
                          $("#phone").val(success.jb.PassengerPhone);
-                     
+
                          console.log(success);
                  },
                  error: function (e, text, string) {

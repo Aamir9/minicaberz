@@ -4,12 +4,12 @@
             <!-- Card stats -->
             <div class="row">
                 <div class="col-xl-3 col-lg-6">
-                    <a href="~/CabOffice/Dashboard/@Session["cabOfficeId"]">
+                    <a href="~/admin/index">
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">New</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">New </h5>
                                         <span class="h2 font-weight-bold mb-0">@ViewBag.NewJobSum</span>
                                     </div>
                                     <div class="col-auto">
@@ -28,12 +28,12 @@
                 </div>
 
                 <div class="col-xl-3 col-lg-6">
-                    <a href="~/CabOfficeStatus/AcceptedJobs">
+                    <a href="~/admin/ActiveJobs">
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Accepted</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Active</h5>
                                         <span class="h2 font-weight-bold mb-0">@ViewBag.ActiveJobSum</span>
                                     </div>
                                     <div class="col-auto">
@@ -51,7 +51,7 @@
                     </a>
                 </div>
                 <div class="col-xl-3 col-lg-6">
-                    <a href="~/CabOfficeStatus/completedJobs">
+                    <a href="~/admin/completedJobs">
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
                                 <div class="row">
@@ -74,7 +74,7 @@
                     </a>
                 </div>
                 <div class="col-xl-3 col-lg-6">
-                    <a href="#">
+                    <a href="~/admin/CanceledJobs">
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
                                 <div class="row">

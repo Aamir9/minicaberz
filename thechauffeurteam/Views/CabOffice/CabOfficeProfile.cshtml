@@ -5,10 +5,28 @@
     Layout = "~/Views/Shared/_CabOfficeLayout.cshtml";
 }
 
+<style>
+
+    
+
+    .bgred {
+        background-color: rgb(226, 74, 35);
+        color: #fff;
+    }
+
+    .bgblue {
+        background: #1853a1;
+        color: #fff;
+    }
+
+    
+</style>
+
+
 <!-- Header -->
 <div class="header pb-5 pt-5 pt-5 d-flex align-items-center" style="min-height: 250px; background-image: url(~/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
     <!-- Mask -->
-    <span class="mask  opacity-8" style="background-color:#1853a1;"></span>
+    <span class="mask  opacity-8 bgblue" ></span>
     <!-- Header container -->
     <div class="container-fluid d-flex align-items-center">
         <div class="row">
@@ -22,9 +40,9 @@
     </div>
 </div>
 <!-- Page content -->
-<div class="container-fluid mt--8">
-    <div class="row">
-        <div class="col-md-12 mt-5">
+<div class="container-fluid mt--9">
+    <div class="row ">
+        <div class="col-md-12">
             <div class="card bg-secondary shadow">
                 <div class="card-header bg-white border-0">
                     <div class="row align-items-center">
@@ -34,7 +52,7 @@
                         <div class="col-4 text-right">
                             @*<a href="~/CabOffice/driverprofile/@Model.Id" class="btn btn-sm btn-info">View</a>*@
 
-                            <a href="~/CabOffice/Edit_Profile_information/@Model.Id" class="btn btn-sm btn-info">Edit</a>
+                            <a href="~/CabOffice/Edit_Profile_information/@Model.Id" class="btn btn-sm bgblue">Edit</a>
                           @*  <button class="btn btn-sm btn-warning " disabled id="btnSave" onclick="saveProfile()">Save</button>*@
                         </div>
                     </div>
@@ -75,7 +93,7 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="text-center text-blue p-md-2">Cab Office Detail</h3>
+                                        <h3 class="text-center text-white bgblue p-md-3">Cab Office Detail</h3>
                                         <table class="table table-hover table-primary table-sm table-bordered">
 
                                             <tbody>
@@ -211,7 +229,7 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="text-center text-blue p-md-2">Vehicle Detail</h3>
+                                        <h3 class="text-center  text-white bgblue p-md-3">Vehicle Detail</h3>
                                         <table class="table table-hover table-primary table-sm table-bordered">
 
                                             <tbody>
@@ -276,7 +294,7 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="text-center text-blue p-md-2">Invoice Detail</h3>
+                                        <h3 class="text-center  text-white bgblue p-md-3">Invoice Detail</h3>
                                         <table class="table table-hover table-primary table-sm table-bordered">
 
                                             <tbody>
@@ -344,7 +362,7 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="text-center text-blue p-md-2">Business Refrence/Trade Detail </h3>
+                                        <h3 class="text-center  text-white bgblue p-md-3">Business Refrence/Trade Detail </h3>
                                         <table class="table table-hover table-primary table-sm table-bordered">
 
                                             <tbody>
@@ -417,7 +435,7 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3 class="text-center text-blue p-md-2">User Login Detail</h3>
+                                        <h3 class="text-center  text-white bgblue p-md-3">User Login Detail</h3>
                                         <table class="table table-hover table-primary table-sm table-bordered">
 
                                             <tbody>

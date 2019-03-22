@@ -6,7 +6,7 @@
 }
 
 <!-- Header -->
-<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+<div class="header bgblue pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
         <div class="header-body">
             <!-- Card stats -->
@@ -109,7 +109,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid mt--7">
+<div class="container-fluid mt--8">
     <div class="row mt-5">
         <div class="col-xl-12 mb-5 mb-xl-0">
             <div class="card shadow">
@@ -126,7 +126,7 @@
                 <div class="table-responsive">
                     <!-- Projects table -->
                     <table class="table align-items-center table-flush">
-                        <thead class="thead-light">
+                        <thead class="bgblue">
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email Address</th>
@@ -157,7 +157,7 @@
                                         @Html.DisplayFor(modelItem => rec.PostCode)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Detail", "DriverDetail", "Admin", new { id = rec.Id }, new { @class = "btn btn-outline-info btn-sm" })
+                                        @Html.ActionLink("Detail", "DriverDetail", "Admin", new { id = rec.Id }, new { @class = "btn btn-outline-primary btn-sm" })
                                         @*<a class="btn btn-outline-info btn-sm" href="~/driver/detail" role="button">Detail<i class="fas fa-arrow-right ml-2"></i></a>*@
                                     </td>
                                     @*<td>

@@ -5,10 +5,25 @@
     Layout = "~/Views/Shared/_CabOfficeLayout.cshtml";
 }
 
+<style>
+
+
+
+    .bgred {
+        background-color: rgb(226, 74, 35);
+        color: #fff;
+    }
+
+    .bgblue {
+        background: #1853a1;
+        color: #fff;
+    }
+</style>
+
 <!-- Header -->
 <div class="header pb-5 pt-5 pt-5 d-flex align-items-center" style="min-height: 250px; background-image: url(~/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
     <!-- Mask -->
-    <span class="mask bg-gradient-default opacity-8"></span>
+    <span class="mask  opacity-8 bgblue"></span>
     <!-- Header container -->
     <div class="container-fluid d-flex align-items-center">
         <div class="row">
@@ -22,14 +37,21 @@
     </div>
 </div>
 <!-- Page content -->
-<div class="container-fluid mt--8">
+<div class="container-fluid mt--9">
     <div class="row">
         <div class="col-md-12 mt-5">
-            <div class="card bg-secondary shadow">
+            <div class="card " >
                 <div class="card-header bg-white border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
                             <h3 class="mb-0">Edit Profile information</h3>
+                        </div>
+
+                        <div class="col-4 text-right">
+                           
+
+                            <a href="~/CabOffice/CabOfficeProfile/@Session["cabOfficeId"]" class="btn btn-sm bgblue">Back</a>
+                           
                         </div>
 
                     </div>
@@ -42,7 +64,7 @@
 
 
 
-    <div class="justify-content-center align-items-center row bg-light" style="justify-content:center">
+    <div class="justify-content-center align-items-center row " style="justify-content:center">
         <div class="col-md-12">
             
             <div class="col-md-12" style="background-color:#E9E9EB;padding-bottom:50px;border-bottom-left-radius:5px;border-bottom-right-radius:5px">
@@ -516,7 +538,7 @@
                     </div>
 
                     <div class="row justify-content-center" style="justify-content:center;align-items:center; margin-top:50px">
-                        <button type="submit" class="btn btn-hover-group col-md-6 justify-content-center">Register</button>
+                        <button type="submit" class="btn bgblue col-md-6 justify-content-center">Save</button>
                     </div>
                 }
             </div>

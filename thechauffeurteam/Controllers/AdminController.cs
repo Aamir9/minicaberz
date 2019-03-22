@@ -264,7 +264,7 @@ namespace thechauffeurteam.Controllers
         [HttpPost]
         public JsonResult CancelJob(int JobId)
         {
-            var job = db.jobs.Where(m => m.id == JobId).SingleOrDefault();
+            var job = db.jobs.Find(JobId);
             job.status = 3;
             db.Entry(job).State = EntityState.Modified;
 
@@ -273,17 +273,17 @@ namespace thechauffeurteam.Controllers
         [HttpPost]
         public JsonResult FinishJob(int JobId)
         {
-            var job = db.jobs.Where(m => m.id == JobId).SingleOrDefault();
+            var job = db.jobs.Find(JobId);
             job.status = 2;
 
 
-            if (job.DriverId != null)
-            {
-                var drv = db.Drivers.Where(m => m.DriverId == job.DriverId).SingleOrDefault();
-                drv.Status = "Approved";
-                db.Entry(drv).State = EntityState.Modified;
+            //if (job.DriverId != null)
+            //{
+            //    var drv = db.Drivers.Where(m => m.DriverId == job.DriverId).SingleOrDefault();
+            //    drv.Status = "Approved";
+            //    db.Entry(drv).State = EntityState.Modified;
 
-            }
+            //}
 
             db.Entry(job).State = EntityState.Modified;
 

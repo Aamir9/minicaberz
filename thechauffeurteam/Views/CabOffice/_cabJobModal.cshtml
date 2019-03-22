@@ -14,8 +14,11 @@
         color:#1853a1;
         border:1px solid #1853a1;
     }
-   
-    
+
+    .bgred {
+        background-color: rgb(226, 74, 35);
+        color: #fff;
+    }
 
 </style>
 
@@ -23,9 +26,9 @@
 <div onload="onShowModal()" onshow="onShowModal()" class="modal fade" id="jobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document" style="width:1000px">
         <div class="modal-content">
-            <div class="modal-header " style="background:#ff0000;">
+            <div class="modal-header bgred">
                 <div class="text-center w-100">
-                    <h3 class="modal-title text-white text-uppercase">Job Id# <text id="jobId"></text> </h3>
+                    <h3 class="modal-title text-white text-uppercase">Job Id <text id="jobId"></text> </h3>
                 </div>
                
                 <input type="hidden" id="jid" value="" />
