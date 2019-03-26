@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.SignalR;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using thechauffeurteam.DAL;
+using thechauffeurteam.Hubs;
 using thechauffeurteam.Models;
 using thechauffeurteam.Models.ViewModel;
 using thechauffeurteam.singnalr.hubs;
@@ -65,9 +67,18 @@ namespace thechauffeurteam.Controllers
 
                 jb.status = 0;
 
+                var context = GlobalHost.ConnectionManager.GetHubContext<AlertHub>();
+
+                context.Clients.All.AlertMe(filterPostcode.ToUpper());
+
+
                 db.jobs.Add(jb);
                 db.SaveChanges();
+
+
+
                
+
             }
 
             //Once the record is inserted , then notify all the subscribers (Clients)

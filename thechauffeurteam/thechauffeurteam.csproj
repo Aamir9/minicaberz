@@ -198,6 +198,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\AlertHub.cs" />
     <Compile Include="Migrations\201810100922123_intial.cs" />
     <Compile Include="Migrations\201810100922123_intial.Designer.cs">
       <DependentUpon>201810100922123_intial.cs</DependentUpon>
@@ -444,6 +445,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="adminlayout.html" />
+    <Content Include="alarm.mp3" />
     <Content Include="App_Data\ChauffeurDb.mdf" />
     <Content Include="App_Data\ChauffeurDb_log.ldf">
       <DependentUpon>ChauffeurDb.mdf</DependentUpon>
@@ -2426,6 +2428,7 @@
     <Content Include="images\why3.jpg" />
     <Content Include="images\why4.jpg" />
     <Content Include="js\favicon.ico" />
+    <Content Include="js\mycode.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\responsiveslides.js" />
     <Content Include="PassengCoformationWithEmail.html" />

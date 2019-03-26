@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.SignalR;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
@@ -8,6 +9,7 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using thechauffeurteam.DAL;
+using thechauffeurteam.Hubs;
 using thechauffeurteam.Models;
 using thechauffeurteam.Models.ViewModel;
 
@@ -34,6 +36,8 @@ namespace thechauffeurteam.Controllers
                 ViewBag.FinishJobSum = job.Where(M => M.status == 2).Count();
                 ViewBag.CancelJobSum = job.Where(M => M.status == 3).Count();
 
+
+                
                 return View(jb);
             }
             return RedirectToAction("login");

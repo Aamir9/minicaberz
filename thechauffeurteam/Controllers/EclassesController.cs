@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.SignalR;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using thechauffeurteam.DAL;
+using thechauffeurteam.Hubs;
 using thechauffeurteam.Models;
 
 namespace thechauffeurteam.Controllers
@@ -24,8 +26,23 @@ namespace thechauffeurteam.Controllers
         }
         public ActionResult Index()
         {
+
+            var context = GlobalHost.ConnectionManager.GetHubContext<AlertHub>();
+
+            context.Clients.All.AlertMe();
             return View(db.eclasses.ToList());
         }
+
+
+        public ActionResult hello()
+        {
+            var context = GlobalHost.ConnectionManager.GetHubContext<AlertHub>();
+
+            context.Clients.All.AlertMe();
+            return new EmptyResult();
+        }
+
+
 
         // GET: Eclasses/Details/5
         public ActionResult Details(int? id)
