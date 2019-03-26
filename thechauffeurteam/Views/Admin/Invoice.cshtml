@@ -156,7 +156,7 @@
                                 <input class="form-control form-control-sm col mr-2 border-primary" id="toDate" name="date" type="text" placeholder="To Date" value="">
                                 @*<input class="form-control form-control-sm col mr-1 border-primary" type="date" placeholder="From Date">*@
                                 @*<input class="form-control form-control-sm col mr-2 border-primary" type="date" value="To Date">*@
-                                <button id="filterBtn" class="btn btn-sm btn-primary mr-1 border-primary" onclick="myFunction()" >Filter</button>
+                                <button id="filterBtn" class="btn btn-sm btn-primary mr-1 border-primary" onclick="myFunction()">Filter</button>
                             </div>
 
                         </div>
@@ -208,7 +208,7 @@
                             }
                             <tr class="text-center justify-content-center"><td colspan="7"><img src="~/images/logo.png" /></td></tr>
                         </tbody>
-                        
+
                     </table>
                 </div>
 
@@ -224,16 +224,7 @@
 
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="row align-items-center justify-content-xl-between">
-            <div class="col-xl-12">
-                <div class="copyright text-center text-xl-left text-muted">
-                    &copy; 2018 itLogi Solutions
-                </div>
-            </div>
-
-        </div>
-    </footer>
+    @Html.Partial("~/Views/Shared/_CabAndAdminFooter.cshtml")
 </div>
 
 

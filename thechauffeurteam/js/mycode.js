@@ -19,10 +19,22 @@ $(document).ready(function () {
         // var x = document.getElementById("myAudio"); 
 
         var x = new Audio('./alarm.mp3');
-       // x.play(); 
-    
+ 
         x.play();
         x.loop = false;
+
+        var promise = audio.play();
+
+        if (promise !== null) {
+            playPromise.catch(() => { x.play(); })
+        }
+
+        //if (promise) {
+        //    //Older browsers may not return a promise, according to the MDN website
+        //    promise.catch(function (error) { console.error(error); });
+        //}
+
+
 
         console.log("ALERT ME: " + message);
        // alert("working ! ............");

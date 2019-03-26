@@ -5,9 +5,10 @@
 }
 
 <!-- Header -->
- 
 
 
+
+@Html.Partial("~/Views/Admin/_header.cshtml")
 
 <div class="container-fluid mt--7">
 
@@ -18,8 +19,8 @@
                 <div class="card-header border-0">
                     <h3 class="mb-0">All Jobs</h3>
                 </div>
-                <div class="table-responsive" style="min-height:400px;max-height:700px">
-                    <table class="table align-items-center table-flush" >
+                <div class="table-responsive" style="max-height:300px">
+                    <table class="table align-items-center table-flush ">
                         <thead class="" style="background:#1853a1;">
                             <tr class="text-light">
                                 <th scope="col" class="text-light">Status</th>
@@ -28,12 +29,12 @@
                                 <th scope="col" class="text-light px-0 text-center">Drop Off</th>
                                 <th scope="col" class="text-light px-0 text-center">Miles</th>
                                 <th scope="col" class="text-light px-0 text-center">Price</th>
-                                <th scope="col" class="text-light px-0 text-center">Phone#</th>
+                                <th scope="col" class="text-light px-0 text-center">Phone</th>
                                 <th scope="col" class="text-light px-0 text-center">Name</th>
                                 <th scope="col" class="text-light px-0 text-center">CabOffice</th>
 
                             </tr>
-                            </thead>
+                        </thead>
 
                         <tbody>
 
@@ -110,19 +111,9 @@
 
     @Html.Partial("_JobModal")
 
-
-
     <!-- Footer -->
-    <footer class="footer">
-        <div class="row align-items-center justify-content-xl-between">
-            <div class="col-xl-12">
-                <div class="copyright text-center text-xl-left text-muted">
-                    &copy; 2018 itLogi Solutions
-                </div>
-            </div>
+    @Html.Partial("~/Views/Shared/_CabAndAdminFooter.cshtml")
 
-        </div>
-    </footer>
 </div>
 
 

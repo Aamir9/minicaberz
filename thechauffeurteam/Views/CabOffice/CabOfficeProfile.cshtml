@@ -7,7 +7,7 @@
 
 <style>
 
-    
+
 
     .bgred {
         background-color: rgb(226, 74, 35);
@@ -18,22 +18,20 @@
         background: #1853a1;
         color: #fff;
     }
-
-    
 </style>
 
 
 <!-- Header -->
 <div class="header pb-5 pt-5 pt-5 d-flex align-items-center" style="min-height: 250px; background-image: url(~/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
     <!-- Mask -->
-    <span class="mask  opacity-8 bgblue" ></span>
+    <span class="mask  opacity-8 bgblue"></span>
     <!-- Header container -->
     <div class="container-fluid d-flex align-items-center">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="text-white">Hello @Html.DisplayTextFor(x=>x.CabOfficeName) !</h3>
-                
-               
+                <h3 class="text-white">Hello @Html.DisplayTextFor(x => x.CabOfficeName) !</h3>
+
+
                 @*<a href="#!" class="btn btn-info">Edit profile</a>*@
             </div>
         </div>
@@ -53,16 +51,16 @@
                             @*<a href="~/CabOffice/driverprofile/@Model.Id" class="btn btn-sm btn-info">View</a>*@
 
                             <a href="~/CabOffice/Edit_Profile_information/@Model.Id" class="btn btn-sm bgblue">Edit</a>
-                          @*  <button class="btn btn-sm btn-warning " disabled id="btnSave" onclick="saveProfile()">Save</button>*@
+                            @*  <button class="btn btn-sm btn-warning " disabled id="btnSave" onclick="saveProfile()">Save</button>*@
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
 
 
-                
 
-                        <!-- Nav tabs -->
+
+                    <!-- Nav tabs -->
                     <ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px; ">
                         <li class="nav-item">
                             <a class="nav-link active nd" data-toggle="tab" href="#caboffice">Cab Office</a>
@@ -79,13 +77,13 @@
                         <li class="nav-item">
                             <a class="nav-link nRefence" data-toggle="tab" href="#reference">Business Reference </a>
                         </li>
-                        <li class="nav-item"> 
+                        <li class="nav-item">
                             <a class="nav-link nl" data-toggle="tab" href="#login">Login </a>
                         </li>
                     </ul>
 
 
-                        <!-- Tab panes -->
+                    <!-- Tab panes -->
                     <div class="tab-content">
                         <div id="caboffice" class="container tab-pane active">
 
@@ -216,10 +214,10 @@
 
                             <!-- Nav tabs -->
                             @*<ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
-                                <li class="nav-item">
-                                    <a class="nav-link nextbtn" data-toggle="tab" href="#vehicle">Next</a>
-                                </li>
-                            </ul>*@
+                                    <li class="nav-item">
+                                        <a class="nav-link nextbtn" data-toggle="tab" href="#vehicle">Next</a>
+                                    </li>
+                                </ul>*@
                         </div>  <!--//cab office tab pane -->
 
 
@@ -279,10 +277,10 @@
 
 
                             @*<ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
-                                <li class="nav-item">
-                                    <a class="nav-link nextbtn2" data-toggle="tab" href="#invoice">Next</a>
-                                </li>
-                            </ul>*@
+                                    <li class="nav-item">
+                                        <a class="nav-link nextbtn2" data-toggle="tab" href="#invoice">Next</a>
+                                    </li>
+                                </ul>*@
                         </div><!--//vehicls tab pane -->
 
 
@@ -343,10 +341,10 @@
 
 
                                 @*<ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
-                                    <li class="nav-item">
-                                        <a class="nav-link nextbtn2" data-toggle="tab" href="#reference">Next</a>
-                                    </li>
-                                </ul>*@
+                                        <li class="nav-item">
+                                            <a class="nav-link nextbtn2" data-toggle="tab" href="#reference">Next</a>
+                                        </li>
+                                    </ul>*@
 
                             </div>
 
@@ -421,10 +419,10 @@
 
 
                             @*<ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
-                                <li class="nav-item">
-                                    <a class="nav-link nextbtn2" data-toggle="tab" href="#login">Next</a>
-                                </li>
-                            </ul>*@
+                                    <li class="nav-item">
+                                        <a class="nav-link nextbtn2" data-toggle="tab" href="#login">Next</a>
+                                    </li>
+                                </ul>*@
                         </div> <!--//Refrence tab pane -->
 
 
@@ -470,37 +468,24 @@
 
                             </div>
 
-                            @*<ul class="nav nav-tabs nav-justified" role="tablist" style="margin:20px">
-                                <li class="nav-item">
-                                    <a class="nav-link nextbtn2" data-toggle="tab" href="#caboffice">Next</a>
-                                </li>
-                            </ul>*@
+                          
 
                         </div> <!--//login tab pane -->
                     </div>
-                            
-                        </div>
 
-
-              </div>  <!--end of car body -->
-            </div> <!--end of bg-scecondary-->
-            </div> 
-            </div><!--end od the row-->
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="row align-items-center justify-content-xl-between">
-            <div class="col-xl-6">
-                <div class="copyright text-center text-xl-left text-muted">
-                    &copy; 2018 <a href="https://www.itLogi.solutions" class="font-weight-bold ml-1" target="_blank">ItLogi</a>
                 </div>
-            </div>
-        </div>
-    </footer>
+
+
+            </div>  <!--end of car body -->
+        </div> <!--end of bg-scecondary-->
+    </div>
+
+<!-- Footer -->
+@Html.Partial("~/Views/Shared/_CabAndAdminFooter.cshtml")
 </div> <!--end of the cotainer-->
 
 
-              
+
 
 @section scripts{
     <script type="text/javascript">
@@ -550,71 +535,71 @@
     <script type="text/javascript">
 
 
-        //$(document).ready(function () {
-        //    $('.nextbtn').click(function () {
-        //        $('.nv').addClass('active');
-        //        $('.nd').removeClass('active');
-        //        $('.nl').removeClass('active');
+                //$(document).ready(function () {
+                //    $('.nextbtn').click(function () {
+                //        $('.nv').addClass('active');
+                //        $('.nd').removeClass('active');
+                //        $('.nl').removeClass('active');
 
-        //        $('#driver').hide();
-        //        $('#login').hide();
-        //        $('#vehicle').show();
-
-
-        //    });
+                //        $('#driver').hide();
+                //        $('#login').hide();
+                //        $('#vehicle').show();
 
 
-        //    $('.nextbtn2').click(function () {
-        //        $('.nl').addClass('active');
-        //        $('.nv').removeClass('active');
-        //        $('.nd').removeClass('active');
-
-        //        $('#driver').hide();
-        //        $('#vehicle').hide();
-        //        $('#login').show();
-
-        //    });
+                //    });
 
 
+                //    $('.nextbtn2').click(function () {
+                //        $('.nl').addClass('active');
+                //        $('.nv').removeClass('active');
+                //        $('.nd').removeClass('active');
 
-        //    $('.nd').click(function () {
+                //        $('#driver').hide();
+                //        $('#vehicle').hide();
+                //        $('#login').show();
 
-        //        $('.nextbtn').removeClass('active');
-        //        $('#vehicle').hide();
-        //        $('#login').hide();
-        //        $('#driver').show();
-
-        //    });
-
-
-        //    $('.nv').click(function () {
-
-        //        $('.nextbtn2').removeClass('active');
-
-        //        $('#driver').hide();
-        //        $('#login').hide();
-        //        $('#vehicle').show();
+                //    });
 
 
 
-        //    });
+                //    $('.nd').click(function () {
 
-        //    $('.nv').click(function () {
+                //        $('.nextbtn').removeClass('active');
+                //        $('#vehicle').hide();
+                //        $('#login').hide();
+                //        $('#driver').show();
 
-        //        $('#login').hide();
-        //        $('#driver').hide();
-        //        $('#vehicle').show();
+                //    });
 
-        //    });
 
-        //    $('.nl').click(function () {
+                //    $('.nv').click(function () {
 
-        //        $('#driver').hide();
+                //        $('.nextbtn2').removeClass('active');
 
-        //        $('#vehicle').hide();
-        //        $('#login').show();
-        //    });
+                //        $('#driver').hide();
+                //        $('#login').hide();
+                //        $('#vehicle').show();
 
-        //});
+
+
+                //    });
+
+                //    $('.nv').click(function () {
+
+                //        $('#login').hide();
+                //        $('#driver').hide();
+                //        $('#vehicle').show();
+
+                //    });
+
+                //    $('.nl').click(function () {
+
+                //        $('#driver').hide();
+
+                //        $('#vehicle').hide();
+                //        $('#login').show();
+                //    });
+
+                //});
     </script>
 }

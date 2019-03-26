@@ -18,7 +18,7 @@
                 <div class="card-header border-0">
                     <h3 class="mb-0">Cancenled Jobs</h3>
                 </div>
-                <div class="table-responsive" style="min-height:400px;max-height:700px">
+                <div class="table-responsive" style="height:300px">
                     <table class="table align-items-center table-flush">
                         <thead class="" style="background:#1853a1;">
                             <tr class="text-light px-1">
@@ -122,18 +122,8 @@
     @Html.Partial("_JobModalinfo")
 
 
-
     <!-- Footer -->
-    <footer class="footer">
-        <div class="row align-items-center justify-content-xl-between">
-            <div class="col-xl-12">
-                <div class="copyright text-center text-xl-left text-muted">
-                    &copy; 2018 itLogi Solutions
-                </div>
-            </div>
-
-        </div>
-    </footer>
+    @Html.Partial("~/Views/Shared/_CabAndAdminFooter.cshtml")
 </div>
 
 
