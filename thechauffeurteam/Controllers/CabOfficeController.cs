@@ -463,12 +463,16 @@ namespace CabsAdmin.Controllers
 
                 ViewBag.matchedjob = matchJob;
 
+                TempData["matchjob"] = matchJob;
+
 
                 var jbs = db.jobs.Where(m => m.status == 0).OrderByDescending(m=>m.id).ToList();
 
                 string cabId = Session["cabOfficeId"].ToString();
 
                 ViewBag.NewJobSum = jb.Intersect(cabpostMatch).Count();
+
+                
 
                 ViewBag.ActiveJobSum =db.jobs.Where(M => M.status == 1 && M.DriverId == cabId).Count();
                 ViewBag.FinishJobSum = db.jobs.Where(M => M.status == 2  && M.DriverId == cabId).Count();

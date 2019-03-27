@@ -8,9 +8,10 @@ namespace thechauffeurteam.Hubs
 {
     public class AlertHub : Hub
     {
-        public void MyMethod()
+        public void MyMethod(string postcode)
         {
-            Clients.Others.AlertMe("Hello there !");
+
+            Clients.Others.AlertMe( postcode);
         }
     }
 }

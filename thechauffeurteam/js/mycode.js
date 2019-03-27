@@ -1,43 +1,38 @@
 ﻿
 
-
-
 $(document).ready(function () {
 
-
+   
     var myhub = $.connection.alertHub;
 
     $("#btnMyMethod").on("click", function () {
         console.log("about to call myMethod");
         myhub.server.myMethod().done(function () {
             console.log("myMethod complete");
+
+            alertify.alert('Ready!');
+            alert("working ! ............");
+
         });
     });
 
 
-    myhub.client.alertMe = function (message) {
-        // var x = document.getElementById("myAudio"); 
+    myhub.client.alertMe = function () {
 
-        var x = new Audio('./alarm.mp3');
- 
-        x.play();
+       // var x = document.getElementsByClassName("myAudio"); 
+
+        var x = new Audio('/alarm.mp3');
+       // $('.myAudio').play();
+         x.play();
         x.loop = false;
 
-        var promise = audio.play();
-
-        if (promise !== null) {
-            playPromise.catch(() => { x.play(); })
-        }
-
-        //if (promise) {
-        //    //Older browsers may not return a promise, according to the MDN website
-        //    promise.catch(function (error) { console.error(error); });
-        //}
+        var notification = alertify.notify('New Job Booked', 'success', 5, function () { console.log('dismissed'); window.location.reload(true); });
 
 
+        console.log("ALERT ME: " );
 
-        console.log("ALERT ME: " + message);
-       // alert("working ! ............");
+        //alertify.alert('Ready!');
+     //   alert("working ! ............");
         //x.pause(); 
     };
 });
@@ -50,3 +45,7 @@ var options = {
 };
 
 var deferredStart = $.connection.hub.start(options);
+
+
+
+
