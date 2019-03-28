@@ -61,7 +61,7 @@
     </ul>
 
     <!--container-1-->
-    <div class="container-fluid pt-3 htop container-1" style="display:none;">
+    @*<div class="container-fluid pt-3 htop container-1" style="display:none;">
         <div class="row">
 
             <div class="col-md-8 ml-md-2">
@@ -76,26 +76,24 @@
 
         </div>
 
-    </div>
+    </div>*@
 
     <!-- //container-1-->
     <!--container-2-->
-    <div class="container-fluid pb-md-2 container-2 mt-md-5">
+    <div class="container  container-2 mt-md-5 mb-md-5" >
 
         <!--top div-->
 
-        <div class="row">
+        <div class="row" >
 
-            <div class="col-md-3 col-sm-10 no-gutters ml-md-2">
+            <div class="col-md-3 col-sm-10 no-gutters" >
                 <a href="@Url.Action("Index","Home")" class="navbar-brand">  <img src="~/images/logo.png" class="lgo navbar-brand" />   </a>
 
             </div>
 
-            <div class="col-md-7 col-sm-1">
-                <div class="d-flex   flex-row-reverse ">
-                    <div class="pl-md-5">
-                        <a href="/Home/directBooking" class="btn  ml-md-2 bookNowbtn" style="background:#1853a1; color:white;">  Book Online Now  </a>
-                    </div>
+            <div class="col-md-9 col-sm-1  mt-md-3" >
+                <div class="d-flex   flex-row " style="margin-left:34%;">
+
 
                     <div class="border-left p-md-2">
                         @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
@@ -106,6 +104,11 @@
                         @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
                         <span class="ths border-left"> <a href="@Url.Action("Registration", "Passengers")" class="topsLinks"> Register as a Passenger</a></span>
 
+                    </div>
+
+
+                    <div class="p-md-2">
+                        <a href="/Home/directBooking" class="btn    bookNowbtn" style="background:#1853a1; color:white;">  Book Online Now  </a>
                     </div>
 
 
@@ -128,25 +131,29 @@
                 </button>
                 <div class="navbar-collapse  collapse" id="navbarSupportedContent">
                     <ul class="navbar navbar-nav " id="navItem">
-                        <li class="nav-item   tab ml-lg-5">
+                        <li class="nav-item   tab ml-md-3">
                             <a class="nav-link" href="\Home\Index">Minicaberz <span class="sr-only">(current)</span></a>
                         </li>
 
 
 
-                        <li class="nav-item nml tab">
-                            <a class="nav-link" href="#">Book Flights</a>
+                        <li class="nav-item nml tab ml-md-3">
+                            <a class="nav-link" href="#">Coverage Area</a>
                         </li>
 
-                        <li class="nav-item nml tab">
-                            <a class="nav-link" href="#">Book Hotels</a>
+                        <li class="nav-item nml tab ml-md-3">
+                            <a class="nav-link" href="#">Services</a>
                         </li>
 
-                        <li class="nav-item nml tab">
+                        <li class="nav-item nml tab ml-md-3">
+                            <a class="nav-link" href="#">Business Account</a>
+                        </li>
+
+                        <li class="nav-item nml tab ml-md-3">
                             <a class="nav-link" href="#">Chauffeur Hire</a>
                         </li>
 
-                        <li class="nav-item nml tab">
+                        <li class="nav-item nml tab ml-md-3" >
                             <a class="nav-link" href="#">Help </a>
                         </li>
                         @*<li class="nav-item nml tab">
@@ -202,7 +209,7 @@
                             </li>
                         }
 
-                       
+
                     </ul>
                     @*<div class="ml-auto faH " style="color:#0026ff">
 

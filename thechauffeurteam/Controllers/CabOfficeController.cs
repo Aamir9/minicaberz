@@ -463,7 +463,9 @@ namespace CabsAdmin.Controllers
 
                 ViewBag.matchedjob = matchJob;
 
-                TempData["matchjob"] = matchJob;
+                ViewBag.matched = matchJob.ToList();
+
+
 
 
                 var jbs = db.jobs.Where(m => m.status == 0).OrderByDescending(m=>m.id).ToList();
@@ -481,7 +483,7 @@ namespace CabsAdmin.Controllers
                 return View(jbs);
 
             }
-            return RedirectToAction("login");
+            return RedirectToAction("Login", "Drivers");
 
         }
 

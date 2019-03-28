@@ -3,6 +3,12 @@
     Layout = null;
 
 
+
+
+    //var  mylist = ViewBag.matchedjob.ToArray();
+
+
+
 }
 
 <!DOCTYPE html>
@@ -39,18 +45,7 @@
 
 <body>
 
-    @*<div class="container">
-
-        <ul>
-            @foreach (var std in (string)TempData["matchjob"])
-            {
-                <li>
-                    @std
-                </li>
-            }
-        </ul>
-
-    </div>*@
+   
     <!-- Sidenav -->
     <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
         <div class="container-fluid">
@@ -230,9 +225,7 @@
         @RenderBody()
 
 
-        <audio controls="controls" class="myAudio">
-            <source src="~/alarm.mp3" type="audio/mpeg" />
-        </audio>
+    
 
     </div>
     <script src="~/assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -265,6 +258,14 @@
 
         $(document).ready(function () {
 
+            var mtch = 0;
+            var sampleTags = new Array();
+             var array = @Html.Raw(Json.Encode(@ViewBag.matched));
+
+            for (var i = 0; i < array.length; i++) {
+                sampleTags[i] = array[i];
+                
+            } 
 
             var myhub = $.connection.alertHub;
 
@@ -280,23 +281,30 @@
             });
 
 
-            myhub.client.alertMe = function () {
+            myhub.client.alertMe = function (message) {
 
-                // var x = document.getElementsByClassName("myAudio"); 
+               
+                $.each(sampleTags, function (index ,value) {
 
-                var x = new Audio('/alarm.mp3');
-                // $('.myAudio').play();
-                x.play();
-                x.loop = false;
+                    
+                    if (value == message) {
 
-                var notification = alertify.notify('New Job Booked', 'success', 5, function () { console.log('dismissed'); window.location.reload(true); });
+                        mtch = 1;
+                        
+                    }
+                });
 
 
-                console.log("ALERT ME: ");
+                if (mtch == 1) {
 
-                //alertify.alert('Ready!');
-                //   alert("working ! ............");
-                //x.pause(); 
+
+                   var x = new Audio('/alarm.mp3');
+                   x.play();
+                   x.loop = false;
+                  var notification = alertify.notify('New Job Booked', 'success', 5, function () { console.log('dismissed'); window.location.reload(true); });
+                }
+
+                
             };
         });
 

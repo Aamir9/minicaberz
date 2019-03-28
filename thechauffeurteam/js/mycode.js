@@ -17,7 +17,7 @@ $(document).ready(function () {
     });
 
 
-    myhub.client.alertMe = function () {
+    myhub.client.alertMe = function (message) {
 
        // var x = document.getElementsByClassName("myAudio"); 
 

@@ -141,7 +141,7 @@ body {
 
 #social_side_right {
     position: fixed;
-    top: 50%;
+    top: 79%;
     right:0%;
     float:right;
     padding: 0;
@@ -243,27 +243,25 @@ body {
     border-bottom: 3px solid  #1853a1;
 }
 
-.container-1, .container-2 {
-    margin-left: 7%;
-    padding-right: 7%;
+ .container-2 {
+    /*margin-left: 7%;
+   
+    padding-right: 0%;*/
 }
 
 .container-2{
-    margin-bottom:50px;
+
+    /*margin-bottom:50px;*/
 }
     .container-2 .d-flex {
-        margin-left: 140px;
-        margin-top: 20px;
+        /*/*margin-left: 140px;
+        margin-top: 20px;*/*/
     
     }
 
 
 
-    .container-2 .btn:hover{
-        
-
-    }
-
+    
 
 
 .lgo {
@@ -432,6 +430,7 @@ body {
 .topsLinks {
     text-decoration: none;
     color: #1853a1;
+    
 }
 
 
@@ -643,13 +642,14 @@ ul.social_list1 li a:hover{
 
 
 .nml{
-   margin-left:45px;
+   /*margin-left:45px;*/
+   /*margin-left:45px;*/
 }
 
 
 .nmlRight {
-    margin-left: 17em;
-    background-color: rgb(226, 74, 35);
+   margin-left: 17em;
+   background-color: rgb(226, 74, 35);
     
 }
 .nmlRigh a{
@@ -1742,6 +1742,8 @@ i.fa.fa-smile {
 .carousel-control-next-icon {
     background-image: none;
     color: #333;
+     
+    
 }
 .carousel-control-prev:hover, .carousel-control-prev:focus, .carousel-control-next:hover, .carousel-control-next:focus {
     color: #999;
@@ -2388,7 +2390,7 @@ ul.radio-w3ls li {
         font-size:12px;
     }
     .lgo{
-        width:200px;
+        /*width:200px;*/
     }
 
     #formMain {
