@@ -13,6 +13,7 @@
 
 
     
+    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -60,291 +61,417 @@
 
     </ul>
 
-    <!--container-1-->
-    @*<div class="container-fluid pt-3 htop container-1" style="display:none;">
-        <div class="row">
+    <div class="container ">
+        <div class="d-flex ">
 
-            <div class="col-md-8 ml-md-2">
-                <p>Luxury Transport Services in London </p>
+            <div class="p-2 mr-auto">
+                @*<i class="fas fa-envelope"></i>*@
+                <span>
 
+                    @*info@minicaberz.comm*@
+                </span>
+            </div>
+            <div class="p-2">
+             
+                <span style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+
+                    @*020 3500 0597*@
+                </span>
             </div>
 
-            <div class="col-md-3">
-                <a href="#" class="topsLinks">About us</a> / <a href="#" class="topsLinks"> Out Fleet </a> /<a href="#" class="topsLinks"> Service Rates</a>
-
-            </div>
-
-        </div>
-
-    </div>*@
-
-    <!-- //container-1-->
-    <!--container-2-->
-    <div class="container  container-2 mt-md-5 mb-md-5" >
-
-        <!--top div-->
-
-        <div class="row" >
-
-            <div class="col-md-3 col-sm-10 no-gutters" >
-                <a href="@Url.Action("Index","Home")" class="navbar-brand">  <img src="~/images/logo.png" class="lgo navbar-brand" />   </a>
-
-            </div>
-
-            <div class="col-md-9 col-sm-1  mt-md-3" >
-                <div class="d-flex   flex-row " style="margin-left:34%;">
-
-
-                    <div class="border-left p-md-2">
-                        @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
-                        <span class="ths border-left"> <a href="@Url.Action("CabOfficeReg", "CabOffice")" class="topsLinks">Register as a Cab Office</a></span>
-
-                    </div>
-                    <div class="border-left p-md-2">
-                        @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
-                        <span class="ths border-left"> <a href="@Url.Action("Registration", "Passengers")" class="topsLinks"> Register as a Passenger</a></span>
-
-                    </div>
-
-
-                    <div class="p-md-2">
-                        <a href="/Home/directBooking" class="btn    bookNowbtn" style="background:#1853a1; color:white;">  Book Online Now  </a>
-                    </div>
-
-
-
-                </div>
-            </div>
 
 
         </div>
 
-    </div>
-    <!-- //container-2-->
-    <!--navbar-->
-
-    <div id="NvBorder">
-        <div class="cstmNv ">
-            <nav class="navbar  navbar-expand-md  navbar-dark  p-0 " style="background:#fff ; ">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation ">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse  collapse" id="navbarSupportedContent">
-                    <ul class="navbar navbar-nav " id="navItem">
-                        <li class="nav-item   tab ml-md-3">
-                            <a class="nav-link" href="\Home\Index">Minicaberz <span class="sr-only">(current)</span></a>
-                        </li>
 
 
+        </div>
 
-                        <li class="nav-item nml tab ml-md-3">
-                            <a class="nav-link" href="#">Coverage Area</a>
-                        </li>
 
-                        <li class="nav-item nml tab ml-md-3">
-                            <a class="nav-link" href="#">Services</a>
-                        </li>
+        <!-- //container-1-->
+        <!--container-2-->
+        <div class="container  container-2  mb-md-5  mt-md-5">
 
-                        <li class="nav-item nml tab ml-md-3">
-                            <a class="nav-link" href="#">Business Account</a>
-                        </li>
+            <!--top div-->
 
-                        <li class="nav-item nml tab ml-md-3">
-                            <a class="nav-link" href="#">Chauffeur Hire</a>
-                        </li>
+            <div class="row">
 
-                        <li class="nav-item nml tab ml-md-3" >
-                            <a class="nav-link" href="#">Help </a>
-                        </li>
-                        @*<li class="nav-item nml tab">
-            <a class="nav-link" href="@Url.Action(" Contact","Home")">Contact</a>
-        </li>*@
-
-                        @*@if (Session["user"] == null && Session["Dirveruser"] == null)
-        {
-            <li class="nav-item dropdown nml">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" >
-                    Register
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                    <a class="dropdown-item" href="@Url.Action("Registration", "Passengers")">Register as a Passsenger</a>
-                    <a class="dropdown-item" href="@Url.Action("CabOfficeReg", "CabOffice")">Register as a Partner</a>
-                    <a class="dropdown-item" href="@Url.Action("Register", "Drivers")">Register as a Driver </a>
+                <div class="col-md-3 col-sm-10 no-gutters">
+                    <a href="@Url.Action("Index","Home")" class="navbar-brand">  <img src="~/images/logo.png" class="lgo navbar-brand" />   </a>
 
                 </div>
 
-            </li>
-        }
-        else if (Session["user"] != null)
-        {
+                <div class="col-md-9 col-sm-1  mt-md-3">
+                    <div class="d-flex   flex-row " style="margin-left:34%;">
 
 
-            <li class="nav-item nml tab">
-                <a class="nav-link" href="#"> @Session["userName"]</a>
-            </li>
-        }
+                        <div class="border-left p-md-2">
+                            @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
+                            <span class="ths border-left"> <a href="@Url.Action("CabOfficeReg", "CabOffice")" class="topsLinks">Register as a Cab Office</a></span>
 
-        else
-        {
+                        </div>
+                        <div class="border-left p-md-2">
+                            @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
+                            <span class="ths border-left"> <a href="@Url.Action("Registration", "Passengers")" class="topsLinks"> Register as a Passenger</a></span>
 
-            <li class="nav-item nml tab">
-                <a class="nav-link" href="#"> @Session["Dirveruser"]</a>
-            </li>
-        }
+                        </div>
 
-                        *@
 
-                        @if (Session["user"] == null && Session["driverId"] == null)
-                        {
+                        <div class="p-md-2">
+                            <a href="/Home/directBooking" class="btn    bookNowbtn" style="background:#1853a1; color:white;">  Book Online Now  </a>
+                        </div>
 
-                            <li class="nmlRight btn btn-sm tab">
-                                <a class="" style="color:#fff;" href="@Url.Action("Login","Drivers")">Login</a>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- //container-2-->
+        <!--navbar-->
+
+        <div id="NvBorder">
+            <div class="cstmNv ">
+                <nav class="navbar  navbar-expand-md  navbar-dark  p-0 " style="background:#fff ; ">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation ">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse  collapse" id="navbarSupportedContent">
+                        <ul class="navbar navbar-nav " id="navItem">
+                            <li class="nav-item   tab ml-md-2">
+                                <a class="nav-link" href="\Home\Index">Minicaberz <span class="sr-only">(current)</span></a>
                             </li>
-                        }
-                        else
-                        {
-                            <li class="nmlRight btn btn-sm tab">
-                                <a class="" style="color:#fff;" href="@Url.Action("LogOut","Passengers")">Log Out</a>
+
+
+
+                            <li class="nav-item nml tab  dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Popular Coverage
+                                </a>
+                                
+                                <div class="dropdown-menu " aria-labelledby="navbarDropdown" style="background:#fff !important;">
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-4 mt-md-3">
+
+                                                <ul class="nav flex-column">
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">London Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Edinburgh Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Glasgow Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Manchester Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">York Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link" href="#">Leeds Taxi</a>
+                                                    </li>
+
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Oxford Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Aberdeen Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link" href="#">Bristol Taxi</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- /.col-md-4  -->
+                                            <div class="col-md-4 mt-md-3 ">
+                                                <ul class="nav flex-column">
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Heathrow Airport Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Gatwick Airport Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Stansted Airport Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Luton Airport Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">London City Airport Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link" href="#">Manchester Airport Taxi</a>
+                                                    </li>
+
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Edinburgh Airport Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Glasgow Airport Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link" href="#">Birmingham Airport Taxi</a>
+                                                    </li>
+
+
+                                                </ul>
+                                            </div>
+                                            <!-- /.col-md-4  -->
+                                            <div class="col-md-4 mt-md-3">
+                                                <ul class="nav flex-column">
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Kings Cross Station Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Victoria Station Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link" href="#">Waterloo Station Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Clapham Junction Station Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Charing Cross Station Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link" href="#">Birmingham New Street Station Taxi</a>
+                                                    </li>
+
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Liverpool Lime Street Station Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link " href="#">Liverpool Street Station Taxi</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a class="nav-link" href="#">Manchester Piccadilly Station Taxi</a>
+                                                    </li>
+
+
+                                                </ul>
+                                            </div>
+                                            <!-- /.col-md-4  -->
+                                        </div>
+                                    </div>
+                                    <!--  /.container  -->
+
                             </li>
-                        }
 
 
-                    </ul>
-                    @*<div class="ml-auto faH " style="color:#0026ff">
+
+
+
+
+                            <li class="nav-item nml tab ">
+                                <a class="nav-link" href="#">Services</a>
+                            </li>
+
+                            <li class="nav-item nml tab ">
+                                <a class="nav-link" href="#">Business Account</a>
+                            </li>
+
+                            <li class="nav-item nml tab ">
+                                <a class="nav-link" href="#">Chauffeur Hire</a>
+                            </li>
+
+                            <li class="nav-item nml tab ">
+                                <a class="nav-link" href="#">Help </a>
+                            </li>
+                        
+                            @if (Session["user"] == null )
+                            {
+
+                                <li class="nmlRight btn btn-sm tab">
+                                    <a class="" style="color:#fff;" href="@Url.Action("Login","Drivers")">Login</a>
+                                </li>
+                                }
+                                else
+                                {
+                                <li class="nmlRight btn btn-sm tab">
+                                    <a class="" style="color:#fff;" href="@Url.Action("LogOut","Passengers")">Log Out</a>
+                                </li>
+                            }
+
+
+                        </ul>
+                        @*<div class="ml-auto faH " style="color:#0026ff">
 
                             <i class="fas fa-search mr-sm-3" style="cursor:pointer;"></i>
                         </div>*@
-                </div>
-
-
-
-            </nav>
-        </div>
-    </div>
-    <!--//navbar-->
-
-    <div>
-        <!--main body div-->
-        @RenderBody()
-
-        <!--footer-->
-        <footer class="py-sm-5 py-4 px-md-5 px-3">
-
-            <div class="container-fluid pt-lg-5">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6 mb-lg-0 mb-5 footer-grid-agileits-w3ls1 text-left">
-                        <h3 class="mb-sm-5 mb-4 mt-sm-0 mt-4">About Company</h3>
-                        <p>
-                            The Minicaberz is a private hire company based in London .
-                        </p>
-
-                    </div>
-                    <div class="col-lg-3 col-sm-6 mb-lg-0 mb-5 footer-grid-agileits-w3ls1 text-left">
-                        <h3 class="mb-sm-5 mb-4">Locate Us</h3>
-                        <ul class="w3ls-footer-bottom-list">
-                            <li> <span class="fas fa-map-marker"></span>London, United Kingdom.</li>
-                            <li> <span class="fas fa-envelope"></span> <a href="mailto:rizwanhaideer@gmail.com"> </a>Info@minicaberz.com/</li>
-                            <li> <span class="fas fa-phone"></span>  020 88020888 </li>
-                            @*<li> <span class="fas fa-fax"></span> +112 367 896 2449 </li>*@
-                            <li> <span class="fas fa-globe"></span> <a href="http://www.Minicaberz.com/">Minicaberz.com</a> </li>
-                            @*<li> <span class="fas fa-clock"></span> Office Time  : 8:00 a.m - 6:00 p.m</li>*@
-                        </ul>
                     </div>
 
-                    <!-- subscribe -->
-                    <div class="col-lg-3 col-sm-6 subscribe-main footer-grid-agileits-w3ls text-left">
-                        <h3 class="mb-sm-5 mb-4">Newsletter</h3>
-                        <div class="subscribe-main text-left">
-                            <div class="subscribe-form">
-                                <form action="#" method="post" class="subscribe_form">
-                                    <input class="form-control" type="email" placeholder="Enter Your Email..." required="">
-                                    <button type="submit" class="btn1 btn-primary submit"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- //subscribe -->
 
-                    </div>
-                    <div class="col-lg-3 col-sm-6  footer-grid-agileits-w3ls">
 
-                        <!-- //subscribe -->
-                        <div class="footer-social">
-                            <div class="copyrighttop">
-                                <h3 class="mb-sm-5 mb-5 md-5 ">Stay In Touch</h3>
-                                <ul>
-                                    <li class="mr-1">
-                                        <a class="facebook" target="_blank" href="https://web.facebook.com/Minicaberz-2694838137471006/?modal=admin_todo_tour">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li class="mr-1">
-                                        <a class="facebook" href="#">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li class="mr-1">
-                                        <a class="facebook" href="#">
-                                            <i class="fab fa-google-plus-g"></i>
-                                        </a>
-                                    </li>
-                                    <li class="mr-1">
-                                        <a class="facebook" href="#">
-                                            <i class="fab fa-pinterest-p"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="facebook" href="#">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- copyright -->
-                <div class="footer-cpy text-center pt-sm-5 mt-sm-5 mt-4 pt-3">
-                    <div class="w3layouts-agile-copyrightbottom">
-                        <p>
-                            © 2018  All Rights Reserved
-                            <a href="Itlogi.solutions.com">IT LOGI. </a>
-                        </p>
-
-                    </div>
-                </div>
-                <!-- //copyright -->
+                </nav>
             </div>
-        </footer>
-        <!-- //footer -->
-    </div> <!-- //main body div-->
-    @*<script src="~/Scripts/alertify.min.js"></script>*@
+        </div>
+        <!--//navbar-->
 
-   
+        <div>
+            <!--main body div-->
+            @RenderBody()
+
+            <!--footer-->
+            <footer class="py-sm-5 py-4 px-md-5 px-3">
+
+                <div class="container-fluid pt-lg-5">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 mb-lg-0 mb-5 footer-grid-agileits-w3ls1 text-left">
+                            <h3 class="mb-sm-5 mb-4 mt-sm-0 mt-4">About Company</h3>
+                            <p>
+                                The Minicaberz is a 24/7 hassle free minicabs provider all around UK with more than 400 minicab partners.
+                            </p>
+
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mb-lg-0 mb-5 footer-grid-agileits-w3ls1 text-left">
+                            <h3 class="mb-sm-5 mb-4">Locate Us</h3>
+                            <ul class="w3ls-footer-bottom-list">
+                                <li> <span class="fas fa-map-marker"></span>London, United Kingdom.</li>
+                                <li> <span class="fas fa-envelope"></span> <a href="mailto:rizwanhaideer@gmail.com"> </a>Info@minicaberz.com/</li>
+                                <li> <span class="fas fa-phone"></span>  020 3500 0597 </li>
+                                @*<li> <span class="fas fa-fax"></span> +112 367 896 2449 </li>*@
+                                <li> <span class="fas fa-globe"></span> <a href="http://www.Minicaberz.com/">Minicaberz.com</a> </li>
+                                @*<li> <span class="fas fa-clock"></span> Office Time  : 8:00 a.m - 6:00 p.m</li>*@
+                            </ul>
+                        </div>
+
+                        <!-- subscribe -->
+                        <div class="col-lg-3 col-sm-6 subscribe-main footer-grid-agileits-w3ls text-left">
+                            <h3 class="mb-sm-5 mb-4">Newsletter</h3>
+                            <div class="subscribe-main text-left">
+                                <div class="subscribe-form">
+                                    <form action="#" method="post" class="subscribe_form">
+                                        <input class="form-control" type="email" placeholder="Enter Your Email..." required="">
+                                        <button type="submit" class="btn1 btn-primary submit"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- //subscribe -->
+
+                        </div>
+                        <div class="col-lg-3 col-sm-6  footer-grid-agileits-w3ls">
+
+                            <!-- //subscribe -->
+                            <div class="footer-social">
+                                <div class="copyrighttop">
+                                    <h3 class="mb-sm-5 mb-5 md-5 ">Stay In Touch</h3>
+                                    <ul>
+                                        <li class="mr-1">
+                                            <a class="facebook" target="_blank" href="https://web.facebook.com/Minicaberz-2694838137471006/?modal=admin_todo_tour">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                        <li class="mr-1">
+                                            <a class="facebook" href="#">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="mr-1">
+                                            <a class="facebook" href="#">
+                                                <i class="fab fa-google-plus-g"></i>
+                                            </a>
+                                        </li>
+                                        <li class="mr-1">
+                                            <a class="facebook" href="#">
+                                                <i class="fab fa-pinterest-p"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="facebook" href="#">
+                                                <i class="fab fa-linkedin-in"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- copyright -->
+                    <div class="footer-cpy text-center pt-sm-5 mt-sm-5 mt-4 pt-3">
+                        <div class="w3layouts-agile-copyrightbottom">
+                            <p>
+                                © 2018  All Rights Reserved
+                                <a href="Itlogi.solutions.com">IT LOGI. </a>
+                            </p>
+
+                        </div>
+                    </div>
+                    <!-- //copyright -->
+                </div>
+            </footer>
+            <!-- //footer -->
+        </div> <!-- //main body div-->
+        @*<script src="~/Scripts/alertify.min.js"></script>*@
 
 
-    <script type="application/x-javascript">
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
 
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+        <script type="application/x-javascript">
+            addEventListener("load", function () {
+                setTimeout(hideURLbar, 0);
+            }, false);
 
-    @*<script src="~/Scripts/jquery.signalR-2.4.0.m in.js"></script>
-    <script src="~/signalr/hubs"></script>*@
+            function hideURLbar() {
+                window.scrollTo(0, 1);
+            }
+        </script>
 
-    <script src="~/Scripts/select2.min.js"></script>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
 
-    <script src="~/Scripts/jquery.fancybox.js"></script>
+        @*<script src="~/Scripts/jquery.signalR-2.4.0.m in.js"></script>
+        <script src="~/signalr/hubs"></script>*@
 
-    @RenderSection("scripts", required: false)
+        <script src="~/Scripts/select2.min.js"></script>
+
+        <script src="~/Scripts/jquery.fancybox.js"></script>
+
+
+        <script>
+
+            $(document).ready(function () {
+                // executes when HTML-Document is loaded and DOM is ready
+
+                // breakpoint and up
+                $(window).resize(function () {
+                    if ($(window).width() >= 980) {
+
+                        // when you hover a toggle show its dropdown menu
+                        $(".navbar .dropdown-toggle").hover(function () {
+                            $(this).parent().toggleClass("show");
+                            $(this).parent().find(".dropdown-menu").toggleClass("show");
+                        });
+
+                        // hide the menu when the mouse leaves the dropdown
+                        $(".navbar .dropdown-menu").mouseleave(function () {
+                            $(this).removeClass("show");
+                        });
+
+                        // do something here
+                    }
+                });
+
+
+
+                // document ready
+            });
+
+
+        </script>
+
+
+
+        @RenderSection("scripts", required: false)
 
 </body>
 </html>

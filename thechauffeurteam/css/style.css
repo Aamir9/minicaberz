@@ -1,15 +1,101 @@
 
 
+.navbar .dropdown-menu div[class*="col"] {
+    margin-bottom: 1rem;
+}
+
+.navbar .dropdown-menu {
+    border: none;
+    background-color: #0060c8 !important;
+}
+
+/* breakpoint and up - mega dropdown styles */
+@media screen and (min-width: 992px) {
+
+    /* remove the padding from the navbar so the dropdown hover state is not broken */
+    .navbar {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+        /* remove the padding from the nav-item and add some margin to give some breathing room on hovers */
+        .navbar .nav-item {
+            padding: .5rem .5rem;
+            margin: 0 .25rem;
+        }
+
+        /* makes the dropdown full width  */
+        .navbar .dropdown {
+            position: static;
+        }
+
+        .navbar .dropdown-menu {
+            width: 100%;
+            left: 0;
+            right: 0;
+            /*  height of nav-item  */
+            top: 45px;
+        }
+
+        /* shows the dropdown menu on hover */
+        .navbar .dropdown:hover .dropdown-menu, .navbar .dropdown .dropdown-menu:hover {
+            display: block !important;
+        }
+
+        .navbar .dropdown-menu {
+            border: 1px solid rgba(0,0,0,.15);
+            background-color: #fff;
+        }
+}
+
+
+
 /*#pdm {
     margin-top:-2%;
     
 
 }*/
 
-.pick, .Drop, .carTypeMain, .bookmain {
-    width: 25%;
+#carouselExampleSlidesOnly .carousel-indicators {
+    bottom: -50px;
+
+   
+    
 }
 
+#carouselExampleSlidesOnly .carousel-indicators li {
+    
+    background:#1853a1;
+}
+
+
+
+
+
+
+.feedbackdiv {
+    background: #1853a1;
+    color: #fff;
+}
+
+
+.feedbackdiv >p{
+
+    font-size:16px;
+   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.feedbackdiv img{
+
+    width:50px;
+}
+    .pick, .Drop, .carTypeMain, .bookmain {
+        width: 25%;
+    }
+
+.fatext {
+    font-size: 13px;
+}
 .priceMilie {
     width: 33.33%;
 }
@@ -116,7 +202,7 @@ body {
 /* Social Icons */
 #social_side_links {
     position: fixed;
-    top: 50%;
+    top: 75%;
     left: 0;
     padding: 0;
     list-style: none;
@@ -645,10 +731,11 @@ ul.social_list1 li a:hover{
    /*margin-left:45px;*/
    /*margin-left:45px;*/
 }
-
+    
 
 .nmlRight {
-   margin-left: 17em;
+
+   margin-left: 9em;
    background-color: rgb(226, 74, 35);
     
 }

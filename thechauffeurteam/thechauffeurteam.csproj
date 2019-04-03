@@ -446,6 +446,7 @@
   <ItemGroup>
     <Content Include="adminlayout.html" />
     <Content Include="alarm.mp3" />
+    <Content Include="Content\alarm.mp3" />
     <Content Include="App_Data\ChauffeurDb.mdf" />
     <Content Include="App_Data\ChauffeurDb_log.ldf">
       <DependentUpon>ChauffeurDb.mdf</DependentUpon>
@@ -639,6 +640,7 @@
     <Content Include="css\font-awesome.min.css" />
     <Content Include="DriverEmail.html" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="images\AdminLogo.png" />
     <Content Include="images\b.jpg" />
     <Content Include="images\banner3.jpg" />
     <Content Include="images\bgflexbox.jpg" />
@@ -2401,6 +2403,7 @@
     <Content Include="images\E-Class.png" />
     <Content Include="images\eclass-300x124.png" />
     <Content Include="images\estate.png" />
+    <Content Include="images\favicon.ico" />
     <Content Include="images\loginImage.jpeg" />
     <Content Include="images\Logo Minicaberz.png" />
     <Content Include="images\Logo.png" />
@@ -2428,6 +2431,7 @@
     <Content Include="images\why3.jpg" />
     <Content Include="images\why4.jpg" />
     <Content Include="js\favicon.ico" />
+    <Content Include="js\gainQuote.js" />
     <Content Include="js\mycode.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\responsiveslides.js" />

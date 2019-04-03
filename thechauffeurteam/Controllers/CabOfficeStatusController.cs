@@ -23,15 +23,47 @@ namespace thechauffeurteam.Controllers
         {
             if (Session["cabOfficeuser"] != null)
             {
-                
-               int cId = (int)Session["cabOfficeId"];
-               string cabId = Session["cabOfficeId"].ToString();
-               var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
-               var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == cId).Select(a => a.postCode).ToList();
-               var j = db.jobs.ToList();
-               ViewBag.NewJobSum = jb.Intersect(cabpostMatch).Count();
-              
-               ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
+
+                int cId = (int)Session["cabOfficeId"];
+                string cabId = Session["cabOfficeId"].ToString();
+
+
+
+                //postcode match and counter of upcomming jobs
+
+                var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
+                var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == cId).Select(a => a.postCode).ToList();
+                var matchJob = jb.Intersect(cabpostMatch);
+                ViewBag.matchedjob = matchJob;
+                ViewBag.matched = matchJob.ToList();
+
+                int counted = 0;
+                var jbs = db.jobs.Where(m => m.status == 0).OrderByDescending(m => m.id).ToList();
+
+                foreach (var match in matchJob.ToList())
+                {
+                    string mtjb = match;
+
+                    foreach (var data in jbs)
+                    {
+
+                        if (mtjb == data.postcode)
+                        {
+                            counted = counted + 1;
+
+                        }
+                    }
+                }
+
+
+                ViewBag.NewJobSum = counted.ToString();
+
+
+
+
+                var j = db.jobs.ToList();
+               
+                ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
                ViewBag.FinishJobSum = j.Where(M => M.status == 2 && M.DriverId == cabId).Count();
                ViewBag.CancelJobSum = j.Where(M => M.status == 3 && M.DriverId == cabId).Count();
 
@@ -49,7 +81,7 @@ namespace thechauffeurteam.Controllers
                 //ViewData["txt"] = "Jobs";
                 //ViewBag.txt = "Jobs";
 
-
+                
                 string cabId =Session["cabOfficeId"].ToString();
                  
                 int cId= (int)Session["cabOfficeId"];
@@ -66,9 +98,42 @@ namespace thechauffeurteam.Controllers
 
                 // ViewBag.path = "/admin/ActiveJobs";
                 var j = db.jobs.ToList();
-                
+
                 //ViewBag.allJobSum = j.Count();
-                ViewBag.NewJobSum = j.Where(M => M.status == 0 && M.DriverId == cabId).Count();
+
+
+                
+
+
+                //postcode match and counter of upcomming jobs
+
+                var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
+                var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == cId).Select(a => a.postCode).ToList();
+                var matchJob = jb.Intersect(cabpostMatch);
+                ViewBag.matchedjob = matchJob;
+                ViewBag.matched = matchJob.ToList();
+
+                int counted = 0;
+                var jbs = db.jobs.Where(m => m.status == 0).OrderByDescending(m => m.id).ToList();
+
+                foreach (var match in matchJob.ToList())
+                {
+                    string mtjb = match;
+
+                    foreach (var data in jbs)
+                    {
+
+                        if (mtjb == data.postcode)
+                        {
+                            counted = counted + 1;
+
+                        }
+                    }
+                }
+
+
+                ViewBag.NewJobSum = counted.ToString();
+
                 ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
                 ViewBag.FinishJobSum = j.Where(M => M.status == 2 && M.DriverId == cabId).Count();
                 ViewBag.CancelJobSum = j.Where(M => M.status == 3 && M.DriverId == cabId).Count();
@@ -106,8 +171,40 @@ namespace thechauffeurteam.Controllers
                 // ViewBag.path = "/admin/ActiveJobs";
                 var j = db.jobs.ToList();
 
-                //ViewBag.allJobSum = j.Count();
-                ViewBag.NewJobSum = j.Where(M => M.status == 0 && M.DriverId == cabId).Count();
+
+               
+
+                //postcode match and counter of upcomming jobs
+
+                var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
+                var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == cId).Select(a => a.postCode).ToList();
+                var matchJob = jb.Intersect(cabpostMatch);
+                ViewBag.matchedjob = matchJob;
+                ViewBag.matched = matchJob.ToList();
+
+                int counted = 0;
+                var jbs = db.jobs.Where(m => m.status == 0).OrderByDescending(m => m.id).ToList();
+
+                foreach (var match in matchJob.ToList())
+                {
+                    string mtjb = match;
+
+                    foreach (var data in jbs)
+                    {
+
+                        if (mtjb == data.postcode)
+                        {
+                            counted = counted + 1;
+
+                        }
+                    }
+                }
+
+
+                ViewBag.NewJobSum = counted.ToString();
+
+
+
                 ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
                 ViewBag.FinishJobSum = j.Where(M => M.status == 2 && M.DriverId == cabId).Count();
                 ViewBag.CancelJobSum = j.Where(M => M.status == 3 && M.DriverId == cabId).Count();
@@ -128,7 +225,7 @@ namespace thechauffeurteam.Controllers
                 var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
                 var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == cId).Select(a => a.postCode).ToList();
                 var j = db.jobs.ToList();
-                ViewBag.NewJobSum = jb.Intersect(cabpostMatch).Count();
+                
 
                 ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
                 ViewBag.FinishJobSum = j.Where(M => M.status == 2 && M.DriverId == cabId).Count();
