@@ -61,7 +61,7 @@
 
     </ul>
 
-    <div class="container ">
+    <div class="container " >
         <div class="d-flex ">
 
             <div class="p-2 mr-auto">
@@ -90,56 +90,58 @@
 
         <!-- //container-1-->
         <!--container-2-->
-        <div class="container  container-2  mb-md-5  mt-md-5">
+        <div class="topdiv mt-md-3 mb-md-5 " >
 
             <!--top div-->
-
+            
             <div class="row">
+               
+                    <div class="col-md-3 col-sm-10 ">
+                        <a href="@Url.Action("Index","Home")" class="navbar-brand">  <img src="~/images/logo.png" class="lgo navbar-brand" />   </a>
 
-                <div class="col-md-3 col-sm-10 no-gutters">
-                    <a href="@Url.Action("Index","Home")" class="navbar-brand">  <img src="~/images/logo.png" class="lgo navbar-brand" />   </a>
+                    </div>
 
-                </div>
-
-                <div class="col-md-9 col-sm-1  mt-md-3">
-                    <div class="d-flex   flex-row " style="margin-left:34%;">
+                    <div class="col-md-9 col-sm-1  mt-md-3">
+                        <div class="d-flex justify-content-end">
 
 
-                        <div class="border-left p-md-2">
-                            @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
-                            <span class="ths border-left"> <a href="@Url.Action("CabOfficeReg", "CabOffice")" class="topsLinks">Register as a Cab Office</a></span>
+                            <div class="border-left p-md-2">
+                                @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
+                                <span class="ths border-left"> <a href="@Url.Action("CabOfficeReg", "CabOffice")" class="topsLinks">Register as a Cab Office</a></span>
+
+                            </div>
+                            <div class="border-left p-md-2">
+                                @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
+                                <span class="ths border-left"> <a href="@Url.Action("Registration", "Passengers")" class="topsLinks"> Register as a Passenger</a></span>
+
+                            </div>
+
+
+                            <div class="p-md-2">
+                                <a href="/Home/directBooking" class="btn    bookNowbtn" style="background:#1853a1; color:white;">  Book Online Now  </a>
+                            </div>
+
+
 
                         </div>
-                        <div class="border-left p-md-2">
-                            @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
-                            <span class="ths border-left"> <a href="@Url.Action("Registration", "Passengers")" class="topsLinks"> Register as a Passenger</a></span>
-
-                        </div>
-
-
-                        <div class="p-md-2">
-                            <a href="/Home/directBooking" class="btn    bookNowbtn" style="background:#1853a1; color:white;">  Book Online Now  </a>
-                        </div>
-
-
-
                     </div>
                 </div>
 
 
+
             </div>
 
-        </div>
+       
         <!-- //container-2-->
         <!--navbar-->
 
         <div id="NvBorder">
             <div class="cstmNv ">
-                <nav class="navbar  navbar-expand-md  navbar-dark  p-0 " style="background:#fff ; ">
+                <nav class="navbar  navbar-expand-md  navbar-dark  p-md-2 " style="background:#fff; ">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation ">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="navbar-collapse  collapse" id="navbarSupportedContent">
+                    <div class="navbar-collapse  collapse collapse justify-content-between" id="navbarSupportedContent">
                         <ul class="navbar navbar-nav " id="navItem">
                             <li class="nav-item   tab ml-md-2">
                                 <a class="nav-link" href="\Home\Index">Minicaberz <span class="sr-only">(current)</span></a>
@@ -151,12 +153,12 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Popular Coverage
                                 </a>
-                                
+
                                 <div class="dropdown-menu " aria-labelledby="navbarDropdown" style="background:#fff !important;">
 
                                     <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-4 mt-md-3">
+                                        <div class="d-flex flex-row">
+                                            <div class="p-md-1 mt-md-3">
 
                                                 <ul class="nav flex-column">
                                                     <li class="">
@@ -190,7 +192,7 @@
                                                 </ul>
                                             </div>
                                             <!-- /.col-md-4  -->
-                                            <div class="col-md-4 mt-md-3 ">
+                                            <div class="p-md-1 mt-md-3 ">
                                                 <ul class="nav flex-column">
                                                     <li class="">
                                                         <a class="nav-link " href="#">Heathrow Airport Taxi</a>
@@ -225,7 +227,7 @@
                                                 </ul>
                                             </div>
                                             <!-- /.col-md-4  -->
-                                            <div class="col-md-4 mt-md-3">
+                                            <div class="p-md-1 mt-md-3">
                                                 <ul class="nav flex-column">
                                                     <li class="">
                                                         <a class="nav-link " href="#">Kings Cross Station Taxi</a>
@@ -262,7 +264,8 @@
                                             <!-- /.col-md-4  -->
                                         </div>
                                     </div>
-                                    <!--  /.container  -->
+                                </div>
+                                <!--  /.container  -->
 
                             </li>
 
@@ -286,16 +289,25 @@
                             <li class="nav-item nml tab ">
                                 <a class="nav-link" href="#">Help </a>
                             </li>
-                        
-                            @if (Session["user"] == null )
+
+
+
+                        </ul>
+                 
+
+                        <ul class="navbar-nav">
+
+                            @if (Session["user"] == null)
                             {
 
-                                <li class="nmlRight btn btn-sm tab">
-                                    <a class="" style="color:#fff;" href="@Url.Action("Login","Drivers")">Login</a>
+                                <li class="nmlRight  float-md-left nav-item  btn btn-sm tab ">
+                                    <a class="nav-item " style="color:#fff;" href="@Url.Action("Login","Drivers")">Login</a>
+
+
                                 </li>
-                                }
-                                else
-                                {
+                            }
+                            else
+                            {
                                 <li class="nmlRight btn btn-sm tab">
                                     <a class="" style="color:#fff;" href="@Url.Action("LogOut","Passengers")">Log Out</a>
                                 </li>
@@ -303,10 +315,6 @@
 
 
                         </ul>
-                        @*<div class="ml-auto faH " style="color:#0026ff">
-
-                            <i class="fas fa-search mr-sm-3" style="cursor:pointer;"></i>
-                        </div>*@
                     </div>
 
 

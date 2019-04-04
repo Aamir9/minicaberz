@@ -42,6 +42,8 @@
         text-align: right;
         height: 500px;
         width: 100%;
+        margin-top:-1.8%;
+        
     }
 
     #gmap_canvas {
@@ -61,7 +63,7 @@
     }
 </style>
 
-<div id="MainDiv">
+<div id="MainDiv"  >
 
     <div class="row">
 
@@ -138,29 +140,7 @@
                                     </div>
 
                                 </div>
-                                @*<div class="row">
-                                        <div class="col-md-6">
-
-                                            <div class="form-group " id="via_1" style="display:none;">
-
-                                                <i class="fa fa-minus" id="minus_via_1" aria-hidden="true"></i>
-                                                <input type="text" id="" placeholder="Add Via" class="form-control" />
-                                            </div>
-
-
-
-                                        </div>
-
-                                        <div class="col-md-6">
-
-                                            <div class="form-group " id="via_2" style="display:none;">
-
-                                                <i class="fa fa-minus"  id="minus_via_2" aria-hidden="true"></i>
-                                                <input type="text" id="" placeholder="Add Via Again" class="form-control" />
-                                            </div>
-
-                                        </div>
-                                    </div>*@
+                             
 
                                 <div class="row">
                                     <div class="col-md-4">
@@ -277,9 +257,7 @@
                                                 @Html.DisplayFor(m => m.Mile, new { @id = "inmile", @class = "form-control" }) miles
 
                                             </p>
-                                            @*<span style="display:none;" id="inmile"></span*@
-
-                                            @*<input type="hidden" name="inMiles" id="inMiles" />*@
+                                          
 
                                             @Html.HiddenFor(m => m.Mile, new { @id = "inMiles" })
                                         </div>
@@ -294,12 +272,18 @@
 
                                                 Fare: &nbsp;&nbsp;  <i class="fas fa-pound-sign"></i> &nbsp;
 
-                                                @Html.DisplayFor(m => m.Price, new { @id = "Prices", @class = "form-control" })
+                                                @*@Html.DisplayFor(m => m.Price, new { @id = "Prices", @class = "form-control" })*@
+
+                                             
+                                                <spna id="Prices">@Model.Price</spna>
+
+                                                 
+                                                @Html.HiddenFor(m => m.Price, new { @id = "priceVal" })
                                                 <i class="fa fa-spinner fa-spin" style="display:none;"></i>
                                             </p>
                                             @*<input type="hidden" name="price" id="price" />*@
 
-                                            @Html.HiddenFor(m => m.Price, new { @id = "priceVal" })
+                                           
 
                                         </div>
                                     </div>
@@ -312,9 +296,9 @@
 
                                 </div>
 
-                                @*<div class="col-md-12 text-center ">
-                                        <input type="button" class="btn" id="GetQuote" style=" background: #1853a1;color:white;" value="Get Quote Now " />
-                                    </div>*@
+                                <div class="col-md-12 text-center ">
+                                        <input type="button" class="btn" id="GetQuote" style=" background: #1853a1;color:white; display:none;" value="Get Quote Now " />
+                                    </div>
                                 <div class="form-group  text-center ">
                                     <input type="submit" class="btn btn-primary" onclick="InsertJob()" id="BookNow" style="background: #1853a1;color:white;" value="Book Now " />
                                 </div>
@@ -428,7 +412,7 @@
         $(function () {
             $("#from_places, #to_places").on('focus', function () {
 
-                $('.pac-container').css('margin-top', '-50px');
+                //$('.pac-container').css('margin-top', '-50px');
 
             });
 
@@ -532,6 +516,8 @@
 
                                 $('#Prices').html(data.totalAmount);
                                 $("#priceVal").val(data.totalAmount);
+
+                                
                                 console.log("your data submited successfull ");
                             },
                             error: function () {
@@ -583,7 +569,11 @@
 
             });
 
-            var cartype;
+            var cartype = $('#cartype').val();
+
+            //alert(cartype);
+            
+
             $('#cartype').on('change', function () {
 
                 cartype = $(this);
@@ -671,76 +661,25 @@
 
                       //  $('#BookNow').show();
                         $('#priceMileMain').show();
-                        $('#from_places,#to_places,#cartype').attr('disabled', 'disabled');
+                        //$('#from_places,#to_places,#cartype').attr('disabled', 'disabled');
 
 
 
                     }
 
 
-                $("#signUpPopShow").click(function () {
-
-                    $("#showLogin").hide();
-                    $(this).fancybox.close();
-                    $("#showPassengerRegister").show();
-                    $("#showPassengerRegister").fancybox();
-
-                });
-
-
+                
 
 
                 var sessionId = @UserSessionId;
 
-                    if (sessionId == 0) {
-                     //   $("#BookNow").hide();
-                        $("#LoginPopShow").show();
-                        $("#LoginPopShow").fancybox();
-
-                        $("#msg").hide();
-
-                        Login = function () {
-                            // var data = $("#loginForm").serialize();
-                            $.ajax({
-                                type: "post",
-                                url: "/Home/CheckValidUser",
-                                data: { email: $('#logEmail').val(), password: $('#logPssword').val() },
-                                success: function (Data) {
-                                    if (Data.result == "Fail") {
-                                        $("#loginForm")[0].reset();
-                                        $("#msg").show();
-                                    }
-
-                                    else {
-                                        //window.location.href = "/Register/AfterLogin";
-                                        sessionId = Data.sessionId;
-                                        console.log("login sccessfull");
-                                        $("#msg").hide();
-                                        $("#LoginPopShow").hide();
-                                        $.fancybox.close();
-                                        $("#passengerId").val(sessionId);
-                                        $("#BookNow").show();
-                                         console.log(sessionId);
-                                    }
-                                },
-                                error: function () {
-                                    console.log('login request creating problem problem');
-
-
-                                }
-
-
-                            })
-                        }
-                       // return false;
-                    } // for checking sessio id
-                    else {
+                    
 
                             $("#passengerId").val(sessionId);
                             $("#BookNow").show();
 
 
-                    }
+                   
 
 
             });
@@ -753,33 +692,33 @@
 
     <script type="text/javascript">
 
-        $('.dhf,#refreshForm2').on('click', function () {
-            $('#formMain2').find("input,select").not("input[type=button],#datepicker,.timepicker,#BookNow,#LoginPopShow").val('');
+        //$('.dhf,#refreshForm2').on('click', function () {
+        //    $('#formMain2').find("input,select").not("input[type=button],#datepicker,.timepicker,#BookNow,#LoginPopShow").val('');
 
-            $('#in_mile,#duration_text,#Prices').html('');
-            $('#priceVal').val('');
-            $('#Price').css('display', 'none');
-            $('#GetQuote').show();
-            $('#BookNow').hide();
-            $('#DriverMsg').hide();
-            $('#from_places,#to_places,#cartype,#hours,#PostCodeSelect2,#PostCode2Select2').attr('disabled', false);
-            $('#BookNow').hide();
-            $("#LoginPopShow").hide();
+        //    $('#in_mile,#duration_text,#Prices').html('');
+        //    $('#priceVal').val('');
+        //    $('#Price').css('display', 'none');
+        //    $('#GetQuote').show();
+        //    $('#BookNow').hide();
+        //    $('#DriverMsg').hide();
+        //    $('#from_places,#to_places,#cartype,#hours,#PostCodeSelect2,#PostCode2Select2').attr('disabled', false);
+        //    $('#BookNow').hide();
+        //    $("#LoginPopShow").hide();
 
-            $("#PostCodeSelect2").select2({
-                placeholder: "Select a Pick Up Postcode",
-                allowClear: true
+        //    $("#PostCodeSelect2").select2({
+        //        placeholder: "Select a Pick Up Postcode",
+        //        allowClear: true
 
-            });
-            $("#PostCode2Select2 ").select2({
-                placeholder: "Select Drop Off Postcode",
-                allowClear: true
+        //    });
+        //    $("#PostCode2Select2 ").select2({
+        //        placeholder: "Select Drop Off Postcode",
+        //        allowClear: true
 
-            });
+        //    });
 
 
 
-        });
+        //});
 
 
         $('#addVia2').click(function () {
@@ -856,67 +795,9 @@
     <!-- //Calendar -->
     <!-- //carousel -->
     <!--slider-->
-    @*booking form fields show and hide*@
+  
 
-
-    @*<script type ="text/javascript">
-        $(function () {
-            // Create a proxy to signalr hub on web server. It reference the hub.
-            var notificationFromHub = $.connection.jobBookingHub;
-
-            // Connect to signalr hub
-            $.connection.hub.start().done(function () {
-                //FetchEmployees();
-            });
-
-            // Notify to client with the recent updates
-            notificationFromHub.client.updatedClients = function () {
-                //FetchEmployees();
-            };
-        }); 
-
-        // Insert job Record
-        function InsertJob() {
-
-            var model = {
-               
-                pickUp: $('#origin').val(),
-                dropOff: $('#destination').val(),
-                passengerId: $('#passengerId').val(),
-                cartype: $('#selectedcar').val(),
-                postcode: $('#postcode').val(),
-                date: $('#datepicker').val(),
-                time: $('#timepicker').val(),
-                mile: $('#inmile').val(),
-                price: $('#Prices').val(),
-                driverMsg: $('#driverMsg').val(),
-
-            };
-
-            console.log(pickUp);
-            console.log(dropOff);
-            console.log(passengerId);
-            console.log(cartype);
-            console.log(postcode);
-            console.log(date);
-            console.log(time);
-            console.log(price);
-            console.log(driverMsg);
-
-            $.ajax({
-                url: '/jobBooking/Insert',
-                type: 'POST',
-                data: JSON.stringify(model),
-                contentType: "application/json;charset=utf-8",
-                success: function () {
-                    alert('job added Successfully');
-                },
-                error: function () {
-                    alert('job not Added');
-                }
-            });
-        }
-    </script>*@
+    <script src="~/js/gainQuote.js"></script>
 
 
 }

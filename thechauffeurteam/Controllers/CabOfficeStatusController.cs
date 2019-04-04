@@ -202,9 +202,7 @@ namespace thechauffeurteam.Controllers
 
 
                 ViewBag.NewJobSum = counted.ToString();
-
-
-
+                
                 ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
                 ViewBag.FinishJobSum = j.Where(M => M.status == 2 && M.DriverId == cabId).Count();
                 ViewBag.CancelJobSum = j.Where(M => M.status == 3 && M.DriverId == cabId).Count();
@@ -222,12 +220,39 @@ namespace thechauffeurteam.Controllers
 
                 int cId = (int)Session["cabOfficeId"];
                 string cabId = Session["cabOfficeId"].ToString();
-                var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
-                var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == cId).Select(a => a.postCode).ToList();
-                var j = db.jobs.ToList();
+            
                 
 
-                ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
+                //postcode match and counter of upcomming jobs
+
+                var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
+                var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == cId).Select(a => a.postCode).ToList();
+                var matchJob = jb.Intersect(cabpostMatch);
+                ViewBag.matchedjob = matchJob;
+                ViewBag.matched = matchJob.ToList();
+
+                int counted = 0;
+                var jbs = db.jobs.Where(m => m.status == 0).OrderByDescending(m => m.id).ToList();
+
+                foreach (var match in matchJob.ToList())
+                {
+                    string mtjb = match;
+
+                    foreach (var data in jbs)
+                    {
+
+                        if (mtjb == data.postcode)
+                        {
+                            counted = counted + 1;
+
+                        }
+                    }
+                }
+
+
+                ViewBag.NewJobSum = counted.ToString();
+               var j = db.jobs.ToList();
+                 ViewBag.ActiveJobSum = j.Where(M => M.status == 1 && M.DriverId == cabId).Count();
                 ViewBag.FinishJobSum = j.Where(M => M.status == 2 && M.DriverId == cabId).Count();
                 ViewBag.CancelJobSum = j.Where(M => M.status == 3 && M.DriverId == cabId).Count();
 

@@ -42,6 +42,7 @@
         text-align: right;
         height: 500px;
         width: 100%;
+        margin-top: -1.7%;
     }
 
     #gmap_canvas {
@@ -99,7 +100,7 @@
                                             @*<i class="fa fa-car" aria-hidden="true"></i>*@
                                             @*<input type="text" id="from_places" placeholder="Pick Up Address" class="form-control" />*@
 
-                                            @Html.TextBoxFor(m => m.pickUp, new { @class = "form-control", @placeholder = "Pick Up Address", @id = "from_places" })
+                                            @Html.TextBoxFor(m => m.pickUp, new { @class = "form-control", @placeholder = "Pick Up Address", @id = "from_places", required = "required" })
 
                                             @Html.HiddenFor(m => m.pickUp, new { @id = "origin" })
                                             @*<input type="hidden" id="origin" name="origin" />*@
@@ -112,7 +113,7 @@
                                             @Html.HiddenFor(m => m.CarType, new { @id = "selectedcar" })
                                             @*<input type="hidden" name="selectedcar" id="selectedcar" />*@
 
-                                            <p class="text-danger" id="inputError1"> </p>
+                                            <p class="text-danger bg-white" id="inputError1"> </p>
                                             @*<input type="text" name="postcode" value="" id="postcode" />*@
                                             @Html.HiddenFor(m => m.postcode, new { @id = "postcode" })
                                         </div>
@@ -123,40 +124,40 @@
                                             @*<i class="fas fa-globe"></i>*@
                                             @*<input type="text" id="to_places" name="dropOff" placeholder="Drop Off Address" class="form-control" />*@
 
-                                            @Html.TextBoxFor(m => m.DropUP, new { @class = "form-control", @placeholder = "Drop Off Addres", @id = "to_places" })
+                                            @Html.TextBoxFor(m => m.DropUP, new { @class = "form-control", @placeholder = "Drop Off Addres", @id = "to_places", required = "required" })
 
 
                                             @Html.HiddenFor(m => m.DropUP, new { @id = "destination" })
 
                                             @*<input id="destination" name="destination" type="hidden" />*@
-                                            <p class="text-danger" id="inputError2"> </p>
+                                            <p class="text-danger bg-white" id="inputError2"> </p>
                                         </div>
                                     </div>
 
                                 </div>
                                 @*<div class="row">
-                <div class="col-md-6">
+                                        <div class="col-md-6">
 
-                    <div class="form-group " id="via_1" style="display:none;">
+                                            <div class="form-group " id="via_1" style="display:none;">
 
-                        <i class="fa fa-minus" id="minus_via_1" aria-hidden="true"></i>
-                        <input type="text" id="" placeholder="Add Via" class="form-control" />
-                    </div>
+                                                <i class="fa fa-minus" id="minus_via_1" aria-hidden="true"></i>
+                                                <input type="text" id="" placeholder="Add Via" class="form-control" />
+                                            </div>
 
 
 
-                </div>
+                                        </div>
 
-                <div class="col-md-6">
+                                        <div class="col-md-6">
 
-                    <div class="form-group " id="via_2" style="display:none;">
+                                            <div class="form-group " id="via_2" style="display:none;">
 
-                        <i class="fa fa-minus"  id="minus_via_2" aria-hidden="true"></i>
-                        <input type="text" id="" placeholder="Add Via Again" class="form-control" />
-                    </div>
+                                                <i class="fa fa-minus"  id="minus_via_2" aria-hidden="true"></i>
+                                                <input type="text" id="" placeholder="Add Via Again" class="form-control" />
+                                            </div>
 
-                </div>
-            </div>*@
+                                        </div>
+                                    </div>*@
 
                                 <div class="row">
                                     <div class="col-md-4">
@@ -218,7 +219,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <select class="form-control" id="cartype" name="cartype">
+                                            <select class="form-control" id="cartype" name="cartype" required="required">
 
                                                 <option value="">Car Type</option>
                                                 <option value="Saloon">Saloon</option>
@@ -228,7 +229,7 @@
 
 
                                             </select>
-                                            <p class="text-danger errormsg"></p>
+                                            <p class="text-danger errormsg bg-white"></p>
                                         </div>
 
                                     </div>
@@ -297,7 +298,7 @@
 
                                 <div class="form-group  text-center ">
 
-                                    <a href="#showLogin" class="btn btn-primary" id="LoginPopShow" style="background: #1853a1;color:white; display:none;"> Book Now ...</a>
+                                    <a href="#showLogin" class="btn btn-primary" id="LoginPopShow" style="background: #1853a1;color:white; display:none;"> Book Now</a>
                                 </div>
 
 
@@ -307,21 +308,21 @@
 
                         </div>
 
-                        </div>
-
                     </div>
 
-
-
-
-
                 </div>
+
+
+
+
+
             </div>
-
-
         </div>
-    </div><!--row-->
-</div>
+
+
+    </div>
+</div><!--row-->
+
 <div class="mapouter">
     <div class="gmap_canvas">
 
@@ -338,36 +339,37 @@
 <div id="showLogin" style="display:none;">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 alert alert-info">
-                <h3 class="text-center">Login</h3>
+            <div class="col-md-12 alert " style="background:#1853a1;">
+                <h3 class="text-center text-white p-2">Login</h3>
                 <form id="loginForm">
-                    <div id="msg"><ul style="color:red;"> Invalid Username Or Password</ul></div>
+                    <div id="msg"><ul style="color:red;background:rgba(555,555,555,0.5);"> Invalid Username Or Password</ul></div>
                     <div class="form-group">
-                        <div class="input-group">
+                        <div class="input-group ">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            <input class="form-control" type="email" name="Email" id="logEmail" placeholder="Email" />
+                            <input class="form-control border-light" type="email" name="Email" id="logEmail" placeholder="Email" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input class="form-control" type="password" name="Password" id="logPssword" placeholder="Password" />
+                            <input class="form-control border-light" type="password" name="Password" id="logPssword" placeholder="Password" />
                         </div>
                     </div>
                 </form>
                 <div class="form-group">
-                    <button class="btn btn-info form-control" type="submit" onclick="Login()"><i class="glyphicon glyphicon-log-in"></i> Login</button>
+                    <button class="btn  form-control bg-white" style="color:#1853a1;" type="submit" onclick="Login()"><i class="glyphicon glyphicon-log-in"></i> Login</button>
                 </div>
                 <div class="form-group">
                     @*<a style="float:left">Forget Password ? </a><a style="float:right;cursor:pointer" onclick="SignUp()"> Sign Up</a>*@
-                    <a class="btn-link" href="@Url.Action("Registration","Passengers")"> Sign Up</a>
+                    <a class="btn-link text-white" href="@Url.Action("Registration","Passengers")" id="signUpPopShow"> Sign Up</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!--//login box-->
 <!--//login boc-->
 @section scripts{
 
@@ -408,7 +410,7 @@
         $(function () {
             $("#from_places, #to_places").on('focus', function () {
 
-                $('.pac-container').css('margin-top', '-50px');
+                //$('.pac-container').css('margin-top', '-50px');
 
             });
 
@@ -643,7 +645,7 @@
                         $('#inputError1').html('');
                         $('#inputError2').html('');
                         $('#datepicker,#timepicker').prop('required', true);
-                        $('#in_mile,#price').show(); 
+                        $('#in_mile,#price').show();
 
 
                         e.preventDefault();
@@ -652,7 +654,7 @@
 
                         $("#BookNow").hide();
                         $('#priceMileMain').show();
-                        $('#from_places,#to_places,#cartype').attr('disabled', 'disabled');
+                        //$('#from_places,#to_places,#cartype').attr('disabled', 'disabled');
 
 
 
@@ -701,7 +703,9 @@
                                         $.fancybox.close();
                                         $("#passengerId").val(sessionId);
                                         $("#BookNow").show();
-                                         console.log(sessionId);
+                                         //console.log(sessionId);
+
+                                        $("#BookNow").click();
                                     }
                                 },
                                 error: function () {
@@ -742,7 +746,7 @@
             $('#Price').css('display', 'none');
             $('#GetQuote').show();
             $('#BookNow').hide();
-          
+
             $('#from_places,#to_places,#cartype,#hours,#PostCodeSelect2,#PostCode2Select2').attr('disabled', false);
             $('#BookNow').hide();
             $("#LoginPopShow").hide();
@@ -839,7 +843,7 @@
     <!--slider-->
     @*booking form fields show and hide*@
 
-
+    <script src="~/js/gainQuote.js"></script>
 
 
 }

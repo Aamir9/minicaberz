@@ -10,9 +10,7 @@ $(document).ready(function () {
         $('#priceMileMain').hide();
         $('#Prices').html('');
 
-
-
-    });
+ });
 
 
     $('#to_places').click(function () {
@@ -24,9 +22,7 @@ $(document).ready(function () {
         $('#priceMileMain').hide();
         $('#Prices').html('');
 
-
-
-    });
+   });
 
 
 
