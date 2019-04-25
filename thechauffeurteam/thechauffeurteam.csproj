@@ -2430,6 +2430,7 @@
     <Content Include="images\why2.jpg" />
     <Content Include="images\why3.jpg" />
     <Content Include="images\why4.jpg" />
+    <Content Include="js\AdminToCabAlert.js" />
     <Content Include="js\favicon.ico" />
     <Content Include="js\gainQuote.js" />
     <Content Include="js\mycode.js" />
@@ -2944,6 +2945,7 @@
     <Content Include="Views\CabOfficeStatus\_completedjob.cshtml" />
     <Content Include="Views\CabOfficeStatus\completedJobs.cshtml" />
     <Content Include="Views\Admin\_header.cshtml" />
+    <Content Include="Views\Shared\_ownership.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\vendor\anchor-js\docs\" />

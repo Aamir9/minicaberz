@@ -198,6 +198,11 @@ namespace thechauffeurteam.Controllers
 
             int result = db.SaveChanges();
 
+
+            //var context = GlobalHost.ConnectionManager.GetHubContext<AlertHub>();
+            //context.Clients.All.cabAlert();
+
+
             // send email to driver
 
 
@@ -668,10 +673,16 @@ namespace thechauffeurteam.Controllers
 
         public ActionResult BookJob()
         {
-            ViewBag.pickUpPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
-            ViewBag.dropOffPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
 
-            return View();
+
+            if (Session["adminLog"] != null)
+            {
+                ViewBag.pickUpPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
+                ViewBag.dropOffPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
+
+                return View();
+            }
+            return RedirectToAction("login");
         }
         public ActionResult AddDriver()
         {

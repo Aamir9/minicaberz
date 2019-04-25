@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Minicaberz</title>
-    <link href="~/images/minicabers_fav_pmM_icon.ico" rel="shortcut icon" type="image/x-icon" />
+    @*<link href="~/images/minicabers_fav_pmM_icon.ico" rel="shortcut icon" type="image/x-icon" />*@
+    <link href="~/images/favicon.ico"  rel="shortcut icon" type="image/x-icon" />
 
     @*<link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon" />*@
 
@@ -12,8 +13,8 @@
     <link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
 
 
-    
-    
+
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -61,7 +62,7 @@
 
     </ul>
 
-    <div class="container " >
+    <div class="container "  >
         <div class="d-flex ">
 
             <div class="p-2 mr-auto">
@@ -94,23 +95,23 @@
 
             <!--top div-->
             
-            <div class="row">
+            <div class="row no-gutters">
                
-                    <div class="col-md-3 col-sm-10 ">
-                        <a href="@Url.Action("Index","Home")" class="navbar-brand">  <img src="~/images/logo.png" class="lgo navbar-brand" />   </a>
+                    <div class="col-md-3 col-sm-12 ">
+                        <a href="@Url.Action("Index","Home")" class="navbar-brand" >  <img src="~/images/logo.png" class="lgo navbar-brand" />   </a>
 
                     </div>
 
-                    <div class="col-md-9 col-sm-1  mt-md-3">
+                    <div class="col-md-9 col-sm-12  mt-md-3 RPB">
                         <div class="d-flex justify-content-end">
 
 
-                            <div class="border-left p-md-2">
+                            <div class="border-left p-md-2 mt-2">
                                 @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
-                                <span class="ths border-left"> <a href="@Url.Action("CabOfficeReg", "CabOffice")" class="topsLinks">Register as a Cab Office</a></span>
+                                <span class="ths border-left "> <a href="@Url.Action("CabOfficeReg", "CabOffice")" class="topsLinks">Register as a Cab Office</a></span>
 
                             </div>
-                            <div class="border-left p-md-2">
+                            <div class="border-left p-md-2  mt-2">
                                 @*<img src="~/images/checked.png" style="height:auto; width:20px;" />*@
                                 <span class="ths border-left"> <a href="@Url.Action("Registration", "Passengers")" class="topsLinks"> Register as a Passenger</a></span>
 
@@ -118,7 +119,7 @@
 
 
                             <div class="p-md-2">
-                                <a href="/Home/directBooking" class="btn    bookNowbtn" style="background:#1853a1; color:white;">  Book Online Now  </a>
+                                <a href="/Home/directBooking " class="btn    bookNowbtn" style="background:#1853a1; color:white;">  Book Online Now  </a>
                             </div>
 
 
@@ -142,7 +143,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="navbar-collapse  collapse collapse justify-content-between" id="navbarSupportedContent">
-                        <ul class="navbar navbar-nav " id="navItem">
+                        <ul class="navbar navbar-nav navitems" id="navItem">
                             <li class="nav-item   tab ml-md-2">
                                 <a class="nav-link" href="\Home\Index">Minicaberz <span class="sr-only">(current)</span></a>
                             </li>
@@ -275,7 +276,7 @@
 
 
                             <li class="nav-item nml tab ">
-                                <a class="nav-link" href="#">Services</a>
+                                <a class="nav-link" href="\Home\Services">Services</a>
                             </li>
 
                             <li class="nav-item nml tab ">
@@ -283,7 +284,7 @@
                             </li>
 
                             <li class="nav-item nml tab ">
-                                <a class="nav-link" href="#">Chauffeur Hire</a>
+                                <a class="nav-link" href="http://thechauffeurteam.co/">Chauffeur Hire</a>
                             </li>
 
                             <li class="nav-item nml tab ">
@@ -295,12 +296,12 @@
                         </ul>
                  
 
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav navitems">
 
                             @if (Session["user"] == null)
                             {
 
-                                <li class="nmlRight  float-md-left nav-item  btn btn-sm tab ">
+                                <li class="nmlRight  nav-item  btn btn-sm tab ">
                                     <a class="nav-item " style="color:#fff;" href="@Url.Action("Login","Drivers")">Login</a>
 
 
@@ -470,6 +471,8 @@
                 });
 
 
+
+              
 
                 // document ready
             });

@@ -259,6 +259,7 @@
                          //var mySelect = ;
                          var select = $("#drivers");
                          // alert("length " + success.drivers.length);
+
                           $("#drivers").children().remove();
                          select.append($("<option>").val(0).html("Select Cab Office"));
 
@@ -270,7 +271,8 @@
                              //    select.append($("<option>").val(item.Id).html(item.DriverName));
                              //}
                          });
-                         console.log(success);
+                     //console.log(success);
+                    
                  },
                  error: function (e, text, string) {
                     //alert(e.message + text + string);
@@ -321,7 +323,7 @@
                     //alert("Sorry, Job cannot cancel");
                  }
             });
-            location.reload(true);
+           
             window.location.reload(true);
 
         }
@@ -378,7 +380,8 @@
 
                 success: function (success) {
 
-                    alert("success" + success)
+                    //alert("success" + success)
+                    window.location.reload(true);
 
                 },
                 error: function (e, text, string) {

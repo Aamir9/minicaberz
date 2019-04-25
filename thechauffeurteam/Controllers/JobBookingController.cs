@@ -27,7 +27,7 @@ namespace thechauffeurteam.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Insert(jobVM model, string postcode, string date, string time, string date2, string time2,string mainDirection)
+        public ActionResult Insert(jobVM model, string postcode, string date, string time, string date2, string time2,string mainDirection , string PassengerName, string PassengerPhone)
         {
             if (ModelState.IsValid)
             {
@@ -42,17 +42,28 @@ namespace thechauffeurteam.Controllers
                 string filterPostcode = (string)ViewBag.postcode;
 
 
-                string PassengerName = string.Empty; 
-                string PassengerPhoneNumber=string.Empty;
-                string PassengerEmail = string.Empty;
+                string PssengerName = string.Empty;
+                string PassengerPhoneNumber = string.Empty;
 
-                PassengerName = db.Passengers.Where(a => a.Id == model.PassengerId).Select(b => b.UserFirstName).SingleOrDefault();
-                PassengerPhoneNumber = db.Passengers.Where(a => a.Id == model.PassengerId).Select(a => a.UserPhNo).SingleOrDefault();
-                PassengerEmail = db.Passengers.Where(a => a.Id == model.PassengerId).Select(b => b.UserEmail).SingleOrDefault();
+                if (PassengerName !=null)
+                {
+                     PssengerName = PassengerName;
+                     PassengerPhoneNumber = PassengerPhone;
+                }
+
+                // string PassengerEmail = string.Empty;
+                else
+                {
+                    PssengerName = db.Passengers.Where(a => a.Id == model.PassengerId).Select(b => b.UserFirstName).SingleOrDefault();
+                    PassengerPhoneNumber = db.Passengers.Where(a => a.Id == model.PassengerId).Select(a => a.UserPhNo).SingleOrDefault();
+                    //  PassengerEmail = db.Passengers.Where(a => a.Id == model.PassengerId).Select(b => b.UserEmail).SingleOrDefault();
+                }
+
+
 
                 job jb = new job();
                 jb.PassengerId = model.PassengerId;
-                jb.PassengerName = PassengerName;
+                jb.PassengerName = PssengerName;
                 jb.PassengerPhone = PassengerPhoneNumber;
 
               
@@ -80,10 +91,16 @@ namespace thechauffeurteam.Controllers
                
 
             }
-
-            //Once the record is inserted , then notify all the subscribers (Clients)
-           // jobBookingHub.NotifyCurrentJobInformationToAllClients();
-            return View(db.jobs.ToList());
+            if (Session["adminLog"] != null)
+            {
+                return RedirectToAction("Index", "Admin");
+                
+            }
+            else
+            {
+                return View();
+            }
+               
         }
 
         //    [HttpPost]

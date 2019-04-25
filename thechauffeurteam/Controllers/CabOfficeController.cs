@@ -234,8 +234,11 @@ namespace CabsAdmin.Controllers
 
                 //List<CoverageAndWaiting> CWList = db.CoverageAndWaitings.ToList<CoverageAndWaiting>();
                 //return Json(new { data = CWList }, JsonRequestBehavior.AllowGet);
+                var cabid = (int)Session["cabOfficeId"];
 
-                return View(db.CoverageAndWaitings.ToList());
+                var cvlist = db.CoverageAndWaitings.Where(m => m.CabOfficeId == cabid).ToList();
+
+                return View(cvlist);
             }
 
             return RedirectToAction("Login", "Drivers");
@@ -243,19 +246,22 @@ namespace CabsAdmin.Controllers
 
         public JsonResult AddCoverageAndTime(string coverage, int Wating, int cabId)
         {
-            
-            CoverageAndWaiting addData = new CoverageAndWaiting();
-            addData.postCode = coverage.ToUpper();
-            addData.waiting = Wating;
-            addData.CabOfficeId = cabId;
+           
+                CoverageAndWaiting addData = new CoverageAndWaiting();
+                addData.postCode = coverage.ToUpper();
+                addData.waiting = Wating;
+                addData.CabOfficeId = cabId;
 
-            db.CoverageAndWaitings.Add(addData);
-            db.SaveChanges();
+                db.CoverageAndWaitings.Add(addData);
+                db.SaveChanges();
 
-            var CW = db.CoverageAndWaitings.ToList();
+            var cabid = (int)Session["cabOfficeId"];
+
+            var CW = db.CoverageAndWaitings.Where(a=>a.CabOfficeId==cabId).ToList();
 
 
-            return Json(new { CWlist = CW }, JsonRequestBehavior.AllowGet);
+                return Json(new { CWlist = CW }, JsonRequestBehavior.AllowGet);
+          
             //return Json(1);
         }
 
@@ -382,6 +388,7 @@ namespace CabsAdmin.Controllers
         {
 
             Session["cabOfficeuser"] = null;
+            Session["matched"] = null;
             Session.Abandon();
             return RedirectToAction("Login", "Drivers");
 
@@ -459,7 +466,12 @@ namespace CabsAdmin.Controllers
                 var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == id).Select(a => a.postCode).ToList();
                 var matchJob = jb.Intersect(cabpostMatch);
                 ViewBag.matchedjob = matchJob;
+
+                TempData["match"] = matchJob.ToList();
+
                 ViewBag.matched = matchJob.ToList();
+
+                 Session["matched"] = matchJob.ToList();
 
                 int counted = 0;
                 var jbs = db.jobs.Where(m => m.status == 0).OrderByDescending(m => m.id).ToList();

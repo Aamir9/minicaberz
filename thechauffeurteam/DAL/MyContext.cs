@@ -1,5 +1,6 @@
 ﻿
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using thechauffeurteam.Models;
 using thechauffeurteam.Models.API;
 
@@ -9,6 +10,11 @@ namespace thechauffeurteam.DAL
     {
         public MyContext() : base("MyContext")
         {
+           
+
+            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 5000;
+            
+
             Database.SetInitializer<MyContext>(new CreateDatabaseIfNotExists<MyContext>());
         }
 

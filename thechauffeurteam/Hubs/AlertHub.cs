@@ -13,5 +13,11 @@ namespace thechauffeurteam.Hubs
 
             Clients.Others.AlertMe( postcode);
         }
+
+        //public void cabCallToAdminAllocateJob()
+        //{
+
+        //    Clients.Others.cabAlert();
+        //}
     }
 }

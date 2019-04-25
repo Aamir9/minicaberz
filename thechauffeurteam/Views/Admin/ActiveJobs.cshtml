@@ -65,6 +65,8 @@
                                                 }
                                                 <a class="dropdown-item" href="" onclick="jobInfo(@id)" data-toggle="modal" data-target="#jobModal">Info</a>
                                                 <a class="dropdown-item" href="" onclick="setfinshJobId(@id)" data-toggle="modal" data-target="#finishConfr">Finish</a>
+
+                                                <a class="dropdown-item" href="" onclick="setCancelJobId(@id)" data-toggle="modal" data-target="#cancelConfr">Cancel</a>
                                             </div>
                                         </div>
                                     </td>
@@ -77,6 +79,34 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <div onload="ModalLoad()" class="modal fade" id="cancelConfr" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-notify" role="document" style="width:1000px">
+            <div class="modal-content">
+                <div class="modal-header bgred">
+                    <h5 class="modal-title text-white">Alert</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body rd">
+                    Do you realy want to cancel this Job?
+                    <input type="hidden" id="cancelJobId" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary bgblue" data-dismiss="modal">No</button>
+                    <button type="button" class="btn bgred" onclick="cancelJob()" data-dismiss="modal">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
 
 
@@ -191,15 +221,21 @@
                     //alert("Sorry, Job cannot cancel");
                  }
             });
-            location.reload(true);
+           
             window.location.reload(true);
 
         }
 
         function editJob() {
-            $(".jobEditGroup").removeAttr("readonly");
-            $(".saveButton").removeAttr("hidden");
 
+
+            //$(".jobEditGroup").removeAttr("readonly");
+            //$(".saveButton").removeAttr("hidden");
+
+            $(".allocateBtn").hide();
+            $(".jobEditGroup").removeAttr("readonly");
+            $(".edit").removeAttr("hidden");
+            $(".saveButton").show();
         }
 
         function onShowModal() {

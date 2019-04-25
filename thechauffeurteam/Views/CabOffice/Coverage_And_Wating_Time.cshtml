@@ -5,22 +5,32 @@
 
 
     int cabid = (int)@Session["cabOfficeId"];
-    
+
 }
+
+<head>
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <link href="~/Content/DataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+</head>
 
 <style>
 
-   
+
 
     .bgred {
         background-color: rgb(226, 74, 35);
         color: #fff;
     }
+
     .bgblue {
         background: #1853a1;
         color: #fff;
     }
-    
 </style>
 
 
@@ -33,7 +43,7 @@
         <div class="row">
             <div class="col-md-12">
                 @*<h3 class="text-white">Hello @Html.DisplayTextFor(x => x.CabOfficeName) !</h3>*@
-                
+
 
                 @*<a href="#!" class="btn btn-info">Edit profile</a>*@
             </div>
@@ -42,12 +52,12 @@
 </div>
 <!-- Page content -->
 <div class="container-fluid mt--9">
-    
+
     <div class="justify-content-center align-items-center" style="justify-content:center">
 
-        <div class="col-md-12" >
+        <div class="col-md-12">
             <div class="card ">
-                <div class="card-header bg-white border-0" >
+                <div class="card-header bg-white border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
                             <h3 class="mb-0 text-uppercase">Coverage and Waiting Time</h3>
@@ -79,7 +89,7 @@
                         <div class="form-group">
                             <div class="col-md-12">
 
-                                <table id="dataTable" class="display table table-sm" >
+                                <table id="dataTable" class="display table table-sm">
                                     @*<table class="table table-sm  table-hover table-bordered text-center display" id="dataTable">*@
                                     <thead class="text-white font-weight-bold bgblue  text-capitalize ">
                                         <tr>
@@ -214,6 +224,14 @@
 
 
 @section scripts{
+
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -221,8 +239,8 @@
 
 
             $("#dataTable").DataTable({
-                
-                });
+
+            });
 
         });
 
@@ -235,7 +253,7 @@
             var CWId_E;
             var id_E;
               var cabid =@cabid;
-          
+
             $(".edit").click(function () {
 
                 CWId_E = $(this).attr("id");
@@ -256,17 +274,17 @@
                 $('#exampleModalEdit').modal('toggle');
 
 
-                
- 
+
+
             });
 
             $("#update").click(function () {
-              
+
                 console.log(id_E);
-                
+
                     console.log($('#coverageEdit').val());
                     var waiting = $('#waitingTimeEdit').val();
-                
+
                     console.log(waiting);
                     console.log(cabid);
                     $.ajax({
@@ -281,12 +299,12 @@
                         },
 
                         success: function () {
-                            
+
                             console.log("edit row succesully")
                                 $('#exampleModalEdit').modal('toggle');
-                               
+
                                 window.location.reload(true);
-                           
+
                         },
 
                         error: function () {
@@ -295,7 +313,7 @@
                         },
 
                     });
-                });//  end udate 
+                });//  end udate
 
 
 
@@ -313,10 +331,10 @@
                     data: { id: id },
 
                     success: function () {
-                        
-                           
+
+
                             window.location.reload(true);
-                        
+
                     },
 
                        error: function () {
@@ -330,12 +348,12 @@
 
 
 
-          
+
               //function will be called on button click having id btnsave
             $("#btnaSave").click(function () {
 
                 $('#exampleModal').modal('toggle');
-                
+
                 $.ajax({
                         type: "POST", //HTTP POST Method
 

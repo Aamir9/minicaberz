@@ -13,10 +13,14 @@
     background-color: #0060c8 !important;
 }
 
+.whyCantainer{
 
+
+    width:94%;
+    margin-left:3%;
+    
+}
 @media screen and (min-width: 992px) {
-
-   
     .navbar {
         padding-top: 0px;
         padding-bottom: 0px;
@@ -80,22 +84,26 @@
 .feedbackdiv {
     background: #1853a1;
     color: #fff;
+    height: 250px;
 }
 
-
-.feedbackdiv >p{
-
-    font-size:16px;
-   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.feedbackdiv img{
-
-    width:50px;
-}
-    .pick, .Drop, .carTypeMain, .bookmain {
-        width: 25%;
+    .feedbackdiv .fa-user-circle {
+        font-size: 35px;
     }
+
+
+    .feedbackdiv > p {
+        font-size: 16px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        height: 150px;
+    }
+
+.fa-star{
+    color: #e3eb1a;
+}
+.pick, .Drop, .carTypeMain, .bookmain {
+    width: 25%;
+}
 
 .fatext {
     font-size: 13px;
@@ -2438,13 +2446,16 @@ ul.radio-w3ls li {
     
     }
 @media(max-width: 1024px) {
-   
-    
 
-.loginheading {
-    font-size: 1.5rem;
-    font-weight: 500;
-}
+    #MainDiv {
+        position:absolute !important;
+        top: 20% !important;
+    }
+
+    .loginheading {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
     .banner-img, .banner-img.one, .banner-img.two, .banner-img.three {
         background-repeat: no-repeat;
         background-size: cover;
@@ -2533,6 +2544,13 @@ ul.radio-w3ls li {
     }
     }
 @media(max-width: 900px) {
+
+    .mapouter {
+        text-align: right;
+        height: 500px;
+        width: 100%;
+        margin-top:1% !important;
+    }
         .centered-btns_tabs, .transparent-btns_tabs, .large-btns_tabs {
             left: 45%;
         }
@@ -2622,43 +2640,151 @@ ul.radio-w3ls li {
         .top-forms span a {
             padding: 10px 14px;
         }
-        .aboutHome .aboutlogo {
-          
-            
-        }
+       
 
        .faH {
             display: none;
         }
-    #formMain {
-        /*width: 40%;*/
-        /*margin-top: -3%;
-        left: 6%;*/
+    .navitems li{
+
+      /*width:100%;
+      text-align:center;*/
+    }
+    #nmlRight{
+
+        display:none;
     }
 
-    #refreshForm {
-        left: 46%;
-        top: 7%;
+    .RPB{
+        
+        display:none;
     }
+    .navitems .nmlRight {
+        display: none;
+    }
+
+    /*.cstmNv .collapse {
+        display: none ;
+    }*/
+
+
+    .cstmNv .navbar-toggler {
+        /*position: relative;*/
+        /*margin-left: auto;
+       display: block;*/
+    }
+
+  
+
+
+
     }
 @media(max-width: 736px) {
-   .container-2 {
-      
-       width:80%;
-      
-       
+
+    .cstmNv .navbar-toggler {
+        /*position: relative;*/
+        margin-left: auto;
+       /*display: block;*/
     }
-  
+    .navitems .nmlRight {
+        display: initial;
+    }
+    #MainDiv {
+      
+        top: 15% !important;
+        margin-left: 4.5%;
+    }
+
+    .topdiv .RPB {
+        display:none;  
+    }
+
+    .topdiv .navbar-brand {
+   
+    width:70%;
+    margin-left:15%;
+
+    }
+
+
+
+    #formMain {
+        background-image: linear-gradient(#fff, #1853a1,#fff);
+        width: 100%;
+        left: 0;
+        top: 8%;
+    }
+
    
     #toTopHover, #toTop {
     }
     .bs-slider-overlay .banner-info {
         text-align: center !important
     }
+    .pick, .Drop, .carTypeMain, .bookmain {
+        position: absolute;
+        width: 100%;
+    }
 
-    .pmain{
+   
+    .pick {
 
-        font-size:14px;
+        top:0px;
+    }
+
+    .Drop {
+        top: 60px;
+    }
+    .carTypeMain {
+        top: 120px;
+    }
+
+    .bookmain {
+        top: 180px;
+    }
+
+    /*.priceMilie > .PriceMileInnerStyling ~ .PriceMileInnerStyling {
+        top: 230px;
+    }*/
+
+    .priceMilie {
+        width: 100%;
+        position: absolute;
+        top: 270px;
+        left: 0;
+    }
+
+    .PriceMileInnerStyling {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        
+        text-align: center;
+       
+       
+    }
+        .PriceMileInnerStyling > p, .PriceMileInnerStyling > span, .PriceMileInnerStyling > i, .PriceMileInnerStyling >input {
+            position: absolute;
+            /*top: -282px;*/
+            left:30%;
+            
+            
+        }
+
+         .priceMilie:nth-child(2) {
+            top: 335px;
+        }
+
+        .priceMilie:last-child {
+            top: 400px;
+        }
+
+    .whyCantainer {
+        margin-top: 430px;
+    }
+   
+    .pmain {
+        font-size: 14px;
     }
 
     #social_side_links, #social_side_right, .rslides_container {
@@ -2674,64 +2800,12 @@ ul.radio-w3ls li {
             text-align: center;
         }
   
-   
-    .cstmNv .collapse .navbar .nav-item {
-        width: 100%;
-    }
-        .cstmNv .navbar-toggler{
-             margin-left:auto;
-            
-             
-        }
 
-        .cstmNv {
-            border:none;
-            
-          
-        }
-
-    .about #abouttextAndvideo{
-       
-        width:100%;
-        margin:0;
-    }
-    .aboutHome {
-        margin-top: 50%;
-       
-    }
- .aboutHome .aboutlogo {
-           /*margin-bottom:10%;*/
-        }
-
-   
  .banner-info span {
         font-size: 40px;
     }
 
-    
-.lgo{
-   width:300px;
-   
-        }
-    #formMain {
-        /*width: 98%;*/
-        /*margin-top: 1%;
-        margin-left:-5%;*/
-      
-        
-        
-        
-        
-        background-image: linear-gradient(#fff, #1853a1,#fff);
-        
-    }
 
- #refreshForm {
-        left:83%;
-        top: 17.7%;
-    }
-                  
-       
 
    .banner-img, .banner-img.one, .banner-img.two, .banner-img.three {
             min-height: 520px;
@@ -2782,19 +2856,22 @@ ul.radio-w3ls li {
         .centered-btns_tabs, .transparent-btns_tabs, .large-btns_tabs {
             left: 43%;
         }
-    .lgo {
-        width: 300px;
-        margin-left:20%;
-    }
+    
     }
 @media(max-width: 600px) {
+    #addVia2, #refreshForm2 {
+        display: none !important;
+    }
+    .topdiv .navbar-brand {
+        width: 80%;
+        margin-left: 10%;
+        padding-bottom: 10px;
+    }
         .banner-info {
             width: 90%;
         }
 
-        .aboutHome {
-            
-        }
+       
           .banner-info h1, .banner-info h2, .banner-info h4, .banner-info h5 {
                 font-size: 2.3em;
                 letter-spacing: 1px;
@@ -2805,31 +2882,34 @@ ul.radio-w3ls li {
         }
 
         li.nav-item.active, li.nav-item {
-            width: 40%;
+            /*width: 40%;*/
         }
 
 
     /*.lgo {
         margin-left:20%;
     }*/
-    #refreshForm{
-        margin-top:4%;
-    }
+   
     }
 @media(max-width: 568px) {
+
+    .topdiv .navbar-brand {
+        width: 80%;
+        margin-left: 10%;
+        padding-bottom:10px;
+    }
+
+    .whyCantainer{
+
+
+        margin-top:480px;
+    }
         .banner-info h1, .banner-info h2, .banner-info h4, .banner-info h5 {
             font-size: 2em;
             letter-spacing: 1px;
         }
 
 
-    .aboutHome {
-        margin-top: 75%;
-    }
-        .aboutHome{
-            
-            
-        }
         .food-Slider {
             padding: 0 4em;
         }
@@ -2852,28 +2932,30 @@ ul.radio-w3ls li {
         #formMain{
             /*margin-top:0.5%;*/
         }
-    #refreshForm {
-
-        margin-top:3%;
-    }
+  
     }
 @media(max-width: 480px) {
 
-        .aboutHome {
-            
-        }
+    #formMain{
 
-        /*.container-2 .lgo {
+        top:7%;
+    }
+
+    #MainDiv {
+        position: absolute;
+        top: 10% !important;
+       
+    }
+    /*.container-2 .lgo {
             width: 70%;
         }*/
+    .banner-img, .banner-img.one, .banner-img.two, .banner-img.three {
+        min-height: 430px;
+    }
 
-        .banner-img, .banner-img.one, .banner-img.two, .banner-img.three {
-            min-height: 430px;
-        }
-
-        li.nav-item.active, li.nav-item {
+        /*li.nav-item.active, li.nav-item {
             width: 55%;
-        }
+        }*/
 
         .banner-info {
             padding-top: 6em;
@@ -2894,15 +2976,19 @@ ul.radio-w3ls li {
         
     }
 @media(max-width: 414px) {
-        .aboutHome {
-            margin-top:90%;
-        }
-    .lgo {
-        margin-left: 6%;
+
+
+
+    #MainDiv {
+        position: absolute;
+        top: 12% !important;
     }
-            .aboutHome .aboutlogo {
-               
-            }
+    .topdiv .navbar-brand {
+        width: 90%;
+        margin-left: 5%;
+        padding-bottom: 10px;
+    }
+
         .banner-info h1, .banner-info h2, .banner-info h4, .banner-info h5 {
             font-size: 1.8em;
             letter-spacing: 0px;
@@ -2942,7 +3028,7 @@ ul.radio-w3ls li {
         }
 
         li.nav-item.active, li.nav-item {
-            width: 65%;
+            /*width: 65%;*/
         }
 
         .booking h3 {
@@ -2986,12 +3072,21 @@ ul.radio-w3ls li {
     }
 @media(max-width: 384px) {
 
+    #formMain{
+
+        top:6%;
+    }
+    .heading{
+
+       
+    }
+
     .loginheading {
         font-size: 1.8rem;
     }
-    .lgo{
+    /*.lgo{
          margin-left:10%;
-    }
+    }*/
         .footer-grid-agileits-w3ls1 ul li {
             font-size: 14px;
         }
@@ -3011,7 +3106,7 @@ ul.radio-w3ls li {
         
 
         li.nav-item.active, li.nav-item {
-            width: 75%;
+            /*width: 75%;*/
         }
 
         .modal-header {
@@ -3052,21 +3147,8 @@ ul.radio-w3ls li {
             font-size: 1.6em;
             letter-spacing: 0px;
         }
-          .container-2 .lgo{
-              width:80%;
-              
-          }
+          
 
-          .aboutHome{
-             
-              
-          }
-
-        .aboutHome  .aboutlogo {
-            width: 80%;
-            margin-left:6%;
-            margin-top:16%;
-        }
         .team-grids {
             padding: 0 5px;
         }
@@ -3083,15 +3165,7 @@ ul.radio-w3ls li {
     }
 @media(max-width: 320px) {
 
-        .aboutHome{
-            
-            /*margin-top:400px;*/
-        }
-        .aboutHome .aboutlogo{
-            
-            width:100%;
-            
-        }
+       
         .onecarslider h3{
             font-size:18px !important;
             
@@ -3110,7 +3184,7 @@ ul.radio-w3ls li {
         }
 
         li.nav-item.active, li.nav-item {
-            width: 100%;
+            /*width: 100%;*/
         }
 
         .food-Slider {
@@ -3128,29 +3202,8 @@ ul.radio-w3ls li {
     }
     /*-- //Responsive Design --*/
 
-    /*.aboutHome  {
 
-       margin-top:150%;
-    }*/
-
-/*.aboutHome .aboutlogo{
-   width: 120%;
-}
- #formMain  .btnstyle2{
-
-     padding:7px;
-     border-radius:3px;
-   
-}
-
- .quote .booking h3{
-     font-size:18px;
- }
-.quote .booking p {
-    font-size: 12px;
-}*/
-
-.dropdown:hover ul.dropdown-menu {
+/*.dropdown:hover ul.dropdown-menu {
     animation-name: fadeInLeft;
     animation-fill-mode: both;
     animation-timing-function: ease-out;
@@ -3171,6 +3224,8 @@ ul.radio-w3ls li {
             transform: scale(1) translateX(-25px);
         }
     }
+
+    */
 
     .nav-link {
         color: #1853a1 !important;

@@ -16,21 +16,21 @@
 
 <style>
 
-    #via_1, #via_2, .pick, .Drop {
+    #via_1, #via_2, .pick, .Drop2 {
         position: relative;
     }
 
-        #via_1 i, #via_2 i, .pick i, .Drop i {
+        #via_1 i, #via_2 i, .pick i, .Drop2 i {
             position: absolute;
             padding: 10px;
             /*pointer-events: none;*/
         }
 
-        .pick i, .Drop i, #via_1 i, #via_2 i {
+        .pick i, .Drop2 i, #via_1 i, #via_2 i {
             right: 0px;
         }
 
-    .pick, .Drop {
+    .pick, .Drop2 {
         width: 100%;
     }
 
@@ -40,23 +40,22 @@
 
     .mapouter {
         text-align: right;
-        height: 500px;
+        height: 900px;
         width: 100%;
-        margin-top:-1.8%;
-        
+        margin-top: -1.8%;
     }
 
     #gmap_canvas {
         overflow: hidden;
         background: none !important;
-        height: 500px;
+        height: 900px;
         width: 100%;
     }
 
     #MainDiv {
         position: absolute;
-        top: 25%;
-        margin-left: 4.5%;
+        top: 18%;
+        margin-left: 5.5%;
     }
 
     #MainDiv {
@@ -125,7 +124,7 @@
                                     </div>
                                     <div class="col-md-6">
 
-                                        <div class="form-group Drop">
+                                        <div class="form-group Drop2">
                                             @*<i class="fas fa-globe"></i>*@
                                             @*<input type="text" id="to_places" name="dropOff" placeholder="Drop Off Address" class="form-control" />*@
 
@@ -289,10 +288,10 @@
                                     </div>
                                 </div>
 
+                                
+                                <div class="form-group " id="DriverMsg" >
 
-                                <div class="form-group " id="DriverMsg">
-
-                                    @Html.DisplayFor(m => m.DriverMessage, new { @class = "form-control", @placeholder = "Message For Driver, Flight Number etc" })
+                                    @Html.TextBoxFor(m => m.DriverMessage, new { @class = "form-control", @placeholder = "Message For Driver, Flight Number etc" })
 
                                 </div>
 
@@ -579,6 +578,13 @@
                 cartype = $(this);
                 var car = $(this).children(":selected").val();
 
+                $('#GetQuote').show();
+                $('#BookNow').hide();
+                $('#LoginPopShow').hide();
+                $('#priceMileMain').hide();
+                $('#Prices').html('');
+
+
                 if (cartype == '') {
 
                     $('.errormsg').html('please select the car type');
@@ -675,9 +681,10 @@
 
                     
 
-                            $("#passengerId").val(sessionId);
-                            $("#BookNow").show();
 
+                          $("#passengerId").val(sessionId);
+                          $("#BookNow").show();
+                         
 
                    
 
