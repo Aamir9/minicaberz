@@ -127,7 +127,30 @@ namespace thechauffeurteam.Controllers
         {
             if (Session["adminLog"] != null)
             {
+                ViewBag.Cabofficenames = new SelectList(db.CabOffices.Where(m=>m.Status== "Approved").ToList(), "Id", "CabOfficeName");
                 return View(db.jobs.Where(m => m.status == 2).ToList());
+
+
+            }
+            return RedirectToAction("login");
+        }
+
+        [HttpPost]
+        public ActionResult New_Invoice(string toDate, string fromDate ,string cabname)
+        {
+            if (Session["adminLog"] != null)
+            {
+
+                ViewBag.cabName = cabname;
+
+                ViewBag.DateTime = DateTime.Now;
+               
+
+                //int jobid = db.jobs.Where(m => m.dateAndTime.Contains(toDate)).Select(i=>i.id).SingleOrDefault();
+
+                return View(db.jobs.Where(m => m.status == 2  && m.DriverName== cabname).ToList());
+
+
             }
             return RedirectToAction("login");
         }

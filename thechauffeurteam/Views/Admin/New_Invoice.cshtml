@@ -138,25 +138,30 @@
 <div class="container-fluid mt--7">
 
     <!-- Table -->
-    <div class="row">
+    <div class="row"  id="jobTable1">
         <div class="col">
             <div class="card shadow">
                 <div class="card-header border-0">
 
-                    <h3 class="mb-0">Invoice </h3>
-                    <form action="/Admin/New_Invoice" method="post">
-                        <div class="d-flex flex-row-reverse">
 
-                            <button id="filterBtn" class="btn btn-sm btn-primary mr-1 border-primary">Filter</button>
+                    
+                    <div class="d-flex flex-row justify-content-md-between">
 
-                            @Html.DropDownList("Cabofficenames", ViewBag.Cabofficenames as SelectList, "Select Cab office Name", new { @class = "form-control form-control-sm col-md-3 mr-3 border-primary", @id = "cabnames" })
-                            <input type="hidden" name="cabname" value=""  id="cabname"/>
-                            <input class="form-control form-control-sm col-md-3 mr-2 border-primary" id="toDate" name="toDate" type="text" placeholder="To Date" value="">
-                            <input class="form-control form-control-sm col-md-3 mr-2 border-primary" id="fromDate" name="fromDate" type="text" placeholder="From  Date" value="">
-
+                        <div class="mt-md-3">
+                            <img src="~/images/logo.png" alt="Alternate Text" style="width:180px;" />
                         </div>
-                    </form>
 
+                        <div>
+
+                            <h1 class="mb-0">  Invoice for @ViewBag.cabName  </h1>
+                        </div>
+                        <div class="mt-md-4">
+                            <label>Date:
+                              @ViewBag.DateTime</label> 
+
+                            
+                        </div>
+                    </div>
 
                 </div>
                 <div class="table-responsive" style="height:300px">
@@ -171,7 +176,7 @@
                                 <th scope="col" class="text-light px-0 text-center">Price</th>
                                 <th scope="col" class="text-light px-0 text-center">Phone</th>
                                 <th scope="col" class="text-light px-0 text-center">Name</th>
-                                <th scope="col" class="text-light px-0 text-center">Cab Office</th>
+                                @*<th scope="col" class="text-light px-0 text-center">Cab Office</th>*@
 
                                 <th class=" px-0"></th>
                             </tr>
@@ -183,7 +188,7 @@
 
                                 <tr class=" px-1" style="">
 
-                                  
+
 
                                     <td scope="col" class="py-1 my-0 pr-0 mr-0" style="overflow:hidden;max-width:155px">@value.dateAndTime</td>
                                     <td scope="col" class="py-1 my-0 ml-0 px-0 " style="overflow:hidden;max-width:200px">@value.pickUp</td>
@@ -192,25 +197,32 @@
                                     <td scope="col" class="py-1 my-0 px-0 text-center">£&nbsp; @value.Price</td>
                                     <td scope="col" class="py-1 my-0 px-0 text-center">@value.PassengerPhone</td>
                                     <td scope="col" class="py-1 my-0 px-0 text-center">@value.PassengerName</td>
-                                    <td scope="col" class="py-1 my-0 px-0 text-center">@value.DriverName</td>
+                                    @*<td scope="col" class="py-1 my-0 px-0 text-center">  @value.DriverName  </td>*@
                                     @*<td class="text-right py-1 my-0 px-0">
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                @{
-                                                    var id = @value.id;
-                                                }
-                                                <a class="dropdown-item" href="" onclick="jobInfo(@id)" data-toggle="modal" data-target="#jobModal">Info</a>
+                            <div class="dropdown">
+                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    @{
+                                        var id = @value.id;
+                                    }
+                                    <a class="dropdown-item" href="" onclick="jobInfo(@id)" data-toggle="modal" data-target="#jobModal">Info</a>
 
-                                            </div>
-                                        </div>
-                                    </td>*@
+                                </div>
+                            </div>
+                        </td>*@
                                 </tr>
                             }
                         </tbody>
                     </table>
+
+                    <div class="text-center mt-5">
+
+                        <button class="btn btn-primary" id="btnExport"> Export</button>
+                    </div>
                 </div>
 
+
+                 
             </div>
         </div>
     </div>
@@ -239,55 +251,6 @@
 
         });
 
-        function myFunction() {
-
-
-            table = document.getElementById("jobTable");
-            tr = table.getElementsByTagName("tr");
-            for (i = 0; i < tr.length; i++) {
-                tr[i].style.display = "";
-            }
-            // Declare variables
-            var input, filter, table, tr, td, i, txtValue;
-
-            input = document.getElementById("driverId");
-            filter = input.value.toUpperCase();
-
-            var startDate = document.getElementById("fromDate").value;
-            var endDate = document.getElementById("toDate").value;
-            table = document.getElementById("jobTable");
-            tr = table.getElementsByTagName("tr");
-            var tdDate, rowDate;
-            var tdPhone, rowPhone;
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[6];
-                tdDate = tr[i].getElementsByTagName("td")[0];
-                tdPhone = tr[i].getElementsByTagName("td")[5];
-
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    rowDate = tdDate.textContent || td.innerText;
-                    rowPhone = tdPhone.textContent || td.innerText;
-
-                    rowDate = rowDate.substring(10).trim();
-                    //alert("date : " + rowDate)
-
-                    if (txtValue.toUpperCase().indexOf(filter) > -1 && startDate <= rowDate && rowDate <= endDate) {
-                        tr[i].style.display = "";
-
-                    }
-                    else if (rowPhone.toUpperCase().indexOf(filter) > -1 && startDate <= rowDate && rowDate <= endDate) {
-                        tr[i].style.display = "";
-                    }
-                    else {
-
-                        //tr[i].remove();
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
     </script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
@@ -311,102 +274,7 @@
         });
     </script>
 
+   
 
-    @*<script>
-            $(document).ready(function () {
-                $("#driverId").on("keyup", function () {
-                    var value = $(this).val().toLowerCase();
-                    $("#jobTable tr").filter(function () {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                });
-            });
-        </script>*@
-
-
-    <script type="text/javascript">
-        
-        function jobInfo(Id) {
-            //alert("success" + Id)
-
-             $.ajax({
-                type: "POST",
-                 url: '@Url.Action("JobInfo", "Admin")',
-                 data: { id: Id },
-                 dataType: "json",
-
-                 success: function (success) {
-
-                         //alert('pick Up :'+success.pickUp);
-                         var txt = $("#jobId").val();
-                         $("#jobId").html(txt + success.jb.id);
-                         $("#jid").val(success.jb.id);
-                         $("#pickUpAddress").val(success.jb.pickUp);
-                         $("#dropOffAddress").val(success.jb.DropUP);
-                         $("#distance").val(success.jb.Mile);
-                         $("#price").val(success.jb.Price);
-                         $("#carType").val(success.jb.CarType);
-
-                         var dAndT = "" + success.jb.dateAndTime;
-
-
-                         $("#time").val(dAndT.substring(0, 10));
-                         $("#date").val(dAndT.substring(11));
-                         $("#driverMessage").val(success.jb.DriverMessage);
-
-                         $("#name").val(success.pass.UserFirstName);
-                         $("#phone").val(success.pass.UserPhNo);
-
-
-
-                         var myOptions = success.drivers;
-                         //var mySelect = ;
-                         var select = $("#drivers");
-                         // alert("length " + success.drivers.length);
-                         $("#drivers").children().remove();
-                         select.append($("<option>").val(0).html("Select Driver"));
-
-                         $(success.drivers).each(function (index, item) {
-                             if (item.DriverId != null) {
-                                 select.append($("<option>").val(item.Id).html(item.DriverId));
-                             }
-                             else {
-                                 select.append($("<option>").val(item.Id).html(item.DriverName));
-                             }
-                         });
-                         console.log(success);
-                 },
-                 error: function (e, text, string) {
-                    alert(e.message + text + string);
-                    console.log(e);
-                 }
-
-            });
-
-        };
-
-    </script>
-
-
-
-
-    <script>
-
-        $(document).ready(function () {
-
-            $('#cabnames').on('change', function () {
-
-                //picUpPostCode = $(this);
-
-                var cab = $('#cabnames :selected').text();
-
-                $('#cabname').val(cab);
-            })
-
-
-
-
-        });
-    </script>
 
 }

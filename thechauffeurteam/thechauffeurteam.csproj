@@ -2946,6 +2946,7 @@
     <Content Include="Views\CabOfficeStatus\completedJobs.cshtml" />
     <Content Include="Views\Admin\_header.cshtml" />
     <Content Include="Views\Shared\_ownership.cshtml" />
+    <Content Include="Views\Admin\New_Invoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\vendor\anchor-js\docs\" />
