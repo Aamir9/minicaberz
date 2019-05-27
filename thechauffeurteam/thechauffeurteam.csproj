@@ -2947,6 +2947,7 @@
     <Content Include="Views\Admin\_header.cshtml" />
     <Content Include="Views\Shared\_ownership.cshtml" />
     <Content Include="Views\Admin\New_Invoice.cshtml" />
+    <Content Include="Views\Admin\_ActiveJobModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\vendor\anchor-js\docs\" />
