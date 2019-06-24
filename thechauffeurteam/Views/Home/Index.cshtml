@@ -44,8 +44,11 @@
                         <input type="hidden" name="passengerId" id="passengerId" />
                         <input type="hidden" name="selectedcar" id="selectedcar" />
                         <input type="hidden" id="searchTextField" placeholder="enter the informtion">
-                        <input type="text" name="pickUp" id="from_places" placeholder="Pick Up Address" class="form-control" />
+                        <div  class="crossIconDContainer" >
 
+                            <input type="text" name="pickUp" id="from_places" placeholder="Pick Up Address" class="form-control" required />
+                            <i class="fa fa-times iconCross iconpick"></i>
+                        </div>
                         <input type="hidden" name="postcode" id="postcode" />
                         <p class="text-danger bg-white" id="inputError1"> </p>
                     </div>
@@ -62,7 +65,13 @@
 
                     <div class="Drop">
                         <input id="destination" name="destination" required="" type="hidden" />
-                        <input type="text" id="to_places" name="" placeholder="Drop Off Address" class="form-control" />
+
+                        <div class="crossIconDContainer">
+
+                            <input type="text" id="to_places" name="" placeholder="Drop Off Address" class="form-control"  />
+                            <i class="fa fa-times iconCross icondrop"></i>
+                        </div>
+                      
 
 
                         <p class="text-danger bg-white" id="inputError2"> </p>
@@ -607,6 +616,9 @@
                     <div id="msg"><ul style="color:red;background:rgba(555,555,555,0.5);"> Invalid Username Or Password</ul></div>
                     <div class="form-group">
                         <div class="input-group ">
+
+                            
+
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                             <input class="form-control border-light" type="email" name="Email" id="logEmail" placeholder="Email" />
                         </div>

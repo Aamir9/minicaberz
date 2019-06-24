@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using thechauffeurteam.DAL;
@@ -27,7 +28,7 @@ namespace thechauffeurteam.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Insert(jobVM model, string postcode, string date, string time, string date2, string time2,string mainDirection , string PassengerName, string PassengerPhone)
+        public  ActionResult Insert(jobVM model, string postcode, string date, string time, string date2, string time2,string mainDirection , string PassengerName, string PassengerPhone)
         {
             if (ModelState.IsValid)
             {
@@ -47,14 +48,14 @@ namespace thechauffeurteam.Controllers
 
                 if (PassengerName !=null)
                 {
-                     PssengerName = PassengerName;
+                     PssengerName =  PassengerName;
                      PassengerPhoneNumber = PassengerPhone;
                 }
 
                 // string PassengerEmail = string.Empty;
                 else
                 {
-                    PssengerName = db.Passengers.Where(a => a.Id == model.PassengerId).Select(b => b.UserFirstName).SingleOrDefault();
+                    PssengerName =  db.Passengers.Where(a => a.Id == model.PassengerId).Select(b => b.UserFirstName).SingleOrDefault();
                     PassengerPhoneNumber = db.Passengers.Where(a => a.Id == model.PassengerId).Select(a => a.UserPhNo).SingleOrDefault();
                     //  PassengerEmail = db.Passengers.Where(a => a.Id == model.PassengerId).Select(b => b.UserEmail).SingleOrDefault();
                 }
@@ -80,11 +81,11 @@ namespace thechauffeurteam.Controllers
 
                 var context = GlobalHost.ConnectionManager.GetHubContext<AlertHub>();
 
-                context.Clients.All.AlertMe(filterPostcode.ToUpper());
+                 context.Clients.All.AlertMe(filterPostcode.ToUpper());
 
 
-                db.jobs.Add(jb);
-                db.SaveChanges();
+                 db.jobs.Add(jb);
+                 db.SaveChanges();
 
 
 

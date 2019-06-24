@@ -12,6 +12,19 @@ namespace thechauffeurteam.Controllers
     {
         MyContext db = new MyContext();
 
+
+        public void postCodeMatch()
+        {
+            if (Session["cabOfficeuser"] != null)
+            {
+                int cId = (int)Session["cabOfficeId"];
+                var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
+                var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == cId).Select(a => a.postCode).ToList();
+                var matchJob = jb.Intersect(cabpostMatch);
+                ViewBag.matchedjob = matchJob;
+                ViewBag.matched = matchJob.ToList();
+            }
+        }
         // i ma consider deriver as a cab office
         // GET: CabOfficeStatus
         public ActionResult Index()
@@ -23,6 +36,7 @@ namespace thechauffeurteam.Controllers
         {
             if (Session["cabOfficeuser"] != null)
             {
+               
 
                 int cId = (int)Session["cabOfficeId"];
                 string cabId = Session["cabOfficeId"].ToString();
@@ -81,7 +95,8 @@ namespace thechauffeurteam.Controllers
                 //ViewData["txt"] = "Jobs";
                 //ViewBag.txt = "Jobs";
 
-                
+                postCodeMatch();
+
                 string cabId =Session["cabOfficeId"].ToString();
                  
                 int cId= (int)Session["cabOfficeId"];
@@ -154,6 +169,9 @@ namespace thechauffeurteam.Controllers
                 //ViewBag.txt = "Jobs";
 
 
+                postCodeMatch();
+
+
                 string cabId = Session["cabOfficeId"].ToString();
 
                 int cId = (int)Session["cabOfficeId"];
@@ -217,11 +235,12 @@ namespace thechauffeurteam.Controllers
         {
             if (Session["cabOfficeuser"] != null)
             {
+                postCodeMatch();
 
                 int cId = (int)Session["cabOfficeId"];
                 string cabId = Session["cabOfficeId"].ToString();
-            
-                
+
+               
 
                 //postcode match and counter of upcomming jobs
 

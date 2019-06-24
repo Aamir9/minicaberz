@@ -266,7 +266,7 @@
 
             var mtch = 0;
             var sampleTags = new Array();
-            var array = @Html.Raw(Json.Encode(@Session["matched"]));
+            var array = @Html.Raw(Json.Encode(@ViewBag.matched));
 
             //console.log('tesing post code' + array);
 
@@ -285,7 +285,7 @@
                 myhub.server.myMethod().done(function () {
                     console.log("myMethod complete");
 
-                    //alertify.alert('Ready!');
+                    alertify.alert('Ready!');
                     //alert("working ! ............");
 
                 });

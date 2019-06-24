@@ -420,6 +420,7 @@
                 var from_places = new google.maps.places.Autocomplete(fromPlaces);
                 var to_places = new google.maps.places.Autocomplete(toPlaces);
 
+                    {
                 function fromPlacesfunc() {
                     var from_place = from_places.getPlace();
                     var from_address = from_place.formatted_address;
@@ -447,7 +448,6 @@
                 var destination = $('#destination').val();
                 var service = new google.maps.DistanceMatrixService();
                 service.getDistanceMatrix(
-                    {
                         origins: [origin],
                         destinations: [destination],
                         travelMode: google.maps.TravelMode.DRIVING,

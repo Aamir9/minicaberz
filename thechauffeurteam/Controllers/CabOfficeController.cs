@@ -101,7 +101,9 @@ namespace CabsAdmin.Controllers
         {
             if (Session["cabOfficeuser"] != null)
             {
+                postCodeMatch();
                 CabOffice model = db.CabOffices.SingleOrDefault(m => m.Id == id);
+
 
 
                 CabOfficeVM cab = new CabOfficeVM();
@@ -231,6 +233,7 @@ namespace CabsAdmin.Controllers
         {
             if (Session["cabOfficeuser"] != null)
             {
+                postCodeMatch();
 
                 //List<CoverageAndWaiting> CWList = db.CoverageAndWaitings.ToList<CoverageAndWaiting>();
                 //return Json(new { data = CWList }, JsonRequestBehavior.AllowGet);
@@ -394,11 +397,25 @@ namespace CabsAdmin.Controllers
 
         }
 
+
+        public void postCodeMatch()
+        {
+            if (Session["cabOfficeuser"] != null)
+            {
+                int cId = (int)Session["cabOfficeId"];
+                var jb = db.jobs.Where(m => m.status == 0).Select(a => a.postcode).ToList();
+                var cabpostMatch = db.CoverageAndWaitings.Where(a => a.CabOfficeId == cId).Select(a => a.postCode).ToList();
+                var matchJob = jb.Intersect(cabpostMatch);
+                ViewBag.matchedjob = matchJob;
+                ViewBag.matched = matchJob.ToList();
+            }
+        }
         //cab office login
         public ActionResult CabOfficeProfile(int id)
         {
             if (Session["cabOfficeuser"] != null)
             {
+                postCodeMatch();
                 CabOffice model = db.CabOffices.SingleOrDefault(m => m.Id == id);
 
 

@@ -194,6 +194,7 @@
     <Compile Include="Controllers\JobBookingController.cs" />
     <Compile Include="Controllers\PassengersController.cs" />
     <Compile Include="Controllers\PriceController.cs" />
+    <Compile Include="Controllers\testController.cs" />
     <Compile Include="DAL\MyContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2948,6 +2949,11 @@
     <Content Include="Views\Shared\_ownership.cshtml" />
     <Content Include="Views\Admin\New_Invoice.cshtml" />
     <Content Include="Views\Admin\_ActiveJobModel.cshtml" />
+    <Content Include="Views\test\Create.cshtml" />
+    <Content Include="Views\test\Delete.cshtml" />
+    <Content Include="Views\test\Details.cshtml" />
+    <Content Include="Views\test\Edit.cshtml" />
+    <Content Include="Views\test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\vendor\anchor-js\docs\" />

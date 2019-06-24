@@ -1,5 +1,24 @@
 
 
+.crossIconDContainer {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    
+}
+
+.iconCross {
+    padding: 10px;
+    background-color:#aaa;
+    cursor:pointer;
+    color: #1853a1;
+    min-width: 40px;
+    text-align: center;
+    padding-top: 17px;
+    border-top: 8px solid #1853a1;
+    border-bottom: 8px solid #1853a1;
+}
+
 .navbar .dropdown-menu div[class*="col"] {
     margin-bottom: 1rem;
 }
@@ -119,14 +138,17 @@
 /* start form area  */
 #formMain #from_places, #formMain #to_places, #formMain #cartype, #formMain #via, #formMain .getquotebtn, .priceMilie {
     border: 8px solid #1853a1;
+    border-right:0;
     border-radius: 0;
     color: #1853a1;
     height: 70px;
 }
 
+.priceMilie {
+    border-right: 8px solid #1853a1
+}
 
-
-#formMain #via {
+    #formMain #via {
     background-color: #1853a1;
     color: #fff;
     margin: 0;
@@ -145,10 +167,9 @@
 }
 
 
-#formMain  .getquotebtn {
+#formMain .getquotebtn {
     width: 100%;
-    
-   
+    border-right: 8px solid #1853a1 !important;
 }
 #formMain   #cartype {
     width: 100%;
