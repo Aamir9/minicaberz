@@ -28,6 +28,29 @@ namespace thechauffeurteam.Models
         public float EclassPerMile { get; set; }
 
     }
+
+    public class ChauffeurPrice
+    {
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public int MileFrom { get; set; }
+        [Required]
+        public int MileTo { get; set; }
+        [Required]
+        public float SclassFirstMile { get; set; }
+        [Required]
+        public float SclassPerMile { get; set; }
+        [Required]
+        public float VclassFirstMile { get; set; }
+        [Required]
+        public float VclassPerMile { get; set; }
+        [Required]
+        public float EclassFirstMile { get; set; }
+        [Required]
+        public float EclassPerMile { get; set; }
+
+    }
     public class HourlyPrice
     {
         [Key]
@@ -43,15 +66,27 @@ namespace thechauffeurteam.Models
         [Required]
         public float EclassPerHour { get; set; }
 
+
+        [Required]
+        public float SPerHour{ get; set; }
+
+
+        [Required]
+        public float EPerHour { get; set; }
+
+
+        [Required]
+        public float MPerHour { get; set; }
+
     }
     public class FixPrice
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public int PickUp { get; set; }
+        public string PickUp { get; set; }
         [Required]
-        public int DropOff { get; set; }
+        public string DropOff { get; set; }
         [Required]
         public float Sclass { get; set; }
         [Required]

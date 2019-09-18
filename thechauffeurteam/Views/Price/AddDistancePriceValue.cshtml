@@ -65,14 +65,15 @@
                                             <select id="MileTo" name="MileTo" class="form-control">
                                                 @for (int i = 0; i < MileToVal.Length; i++)
                                                 {
-                                                    if (@MileToVal[i] != 100000)
-                                                    {
-                                                        <option value="@MileToVal[i]">@MileToVal[i]</option>
-                                                    }
-                                                    else
-                                                    {
-                                                        <option value="100000">...</option>
-                                                    }
+                                                    <option value="@MileToVal[i]">@MileToVal[i]</option>
+                                                    //if (@MileToVal[i] != 100000)
+                                                    //{
+
+                                                    //}
+                                                    @*else
+            {
+                <option value="100000">...</option>
+            }*@
 
 
                                                 }

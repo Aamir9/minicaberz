@@ -1,4 +1,4 @@
-﻿@{
+﻿﻿@{
     ViewBag.Title = "Home Page";
 
 
@@ -17,13 +17,67 @@
 
 
 <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css" media="all">
-<link rel="stylesheet" href="~/css/owl.theme.default.min.css" type="text/css" media="all">
+
+
+@*<link href="~/Content/css/select2.min.css" rel="stylesheet" />*@
+
+
+<div class="toplinks d-flex flex-row ">
+
+
+
+    <div class="text-center p-2  m-1 w-25 toplinks_blocks activeToplink">
+        <a href="/home/index">
+            @*<i class="fas fa-car text-white fa-lg text-center mt-1"></i>*@
+            <img src="~/images/bydistanceicon.png" style="width:25px;height:25px;" alt="by distance" />
+            <br />
+            <small class="text-uppercase text-white font-weight-bold">Cab by Mileage</small>
+
+        </a>
+    </div>
+
+    <div class="text-center p-2  m-1 w-25 toplinks_blocks ">
+        <a href="/GetPrice/fixedPrice">
+            @*<i class="fas fa-car text-white fa-lg text-center mt-1"></i>*@
+
+            <img src="~/images/fixedIcon.png" style="width:25px;height:25px;" alt="airport tansfer" />
+            <br />
+            <small class="text-uppercase text-white font-weight-bold">Airport Transfers</small>
+        </a>
+    </div>
+
+
+    <div class="text-center p-2  m-1 w-25 toplinks_blocks">
+        <a href="/GetPrice/chauffeur">
+            @*<i class="fas fa-car text-white fa-lg text-center mt-1"></i>*@
+
+            <img src="~/images/chauffeuricon.png" style="width:25px;height:25px;" alt="chuffeur" />
+            <br />
+            <small class="text-uppercase text-white font-weight-bold">Chauffeur Hire</small>
+        </a>
+    </div>
+    <div class="text-center p-2  m-1 w-25 toplinks_blocks">
+        <a href="http://flightely.com/">
+
+            <i class="fas fa-plane text-white fa-lg text-center mt-1"></i>
+
+            <br />
+            <small class="text-uppercase text-white font-weight-bold">Flight Compare</small>
+
+
+        </a>
+    </div>
+
+
+
+
+
+
+
+</div>
 
 
 <div id="formMain">
-
-
-
 
     <div class="formBody">
 
@@ -44,7 +98,7 @@
                         <input type="hidden" name="passengerId" id="passengerId" />
                         <input type="hidden" name="selectedcar" id="selectedcar" />
                         <input type="hidden" id="searchTextField" placeholder="enter the informtion">
-                        <div  class="crossIconDContainer" >
+                        <div class="crossIconDContainer">
 
                             <input type="text" name="pickUp" id="from_places" placeholder="Pick Up Address" class="form-control" required />
                             <i class="fa fa-times iconCross iconpick"></i>
@@ -53,34 +107,18 @@
                         <p class="text-danger bg-white" id="inputError1"> </p>
                     </div>
 
-                    @*<div>
-                            <div class="" id="via" style="display:none;">
-                                <span>  <i class="fas fa-plus-square"></i></span>
-                            </div>
-
-                        </div>*@
-
-
-
-
                     <div class="Drop">
-                        <input id="destination" name="destination" required="" type="hidden" />
+                        <input id="destination" name="destination" type="hidden" />
 
                         <div class="crossIconDContainer">
 
-                            <input type="text" id="to_places" name="" placeholder="Drop Off Address" class="form-control"  />
+                            <input type="text" id="to_places" name="" placeholder="Drop Off Address" class="form-control" required />
                             <i class="fa fa-times iconCross icondrop"></i>
                         </div>
-                      
-
-
                         <p class="text-danger bg-white" id="inputError2"> </p>
                     </div>
-
-
-
                     <div class="form-group carTypeMain">
-                        <select class="form-control" id="cartype" name="cartype">
+                        <select class="form-control" id="cartype" name="cartype" required>
 
                             <option value="">Car Type</option>
                             <option value="Saloon">Saloon</option>
@@ -102,7 +140,6 @@
                         <div class="text-center">
 
                             <a href="#showLogin" id="LoginPopShow" style="display:none;text-decoration:none;">
-
                                 <input type="button" class="btn btn-block  getquotebtn" style=" background:  rgb(226, 74, 35);color:white;" value="Book now" />
                             </a>
                         </div>
@@ -161,6 +198,7 @@
 </div>
 
 
+<!--========================================================-->
 <!--//Job Form-->
 
 <div class="banner" id="home">
@@ -171,12 +209,12 @@
         <div class="rslides_container">
             <ul class="rslides" id="slider1">
                 <li>
-                    <div class="banner-img">
+                    <div class="banner-img one">
                         <div class="bs-slider-overlay ">
                             <div class="banner-info  text-center">
 
-                                <h4 style=" font-family:Arial, Helvetica, sans-serif;">24/7 hassle free Minicabs </h4>
-                                <h6 style="color:white;"> Quick ,Fast and reliable</h6>
+                                <h4 style=" font-family:Arial, Helvetica, sans-serif;">Quick, Fast, Reliable, Ontime</h4>
+                                <h6 style="color:white;">We Transfer Thousands of Customer every week to Airports </h6>
 
 
                             </div>
@@ -188,8 +226,8 @@
                     <div class="banner-img one">
                         <div class="bs-slider-overlay">
                             <div class="banner-info text-center">
-                                <h4>Top Minicab Service in London </h4>
-                                <h6 style="color:white;"> </h6>
+                                <h4>Most Trusted Travel Solutions Provided</h4>
+                                <h6 style="color:white;">Ontime Airport Transfers, Chauffeur Hire and Flights Compare Solurions</h6>
 
 
 
@@ -198,12 +236,12 @@
                     </div>
                 </li>
                 <li>
-                    <div class="banner-img two">
+                    <div class="banner-img one">
                         <div class="bs-slider-overlay">
                             <div class="banner-info text-center">
 
-                                <h4 style="font-family:Arial" ;> Call  020 3500 0597</h4>
-                                <h6 style="color:white;">Travel at Cheap,Standard Fares without any surge</h6>
+                                <h4 style="font-family:Arial" ;> Call  020 3500 0597 for phone booking</h4>
+                                <h6 style="color:white;">Travel at Cheap,Standard Fares without any surge for all airport transfer</h6>
 
 
                             </div>
@@ -211,7 +249,7 @@
                     </div>
                 </li>
                 <li>
-                    <div class="banner-img the">
+                    <div class="banner-img one">
                         <div class="bs-slider-overlay">
                             <div class="banner-info text-center">
 
@@ -233,21 +271,22 @@
 
 <div class="whyCantainer mt-md-5 mb-md-5">
     <div class="text-center">
-        <h3 class="heading text-capitalize ">Why Use Minicaberz</h3>
+        <h3 class="heading text-capitalize ">Minicab Team-First Choice Taxis,Airport Transfers</h3>
+        <h6 style="color:#3b1573;">Minicab Team is most trusted minicab and airport transfer service provider in UK and across, We are providing on demand travel solutions for the passenger needs, even for local uk taxis in London, airport transfers to and from all London airports, Chauffeur driven car hire in London and across, Flights Fare Compare and Hotel Compare. </h6>
     </div>
 
     <div class="d-flex justify-content-center flex-wrap mt-md-3">
 
         <div class="col-md-2 p-md-2">
             <div class="text-center">
-                <h6>Surprisingly cheap</h6>
+                <h6>Trusted & Reliable</h6>
                 <p class="p-2">
                     <i class="far fa-thumbs-up display-4 p-md-3"></i>
 
 
                 </p>
                 <p class="fatext">
-                    Airport rides much cheaper than Uber and Addison Lee.
+                    Most Trusted and Reliable for Airport Transfers, Chauffuer Hire, Flights Booking and Local Journeys.
                 </p>
 
             </div>
@@ -258,12 +297,12 @@
 
         <div class="col-md-2 p-md-2 ">
             <div class="text-center">
-                <h6>Fixed fares</h6>
+                <h6>No Surge</h6>
                 <p class="p-2">
                     <i class="fas fa-boxes display-4 p-md-3" aria-hidden="true"></i>
                 </p>
                 <p class="fatext">
-                    Feel relaxed, you don’t pay for traffic, poor routes or surge pricing.
+                    No Surge, Safe Travel, Always Pay Exactly the Fare you have booked for, No Extra Charges even in the road traffics.
                 </p>
 
             </div>
@@ -274,12 +313,12 @@
 
         <div class="col-md-2 p-md-2 ">
             <div class="text-center">
-                <h6>30 mins free waiting</h6>
+                <h6>On Time </h6>
                 <p class="p-2">
                     <i class="far fa-clock display-4 p-md-3" aria-hidden="true"></i>
                 </p>
                 <p class="fatext">
-                    No rush, you have 30 free waiting time with a meet & greet service.
+                    Reach your destination, you have 30 free waiting time with a meet & greet service for airport transfer.
                 </p>
 
             </div>
@@ -291,14 +330,14 @@
 
         <div class="col-md-2 p-md-2 ">
             <div class="text-center">
-                <h6>Pay your way</h6>
+                <h6>Flexible Payment Method</h6>
                 <p class="p-2">
                     <i class="fas fa-address-card display-4 p-md-3" aria-hidden="true"></i>
 
 
                 </p>
                 <p class="fatext">
-                    No rush, you have 30 free waiting time with a meet & greet service.
+                    Pay the fare of your journey while booking or to the driver for your journeys to and from airports.
                 </p>
 
             </div>
@@ -310,12 +349,12 @@
 
         <div class="col-md-2 p-md-2 ">
             <div class="text-center">
-                <h6>Trusted & reliable</h6>
+                <h6>Loyalty Program</h6>
                 <p class="p-2">
                     <i class="fas fa-trophy display-4 p-md-3" aria-hidden="true"></i>
                 </p>
                 <p class="fatext">
-                    Airport rides much cheaper than Uber and Addison Lee.
+                    We are always taking care of our customer with discounts and frequent user loyalty rewards on points.
                 </p>
 
             </div>
@@ -341,8 +380,8 @@
     <div class="d-flex justify-content-center  quote ">
 
         <div class="booking text-center p-sm-5 py-5 px-3">
-            <h3 class="heading text-capitalize text-center">Be a Minicaberz</h3>
-            <p class="my-4">Raliable Minicab Service </p>
+            <h3 class="heading text-capitalize text-center">Join the Team</h3>
+            <p class="my-4">Lets Work Together</p>
             <a href="@Url.Action("CabOfficeReg", "CabOffice")" class="btn btn-lg">Register</a>
         </div>
     </div>
@@ -384,22 +423,22 @@
                             A must use and very affordable
 
 
-                           
+
                         </p>
 
                         <div class="pt-2 pb-2">
 
                             <i class="fas fa-user-circle pr-2"></i>  <span> Fardousa MUMIN </span>
-                         
-                            <br />
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
 
-                                
-                          
+                            <br />
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+
+
+
 
 
                         </div>
@@ -435,7 +474,7 @@
 
                     <div class="p-md-3 m-2 feedbackdiv">
                         <p class="lead ">
-                            Miss the Minicaberz so much even when I'm in country I can call and get a car to take me home.
+                            Miss the Minicabteam so much even when I'm in country I can call and get a car to take me home.
                             Never left me stranded ever. Need more offices in and around London best service. 100% reliable.
                         </p>
 
@@ -508,7 +547,7 @@
                     <div class="p-md-3 m-2 feedbackdiv">
                         <p class="lead">
                             I frequently travel to London for my event management programs. I need to be on time at my event.  Before boarding my flights,
-                            I ensure that my cab is ready at the Heathrow airport and Minicaberz never disappoints me.
+                            I ensure that my cab is ready at the Heathrow airport and Minicabteam never disappoints me.
                         </p>
 
                         <div class="pt-2 pb-2">
@@ -533,7 +572,7 @@
 
                     <div class="p-md-3 m-2 feedbackdiv">
                         <p class="lead">
-                            I am amazed to how professional Minicaberz  are,  I thought I'd give them a go and honestly  I proved to be right as there service was outstanding! highly recommend this company to anyone who wants to get from A-B with literally, NO hassle.
+                            I am amazed to how professional Minicabteam  are,  I thought I'd give them a go and honestly  I proved to be right as there service was outstanding! highly recommend this company to anyone who wants to get from A-B with literally, NO hassle.
                         </p>
 
                         <div class="pt-2 pb-2">
@@ -554,7 +593,7 @@
 
                     <div class="p-md-3 m-2 feedbackdiv">
                         <p class="lead">
-                            Minicaberz are the one and only minicab company, i use there services almost daily and have never been disappointed, always on time and always get a friendly driver. Keep up the good service!
+                            Minicab Team are the one and only minicab company, i use there services almost daily and have never been disappointed, always on time and always get a friendly driver. Keep up the good service!
                         </p>
 
                         <div class="pt-2 pb-2">
@@ -604,8 +643,6 @@
 </div>
 
 
-
-
 <!--login box-->
 <div id="showLogin" style="display:none;">
     <div class="container">
@@ -617,7 +654,7 @@
                     <div class="form-group">
                         <div class="input-group ">
 
-                            
+
 
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                             <input class="form-control border-light" type="email" name="Email" id="logEmail" placeholder="Email" />
@@ -647,16 +684,11 @@
 
 
 
-
-
-
-
-
-
 @section scripts{
 
 
     <script defer src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&callback=initMap&key=AIzaSyAUeFGwxXtr8M8SD82BbA-6857CVPKUhNo" type="text/javascript"></script>
+
     <script>
         function initMap() {
 
@@ -674,11 +706,6 @@
 
 
         $(function () {
-            $("#from_places, #to_places").on('focus', function () {
-
-              //  $('.pac-container').css('margin-top', '-50px');
-
-            });
 
             // add input listeners
             google.maps.event.addDomListener(window, 'load', function () {
@@ -846,7 +873,7 @@
 
                     $('#jobType').val('Distance');
 
-                    console.log("getting price by distance");
+
                     if ($('#from_places').val() == '') {
                         $('#inputError1').html('Please enter your pick up address');
 
@@ -1013,28 +1040,6 @@
     </script>
     <!--//slider-->
     <!-- start-smoth-scrolling -->
-    @*<script src="~/js/SmoothScroll.min.js"></script>
-        <script type="text/javascript" src="~/js/move-top.js"></script>
-        <script type="text/javascript" src="~/js/easing.js"></script>
-        <script type="text/javascript">
-            jQuery(document).ready(function ($) {
-                $(".scroll").click(function (event) {
-                    event.preventDefault();
-                    $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
-                });
-            });
-        </script>*@
-    <!-- here stars scrolling icon -->
-    @*<script type="text/javascript">
-            $(document).ready(function () {
-
-
-
-                $().UItoTop({ easingType: 'easeOutQuart' });
-
-            });
-        </script>*@
-
 
 
 

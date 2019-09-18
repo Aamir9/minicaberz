@@ -43,6 +43,7 @@ namespace thechauffeurteam.DAL
 
         public DbSet<CoverageAndWaiting> CoverageAndWaitings { get; set; }
 
-        //public System.Data.Entity.DbSet<thechauffeurteam.Models.ViewModel.CabOfficeVM> CabOfficeVMs { get; set; }
+        public DbSet<ChauffeurPrice> chauffeurPrices { get; set; }
+
     }
 }

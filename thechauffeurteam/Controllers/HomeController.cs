@@ -7,10 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using thechauffeurteam.DAL;
 using thechauffeurteam.Models.ViewModel;
+using System.Web.Security;
 
 namespace thechauffeurteam.Controllers
 {
-    
+   
     public class HomeController : Controller
     {
         private MyContext db = new MyContext();
@@ -24,48 +25,48 @@ namespace thechauffeurteam.Controllers
                 Session["user"] = DataItem.Id;
                 Session["userName"] = DataItem.UserFirstName;
 
+                //FormsAuthentication.SetAuthCookie(DataItem.UserEmail, false);
 
                 result = "Success";
             }
          
 
-            return new JsonResult { Data = new { result = result, sessionId = Session["user"] } };
+            return new JsonResult { Data = new { result = result, sessionId = DataItem.Id } };
         }
         public ActionResult Index()
         {
-            
-            //ViewBag.pickUpPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
-            //ViewBag.dropOffPostcode = new SelectList(db.PostCodes.ToList(), "Id", "PostCodeValue");
+
+            //ViewBag.pickUpfixedPrice = new SelectList(db.FixPrices.ToList(), "PickUp", "PickUp");
+            //ViewBag.DropofffixedPrice = new SelectList(db.FixPrices.ToList(), "DropOff", "DropOff");
+
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    ViewBag.id = db.Passengers.Where(a => a.UserEmail == User.Identity.Name)
+            //                  .Select(m => m.Id).SingleOrDefault();
+            //}
 
             return View();
         }
-
         public ActionResult About()
         {
 
 
             return View();
         }
-
         public ActionResult Contact()
         {
 
 
             return View();
         }
-
-       
         public ActionResult Services()
         {
             return View();
         }
-
-
         public ActionResult Prices()
         {
             return View();
         }
-
         public ActionResult Fleet()
         {
             return View();
@@ -73,20 +74,21 @@ namespace thechauffeurteam.Controllers
         
         public ActionResult directBooking()
         {
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    ViewBag.id = db.Passengers.Where(a => a.UserEmail == User.Identity.Name)
+            //                   .Select(m => m.Id).SingleOrDefault();
+            //}
+
             return View();
         }
 
+        
         [HttpPost]
         public ActionResult NewBooking(string origin,string destination,string selectedcar,string postcode, int? inMiles, string price, int? passengerId, string PassengerName, string PassengerPhone)
         {
 
-            //string str = postcode + " bb";
-            //int i = str.IndexOf(' ');
-            //string filterPostCode=str.Substring(0,i);
-
-
-
-
+            
             jobVM job = new jobVM();
 
             string value = postcode+ " av";
@@ -94,7 +96,6 @@ namespace thechauffeurteam.Controllers
             string fitlerpostcode = value.Substring(0, key);
 
             ViewBag.postcode = fitlerpostcode;
-
             job.pickUp = origin;
             job.DropUP = destination;
             job.CarType = selectedcar;
@@ -271,49 +272,49 @@ namespace thechauffeurteam.Controllers
         }
 
 
-        public JsonResult getPriceByFlateRate(int postcode1,int postcode2, string cartype)
-        {
-            if (!Request.IsAjaxRequest())
-            {
-                return null;
+        //public JsonResult getPriceByFlateRate(int postcode1,int postcode2, string cartype)
+        //{
+        //    if (!Request.IsAjaxRequest())
+        //    {
+        //        return null;
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
               
-                int picUpPostcodeId = db.FixPrices.Where(p => p.PickUp == postcode1).Select(z => z.Id).SingleOrDefault();
-                int dropOffPostcodeId=db.FixPrices.Where(p => p.DropOff == postcode2).Select(z => z.Id).SingleOrDefault();
+        //        int picUpPostcodeId = db.FixPrices.Where(p => p.PickUp == postcode1).Select(z => z.Id).SingleOrDefault();
+        //        int dropOffPostcodeId=db.FixPrices.Where(p => p.DropOff == postcode2).Select(z => z.Id).SingleOrDefault();
 
-                int findPostcodes = db.FixPrices.Where(p => p.Id == picUpPostcodeId && p.Id == dropOffPostcodeId).Select(z => z.Id).SingleOrDefault();
+        //        int findPostcodes = db.FixPrices.Where(p => p.Id == picUpPostcodeId && p.Id == dropOffPostcodeId).Select(z => z.Id).SingleOrDefault();
 
-                int totlaAmount=0;
-                string caroptions = cartype;
+        //        int totlaAmount=0;
+        //        string caroptions = cartype;
                 
-                if (findPostcodes >0)
-                {
-                    if (caroptions == "Saloon")
-                    {
-                        totlaAmount = Convert.ToInt32(db.FixPrices.Where(p => p.Id == findPostcodes).Select(s => s.Eclass).SingleOrDefault());
-                    }
-                    else if (caroptions == "Estate")
-                    {
-                        totlaAmount = Convert.ToInt32(db.FixPrices.Where(p => p.Id == findPostcodes).Select(s => s.Sclass).SingleOrDefault());
+        //        if (findPostcodes >0)
+        //        {
+        //            if (caroptions == "Saloon")
+        //            {
+        //                totlaAmount = Convert.ToInt32(db.FixPrices.Where(p => p.Id == findPostcodes).Select(s => s.Eclass).SingleOrDefault());
+        //            }
+        //            else if (caroptions == "Estate")
+        //            {
+        //                totlaAmount = Convert.ToInt32(db.FixPrices.Where(p => p.Id == findPostcodes).Select(s => s.Sclass).SingleOrDefault());
 
-                    }
-                    else if(caroptions== "MPV")
-                    {
-                        totlaAmount = Convert.ToInt32(db.FixPrices.Where(p => p.Id == findPostcodes).Select(s => s.Vclass).SingleOrDefault());
+        //            }
+        //            else if(caroptions== "MPV")
+        //            {
+        //                totlaAmount = Convert.ToInt32(db.FixPrices.Where(p => p.Id == findPostcodes).Select(s => s.Vclass).SingleOrDefault());
 
 
 
-                    }
-                }
+        //            }
+        //        }
                
                 
                    
                 
-                return new JsonResult { Data=new { totalAmount = totlaAmount } };
-            }
-        }
+        //        return new JsonResult { Data=new { totalAmount = totlaAmount } };
+        //    }
+        //}
     }
 }

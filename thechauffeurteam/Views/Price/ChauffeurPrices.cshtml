@@ -1,0 +1,180 @@
+﻿@model IEnumerable<thechauffeurteam.Models.ChauffeurPrice>
+@{
+    ViewBag.Title = "PriceTable";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<style>
+
+    .labl {
+        border-radius: 0px;
+        background: #1853a1;
+        width: 90px;
+        border: 2px solid #1853a1;
+    }
+
+    .txt {
+        border-radius: 0px;
+        color: #1853a1;
+        border: 1px solid #1853a1;
+    }
+
+    .bgred {
+        background-color: rgb(226, 74, 35);
+        color: #fff;
+    }
+
+    .bgblue {
+        background: #1853a1;
+        color: #fff;
+    }
+
+    .btn-outline-white {
+        border: 2px solid #fff;
+    }
+</style>
+
+
+<!-- Header -->
+<div class="header  pb-8 pt-5 pt-md-8 bgblue">
+    <div class="container-fluid">
+        <div class="header-body">
+
+        </div>
+    </div>
+</div>
+<!-- Editable table -->
+
+<div class="container-fluid mt--9">
+    <div class="row">
+        <div class="col-xl-12 mb-5 mb-xl-0">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h3 class="mb-0">Chauffeur Prices</h3>
+                        </div>
+                        <div class="col text-right">
+                            @*@if (ViewBag.isAddDisable == 100000)
+                            {
+                                <a href="~/Price/AddChauffeurPriceValue" class="btn btn-sm btn-primary disabled">Add</a>
+                            }
+                            else
+                            { }*@
+                            <a href="~/Price/AddChauffeurPriceValue" class="btn btn-sm btn-primary">Add</a>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <!--  table -->
+                    <table class="table table-bordered text-center table-flush  table-sm ">
+                        <thead class="bgblue">
+                            <tr>
+                                <th scope="col"><b>Milage Range</b></th>
+                                <th scope="col"><b>E Class</b></th>
+                                <th scope="col"><b>S Class</b></th>
+                                <th scope="col"><b>V class</b></th>
+
+                                <th scope="col"></th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th class="border">
+                                    <table class="table align-content-center  table-sm ">
+                                        <tr class="bgblue">
+                                            <th>1st Mile</th>
+                                            <th>Per Mile</th>
+                                        </tr>
+                                    </table>
+                                </th>
+                                <th class="border">
+                                    <table class="table align-content-center  table-sm ">
+                                        <tr class="bgblue">
+                                            <th>1st Mile</th>
+                                            <th>Per Mile</th>
+                                        </tr>
+                                    </table>
+                                </th>
+                                <th class="border">
+                                    <table class="table align-content-center  table-sm ">
+                                        <tr class="bgblue">
+                                            <th>1st Mile</th>
+                                            <th>Per Mile</th>
+                                        </tr>
+                                    </table>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        @foreach (var value in Model)
+                        {
+                            <tbody class="text-center justify-content-center">
+
+                                <tr class="tRow tablerow">
+                                    <td class="text-center">
+
+                                        @Html.DisplayFor(modelItem => value.MileFrom)
+                                        @if (value.MileTo != 100000)
+                                        {
+                                            @Html.DisplayFor(modelItem => value.MileTo)
+                                        }
+                                        else
+                                        {
+                                            <label>...</label>
+                                        }
+                                    </td>
+                                    <td class="border">
+                                        <table class="bg-neutral table align-items-center table-sm table-flush">
+                                            <tr style="">
+                                                <td><b>£</b>@Html.DisplayFor(modelItem => value.EclassFirstMile)</td>
+                                                <td><b>£</b>@Html.DisplayFor(modelItem => value.EclassPerMile)</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td class="border">
+                                        <table class="bg-neutral table align-items-center table-sm  table-flush ">
+                                            <tr style="">
+                                                <td><b>£</b>&nbsp;@Html.DisplayFor(modelItem => value.SclassFirstMile)</td>
+                                                <td><b>£</b>&nbsp;@Html.DisplayFor(modelItem => value.SclassPerMile)</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td class="border">
+                                        <table class="bg-neutral table align-items-center table-sm  table-flush ">
+                                            <tr style="">
+                                                <td><b>£</b>&nbsp;@Html.DisplayFor(modelItem => value.VclassFirstMile)</td>
+                                                <td><b>£</b>&nbsp;@Html.DisplayFor(modelItem => value.VclassPerMile)</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+
+                                    <td class="text-right">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a class="dropdown-item" href="~/Price/EditDistancePrice/@value.Id">Edit</a>
+                                                @*<a class="dropdown-item" href="#">Another action</a>
+                                                    <a class="dropdown-item" href="#">Something else here</a>*@
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Footer -->
+    <!-- Footer -->
+    @Html.Partial("~/Views/Shared/_CabAndAdminFooter.cshtml")
+</div>

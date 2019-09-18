@@ -47,24 +47,22 @@
                                     <div class="col-md-6">
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>Post Code</b></label>
-                                            <div class="col-sm-12">
-                                                <label class="form-control" type="text" value="@ViewBag.PicUp">@ViewBag.PicUp</label>
-                                                <input type="hidden" id="PicUp" name="PicUp" value="@Model.PickUp" />
-                                                @Html.EditorFor(model => model.PickUp, new { htmlAttributes = new { @class = "form-control",type="hidden", placeholder = "" } })
-                                                @Html.ValidationMessageFor(model => model.PickUp, "", new { @class = "text-danger" })
-                                            </div>
+                                            
+                                            
+                                                <label  >Pick Up</label>
+                                           
+                                                @Html.EditorFor(model => model.PickUp, new { htmlAttributes = new { @class = "form-control", placeholder = "" } })
+                                         
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>&nbsp;</b></label>
-                                            <div class="col-sm-12">
-                                                <label class="form-control" type="text" value="@ViewBag.DropOff">@ViewBag.DropOff</label>
-                                                <input type="hidden" id="DropOff" name="DropOff" value="@Model.DropOff" />
-                                                @Html.EditorFor(model => model.DropOff, new { htmlAttributes = new { @class = "form-control", type = "hidden", placeholder = "" } })
+                                           
+                                           
+                                                <label >Drop Off</label>
+                                                @Html.EditorFor(model => model.DropOff, new { htmlAttributes = new { @class = "form-control", placeholder = "" } })
                                                 @Html.ValidationMessageFor(model => model.DropOff, "", new { @class = "text-danger" })
-                                            </div>
+                                           
                                         </div>
 
                                     </div>
@@ -74,31 +72,31 @@
                                     <div class="col-md-4">
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>&nbsp;</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.EditorFor(model => model.Eclass, new { htmlAttributes = new { @class = "form-control", placeholder = "Saloon" } })
+                                            <label>Estate</label>
+                                           
+                                                @Html.EditorFor(model => model.Eclass, new { htmlAttributes = new { @class = "form-control", placeholder = "Estate" } })
                                                 @Html.ValidationMessageFor(model => model.Eclass, "", new { @class = "text-danger" })
-                                            </div>
+                                           
                                         </div>
 
                                     </div>
                                     <div class="col-md-4">
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>Price</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.EditorFor(model => model.Sclass, new { htmlAttributes = new { @class = "form-control", placeholder = "Estate" } })
+                                            <label>Saloon</label>
+                                           
+                                                @Html.EditorFor(model => model.Sclass, new { htmlAttributes = new { @class = "form-control", placeholder = "Saloon" } })
                                                 @Html.ValidationMessageFor(model => model.Sclass, "", new { @class = "text-danger" })
-                                            </div>
+                                        
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>&nbsp;</b></label>
-                                            <div class="col-sm-12">
+                                            <label>MPV</label>
+                                          
                                                 @Html.EditorFor(model => model.Vclass, new { htmlAttributes = new { @class = "form-control", placeholder = "MPV" } })
                                                 @Html.ValidationMessageFor(model => model.Vclass, "", new { @class = "text-danger" })
-                                            </div>
+                                         
                                         </div>
 
                                     </div>

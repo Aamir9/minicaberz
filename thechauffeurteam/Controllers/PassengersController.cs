@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using thechauffeurteam.DAL;
 using thechauffeurteam.Models;
 using thechauffeurteam.Models.ViewModel;
+using System.Web.Security;
 
 namespace thechauffeurteam.Controllers
 {
@@ -35,6 +36,7 @@ namespace thechauffeurteam.Controllers
             db.Passengers.Add(passenger);
             db.SaveChanges();
 
+            //FormsAuthentication.SetAuthCookie(model.UserEmail, false);
             Session["user"] = passenger.Id;
             Session["userName"] = passenger.UserFirstName;
             return RedirectToAction("Index", "Home");
@@ -56,6 +58,7 @@ namespace thechauffeurteam.Controllers
                 {
                     Session["user"] = p.Id;
                     Session["userName"] = p.UserFirstName;
+                    //FormsAuthentication.SetAuthCookie(p.UserEmail, false);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -72,6 +75,7 @@ namespace thechauffeurteam.Controllers
         {
             Session["user"] = null;
             Session.Abandon();
+            //FormsAuthentication.SignOut();
             return RedirectToAction("Login","Drivers");
         }
 

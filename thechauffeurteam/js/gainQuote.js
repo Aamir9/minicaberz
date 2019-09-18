@@ -1,7 +1,7 @@
 ﻿
 $(document).ready(function () {
 
-    $('.iconpick').click(function () {
+    $('.iconpick ,.pck').click(function () {
 
         $('#from_places').val('');
         $('#GetQuote').show();
@@ -14,7 +14,7 @@ $(document).ready(function () {
  });
 
 
-    $('.icondrop').click(function () {
+    $('.icondrop ,.drp').click(function () {
 
         $('#to_places').val('');
         $('#GetQuote').show();

@@ -1,0 +1,1052 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+
+
+    int UserSessionId = 0;
+
+    if (Session["user"] != null)
+    {
+        UserSessionId = int.Parse(Session["user"].ToString());
+
+
+    }
+
+
+
+}
+
+
+<link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css" media="all">
+
+
+@*<link href="~/Content/css/select2.min.css" rel="stylesheet" />*@
+
+
+<div class="toplinks d-flex flex-row ">
+
+
+
+    <div class="text-center p-2  m-1 w-25 toplinks_blocks activeToplink">
+        <a href="/home/index">
+            <i class="fas fa-plane text-white fa-lg text-center mt-1"></i>
+            <br />
+            <small class="text-uppercase text-white font-weight-bold">Regular</small>
+        </a>
+    </div>
+
+    <div class="text-center p-2  m-1 w-25 toplinks_blocks ">
+        <a href="/GetPrice/fixedPrice">
+            <i class="fas fa-plane text-white fa-lg text-center mt-1"></i>
+            <br />
+            <small class="text-uppercase text-white font-weight-bold">Airport Transfers</small>
+        </a>
+    </div>
+
+
+    <div class="text-center p-2  m-1 w-25 toplinks_blocks">
+        <a href="/GetPrice/chauffeur">
+            <i class="fas fa-utensils text-white fa-lg text-center mt-1"></i>
+
+
+            <br />
+            <small class="text-uppercase text-white font-weight-bold">chauffeur</small>
+        </a>
+    </div>
+    <div class="text-center p-2  m-1 w-25 toplinks_blocks">
+        <a href="/GetPrice/hourly">
+
+            <i class="fas fa-car text-white fa-lg text-center mt-1"></i>
+
+            <br />
+            <small class="text-uppercase text-white font-weight-bold">Hourly</small>
+
+
+        </a>
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+<div id="formMain" >
+
+    <div class="formBody">
+
+        <form method="post" id="distanceform" action="/Home/NewBooking">
+
+
+            <div class="d-flex flex-column">
+
+
+
+                <!--flex box of startr-->
+
+                <div class="d-flex flex-row ">
+
+                    <div class="pick">
+                        <input type="hidden" id="origin" name="origin" />
+                        <input type="hidden" name="jobType" id="jobType" />
+                        <input type="hidden" name="passengerId" id="passengerId" />
+                        <input type="hidden" name="selectedcar" id="selectedcar" />
+                        <input type="hidden" id="searchTextField" placeholder="enter the informtion">
+                        <div class="crossIconDContainer">
+
+                            <input type="text" name="pickUp" id="from_places" placeholder="Pick Up Address" class="form-control" required />
+                            <i class="fa fa-times iconCross iconpick"></i>
+                        </div>
+                        <input type="hidden" name="postcode" id="postcode" />
+                        <p class="text-danger bg-white" id="inputError1"> </p>
+                    </div>
+
+                    <div class="Drop">
+                        <input id="destination" name="destination" type="hidden" />
+
+                        <div class="crossIconDContainer">
+
+                            <input type="text" id="to_places" name="" placeholder="Drop Off Address" class="form-control" required />
+                            <i class="fa fa-times iconCross icondrop"></i>
+                        </div>
+                        <p class="text-danger bg-white" id="inputError2"> </p>
+                    </div>
+                    <div class="form-group carTypeMain">
+                        <select class="form-control" id="cartype" name="cartype" required>
+
+                            <option value="">Car Type</option>
+                            <option value="Saloon">Saloon</option>
+                            <option value="Estate">Estate</option>
+                            <option value="MPV">MPV</option>
+
+                        </select>
+                        <p class="text-danger errormsg bg-white"></p>
+                    </div>
+
+                    <div class="bookmain">
+                        <div class="text-center">
+                            <input type="button" class="btn btn-block  getquotebtn" id="GetQuote" style=" background:  rgb(226, 74, 35);color:white;" value="Get Quote Now " />
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-block  getquotebtn" id="BookNow" style="background:  rgb(226, 74, 35);color:white; display:none;" value="Book Now " />
+                        </div>
+
+                        <div class="text-center">
+
+                            <a href="#showLogin" id="LoginPopShow" style="display:none;text-decoration:none;">
+
+                                <input type="button" class="btn btn-block  getquotebtn" style=" background:  rgb(226, 74, 35);color:white;" value="Book now" />
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--end  form  quote flex box-->
+                <div id="priceMileMain" style="display:none;">
+
+                    <div class="d-flex flex-row " id="pdm">
+                        <div class="priceMilie">
+                            <div class="PriceMileInnerStyling">
+                                <p class="" id="in_mile" name="in_mile"></p>
+                                <span style="display:none;" id="inmile"></span>
+
+                                <input type="hidden" name="inMiles" id="inMiles" />
+                            </div>
+
+
+                        </div>
+
+                        <div class="priceMilie">
+                            <div class="PriceMileInnerStyling">
+                                <span class="pricebadge font-weight-600" id="Price">
+                                    <b class="ml-2"> Fare:</b>   <i class="fas fa-pound-sign"></i>
+                                    <span class="ml-2" id="Prices"></span>
+
+                                </span>
+                                <i class="fa fa-spinner fa-spin" style="display:none;"></i>
+                                <input type="hidden" name="price" id="price" />
+
+                            </div>
+                        </div>
+
+                        <div class="priceMilie">
+                            <div class="PriceMileInnerStyling">
+                                <p class="d" id="duration_text">  </p>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div><!--end form  quote flex box-->
+
+        </form>
+
+
+
+    </div>
+
+</div>
+
+
+<!--------------------- /.form main   -------------->
+<!--========================================================-->
+<!--//Job Form-->
+
+<div class="banner" id="home">
+
+    <div id="wrapper">
+
+        <!-- Slideshow 1 -->
+        <div class="rslides_container">
+            <ul class="rslides" id="slider1">
+                <li>
+                    <div class="banner-img one">
+                        <div class="bs-slider-overlay ">
+                            <div class="banner-info  text-center">
+
+                                <h4 style=" font-family:Arial, Helvetica, sans-serif;">24/7 hassle free Minicabs </h4>
+                                <h6 style="color:white;"> Quick ,Fast and reliable</h6>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="banner-img one">
+                        <div class="bs-slider-overlay">
+                            <div class="banner-info text-center">
+                                <h4>Top Minicab Service in London </h4>
+                                <h6 style="color:white;"> </h6>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="banner-img one">
+                        <div class="bs-slider-overlay">
+                            <div class="banner-info text-center">
+
+                                <h4 style="font-family:Arial" ;> Call  020 3500 0597</h4>
+                                <h6 style="color:white;">Travel at Cheap,Standard Fares without any surge</h6>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="banner-img one">
+                        <div class="bs-slider-overlay">
+                            <div class="banner-info text-center">
+
+                                <h4>Reach Your Destination on time</h4>
+                                <h6 style="color:white;">From all London airports  to London  & across the UK</h6>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+<!-- about -->
+
+<div class="whyCantainer mt-md-5 mb-md-5">
+    <div class="text-center">
+        <h3 class="heading text-capitalize ">Why Use Minicaberz</h3>
+    </div>
+
+    <div class="d-flex justify-content-center flex-wrap mt-md-3">
+
+        <div class="col-md-2 p-md-2">
+            <div class="text-center">
+                <h6>Surprisingly cheap</h6>
+                <p class="p-2">
+                    <i class="far fa-thumbs-up display-4 p-md-3"></i>
+
+
+                </p>
+                <p class="fatext">
+                    Airport rides much cheaper than Uber and Addison Lee.
+                </p>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="col-md-2 p-md-2 ">
+            <div class="text-center">
+                <h6>Fixed fares</h6>
+                <p class="p-2">
+                    <i class="fas fa-boxes display-4 p-md-3" aria-hidden="true"></i>
+                </p>
+                <p class="fatext">
+                    Feel relaxed, you don’t pay for traffic, poor routes or surge pricing.
+                </p>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="col-md-2 p-md-2 ">
+            <div class="text-center">
+                <h6>30 mins free waiting</h6>
+                <p class="p-2">
+                    <i class="far fa-clock display-4 p-md-3" aria-hidden="true"></i>
+                </p>
+                <p class="fatext">
+                    No rush, you have 30 free waiting time with a meet & greet service.
+                </p>
+
+            </div>
+
+
+
+        </div>
+
+
+        <div class="col-md-2 p-md-2 ">
+            <div class="text-center">
+                <h6>Pay your way</h6>
+                <p class="p-2">
+                    <i class="fas fa-address-card display-4 p-md-3" aria-hidden="true"></i>
+
+
+                </p>
+                <p class="fatext">
+                    No rush, you have 30 free waiting time with a meet & greet service.
+                </p>
+
+            </div>
+
+
+
+        </div>
+
+
+        <div class="col-md-2 p-md-2 ">
+            <div class="text-center">
+                <h6>Trusted & reliable</h6>
+                <p class="p-2">
+                    <i class="fas fa-trophy display-4 p-md-3" aria-hidden="true"></i>
+                </p>
+                <p class="fatext">
+                    Airport rides much cheaper than Uber and Addison Lee.
+                </p>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+</div>
+
+
+<!-- //about -->
+<!-- Our prices -->
+<section class="prices py-5">
+    <div class="d-flex justify-content-center  quote ">
+
+        <div class="booking text-center p-sm-5 py-5 px-3">
+            <h3 class="heading text-capitalize text-center">Be a Minicaberz</h3>
+            <p class="my-4">Raliable Minicab Service </p>
+            <a href="@Url.Action("CabOfficeReg", "CabOffice")" class="btn btn-lg">Register</a>
+        </div>
+    </div>
+
+
+
+
+
+</section>
+
+
+<!-- //Our prices -->
+<!--testimonial -->
+
+<div class="container mt-5 mb-5 pb-5">
+
+
+    <div class="text-center mt-4 mb-4 ">
+        <h3 class="heading text-uppercase"> RECENT FEEDBACK</h3>
+    </div>
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide mb-5" data-ride="carousel">
+
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleSlidesOnly" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleSlidesOnly" data-slide-to="1"></li>
+            <li data-target="#carouselExampleSlidesOnly" data-slide-to="2"></li>
+        </ol>
+
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="d-flex flex-row  flex-sm-row flex-column mt-md-3">
+
+                    <div class="p-md-3 m-2 feedbackdiv">
+                        <p class="lead">
+                            Amazing service on time and lovely cabbies.
+
+                            A must use and very affordable
+
+
+
+                        </p>
+
+                        <div class="pt-2 pb-2">
+
+                            <i class="fas fa-user-circle pr-2"></i>  <span> Fardousa MUMIN </span>
+
+                            <br />
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="p-md-3 m-2 feedbackdiv">
+                        <p class="lead">
+                            It is the best Minicab company in London for sure .
+                            Very good price which can beat any other companies  and professional  friendly
+                        </p>
+
+                        <div class="pt-2 pb-2">
+                            <i class="fas fa-user-circle pr-md-2"></i> <span> Harry smith  </span>
+
+
+                            <br />
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div class="p-md-3 m-2 feedbackdiv">
+                        <p class="lead ">
+                            Miss the Minicaberz so much even when I'm in country I can call and get a car to take me home.
+                            Never left me stranded ever. Need more offices in and around London best service. 100% reliable.
+                        </p>
+
+                        <div class="pt-2 pb-2">
+                            <i class="fas fa-user-circle pr-md-2"></i> <span> Dionne Reid  </span>
+                            <br />
+
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-flex flex-row  flex-sm-row flex-column mt-md-3">
+
+                    <div class="p-md-3 m-2 feedbackdiv">
+                        <p class="lead">
+                            Excellent service, driver very professional and perfectly on time. I will book them again.
+
+                        </p>
+
+                        <div class="pt-2 pb-2">
+                            <i class="fas fa-user-circle pr-md-2"></i> <span>   Cristiana  </span>
+                            <br />
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="p-md-3 m-2 feedbackdiv">
+                        <p class="lead">
+                            Outstanding service. Particularly for airport pick up and drop off. Great prices, reliable and always polite
+                        </p>
+
+                        <div class="pt-2 pb-2">
+                            <i class="fas fa-user-circle pr-md-2"></i> <span>Jessica Taylor  </span>
+                            <br />
+
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div class="p-md-3 m-2 feedbackdiv">
+                        <p class="lead">
+                            I frequently travel to London for my event management programs. I need to be on time at my event.  Before boarding my flights,
+                            I ensure that my cab is ready at the Heathrow airport and Minicaberz never disappoints me.
+                        </p>
+
+                        <div class="pt-2 pb-2">
+                            <i class="fas fa-user-circle pr-md-2"></i> <span>Chloe Morello </span>
+                            <br />
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-flex flex-row  flex-sm-row flex-column mt-md-3">
+
+                    <div class="p-md-3 m-2 feedbackdiv">
+                        <p class="lead">
+                            I am amazed to how professional Minicaberz  are,  I thought I'd give them a go and honestly  I proved to be right as there service was outstanding! highly recommend this company to anyone who wants to get from A-B with literally, NO hassle.
+                        </p>
+
+                        <div class="pt-2 pb-2">
+                            <i class="fas fa-user-circle pr-md-2"></i> <span> John Rogers  </span>
+                            <br />
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="p-md-3 m-2 feedbackdiv">
+                        <p class="lead">
+                            Minicaberz are the one and only minicab company, i use there services almost daily and have never been disappointed, always on time and always get a friendly driver. Keep up the good service!
+                        </p>
+
+                        <div class="pt-2 pb-2">
+                            <i class="fas fa-user-circle pr-md-2"></i> <span> Ravi Verma</span>
+                            <br />
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div class="p-md-3 m-2 feedbackdiv">
+                        <p class="lead">
+                            Good rates and service - and they show up when they say they will.  One to keep on speed dial.
+                        </p>
+
+                        <div class="pt-2 pb-2">
+                            <i class="fas fa-user-circle pr-md-2"></i> <span> Firewater  </span>
+                            <br />
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<!--login box-->
+<div id="showLogin" style="display:none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 alert " style="background:#1853a1;">
+                <h3 class="text-center text-white p-2">Login</h3>
+                <form id="loginForm">
+                    <div id="msg"><ul style="color:red;background:rgba(555,555,555,0.5);"> Invalid Username Or Password</ul></div>
+                    <div class="form-group">
+                        <div class="input-group ">
+
+
+
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input class="form-control border-light" type="email" name="Email" id="logEmail" placeholder="Email" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input class="form-control border-light" type="password" name="Password" id="logPssword" placeholder="Password" />
+                        </div>
+                    </div>
+                </form>
+                <div class="form-group">
+                    <button class="btn  form-control bg-white" style="color:#1853a1;" type="submit" onclick="Login()"><i class="glyphicon glyphicon-log-in"></i> Login</button>
+                </div>
+                <div class="form-group">
+                    @*<a style="float:left">Forget Password ? </a><a style="float:right;cursor:pointer" onclick="SignUp()"> Sign Up</a>*@
+                    <a class="btn-link text-white" href="@Url.Action("Registration","Passengers")" id="signUpPopShow"> Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--//login box-->
+
+
+
+@section scripts{
+
+
+    <script defer src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&callback=initMap&key=AIzaSyAUeFGwxXtr8M8SD82BbA-6857CVPKUhNo" type="text/javascript"></script>
+
+    <script>
+        function initMap() {
+
+            var input = document.getElementById('searchTextField');
+
+            autocomplete = new google.maps.places.Autocomplete(input);
+        }
+    </script>
+
+    <script>
+        var distance_in_mile
+        var Login;
+        var passengerId;
+
+
+
+        $(function () {
+            $("#from_places, #to_places").on('focus', function () {
+
+              //  $('.pac-container').css('margin-top', '-50px');
+
+            });
+
+            // add input listeners
+            google.maps.event.addDomListener(window, 'load', function () {
+
+                var fromPlaces = document.getElementById('from_places');
+                var toPlaces = document.getElementById('to_places')
+                var from_places = new google.maps.places.Autocomplete(fromPlaces);
+                var to_places = new google.maps.places.Autocomplete(toPlaces);
+
+                function fromPlacesfunc() {
+                    var from_place = from_places.getPlace();
+                    var from_address = from_place.formatted_address;
+                    $('#origin').val(from_address);
+
+                    $('#postcode').val(from_place.address_components[0].long_name);
+
+
+                }
+                function toPlacesfunc() {
+                    var to_place = to_places.getPlace();
+                    var to_address = to_place.formatted_address;
+                    $('#destination').val(to_address);
+
+                }
+
+                google.maps.event.addListener(from_places, 'place_changed', fromPlacesfunc);
+                google.maps.event.addListener(to_places, 'place_changed', toPlacesfunc);
+
+            });
+            // calculate distance
+            function calculateDistance() {
+                var origin = $('#origin').val();
+                var destination = $('#destination').val();
+                var service = new google.maps.DistanceMatrixService();
+                service.getDistanceMatrix(
+                    {
+                        origins: [origin],
+                        destinations: [destination],
+                        travelMode: google.maps.TravelMode.DRIVING,
+                        unitSystem: google.maps.UnitSystem.IMPERIAL, // miles and feet.
+                        // unitSystem: google.maps.UnitSystem.metric, // kilometers and meters.
+                        avoidHighways: false,
+                        avoidTolls: false
+                    }, callback);
+            }
+            // get distance results
+            function callback(response, status) {
+                if (status != google.maps.DistanceMatrixStatus.OK) {
+                    $('#result').html(err);
+
+                } else {
+
+                    var origin = response.originAddresses[0];
+                    var destination = response.destinationAddresses[0];
+                    if (response.rows[0].elements[0].status === "ZERO_RESULTS") {
+
+                        $('#result').html("Better get on a plane. There are no roads between " + origin + " and " + destination);
+                    } else {
+
+
+                        var distance = response.rows[0].elements[0].distance;
+                        var duration = response.rows[0].elements[0].duration;
+                        console.log(response.rows[0].elements[0].distance);
+                        console.log(response.rows[0].elements[0].duration);
+                        var distance_in_kilo = distance.value / 1000; // the kilom
+                        distance_in_mile = distance.value / 1609.34; // the mile
+
+                        var duration_text = duration.text;
+                        console.log(duration_text);
+                        var duration_value = duration.value;
+                        console.log(duration_value);
+
+                        $('#in_mile').html(distance_in_mile.toFixed(0) + '&nbsp;Miles');
+                        $('#inMiles').val(distance_in_mile.toFixed(0));
+                        $('#inmile').text(distance_in_mile.toFixed(0));
+
+                        $('#in_kilo').text(distance_in_kilo.toFixed(0));
+                        $('#duration_text').html('Duration:&nbsp;' + duration_text);
+                        $('#duration_value').text(duration_value);
+                        $('#from').text(origin);
+                        $('#to').text(destination);
+
+
+                        var m = distance_in_mile.toFixed(0);
+                        //var mile = parseInt(m);
+                        $('.fa-spin').show();
+                        $.ajax({
+                            type: "POST",
+                            url: '/Home/getPrice',
+                            data: { 'value': m, cartype: $('#cartype').val() },
+                            dataType: 'json',
+                            cache: false,
+                            success: function (data) {
+                                // $('#textAmount').val(data.doubleValue);
+                                console.log(data.totalAmount);
+
+                                $('#Price').css('display', 'block');
+
+                                $('#Prices').html(data.totalAmount);
+                                $("#price").val(data.totalAmount);
+                                console.log("your data submited successfull ");
+                            },
+                            error: function () {
+
+                                console.log('error occure when you sending ajax request');
+                            },
+
+                            complete: function () {
+                                $('.fa-spin').hide();
+                            }
+                        });
+
+                        return false;
+
+                    }
+                }
+            }
+
+
+            var cartype;
+            $('#cartype').on('change', function () {
+
+
+                cartype = $(this);
+                var car = $(this).children(":selected").val();
+
+                $('#GetQuote').show();
+                $('#BookNow').hide();
+                $('#LoginPopShow').hide();
+                $('#priceMileMain').hide();
+                $('#Prices').html('');
+
+
+
+
+                if (cartype == '') {
+
+                    $('.errormsg').html('please select the car type');
+
+                    cartype = undefined;
+                    return false;
+                }
+                else {
+                    $('.errormsg').html('');
+
+                    $("#selectedcar").val(car);
+                }
+
+                console.log(car);
+
+
+               // console.log($("#cartype").val(car))
+
+
+
+            });
+
+
+
+
+            $('#GetQuote').click(function (e) {
+
+
+
+
+                    $('#jobType').val('Distance');
+
+                    console.log("getting price by distance");
+                    if ($('#from_places').val() == '') {
+                        $('#inputError1').html('Please enter your pick up address');
+
+                        return false;
+                    }
+                    else if ($('#to_places').val() == '') {
+                        $('#inputError2').html('Please enter your drop off address');
+
+                        return false;
+                    }
+
+                    else if (cartype == undefined) {
+                        $('.errormsg').html('please select the car type');
+                        return false;
+                    }
+
+
+                    else {
+                        $('.errormsg').html('');
+                        $('#inputError1').html('');
+                        $('#inputError2').html('');
+                        $('#datepicker,#timepicker').prop('required', true);
+
+
+                        e.preventDefault();
+                        calculateDistance();
+                        $('#GetQuote').hide();
+
+                      //  $('#BookNow').show();
+                        $('#priceMileMain').show();
+                        //$('#from_places,#to_places,#cartype').attr('disabled', 'disabled');
+
+
+
+                    }
+
+
+                $("#signUpPopShow").click(function () {
+
+                    $("#showLogin").hide();
+                    $(this).fancybox.close();
+                    $("#showPassengerRegister").show();
+                    $("#showPassengerRegister").fancybox();
+
+                });
+
+
+
+
+                var sessionId = @UserSessionId;
+
+                    if (sessionId == 0) {
+                     //   $("#BookNow").hide();
+                        $("#LoginPopShow").show();
+                        $("#LoginPopShow").fancybox();
+
+                        $("#msg").hide();
+
+                        Login = function () {
+                            // var data = $("#loginForm").serialize();
+                            $.ajax({
+                                type: "post",
+                                url: "/Home/CheckValidUser",
+                                data: { email: $('#logEmail').val(), password: $('#logPssword').val() },
+                                success: function (Data) {
+                                    if (Data.result == "Fail") {
+                                        $("#loginForm")[0].reset();
+                                        $("#msg").show();
+                                    }
+
+                                    else {
+                                        //window.location.href = "/Register/AfterLogin";
+                                        sessionId = Data.sessionId;
+                                        console.log("login sccessfull");
+                                        $("#msg").hide();
+                                        $("#LoginPopShow").hide();
+                                        $.fancybox.close();
+                                        $("#passengerId").val(sessionId);
+                                        $("#BookNow").show();
+                                        console.log(sessionId);
+                                        $("#BookNow").click();
+
+
+                                    }
+                                },
+                                error: function () {
+                                    console.log('login request creating problem problem');
+
+
+                                }
+
+
+                            })
+                        }
+                       // return false;
+                    } // for checking sessio id
+                    else {
+
+                            $("#passengerId").val(sessionId);
+                            $("#BookNow").show();
+
+
+                    }
+
+
+            });
+
+
+        });
+    </script>
+
+    @* //for get price and mile using google map*@
+
+
+    <script src="~/js/gainQuote.js"></script>
+
+
+    <!-- carousel -->
+    <script src="~/js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 1,
+                        nav: false
+                    },
+                    900: {
+                        items: 2,
+                        nav: false
+                    },
+                    1000: {
+                        items: 3,
+                        nav: true,
+                        loop: false,
+                        margin: 20
+                    }
+                }
+            })
+        })
+    </script>
+    <!-- Calendar -->
+    <!--slider-->
+
+    <script src="~/js/responsiveslides.min.js"></script>
+    <script>
+        $(function () {
+            // Slideshow 1
+            $("#slider1").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: true,
+                speed: 900,
+                namespace: "centered-btns"
+            });
+        });
+    </script>
+    <!--//slider-->
+    <!-- start-smoth-scrolling -->
+
+
+
+
+
+
+}

@@ -104,9 +104,14 @@
                                             @*<i class="fa fa-car" aria-hidden="true"></i>*@
                                             @*<input type="text" id="from_places" placeholder="Pick Up Address" class="form-control" />*@
 
-                                            @Html.TextBoxFor(m => m.pickUp, new { @class = "form-control", @placeholder = "Pick Up Address", @id = "from_places" })
+                                          
 
                                             @Html.HiddenFor(m => m.pickUp, new { @id = "origin" })
+
+                                            <div class="crossIconDContainer">
+                                                @Html.TextBoxFor(m => m.pickUp, new { @class = "form-control", @placeholder = "Pick Up Address", @id = "from_places" })
+                                                <i class="fa fa-times pck" style="cursor:pointer;background:#EEE;"></i>
+                                            </div>
                                             @*<input type="hidden" id="origin" name="origin" />*@
 
                                             <input type="hidden" name="jobType" id="jobType" />
@@ -118,7 +123,7 @@
                                             @*<input type="hidden" name="selectedcar" id="selectedcar" />*@
 
                                             <p class="text-danger" id="inputError1"> </p>
-                                           
+
                                             <input type="hidden" name="postcode" id="postcode" value="@ViewBag.postcode" />
                                         </div>
                                     </div>
@@ -128,7 +133,13 @@
                                             @*<i class="fas fa-globe"></i>*@
                                             @*<input type="text" id="to_places" name="dropOff" placeholder="Drop Off Address" class="form-control" />*@
 
-                                            @Html.TextBoxFor(m => m.DropUP, new { @class = "form-control", @placeholder = "Drop Off Addres", @id = "to_places" })
+                                           
+
+                                            <div class="crossIconDContainer">
+
+                                                @Html.TextBoxFor(m => m.DropUP, new { @class = "form-control", @placeholder = "Drop Off Addres", @id = "to_places" })
+                                                <i class="fa fa-times drp" style="cursor:pointer; cursor:pointer;background:#EEE;"></i>
+                                            </div>
 
 
                                             @Html.HiddenFor(m => m.DropUP, new { @id = "destination" })

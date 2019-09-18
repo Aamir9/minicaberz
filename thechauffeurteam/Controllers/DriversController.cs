@@ -271,11 +271,21 @@ namespace thechauffeurteam.Controllers
         [Route("login")]
         public ActionResult Login()
         {
-            if (Session["DriverLog"] == null)
+            if (Session["user"] == null && Session["cabOfficeuser"] == null)
             {
                 return View();
             }
-            return RedirectToAction("Login", "Drivers", new { id = ID });
+            else if (Session["cabOfficeuser"] != null)
+            {
+                
+
+                return RedirectToAction("Dashboard", "CabOffice", new { id = (int)Session["cabOfficeId"] });
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+               
         }
         public ActionResult Loged(string demail, string dPassword)
         {

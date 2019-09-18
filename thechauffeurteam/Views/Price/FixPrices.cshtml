@@ -52,9 +52,8 @@
                             @foreach (var value in Model)
                             {
                             <tr>
-
-                                <td>@pcs.Where(a => a.Id == value.PickUp).SingleOrDefault().PostCodeValue</td>
-                                <td>@pcs.Where(a => a.Id == value.DropOff).SingleOrDefault().PostCodeValue</td>
+                                <td>@Html.DisplayFor(modelItem => value.PickUp)</td>
+                                <td>@Html.DisplayFor(modelItem => value.DropOff)</td>
                                 <td><b>£</b>&nbsp;@Html.DisplayFor(modelItem => value.Eclass)</td>
                                 <td><b>£</b>&nbsp;@Html.DisplayFor(modelItem => value.Sclass)</td>
                                 <td><b>£</b>&nbsp;@Html.DisplayFor(modelItem => value.Vclass)</td>

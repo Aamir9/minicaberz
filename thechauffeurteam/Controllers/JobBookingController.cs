@@ -1,18 +1,15 @@
 ﻿using Microsoft.AspNet.SignalR;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Threading.Tasks;
-using System.Web;
+using System.Net.Mime;
 using System.Web.Mvc;
 using thechauffeurteam.DAL;
 using thechauffeurteam.Hubs;
 using thechauffeurteam.Models;
 using thechauffeurteam.Models.ViewModel;
-using thechauffeurteam.singnalr.hubs;
+
 
 namespace thechauffeurteam.Controllers
 {
@@ -30,7 +27,7 @@ namespace thechauffeurteam.Controllers
         [HttpPost]
         public  ActionResult Insert(jobVM model, string postcode, string date, string time, string date2, string time2,string mainDirection , string PassengerName, string PassengerPhone)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
 
                 string value = postcode + " av";
@@ -59,8 +56,7 @@ namespace thechauffeurteam.Controllers
                     PassengerPhoneNumber = db.Passengers.Where(a => a.Id == model.PassengerId).Select(a => a.UserPhNo).SingleOrDefault();
                     //  PassengerEmail = db.Passengers.Where(a => a.Id == model.PassengerId).Select(b => b.UserEmail).SingleOrDefault();
                 }
-
-
+                
 
                 job jb = new job();
                 jb.PassengerId = model.PassengerId;
@@ -84,7 +80,56 @@ namespace thechauffeurteam.Controllers
                  context.Clients.All.AlertMe(filterPostcode.ToUpper());
 
 
-                 db.jobs.Add(jb);
+                // email setting in
+
+
+                string Emailbodya = string.Empty;
+
+                using (StreamReader readera = new StreamReader(Server.MapPath("~/adminlayout.html")))
+                {
+                    Emailbodya = readera.ReadToEnd();
+                }
+                //string contentID = "123";
+                //string attachmentPath = Server.MapPath("~/logo.png");
+                //Attachment inline = new Attachment(attachmentPath);
+                //inline.ContentDisposition.Inline = true;
+                //inline.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
+                //inline.ContentId = contentID;
+                //inline.ContentType.MediaType = "image/png";
+                //inline.ContentType.Name = Path.GetFileName(attachmentPath);
+
+
+
+                //message.Attachments.Add(inline);
+
+
+                Emailbodya = Emailbodya.Replace("{TimeAndDate}", time + "\t" + date);
+                Emailbodya = Emailbodya.Replace("{from}", model.pickUp);
+                Emailbodya = Emailbodya.Replace("{to}", model.DropUP);
+                Emailbodya = Emailbodya.Replace("{Miles}", model.Mile.ToString());
+                Emailbodya = Emailbodya.Replace("{price}", model.Price.ToString());
+                Emailbodya = Emailbodya.Replace("{phone}", PassengerPhoneNumber);
+                Emailbodya = Emailbodya.Replace("{name}", PassengerName);
+                //Emailbodya = Emailbodya.Replace("{mycontentid}", contentID);
+
+
+
+                MailMessage msga = new MailMessage();
+                msga.From = new MailAddress("info@minicaberz.com");
+                msga.To.Add("rizwanhaideer@gmail.com");
+                msga.Subject = "New Job Booked ";
+                msga.Body = Emailbodya;
+                msga.IsBodyHtml = true;
+                //msga.Attachments.Add(inline);
+                SmtpClient smtpa = new SmtpClient("relay-hosting.secureserver.net", 25);
+                smtpa.Credentials = new NetworkCredential("rizwanhaideer@gmail.com", "Asdfjkl12345");
+                smtpa.EnableSsl = false;
+                smtpa.Send(msga);
+                smtpa.Dispose();
+
+
+
+                db.jobs.Add(jb);
                  db.SaveChanges();
 
 
@@ -246,7 +291,7 @@ namespace thechauffeurteam.Controllers
         //            //msgp.Subject = "Job confirmation  Message of The Heathrow airport cars";
         //            //msgp.Body = Emailbodyp;
         //            //msgp.IsBodyHtml = true;
-        //            //SmtpClient smtpp = new SmtpClient("smtpout.europe.secureserver.net", 80);
+        //            //SmtpClient smtpp = new SmtpClient("relay-hosting.secureserver.net", 80);
         //            //smtpp.Credentials = new NetworkCredential("info@heathrowairportminicablondon.com", "Asdfjkl12345");
         //            //smtpp.EnableSsl = false;
         //            //smtpp.Send(msgp);
@@ -342,8 +387,8 @@ namespace thechauffeurteam.Controllers
 
         //    }
 
-        }
-
-
-
     }
+
+
+
+}

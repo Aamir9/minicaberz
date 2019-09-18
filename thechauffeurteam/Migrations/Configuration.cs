@@ -12,7 +12,7 @@ namespace thechauffeurteam.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+           AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(thechauffeurteam.DAL.MyContext context)

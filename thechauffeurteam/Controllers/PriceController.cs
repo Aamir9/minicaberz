@@ -34,6 +34,9 @@ namespace thechauffeurteam.Controllers
             return RedirectToAction("login","admin");
         }
 
+
+
+
         public ActionResult AddDistancePriceValue()
         {
             if (Session["adminLog"] != null)
@@ -60,9 +63,9 @@ namespace thechauffeurteam.Controllers
                 {
                     MileFrom = db.DistancePrices.OrderByDescending(m => m.Id).FirstOrDefault().MileTo + 1;
 
-                    if (MileFrom < 100)
-                    {
-                        MileTo = new int[15];
+                    //if (MileFrom < 100)
+                    //{
+                      MileTo = new int[15];
 
                         int val = MileFrom;
                         for (int i = 0; i < 14; i++)
@@ -70,18 +73,18 @@ namespace thechauffeurteam.Controllers
                             MileTo[i] = ++val;
                         }
                         MileTo[14] = 100000;
-                    }
-                    else
-                    {
-                        MileTo = new int[49];
+                    //}
+                    //else
+                    //{
+                    //    MileTo = new int[49];
 
-                        int val = MileFrom;
-                        for (int i = 0; i < 49; i++)
-                        {
-                            MileTo[i] = ++val;
-                        }
-                        MileTo[49] = 100000;
-                    }
+                    //    int val = MileFrom;
+                    //    for (int i = 0; i < 49; i++)
+                    //    {
+                    //        MileTo[i] = ++val;
+                    //    }
+                    //    MileTo[49] = 100000;
+                    //}
 
                 }
 
@@ -113,21 +116,128 @@ namespace thechauffeurteam.Controllers
             }
             return RedirectToAction("login","admin");
         }
-        //=========================== Hourly Price ==========================================
 
-        public ActionResult HourlyPrice()
+        //=========================== Chauffeur Price ==========================================
+        public ActionResult ChauffeurPrices()
         {
             if (Session["adminLog"] != null)
             {
-                var tbl = db.HourlyPrices.ToList();
+                var tbl = db.chauffeurPrices.ToList();
                 if (tbl.Count != 0)
                 {
-                    ViewBag.isAddDisable = tbl.OrderByDescending(m => m.Id).FirstOrDefault().HourTo;
+                    ViewBag.isAddDisable = tbl.OrderByDescending(m => m.Id).FirstOrDefault().MileTo;
                 }
                 else
                 {
                     ViewBag.isAddDisable = 2515331;
                 }
+                return View(tbl);
+            }
+            return RedirectToAction("login", "admin");
+        }
+
+
+
+        public ActionResult AddChauffeurPriceValue()
+        {
+            if (Session["adminLog"] != null)
+            {
+                int MileFrom;
+                int[] MileTo;
+                var obj = db.chauffeurPrices.ToList();
+
+
+                if (obj.Count == 0)
+                {
+                    MileFrom = 1;
+                    MileTo = new int[15];
+
+                    int val = MileFrom;
+                    for (int i = 0; i < 14; i++)
+                    {
+                        MileTo[i] = ++val;
+                    }
+                    MileTo[14] = 100000;
+
+                }
+                else
+                {
+                    MileFrom = db.chauffeurPrices.OrderByDescending(m => m.Id).FirstOrDefault().MileTo + 1;
+
+                    //if (MileFrom < 100)
+                    //{
+                        MileTo = new int[15];
+
+                        int val = MileFrom;
+                        for (int i = 0; i < 14; i++)
+                        {
+                            MileTo[i] = ++val;
+                        }
+                        MileTo[14] = 100000;
+                    //}
+                    //else
+                    //{
+                    //    MileTo = new int[49];
+
+                    //    int val = MileFrom;
+                    //    for (int i = 0; i < 49; i++)
+                    //    {
+                    //        MileTo[i] = ++val;
+                    //    }
+                    //    MileTo[49] = 100000;
+                    //}
+
+                }
+
+                ViewBag.MileTo = MileTo;
+                ViewBag.MileFrom = MileFrom;
+
+
+                return View();
+            }
+            return RedirectToAction("login", "admin");
+        }
+        [HttpPost]
+        public ActionResult AddChauffeurPriceValue(ChauffeurPrice model, String MileFrom, String MileTo)
+        {
+            if (Session["adminLog"] != null)
+            {
+                model.MileFrom = Convert.ToInt32(MileFrom);
+                model.MileTo = Convert.ToInt32(MileTo);
+
+                if (!ModelState.IsValid)
+                {
+
+                    return View(model);
+                }
+
+                db.chauffeurPrices.Add(model);
+                db.SaveChanges();
+                return RedirectToAction("ChauffeurPrices", "Price");
+            }
+            return RedirectToAction("login", "admin");
+        }
+
+        //=========================== Hourly Price ==========================================
+
+
+
+          public ActionResult HourlyPrice()
+        {
+            if (Session["adminLog"] != null)
+            {
+
+                //db.Database.ExecuteSqlCommand("TRUNCATE TABLE HourlyPrices");
+                //db.SaveChanges();
+                var tbl = db.HourlyPrices.ToList();
+                //if (tbl.Count != 0)
+                //{
+                //    ViewBag.isAddDisable = tbl.OrderByDescending(m => m.Id).FirstOrDefault().HourTo;
+                //}
+                //else
+                //{
+                //    ViewBag.isAddDisable = 2515331;
+                //}
                 return View(tbl);
             }
             return RedirectToAction("login", "admin");
@@ -190,12 +300,11 @@ namespace thechauffeurteam.Controllers
             return RedirectToAction("login", "admin");
         }
         [HttpPost]
-        public ActionResult AddHourlyPriceValue(HourlyPrice model, String HourFrom, String HourTo)
+        public ActionResult AddHourlyPriceValue(HourlyPrice model)
         {
             if (Session["adminLog"] != null)
             {
-                model.HourFrom = Convert.ToInt32(HourFrom);
-                model.HourTo = Convert.ToInt32(HourTo);
+               
 
                 if (!ModelState.IsValid)
                 {
@@ -214,18 +323,9 @@ namespace thechauffeurteam.Controllers
         {
             if (Session["adminLog"] != null)
             {
-                //var tbl = db.DistancePrices.ToList();
-                //if (tbl.Count != 0)
-                //{
-                //    ViewBag.isAddDisable = tbl.OrderByDescending(m => m.Id).FirstOrDefault().MileTo;
-                //}
-                //else
-                //{
-                //    ViewBag.isAddDisable = 2515331;
-                //}
+                
 
-                List<PostCode> pc = db.PostCodes.ToList();
-                ViewBag.PC = pc;
+                
                 return View(db.FixPrices.ToList());
             }
             return RedirectToAction("login", "admin");
@@ -247,8 +347,8 @@ namespace thechauffeurteam.Controllers
         {
             if (Session["adminLog"] != null)
             {
-                model.PickUp = Convert.ToInt32(PickUp);
-                model.DropOff = Convert.ToInt32(DropOff);
+                model.PickUp = PickUp;
+                model.DropOff = DropOff;
 
                 if (ModelState.IsValid)
                 {
@@ -256,8 +356,7 @@ namespace thechauffeurteam.Controllers
                     db.SaveChanges();
                     return RedirectToAction("FixPrices", "Price");
                 }
-                List<PostCode> pc = db.PostCodes.ToList();
-                ViewBag.PostCode = pc;
+               
                 return View(model);
             }
             return RedirectToAction("login", "admin");
@@ -293,23 +392,34 @@ namespace thechauffeurteam.Controllers
             }
             return RedirectToAction("login", "admin");
         }
-        
 
-        //=======Fix Value===============
+
         public ActionResult EditFixPrice(int Id)
         {
             if (Session["adminLog"] != null)
             {
-                var val = db.FixPrices.Find(Id);
-                var pCode = db.PostCodes.ToList();
-                ViewBag.PicUp = pCode.SingleOrDefault(m => m.Id == val.PickUp).PostCodeValue;
-                ViewBag.DropOff = pCode.SingleOrDefault(m => m.Id == val.DropOff).PostCodeValue;
-
+                var obj = db.FixPrices.ToList();
 
                 return View(db.FixPrices.Find(Id));
             }
-            return RedirectToAction("login");
+            return RedirectToAction("login", "admin");
         }
+
+        //=======Fix Value===============
+        //public ActionResult EditFixPrice(int Id)
+        //{
+        //    if (Session["adminLog"] != null)
+        //    {
+        //        var val = db.FixPrices.Find(Id);
+        //        var pCode = db.PostCodes.ToList();
+        //        ViewBag.PicUp = pCode.SingleOrDefault(m => m.Id == val.PickUp).PostCodeValue;
+        //        ViewBag.DropOff = pCode.SingleOrDefault(m => m.Id == val.DropOff).PostCodeValue;
+
+
+        //        return View(db.FixPrices.Find(Id));
+        //    }
+        //    return RedirectToAction("login");
+        //}
         [HttpPost]
         public ActionResult EditFixPrice(FixPrice model)
         {
@@ -322,8 +432,8 @@ namespace thechauffeurteam.Controllers
                     return RedirectToAction("FixPrices");
 
                 }
-                ViewBag.PicUp = ViewBag.PicUp;
-                ViewBag.DropOff = ViewBag.DropOff;
+                //ViewBag.PicUp = ViewBag.PicUp;
+                //ViewBag.DropOff = ViewBag.DropOff;
 
                 return View(model);
             }

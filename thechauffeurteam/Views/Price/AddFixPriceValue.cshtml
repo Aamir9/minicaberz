@@ -28,16 +28,19 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h3 class="mb-0">Fix Price Value</h3>
+
+                            
                         </div>
                         <div class="col text-right">
                             @*<a href="#!" class="btn btn-sm btn-primary">See all</a>*@
+                            <a href="~/Price/FixPrices" class="btn btn-sm btn-primary">Back</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-body thead-light">
 
-                    @*<<<<<<<<*@
+ 
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
@@ -50,35 +53,17 @@
                                     <div class="col-md-6">
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12"><b>Post Code</b></label>
-                                            <div class="col-sm-12">
-                                                @*<label class="form-control" type="text" value="@ViewBag.PicUp">@ViewBag.PicUp</label>*@
-                                                <select name="PickUp" class="form-control">
-                                                    @for (int i = 0; i < PostCodeVal.Count; i++)
-                                                    {
+                                            <input type="text" name="PickUp" class="form-control" id="searchTextField" value="" placeholder="enter ther pick up address" />
 
-                                                        <option value = "@PostCodeVal[i].Id" > @PostCodeVal[i].PostCodeValue </option >
-
-                                                    }
-
-                                                </select>
-                                            </div>
                                         </div>
 
                                     </div>
                                     <div class="col-md-6">
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12"><b>&nbsp;</b></label>
+
                                             <div class="col-sm-12">
-                                                <select name="DropOff" class="form-control">
-                                                    @for (int i = 0; i < PostCodeVal.Count; i++)
-                                                    {
-                                                        <option value="@PostCodeVal[i].Id">@PostCodeVal[i].PostCodeValue</option>
-
-                                                    }
-
-                                                </select>
+                                                <input type="text" name="DropOff" id="searchTextField2" class="form-control" value="" placeholder="enter ther Drop Off address" />
                                             </div>
                                         </div>
 
@@ -89,33 +74,32 @@
                                     <div class="col-md-4">
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>&nbsp;</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.EditorFor(model => model.Eclass, new { htmlAttributes = new { @class = "form-control", placeholder = "Saloon Price" } })
-                                                @Html.ValidationMessageFor(model => model.Eclass, "", new { @class = "text-danger" })
-                                            </div>
+
+                                            @Html.EditorFor(model => model.Eclass, new { htmlAttributes = new { @class = "form-control", placeholder = "Saloon Price" } })
+                                            @Html.ValidationMessageFor(model => model.Eclass, "", new { @class = "text-danger" })
+
                                         </div>
 
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>Price</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.EditorFor(model => model.Sclass, new { htmlAttributes = new { @class = "form-control", placeholder = "Estate Price" } })
-                                                @Html.ValidationMessageFor(model => model.Sclass, "", new { @class = "text-danger" })
-                                            </div>
+
+
+                                            @Html.EditorFor(model => model.Sclass, new { htmlAttributes = new { @class = "form-control", placeholder = "Estate Price" } })
+                                            @Html.ValidationMessageFor(model => model.Sclass, "", new { @class = "text-danger" })
+
                                         </div>
 
                                     </div>
                                     <div class="col-md-4">
 
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>&nbsp;</b></label>
-                                            <div class="col-sm-12">
-                                                @Html.EditorFor(model => model.Vclass, new { htmlAttributes = new { @class = "form-control", placeholder = "MPV Price" } })
-                                                @Html.ValidationMessageFor(model => model.Vclass, "", new { @class = "text-danger" })
-                                            </div>
+
+
+                                            @Html.EditorFor(model => model.Vclass, new { htmlAttributes = new { @class = "form-control", placeholder = "MPV Price" } })
+                                            @Html.ValidationMessageFor(model => model.Vclass, "", new { @class = "text-danger" })
+
                                         </div>
 
                                     </div>
@@ -152,3 +136,22 @@
     </footer>
 </div>
 
+
+@section scripts{
+
+    <script defer src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&callback=initMap&key=AIzaSyAUeFGwxXtr8M8SD82BbA-6857CVPKUhNo" type="text/javascript"></script>
+    <script>
+        function initMap() {
+
+            var input = document.getElementById('searchTextField');
+
+            autocomplete = new google.maps.places.Autocomplete(input);
+
+            var input2 = document.getElementById('searchTextField2');
+
+            autocomplete = new google.maps.places.Autocomplete(input2);
+
+         }
+    </script>
+
+}

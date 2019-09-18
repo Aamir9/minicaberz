@@ -46,18 +46,8 @@
                             <div class="col-md-9">
 
                                 <div class="row">
-                                    <div class="col-md-6">
-
-                                        <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>Hours Range</b></label>
-                                            <div class="col-sm-12">
-                                                <label class="form-control" type="text" value="@ViewBag.HourFrom">@ViewBag.HourFrom</label>
-                                                <input type="hidden" id="HourFrom" name="HourFrom" value="@ViewBag.HourFrom" />
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-6">
+                                
+                                    @*<div class="col-md-6">
 
                                         <div class="form-group">
                                             <label class="control-label col-sm-12" for="address"><b>&nbsp;</b></label>
@@ -81,25 +71,23 @@
                                             </div>
                                         </div>
 
-                                    </div>
+                                    </div>*@
 
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>&nbsp;</b></label>
+                                         
                                             <div class="col-sm-12">
                                                 @Html.EditorFor(model => model.EclassPerHour, new { htmlAttributes = new { @class = "form-control", placeholder = "Saloon per Hour" } })
                                                 @Html.ValidationMessageFor(model => model.EclassPerHour, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>Price Per Hour </b></label>
+
                                             <div class="col-sm-12">
                                                 @Html.EditorFor(model => model.SclassPerHour, new { htmlAttributes = new { @class = "form-control", placeholder = "Estate per Hour" } })
                                                 @Html.ValidationMessageFor(model => model.SclassPerHour, "", new { @class = "text-danger" })
@@ -108,9 +96,8 @@
 
                                     </div>
                                     <div class="col-md-4">
-
                                         <div class="form-group">
-                                            <label class="control-label col-sm-12" for="address"><b>&nbsp;</b></label>
+                                         
                                             <div class="col-sm-12">
                                                 @Html.EditorFor(model => model.VclassPerHour, new { htmlAttributes = new { @class = "form-control", placeholder = "MPV per Hour" } })
                                                 @Html.ValidationMessageFor(model => model.VclassPerHour, "", new { @class = "text-danger" })
@@ -119,8 +106,41 @@
 
                                     </div>
 
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                       
+                                            <div class="col-sm-12">
+                                                @Html.EditorFor(model => model.SPerHour, new { htmlAttributes = new { @class = "form-control", placeholder = "SClass per Hour" } })
+                                                @Html.ValidationMessageFor(model => model.SPerHour, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+
+                                            <div class="col-sm-12">
+                                                @Html.EditorFor(model => model.MPerHour, new { htmlAttributes = new { @class = "form-control", placeholder = "VClass per Hour" } })
+                                                @Html.ValidationMessageFor(model => model.MPerHour, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                           
+                                           
+                                            <div class="col-sm-12">
+                                                @Html.EditorFor(model => model.EPerHour, new { htmlAttributes = new { @class = "form-control", placeholder = "EClass per Hour" } })
+                                                @Html.ValidationMessageFor(model => model.EPerHour, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </div>
 
                                 </div>
+
+
 
                             </div>
 

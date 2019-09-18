@@ -98,7 +98,12 @@
                                             @*<i class="fa fa-car" aria-hidden="true"></i>*@
                                             @*<input type="text" id="from_places" placeholder="Pick Up Address" class="form-control" />*@
 
-                                            @Html.TextBoxFor(m => m.pickUp, new { @class = "form-control", @placeholder = "Pick Up Address", @id = "from_places", required = "required" })
+                                           
+
+                                            <div class="crossIconDContainer">
+                                                @Html.TextBoxFor(m => m.pickUp, new { @class = "form-control", @placeholder = "Pick Up Address", @id = "from_places", required = "required" })
+                                                <i class="fa fa-times pck" style="cursor:pointer;background:#EEE;"></i>
+                                            </div>
 
                                             @Html.HiddenFor(m => m.pickUp, new { @id = "origin" })
                                             @*<input type="hidden" id="origin" name="origin" />*@
@@ -122,8 +127,13 @@
                                             @*<i class="fas fa-globe"></i>*@
                                             @*<input type="text" id="to_places" name="dropOff" placeholder="Drop Off Address" class="form-control" />*@
 
-                                            @Html.TextBoxFor(m => m.DropUP, new { @class = "form-control", @placeholder = "Drop Off Addres", @id = "to_places", required = "required" })
+                                           
 
+                                            <div class="crossIconDContainer">
+
+                                                @Html.TextBoxFor(m => m.DropUP, new { @class = "form-control", @placeholder = "Drop Off Addres", @id = "to_places", required = "required" }) 
+                                                <i class="fa fa-times drp" style="cursor:pointer; cursor:pointer;background:#EEE;"></i>
+                                            </div>
 
                                             @Html.HiddenFor(m => m.DropUP, new { @id = "destination" })
 
@@ -406,11 +416,7 @@
 
 
         $(function () {
-            $("#from_places, #to_places").on('focus', function () {
-
-                //$('.pac-container').css('margin-top', '-50px');
-
-            });
+         
 
             // add input listeners
             google.maps.event.addDomListener(window, 'load', function () {
@@ -420,7 +426,7 @@
                 var from_places = new google.maps.places.Autocomplete(fromPlaces);
                 var to_places = new google.maps.places.Autocomplete(toPlaces);
 
-                    {
+                    
                 function fromPlacesfunc() {
                     var from_place = from_places.getPlace();
                     var from_address = from_place.formatted_address;
@@ -448,6 +454,7 @@
                 var destination = $('#destination').val();
                 var service = new google.maps.DistanceMatrixService();
                 service.getDistanceMatrix(
+                    {
                         origins: [origin],
                         destinations: [destination],
                         travelMode: google.maps.TravelMode.DRIVING,
